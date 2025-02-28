@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "devicon/devicon.min.css";
+import Typewriter from "typewriter-effect";
+
 
 const skills = [
   {
@@ -87,10 +89,11 @@ const skills = [
   },
 ];
 
-function Profile() {
+function App() {
   const [showResume, setShowResume] = useState(false);
   return (
     <div className="d-flex flex-column align-items-center text-center mt-5 pb-4">
+
       {/* Profile Picture */}
       <img
         src="/img/profile-picture.png" // Ensure this path is correct
@@ -109,9 +112,18 @@ function Profile() {
 
       {/* Short Bio */}
       <p className="mt-3 w-50 pixel-text">
-        Dedicated developer with expertise in full-stack development, game
-        design, and front-end technologies. Passionate about creating
-        interactive applications and immersive experiences.
+        <Typewriter
+          options={{
+            strings: [
+              "Dedicated developer with expertise in full-stack development, game design, and front-end technologies.",
+              "Passionate about creating interactive applications and immersive experiences.",
+            ],
+            autoStart: true,
+            loop: false, // ✅ Stops after one playthrough
+            delay: 50,
+            deleteSpeed: Infinity, // ✅ Ensures it doesn’t erase
+          }}
+        />
       </p>
 
       {/* Resume & Skills Section Side by Side */}
@@ -154,15 +166,15 @@ function Profile() {
           {/* Resume Section (Right Side - 60% width) */}
           <div className="col-md-8 text-center">
             <h4 className="pixel-text">Resume</h4>
- {/* Centered Resume Button */}
-<div className="d-flex justify-content-center">
-  <button 
-    className="btn btn-primary m-2 pixel-text pixel-small btn-fixed-size" 
-    onClick={() => setShowResume(!showResume)}
-  >
-    {showResume ? "Hide Resume" : "View Resume"}
-  </button>
-</div>
+            {/* Centered Resume Button */}
+            <div className="d-flex justify-content-center">
+              <button
+                className="btn btn-primary m-2 pixel-text pixel-small btn-fixed-size"
+                onClick={() => setShowResume(!showResume)}
+              >
+                {showResume ? "Hide Resume" : "View Resume"}
+              </button>
+            </div>
 
             {/* Expanding Resume Section */}
             <div
@@ -187,7 +199,7 @@ function Profile() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    GitHub Projects
+                    GitHub
                   </a>
                 </button>
                 <button className="btn btn-danger m-2 pixel-text pixel-small btn-fixed-size">
@@ -197,7 +209,7 @@ function Profile() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Game Design Projects
+                    Game Design
                   </a>
                 </button>
               </div>
@@ -207,10 +219,10 @@ function Profile() {
       </div>
 
       {/* Contact Me Section */}
-      <div className="container w-50 mt-5 text-center">
+      <div className="d-flex flex-column align-items-center text-center mt-5 pb-4 bottom-spacing">
         <h4 className="pixel-text">Contact Me</h4>
         <p className="pixel-text">
-          Feel free to reach out for collaboration or job opportunities!
+          Available for collaborations and job opportunities. Get in touch!
         </p>
         <div className="d-flex justify-content-center">
           <a
@@ -233,4 +245,5 @@ function Profile() {
   );
 }
 
-export default Profile;
+
+export default App;
