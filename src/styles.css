@@ -1,0 +1,38 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+}
+
+h1 {
+  color: #333;
+}
+
+.btn-outline-primary:hover, 
+.btn-outline-info:hover {
+  transform: scale(1.05);
+  transition: 0.2s ease-in-out;
+}
+
+.iframe-container {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.iframe-container.show {
+  max-height: 1200px; /* Ensure it's high enough for full-page display */
+  opacity: 1;
+}
+
