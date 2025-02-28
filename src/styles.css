@@ -1,3 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.pixel-text {
+  font-family: 'Press Start 2P', cursive;
+  text-transform: uppercase; /* Retro feel */
+  letter-spacing: 1.5px; /* Adds space between letters */
+  font-size: 1rem; /* Adjust if needed */
+}
+
+.pixel-heading {
+  font-size: 1.8rem; /* Larger size for headings */
+}
+
+.pixel-subheading {
+  font-size: 1.4rem;
+}
+
+.pixel-small {
+  font-size: 0.9rem; /* Slightly smaller text for descriptions */
+}
+.profile-pic {
+  border: 10px solid #000; /* Thick black border for a pixelated look */
+  image-rendering: pixelated; /* Ensures pixel art keeps its sharpness */
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -34,5 +59,16 @@ h1 {
 .iframe-container.show {
   max-height: 1200px; /* Ensure it's high enough for full-page display */
   opacity: 1;
+}
+
+.btn-fixed-size {
+  width: 220px; /* Same width for all buttons */
+  height: 50px; /* Same height for all buttons */
+  font-size: 1rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
 }
 

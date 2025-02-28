@@ -90,117 +90,144 @@ const skills = [
 function Profile() {
   const [showResume, setShowResume] = useState(false);
   return (
-    <div className="d-flex flex-column align-items-center text-center">
+    <div className="d-flex flex-column align-items-center text-center mt-5 pb-4">
+      {/* Profile Picture */}
       <img
-        src="https://via.placeholder.com/150"
-        alt="Profile"
-        className="rounded-circle mb-3"
-        width="150"
+        src="/img/profile-picture.png" // Ensure this path is correct
+        alt="Mingwei Zhang"
+        className="rounded-circle mb-3 profile-pic"
+        width="300"
+        height="300"
+        style={{ marginTop: "20px" }} // Move down slightly
       />
-      <h1 className="text-primary">Mingwei Zhang</h1>
-      <h3 className="text-secondary">Software & Game Developer</h3>
-      <p className="mt-3 w-50">
+
+      {/* Name & Title */}
+      <h1 className="text-primary pixel-text pixel-heading">Mingwei Zhang</h1>
+      <h3 className="text-secondary pixel-text pixel-subheading">
+        Software & Game Developer
+      </h3>
+
+      {/* Short Bio */}
+      <p className="mt-3 w-50 pixel-text">
         Dedicated developer with expertise in full-stack development, game
         design, and front-end technologies. Passionate about creating
         interactive applications and immersive experiences.
       </p>
 
-{/* Resume Section */}
-<div className="container w-50 mt-4 text-center">
-  <h4>Resume</h4>
+      {/* Resume & Skills Section Side by Side */}
+      <div className="container w-75 mt-4">
+        <div className="row">
+          {/* Skills Section (Left Side - 40% width) */}
+          <div className="col-md-4">
+            <h4 className="mt-4 text-center pixel-text">Skills</h4>
+            <div className="row">
+              {skills.map((skill, index) => (
+                <div key={index} className="col-12">
+                  <div className="card m-1 p-2 text-center">
+                    <h6 className="pixel-text">{skill.category}</h6>
+                    <div className="d-flex justify-content-center flex-wrap">
+                      {skill.icons.map((icon, idx) =>
+                        icon.src ? (
+                          <img
+                            key={idx}
+                            src={icon.src}
+                            width="40"
+                            height="40"
+                            alt={icon.name}
+                            className="m-1"
+                          />
+                        ) : (
+                          <i
+                            key={idx}
+                            className={`${icon.class} display-6 m-1`}
+                            title={icon.name}
+                          ></i>
+                        )
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Resume Section (Right Side - 60% width) */}
+          <div className="col-md-8 text-center">
+            <h4 className="pixel-text">Resume</h4>
+ {/* Centered Resume Button */}
+<div className="d-flex justify-content-center">
   <button 
-    className="btn btn-primary m-2" 
+    className="btn btn-primary m-2 pixel-text pixel-small btn-fixed-size" 
     onClick={() => setShowResume(!showResume)}
   >
     {showResume ? "Hide Resume" : "View Resume"}
   </button>
-
-  {/* Expanding Resume Section */}
-  <div className={`mt-3 iframe-container ${showResume ? "show" : ""}`}>
-    <iframe 
-      src="/Zhang-Mingwei-Resume.pdf" 
-      width="100%" 
-      height="1120px"  /* Ensure it expands */
-      style={{ border: "1px solid #ccc", borderRadius: "10px" }}
-      title="Mingwei Zhang Resume"
-    ></iframe>
-  </div>
 </div>
-      
-      {/* Skills Section */}
-      <div className="container w-50">
-        <h4 className="mt-4">Skills</h4>
-        <div className="row">
-          {skills.map((skill, index) => (
-            <div key={index} className="col-md-6">
-              <div className="card m-1 p-2 text-center">
-                <h6>{skill.category}</h6>
-                <div className="d-flex justify-content-center flex-wrap">
-                  {skill.icons.map((icon, idx) =>
-                    icon.src ? (
-                      <img
-                        key={idx}
-                        src={icon.src}
-                        width="40"
-                        height="40"
-                        alt={icon.name}
-                        className="m-1"
-                      />
-                    ) : (
-                      <i
-                        key={idx}
-                        className={`${icon.class} display-6 m-1`}
-                        title={icon.name}
-                      ></i>
-                    )
-                  )}
-                </div>
+
+            {/* Expanding Resume Section */}
+            <div
+              className={`mt-3 iframe-container ${showResume ? "show" : ""}`}
+            >
+              <iframe
+                src="/Zhang-Mingwei-Resume.pdf"
+                width="100%"
+                height="800px"
+                style={{ border: "1px solid #ccc", borderRadius: "10px" }}
+                title="Mingwei Zhang Resume"
+              ></iframe>
+            </div>
+            {/* Projects Section */}
+            <div className="container w-75 mt-5 text-center">
+              <h4 className="pixel-text">Projects</h4> {/* New Title */}
+              <div className="d-flex justify-content-center mt-3">
+                <button className="btn btn-dark m-2 pixel-text pixel-small btn-fixed-size">
+                  <a
+                    href="https://github.com/mingwzhang"
+                    className="text-decoration-none text-light"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    GitHub Projects
+                  </a>
+                </button>
+                <button className="btn btn-danger m-2 pixel-text pixel-small btn-fixed-size">
+                  <a
+                    href="https://mindeveloper.itch.io/"
+                    className="text-decoration-none text-light"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Game Design Projects
+                  </a>
+                </button>
               </div>
             </div>
-          ))}
+          </div>
         </div>
       </div>
 
       {/* Contact Me Section */}
       <div className="container w-50 mt-5 text-center">
-        <h4>Contact Me</h4>
-        <p>Feel free to reach out for collaboration or job opportunities!</p>
+        <h4 className="pixel-text">Contact Me</h4>
+        <p className="pixel-text">
+          Feel free to reach out for collaboration or job opportunities!
+        </p>
         <div className="d-flex justify-content-center">
           <a
             href="mailto:mingw.zhang123@gmail.com"
-            className="btn btn-outline-primary m-2"
+            className="btn btn-outline-primary m-2 pixel-text pixel-small"
           >
             📧 Email Me
           </a>
           <a
             href="https://www.linkedin.com/in/mingwei-zhang1"
-            className="btn btn-outline-info m-2"
+            className="btn btn-outline-info m-2 pixel-text pixel-small"
             target="_blank"
             rel="noopener noreferrer"
           >
             🔗 LinkedIn
           </a>
         </div>
-      </div>
-
-      {/* Project Links */}
-      <div className="d-flex justify-content-center w-50 mt-4">
-        <a
-          href="https://github.com/mingwzhang"
-          className="btn btn-dark m-2"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GitHub Projects
-        </a>
-        <a
-          href="https://mindeveloper.itch.io/"
-          className="btn btn-danger m-2"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Game Design Projects
-        </a>
       </div>
     </div>
   );
