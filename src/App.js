@@ -1,8 +1,12 @@
+// App.js
 import React, { useState } from "react";
 import "devicon/devicon.min.css";
 import Typewriter from "typewriter-effect";
-import ParticleExplosion from "./ParticleExplosion"; // <-- import here
+import ParticleExplosion from "./ParticleExplosion";
 import MiniGameBox from "./MiniGameBox";
+import ContactForm from "./ContactForm";
+import NavBar from "./NavBar"; // import the nav component
+import ResumeModal from "./ResumeModal"; // New component for the modal
 
 const skills = [
   {
@@ -85,170 +89,207 @@ const skills = [
 ];
 
 function App() {
-  const [showResume, setShowResume] = useState(false);
+  const [showResumeModal, setShowResumeModal] = useState(false);
 
   return (
-    <div className="d-flex flex-column align-items-center text-center mt-5 pb-4">
-      {/* Profile Picture */}
-      <img
-        src="/img/profile-picture.png"
-        alt="Mingwei Zhang"
-        className="rounded-circle mb-3 profile-pic"
-        width="300"
-        height="300"
-      />
-
-      {/* Name & Title */}
-      <h1 className="text-primary pixel-text pixel-heading">Mingwei Zhang</h1>
-      <h3 className="pixel-text pixel-subheading software-title">
-        Software & Game Developer
-      </h3>
-
-      {/* Short Bio */}
-      <p className="mt-3 w-50 pixel-text">
-        <Typewriter
-          options={{
-            strings: [
-              "Dedicated developer with expertise in full-stack development, game design, and front-end technologies.",
-              "Passionate about creating interactive applications and immersive experiences.",
-            ],
-            autoStart: true,
-            loop: false, // ✅ Stops after one playthrough
-            delay: 50,
-            deleteSpeed: Infinity, // ✅ Ensures it doesn’t erase
-          }}
+    <div>
+      {/* Render the NavBar at the top */}
+      <NavBar onResumeClick={() => setShowResumeModal(true)} />
+        
+      {/* Add padding at the top so the fixed NavBar doesn't cover the content */}
+      <div
+        id="home"
+        className="d-flex flex-column align-items-center text-center"
+        style={{ paddingTop: "80px" }}
+      >
+        {/* Profile Picture */}
+        <img
+          src="/img/profile-picture.png"
+          alt="Mingwei Zhang"
+          className="rounded-circle mb-3 profile-pic"
+          width="300"
+          height="300"
         />
-      </p>
 
-      {/* Resume & Skills Section Side by Side */}
-      <div className="container w-75 mt-3">
-        <div className="row">
-          {/* Skills Section (Left Side - 40% width) */}
-          <div className="col-md-4">
-            <h4 className="mt-1 text-center pixel-text bold-title">
-              <span className="emoji-large">💻</span> Skills
-            </h4>
-            <div className="row">
-              {skills.map((skill, index) => (
-                <div key={index} className="col-12">
-                  <div className="card m-1 p-2 text-center">
-                    <h6 className="pixel-text">{skill.category}</h6>
-                    <div
-                      className="d-flex justify-content-center flex-nowrap"
-                      style={{ width: "100%" }}
-                    >
-                      {skill.icons.map((icon, idx) => (
-                        <div key={idx} className="icon-wrapper">
-                          {icon.src ? (
-                            <img
-                              src={icon.src}
-                              width="40"
-                              height="40"
-                              alt={icon.name}
-                              className="m-1 hover-scale"
-                            />
-                          ) : (
-                            <i
-                              className={`${icon.class} display-6 m-1 hover-scale`}
-                              title={icon.name}
-                            ></i>
-                          )}
-                          <span className="icon-label">{icon.name}</span>
-                        </div>
-                      ))}
+        {/* Name & Title */}
+        <h1 className="text-primary pixel-text pixel-heading">Mingwei Zhang</h1>
+        <h3 className="pixel-text pixel-subheading software-title">
+          Software & Game Developer
+        </h3>
+        <p className="pixel-text pixel-small fade-in-message">
+  🖱️ Feel free to click around!
+</p>
+
+        {/* Short Bio */}
+        <p className="mt-3 w-50 pixel-text mx-auto">
+          <Typewriter
+            options={{
+              strings: [
+                "Dedicated developer with expertise in full-stack development, game design, and front-end technologies.",
+                "Passionate about creating interactive applications and immersive experiences.",
+              ],
+              autoStart: true,
+              loop: false,
+              delay: 50,
+              deleteSpeed: Infinity,
+            }}
+          />
+        </p>
+
+        {/* Skills and Education Section */}
+        <div id="skills" className="container w-75 mt-3">
+          <div className="row">
+            {/* Skills Section (Left Column) */}
+            <div className="col-md-6">
+              <h4 className="mt-1 text-center pixel-text bold-title">
+                <span className="emoji-large">💻</span> Skills
+              </h4>
+              <div className="row">
+                {skills.map((skill, index) => (
+                  <div key={index} className="col-12">
+                    <div className="card m-1 p-2 text-center">
+                      <h6 className="pixel-text">{skill.category}</h6>
+                      <div
+                        className="d-flex justify-content-center flex-nowrap"
+                        style={{ width: "100%" }}
+                      >
+                        {skill.icons.map((icon, idx) => (
+                          <div key={idx} className="icon-wrapper">
+                            {icon.src ? (
+                              <img
+                                src={icon.src}
+                                width="40"
+                                height="40"
+                                alt={icon.name}
+                                className="m-1 hover-scale"
+                              />
+                            ) : (
+                              <i
+                                className={`${icon.class} display-6 m-1 hover-scale`}
+                                title={icon.name}
+                              ></i>
+                            )}
+                            <span className="icon-label">{icon.name}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Resume Section (Right Side - 60% width) */}
-          <div className="col-md-8 text-center">
-            <h4 className="pixel-text bold-title">
-              <span className="emoji-large">📄</span> Resume
-            </h4>
-            {/* Centered Resume Button */}
-            <div className="d-flex justify-content-center">
-              <button
-                className="btn btn-primary m-2 pixel-text pixel-small btn-fixed-size"
-                onClick={() => setShowResume(!showResume)}
-              >
-                {showResume ? "Hide Resume" : "View Resume"}
-              </button>
-            </div>
-
-            {/* Expanding Resume Section */}
-            <div
-              className={`mt-3 iframe-container ${showResume ? "show" : ""}`}
-            >
-              <iframe
-                src="/Zhang-Mingwei-Resume.pdf"
-                width="100%"
-                height="1150px"
-                style={{ border: "1px solid #ccc", borderRadius: "10px" }}
-                title="Mingwei Zhang Resume"
-              ></iframe>
-            </div>
-            {/* Projects Section */}
-            <div className="container w-75 mt-3 text-center">
-              <h4 className="pixel-text bold-title">
-                <span className="emoji-large">💡</span> Projects
-              </h4>
-              <div className="d-flex justify-content-center mt-3">
-                <button
-                  className="btn btn-dark m-2 pixel-text pixel-small btn-fixed-size"
-                  onClick={() =>
-                    window.open("https://github.com/mingwzhang", "_blank")
-                  }
-                >
-                  GitHub
-                </button>
-                <button
-                  className="btn btn-danger m-2 pixel-text pixel-small btn-fixed-size"
-                  onClick={() =>
-                    window.open("https://mindeveloper.itch.io/", "_blank")
-                  }
-                >
-                  Game Design
-                </button>
+                ))}
               </div>
             </div>
 
-            {/* Mini Game Section (aligned vertically below Projects) */}
-            <div className="container mt-3 text-center">
-              <h4 className="pixel-text bold-title">
-                <span className="emoji-large">🎮</span> Mini Game
+            {/* Education Section (Right Column) */}
+            <div className="col-md-6">
+              <h4 className="mt-1 text-center pixel-text bold-title">
+                <span className="emoji-large">🎓</span> Education
               </h4>
+              {/* Education Card for Queens College */}
+              <div className="card m-1 p-2 text-center">
+                <div className="d-flex flex-column align-items-center">
+                  <img
+                    src="/img/Queens_College_logo.png"
+                    alt="Queens College Logo"
+                    style={{
+                      width: "300px",
+                      height: "auto",
+                      marginBottom: "2rem",
+                    }}
+                  />
+
+                  <p className="pixel-text" style={{ margin: 0 }}>
+                    Master of Arts:
+                  </p>
+                  <p className="pixel-text" style={{ margin: 0 }}>
+                    Computer Science
+                  </p>
+                  <p className="pixel-text" style={{ margin: "2rem 0 0 0" }}>
+                    Expected graduation:
+                  </p>
+                  <p className="pixel-text" style={{ margin: 0 }}>
+                    May 2025
+                  </p>
+                </div>
+              </div>
+              {/* Education Card for Stony Brook University */}
+              <div className="card m-1 p-2 text-center">
+                <div className="d-flex flex-column align-items-center">
+                  <img
+                    src="/img/Stony_Brook_U_logo.png"
+                    alt="Stony Brook University Logo"
+                    style={{
+                      width: "400px",
+                      height: "auto",
+                      marginBottom: "2rem",
+                    }}
+                  />
+
+                  <p className="pixel-text" style={{ margin: 0 }}>
+                    Bachelor of Science:
+                  </p>
+                  <p className="pixel-text" style={{ margin: 0 }}>
+                    Double Major in Information Systems and Applied Mathematics
+                  </p>
+                  <p className="pixel-text" style={{ margin: "2rem 0 0 0" }}>
+                    Graduated:
+                  </p>
+                  <p className="pixel-text" style={{ margin: 0 }}>
+                    Aug 2021
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* New Section for Resume and Projects */}
+        <div
+          id="projects"
+          className="container mt-5 d-flex flex-wrap justify-content-center"
+        >
+          {/* Projects */}
+          <div className="m-3">
+            <h4 className="pixel-text bold-title">
+              <span className="emoji-large">💡</span> Projects
+            </h4>
+            <div className="d-flex justify-content-center">
+              <button
+                className="btn btn-dark m-2 pixel-text pixel-small btn-fixed-size"
+                onClick={() =>
+                  window.open("https://github.com/mingwzhang", "_blank")
+                }
+              >
+                GitHub
+              </button>
+              <button
+                className="btn btn-danger m-2 pixel-text pixel-small btn-fixed-size"
+                onClick={() =>
+                  window.open("https://mindeveloper.itch.io/", "_blank")
+                }
+              >
+                Games
+              </button>
+            </div>
+            <div className="d-flex flex-column align-items-center mt-5">
+              <h5 className="pixel-text">Mini Game: Hit the Target!</h5>
               <MiniGameBox />
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Contact Me Section */}
-      <div className="d-flex flex-column align-items-center text-center mt-5 pb-4 bottom-spacing">
-        <h4 className="pixel-text bold-title contact-title">
-          <span className="emoji-large">📩</span> Contact Me
-        </h4>
-        <p className="pixel-text">
-          Available for collaborations and job opportunities. Get in touch!
-        </p>
-        <div className="d-flex justify-content-center">
-          <a
-            href="mailto:mingw.zhang123@gmail.com"
-            className="btn btn-outline-primary m-2 pixel-text pixel-small"
-          >
-            📧 Email Me
-          </a>
-          <a
-            href="https://www.linkedin.com/in/mingwei-zhang1"
-            className="btn btn-outline-info m-2 pixel-text pixel-small"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            🔗 LinkedIn
-          </a>
+       {/* The ResumeModal is conditionally rendered based on state.
+            It can be placed anywhere in the return statement,
+            but placing it here ensures it overlays your page content. */}
+        {showResumeModal && (
+          <ResumeModal onClose={() => setShowResumeModal(false)} />
+        )}
+
+        {/* Contact Me Section */}
+        <div
+          id="contact"
+          className="d-flex flex-column align-items-center text-center mt-5 pb-4 bottom-spacing"
+        >
+          <ContactForm />
         </div>
       </div>
       <ParticleExplosion />
