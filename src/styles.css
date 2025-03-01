@@ -8,20 +8,38 @@
 }
 
 .pixel-heading {
-  font-size: 1.8rem; /* Larger size for headings */
+  font-size: 2rem; /* Larger size for headings */
 }
 
 .pixel-subheading {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
 }
 
 .pixel-small {
   font-size: 0.9rem; /* Slightly smaller text for descriptions */
 }
 .profile-pic {
-  border: 10px solid #000; /* Thick black border for a pixelated look */
-  image-rendering: pixelated; /* Ensures pixel art keeps its sharpness */
+  border: 10px solid #000; /* existing style */
+  image-rendering: pixelated; /* existing style */
+  margin-top: 20px; /* moved inline style here */
 }
+
+.bold-title {  /*other titles*/
+  font-weight: bold !important;
+  font-size: 1.3rem !important; /* Slightly increased */
+  text-transform: uppercase; /* Optional for emphasis */
+  color: #000 !important; /* Ensures strong contrast */
+}
+.emoji-large {
+  font-size: 2em; /* Increase size relative to surrounding text */
+}
+.contact-title {
+  margin-bottom: 2rem; /* Adjust this value as needed */
+}
+.software-title {
+  color: #45e7ec; /* Change this to your preferred color */
+}
+
 
 body {
   font-family: Arial, sans-serif;
@@ -46,6 +64,7 @@ h1 {
   transition: 0.2s ease-in-out;
 }
 
+
 .iframe-container {
   max-height: 0;
   overflow: hidden;
@@ -53,11 +72,13 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+  pointer-events: none;
   transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 
 .iframe-container.show {
   max-height: 1200px; /* Ensure it's high enough for full-page display */
+  pointer-events: auto;
   opacity: 1;
 }
 
@@ -80,6 +101,7 @@ h1 {
   transition: transform 0.2s ease-in-out;
   box-shadow: 4px 4px 0px #000; /* Retro pixel-like shadow */
 }
+
 @keyframes glow {
   0% { border-color: #ffcc00; }
   50% { border-color: #ff5733; }
@@ -93,4 +115,79 @@ h1 {
 /* Start https://www.cursors-4u.com */ 
 * {cursor: url(https://cur.cursors-4u.net/cursors/cur-10/cur952.ani), url(https://cur.cursors-4u.net/cursors/cur-10/cur952.png), auto !important;} 
 /* End https://www.cursors-4u.com */
+
+.hover-scale {
+  display: inline-block; /* Ensure transform works on inline elements */
+  transition: transform 0.1s ease-in-out;
+}
+
+.hover-scale:hover {
+  transform: scale(1.5);
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+  }
+  .profile-pic {
+    width: 200px;
+    height: 200px;
+  }
+  .btn-fixed-size {
+    width: 180px;
+    height: 45px;
+    font-size: 0.9rem;
+  }
+}
+
+.icon-wrapper {
+  position: relative;
+  display: inline-block;
+  margin: 0.1rem; /* Optional: spacing between icons */
+}
+
+.icon-label {
+  position: absolute;
+  bottom: 100%; /* Position above the icon */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 1.25rem;
+  white-space: nowrap;
+  opacity: 0; /* Hidden by default */
+  transition: opacity 0.2s ease-in-out;
+  pointer-events: none; /* Allows smooth hover without interference */
+}
+
+.icon-wrapper:hover .icon-label {
+  opacity: 1; /* Shows the label on hover */
+}
+
+
+/* Increase overall duration from 600ms to 1000ms for a slower fade and extended movement */
+.particle {
+  position: absolute;
+  width: 7px;  /* Adjust size if needed */
+  height: 7px;
+  pointer-events: none;
+  animation: explode 1000ms ease-out forwards;
+}
+
+/* Modify keyframes so the particle continues moving until fade out */
+@keyframes explode {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }100% {
+    /* Increase multiplier for a bigger range */
+    transform: translate(calc(var(--dx) * 2), calc(var(--dy) * 2));
+    opacity: 0;
+  }
+}
 

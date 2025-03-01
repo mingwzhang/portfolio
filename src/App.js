@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "devicon/devicon.min.css";
 import Typewriter from "typewriter-effect";
-
+import ParticleExplosion from "./ParticleExplosion";  // <-- import here
 
 const skills = [
   {
@@ -20,8 +20,6 @@ const skills = [
       { name: "HTML5", class: "devicon-html5-plain colored" },
       { name: "CSS3", class: "devicon-css3-plain colored" },
       { name: "JavaScript", class: "devicon-javascript-plain colored" },
-      { name: "R", class: "devicon-r-original colored" },
-      { name: "Lisp", class: "devicon-clisp-plain colored" },
     ],
   },
   {
@@ -36,10 +34,6 @@ const skills = [
       {
         name: "Ren'Py",
         src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/renpy/renpy-original.svg",
-      },
-      {
-        name: "MIT App Inventor",
-        class: "devicon-mitappinventor-plain colored",
       },
     ],
   },
@@ -91,22 +85,21 @@ const skills = [
 
 function App() {
   const [showResume, setShowResume] = useState(false);
+
   return (
     <div className="d-flex flex-column align-items-center text-center mt-5 pb-4">
-
       {/* Profile Picture */}
       <img
-        src="/img/profile-picture.png" // Ensure this path is correct
+        src="/img/profile-picture.png"
         alt="Mingwei Zhang"
         className="rounded-circle mb-3 profile-pic"
         width="300"
         height="300"
-        style={{ marginTop: "20px" }} // Move down slightly
       />
 
       {/* Name & Title */}
       <h1 className="text-primary pixel-text pixel-heading">Mingwei Zhang</h1>
-      <h3 className="text-secondary pixel-text pixel-subheading">
+      <h3 className="pixel-text pixel-subheading software-title">
         Software & Game Developer
       </h3>
 
@@ -131,31 +124,34 @@ function App() {
         <div className="row">
           {/* Skills Section (Left Side - 40% width) */}
           <div className="col-md-4">
-            <h4 className="mt-4 text-center pixel-text">Skills</h4>
+            <h4 className="mt-4 text-center pixel-text bold-title">
+              <span className="emoji-large">💻</span> Skills
+            </h4>
             <div className="row">
               {skills.map((skill, index) => (
                 <div key={index} className="col-12">
                   <div className="card m-1 p-2 text-center">
                     <h6 className="pixel-text">{skill.category}</h6>
-                    <div className="d-flex justify-content-center flex-wrap">
-                      {skill.icons.map((icon, idx) =>
-                        icon.src ? (
-                          <img
-                            key={idx}
-                            src={icon.src}
-                            width="40"
-                            height="40"
-                            alt={icon.name}
-                            className="m-1"
-                          />
-                        ) : (
-                          <i
-                            key={idx}
-                            className={`${icon.class} display-6 m-1`}
-                            title={icon.name}
-                          ></i>
-                        )
-                      )}
+                    <div className="d-flex justify-content-center flex-nowrap" style={{ width: "100%" }}>
+                    {skill.icons.map((icon, idx) => (
+                        <div key={idx} className="icon-wrapper">
+                          {icon.src ? (
+                            <img
+                              src={icon.src}
+                              width="40"
+                              height="40"
+                              alt={icon.name}
+                              className="m-1 hover-scale"
+                            />
+                          ) : (
+                            <i
+                              className={`${icon.class} display-6 m-1 hover-scale`}
+                              title={icon.name}
+                            ></i>
+                          )}
+                          <span className="icon-label">{icon.name}</span>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -165,7 +161,9 @@ function App() {
 
           {/* Resume Section (Right Side - 60% width) */}
           <div className="col-md-8 text-center">
-            <h4 className="pixel-text">Resume</h4>
+            <h4 className="pixel-text bold-title">
+              <span className="emoji-large">📄</span> Resume
+            </h4>
             {/* Centered Resume Button */}
             <div className="d-flex justify-content-center">
               <button
@@ -190,27 +188,25 @@ function App() {
             </div>
             {/* Projects Section */}
             <div className="container w-75 mt-5 text-center">
-              <h4 className="pixel-text">Projects</h4> {/* New Title */}
+              <h4 className="pixel-text bold-title">
+                <span className="emoji-large">💡</span> Projects
+              </h4>
               <div className="d-flex justify-content-center mt-3">
-                <button className="btn btn-dark m-2 pixel-text pixel-small btn-fixed-size">
-                  <a
-                    href="https://github.com/mingwzhang"
-                    className="text-decoration-none text-light"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    GitHub
-                  </a>
+                <button
+                  className="btn btn-dark m-2 pixel-text pixel-small btn-fixed-size"
+                  onClick={() =>
+                    window.open("https://github.com/mingwzhang", "_blank")
+                  }
+                >
+                  GitHub
                 </button>
-                <button className="btn btn-danger m-2 pixel-text pixel-small btn-fixed-size">
-                  <a
-                    href="https://mindeveloper.itch.io/"
-                    className="text-decoration-none text-light"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Game Design
-                  </a>
+                <button
+                  className="btn btn-danger m-2 pixel-text pixel-small btn-fixed-size"
+                  onClick={() =>
+                    window.open("https://mindeveloper.itch.io/", "_blank")
+                  }
+                >
+                  Game Design
                 </button>
               </div>
             </div>
@@ -220,7 +216,9 @@ function App() {
 
       {/* Contact Me Section */}
       <div className="d-flex flex-column align-items-center text-center mt-5 pb-4 bottom-spacing">
-        <h4 className="pixel-text">Contact Me</h4>
+        <h4 className="pixel-text bold-title contact-title">
+          <span className="emoji-large">📩</span> Contact Me
+        </h4>
         <p className="pixel-text">
           Available for collaborations and job opportunities. Get in touch!
         </p>
@@ -241,9 +239,9 @@ function App() {
           </a>
         </div>
       </div>
+      <ParticleExplosion />
     </div>
   );
 }
-
 
 export default App;
