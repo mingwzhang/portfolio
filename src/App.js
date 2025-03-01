@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "devicon/devicon.min.css";
 import Typewriter from "typewriter-effect";
-import ParticleExplosion from "./ParticleExplosion";  // <-- import here
+import ParticleExplosion from "./ParticleExplosion"; // <-- import here
+import MiniGameBox from "./MiniGameBox";
 
 const skills = [
   {
@@ -120,11 +121,11 @@ function App() {
       </p>
 
       {/* Resume & Skills Section Side by Side */}
-      <div className="container w-75 mt-4">
+      <div className="container w-75 mt-3">
         <div className="row">
           {/* Skills Section (Left Side - 40% width) */}
           <div className="col-md-4">
-            <h4 className="mt-4 text-center pixel-text bold-title">
+            <h4 className="mt-1 text-center pixel-text bold-title">
               <span className="emoji-large">💻</span> Skills
             </h4>
             <div className="row">
@@ -132,8 +133,11 @@ function App() {
                 <div key={index} className="col-12">
                   <div className="card m-1 p-2 text-center">
                     <h6 className="pixel-text">{skill.category}</h6>
-                    <div className="d-flex justify-content-center flex-nowrap" style={{ width: "100%" }}>
-                    {skill.icons.map((icon, idx) => (
+                    <div
+                      className="d-flex justify-content-center flex-nowrap"
+                      style={{ width: "100%" }}
+                    >
+                      {skill.icons.map((icon, idx) => (
                         <div key={idx} className="icon-wrapper">
                           {icon.src ? (
                             <img
@@ -181,13 +185,13 @@ function App() {
               <iframe
                 src="/Zhang-Mingwei-Resume.pdf"
                 width="100%"
-                height="800px"
+                height="1150px"
                 style={{ border: "1px solid #ccc", borderRadius: "10px" }}
                 title="Mingwei Zhang Resume"
               ></iframe>
             </div>
             {/* Projects Section */}
-            <div className="container w-75 mt-5 text-center">
+            <div className="container w-75 mt-3 text-center">
               <h4 className="pixel-text bold-title">
                 <span className="emoji-large">💡</span> Projects
               </h4>
@@ -209,6 +213,14 @@ function App() {
                   Game Design
                 </button>
               </div>
+            </div>
+
+            {/* Mini Game Section (aligned vertically below Projects) */}
+            <div className="container mt-3 text-center">
+              <h4 className="pixel-text bold-title">
+                <span className="emoji-large">🎮</span> Mini Game
+              </h4>
+              <MiniGameBox />
             </div>
           </div>
         </div>
