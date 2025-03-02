@@ -7,6 +7,8 @@ import MiniGameBox from "./MiniGameBox";
 import ContactForm from "./ContactForm";
 import NavBar from "./NavBar"; // import the nav component
 import ResumeModal from "./ResumeModal"; // New component for the modal
+import AnimatedBackground from "./AnimatedBackground";
+import FloatingShapes from "./FloatingShapes"; // Import the new component
 
 const skills = [
   {
@@ -93,9 +95,10 @@ function App() {
 
   return (
     <div>
+      <AnimatedBackground />
+      <FloatingShapes /> {/* Adds 3D-like floating effect */}
       {/* Render the NavBar at the top */}
       <NavBar onResumeClick={() => setShowResumeModal(true)} />
-        
       {/* Add padding at the top so the fixed NavBar doesn't cover the content */}
       <div
         id="home"
@@ -112,13 +115,13 @@ function App() {
         />
 
         {/* Name & Title */}
-        <h1 className="text-primary pixel-text pixel-heading">Mingwei Zhang</h1>
+        <h1 className="pixel-text pixel-heading">Mingwei Zhang</h1>
         <h3 className="pixel-text pixel-subheading software-title">
           Software & Game Developer
         </h3>
         <p className="pixel-text pixel-small fade-in-message">
-  🖱️ Feel free to click around!
-</p>
+          🖱️ Feel free to click around!
+        </p>
 
         {/* Short Bio */}
         <p className="mt-3 w-50 pixel-text mx-auto">
@@ -141,7 +144,7 @@ function App() {
           <div className="row">
             {/* Skills Section (Left Column) */}
             <div className="col-md-6">
-              <h4 className="mt-1 text-center pixel-text bold-title">
+              <h4 className="mt-1 text-center pixel-text pixel-bold-title">
                 <span className="emoji-large">💻</span> Skills
               </h4>
               <div className="row">
@@ -181,21 +184,22 @@ function App() {
 
             {/* Education Section (Right Column) */}
             <div className="col-md-6">
-              <h4 className="mt-1 text-center pixel-text bold-title">
+              <h4 className="mt-1 text-center pixel-text pixel-bold-title">
                 <span className="emoji-large">🎓</span> Education
               </h4>
               {/* Education Card for Queens College */}
               <div className="card m-1 p-2 text-center">
                 <div className="d-flex flex-column align-items-center">
-                  <img
-                    src="/img/Queens_College_logo.png"
-                    alt="Queens College Logo"
-                    style={{
-                      width: "300px",
-                      height: "auto",
-                      marginBottom: "2rem",
-                    }}
-                  />
+                <img
+  src="/img/Queens_College_logo.png"
+  alt="Queens College Logo"
+  className="icon-wrapper-education"
+  style={{
+    width: "300px",
+    height: "auto",
+    marginBottom: "2rem",
+  }}
+/>
 
                   <p className="pixel-text" style={{ margin: 0 }}>
                     Master of Arts:
@@ -214,15 +218,16 @@ function App() {
               {/* Education Card for Stony Brook University */}
               <div className="card m-1 p-2 text-center">
                 <div className="d-flex flex-column align-items-center">
-                  <img
-                    src="/img/Stony_Brook_U_logo.png"
-                    alt="Stony Brook University Logo"
-                    style={{
-                      width: "400px",
-                      height: "auto",
-                      marginBottom: "2rem",
-                    }}
-                  />
+                <img
+  src="/img/Stony_Brook_U_logo.png"
+  alt="Stony Brook University Logo"
+  className="icon-wrapper-education"
+  style={{
+    width: "400px",
+    height: "auto",
+    marginBottom: "2rem",
+  }}
+/>
 
                   <p className="pixel-text" style={{ margin: 0 }}>
                     Bachelor of Science:
@@ -249,12 +254,12 @@ function App() {
         >
           {/* Projects */}
           <div className="m-3">
-            <h4 className="pixel-text bold-title">
+            <h4 className="pixel-text pixel-bold-title">
               <span className="emoji-large">💡</span> Projects
             </h4>
             <div className="d-flex justify-content-center">
               <button
-                className="btn btn-dark m-2 pixel-text pixel-small btn-fixed-size"
+                className="btn btn-transparent m-2 pixel-text pixel-small btn-fixed-size"
                 onClick={() =>
                   window.open("https://github.com/mingwzhang", "_blank")
                 }
@@ -262,7 +267,7 @@ function App() {
                 GitHub
               </button>
               <button
-                className="btn btn-danger m-2 pixel-text pixel-small btn-fixed-size"
+                className="btn btn-transparent m-2 pixel-text pixel-small btn-fixed-size"
                 onClick={() =>
                   window.open("https://mindeveloper.itch.io/", "_blank")
                 }
@@ -277,7 +282,7 @@ function App() {
           </div>
         </div>
 
-       {/* The ResumeModal is conditionally rendered based on state.
+        {/* The ResumeModal is conditionally rendered based on state.
             It can be placed anywhere in the return statement,
             but placing it here ensures it overlays your page content. */}
         {showResumeModal && (
@@ -287,7 +292,7 @@ function App() {
         {/* Contact Me Section */}
         <div
           id="contact"
-          className="d-flex flex-column align-items-center text-center mt-5 pb-4 bottom-spacing"
+          className="d-flex flex-column align-items-center text-center mt-5 pb-4 bottom-spacing "
         >
           <ContactForm />
         </div>

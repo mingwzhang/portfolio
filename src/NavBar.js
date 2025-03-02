@@ -9,17 +9,18 @@ const NavBar = ({ onResumeClick }) => {
   };
 
   return (
-    <nav
-      style={{
-        backgroundColor: "#f9f9f9",
-        padding: "1rem",
-        borderBottom: "2px solid #333",
-        position: "fixed",
-        top: 0,
-        width: "100%",
-        zIndex: 1000,
-      }}
-    >
+<nav
+  style={{
+    backgroundColor: "rgba(0, 0, 0, 0.3)", // Transparent black
+    backdropFilter: "blur(10px)", // Adds glass effect
+    padding: "1rem",
+    borderBottom: "2px solid rgba(255, 255, 255, 0.3)",
+    position: "fixed",
+    top: 0,
+    width: "100%",
+    zIndex: 1000,
+  }}
+>
       {/* Use a full-width flex container */}
       <div
         style={{
@@ -33,7 +34,7 @@ const NavBar = ({ onResumeClick }) => {
         <div style={{ display: "flex", alignItems: "center" }}>
           <button
             onClick={() => scrollToSection("home")}
-            className="btn pixel-btn pixel-text bold-title"
+            className="btn pixel-btn pixel-text"
             style={{
               fontSize: "1.5rem",
               background: "none",
@@ -107,39 +108,38 @@ const NavBar = ({ onResumeClick }) => {
 
           {/* Resume Button */}
           <button
-            onClick={onResumeClick}
-            className="btn pixel-btn pixel-text unique-resume-btn"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              width: "auto",
-              backgroundColor: "#fff",
-              border: "2px dashed #2ecacf",
-              padding: "0.5rem 1rem",
-              color: "#2ecacf",
-              fontWeight: "bold",
-              letterSpacing: "2px",
-              textTransform: "uppercase",
-              fontSize: "1.1rem",
-              transition:
-                "transform 0.2s ease-in-out, background-color 0.2s ease-in-out",
-              margin: 0,
-              marginLeft: "2rem", // extra gap added here
-            }}
-          >
-            Resume
-            <span
-              role="img"
-              aria-label="document"
-              style={{
-                fontSize: "1.5em",
-                marginLeft: "0.5rem",
-                marginTop: "-10px",
-              }}
-            >
-              📎
-            </span>
-          </button>
+  onClick={onResumeClick}
+  className="btn pixel-btn pixel-text unique-resume-btn"
+  style={{
+    display: "inline-flex",
+    alignItems: "center",
+    width: "auto",
+    padding: "0.5rem 1rem",
+    border: "2px dashed #2ecacf",
+    color: "#2ecacf",
+    fontWeight: "bold",
+    letterSpacing: "2px",
+    textTransform: "uppercase",
+    fontSize: "1.1rem",
+    transition:
+      "transform 0.2s ease-in-out, background-color 0.2s ease-in-out",
+    margin: 0,
+    marginLeft: "2rem",
+  }}
+>
+  Resume
+  <span
+    role="img"
+    aria-label="document"
+    style={{
+      fontSize: "1.5em",
+      marginLeft: "0.5rem",
+      marginTop: "-10px",
+    }}
+  >
+    📎
+  </span>
+</button>
         </div>
       </div>
     </nav>

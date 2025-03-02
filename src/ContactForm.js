@@ -43,7 +43,7 @@ const ContactForm = () => {
         boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)"
       }}
     >
-      <h4 className="pixel-text bold-title contact-title">
+      <h4 className="pixel-text pixel-bold-title contact-title">
       <span className="emoji-large">📩</span> Contact Me
       </h4>
       <div style={{ marginBottom: "1rem" }}>
@@ -113,3 +113,4 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
+ 

@@ -5,37 +5,55 @@
   text-transform: uppercase; /* Retro feel */
   letter-spacing: 1.5px; /* Adds space between letters */
   font-size: 1rem; /* Adjust if needed */
+  color: #00e6b8; /* Softer Neon Green */
+  text-shadow: 2px 2px 10px rgba(0, 230, 120, 0.6), 
+               0px 0px 15px rgba(0, 255, 100, 0.5); /* Softer Glow */
 }
 
-.pixel-heading {
+.pixel-heading {  
   font-size: 2.5rem; /* Increase size for prominence */
-  text-shadow: 2px 2px 0px #000; /* Creates a pixelated shadow */
+  text-shadow: 2px 2px 0px #000000; /* Creates a pixelated shadow */
   letter-spacing: 2px; /* More spacing for a retro look */
   padding: 0.5rem 1rem; /* Adds space around the text */
-  background-color: #f9f9f9; /* Optional: a subtle background */
+  background-color: transparent !important; /* Make background transparent */
+  color: #00e6b8; /* Same softer neon */
 }
 
 .pixel-subheading {
   font-size: 1.5rem;
+  color: #00d4ff; /* Softer Neon Blue */
+  text-shadow: 2px 2px 10px rgba(0, 212, 255, 0.6), 
+               0px 0px 12px rgba(0, 212, 255, 0.5);
 }
 
 .pixel-small {
   font-size: 0.9rem; /* Slightly smaller text for descriptions */
 }
+
+
+
+@keyframes glowPulse {
+  0% { text-shadow: 0px 0px 12px rgb(0, 255, 128), 0px 0px 10px rgb(0, 225, 255); }
+  50% { text-shadow: 0px 0px 15px rgb(0, 247, 255), 0px 0px 30px rgb(0, 225, 255); }
+  100% { text-shadow: 0px 0px 12px rgb(0, 255, 234), 0px 0px 10px rgb(0, 225, 255); }
+}
+
+.pixel-bold-title {
+  font-weight: bold !important;
+  font-size: 1.6rem !important;
+  text-transform: uppercase;
+  padding: 0.3rem 0.6rem;
+  letter-spacing: 1px;
+  animation: glowPulse 3s infinite alternate ease-in-out !important; /* Apply the animation */
+}
+
+
 .profile-pic {
   border: 10px solid #000; /* existing style */
   image-rendering: pixelated; /* existing style */
   margin-top: 20px; /* moved inline style here */
 }
 
-.bold-title {
-  font-weight: bold !important;
-  font-size: 1.5rem !important;
-  text-transform: uppercase;
-  color: #000 !important;
-  text-shadow: 2px 2px 0px #fff; /* Subtle light shadow for extra pop */
-  padding: 0.25rem 0.5rem;
-}
 .emoji-large {
   font-size: 2em; /* Increase size relative to surrounding text */
 }
@@ -146,12 +164,38 @@ h1 {
   }
 }
 
+/* Transparent button style */
+.btn-transparent {
+  background-color: transparent !important; /* Fully transparent background */
+  border: 2px solid #ffffff !important; /* White border for visibility */
+  color: #ffffff !important; /* White text */
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7); /* Soft glow effect */
+  transition: all 0.3s ease-in-out;
+}
+
+/* Hover effect for transparent buttons */
+.btn-transparent:hover {
+  background-color: rgba(255, 255, 255, 0.2) !important; /* Slight opacity on hover */
+  transform: scale(1.05);
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5); /* Light glow */
+}
+
+ /* Add glow to logos */
 .icon-wrapper {
   position: relative;
   display: inline-block;
   margin: 0.1rem; /* Optional: spacing between icons */
+  filter: drop-shadow(0px 0px 3px #00e6b8) !important; /* Miku-style glow */
 }
 
+ /* Add glow to college logos */
+.icon-wrapper-education
+{
+  position: relative;
+  display: inline-block;
+  margin: 0.1rem; /* Optional: spacing between icons */
+  filter: drop-shadow(0px 0px 3px #00e6b8) !important; /* Miku-style glow */
+}
 .icon-label {
   position: absolute;
   bottom: 100%; /* Position above the icon */
@@ -237,7 +281,7 @@ h1 {
 .pixel-btn:hover {
   transform: scale(1.05);
   box-shadow: 4px 4px 0px #000;
-  background-color: #2ecacf !important; /* Change the button background on hover */
+  background-color: #2ecacfa8 !important; /* Change the button background on hover */
 }
 
 
@@ -267,5 +311,198 @@ h1 {
   50% { color: rgb(0, 204, 255); } /* Light Blue */
   75% { color: rgb(0, 255, 102); } /* Green */
   100% { color: rgb(240, 116, 0); } /* Back to Orange */
+}
+
+.animated-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(120deg, #2ecacf, #00a2ff, #ffffff);
+  animation: backgroundMove 10s ease-in-out infinite alternate;
+}
+
+/* Animate the background to shift colors subtly */
+@keyframes backgroundMove {
+  0% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.2);
+  }
+  100% {
+    filter: brightness(1);
+  }
+}
+
+/* Add a soft glow effect */
+.pixel-heading, .pixel-subheading, .btn {
+  text-shadow: 0px 0px 8px rgba(0, 255, 255, 0.8), 0px 0px 12px rgba(0, 162, 255, 0.6);
+
+}
+
+.particle {
+  background-color: rgba(0, 255, 255, 0.9); /* Miku cyan glow */
+  box-shadow: 0px 0px 10px rgba(0, 255, 255, 0.8);
+}
+
+/* Apply a glass effect to sections */
+.container, .card {
+  background: rgba(255, 255, 255, 0.1); /* Transparent white */
+  backdrop-filter: blur(10px); /* Frosted glass effect */
+  border: 2px solid rgba(255, 255, 255, 0.3); /* Subtle border */
+  border-radius: 10px; /* Slight rounding for modern feel */
+  padding: 1rem;
+}
+
+/* Navbar transparency */
+nav {
+  background: rgba(0, 0, 0, 0.3) !important; /* Semi-transparent black */
+  backdrop-filter: blur(10px); /* Glassy effect */
+}
+
+/* Ensure text remains readable */
+.pixel-text, .pixel-heading, .pixel-subheading {
+  text-shadow: 0px 0px 6px rgba(0, 255, 255, 0.7), 0px 0px 10px rgba(0, 162, 255, 0.5);
+}
+
+/* Transparent and Glass Effect for Skills & Education */
+.container, .card {
+  background: rgba(20, 20, 20, 0.8) !important; /* Light transparent white */
+  backdrop-filter: blur(10px) !important; /* Frosted glass effect */
+  border: 2px solid rgba(255, 255, 255, 0.3) !important; /* Subtle white border */
+  border-radius: 10px !important; /* Smooth rounded edges */
+  padding: 1rem !important;
+}
+
+/* Improve readability of text inside transparent sections */
+.card h6, .pixel-text {
+  color: #ffffff !important; /* Ensure text remains visible */
+  text-shadow: 0px 0px 6px rgba(0, 255, 255, 0.7), 0px 0px 10px rgba(0, 162, 255, 0.5);
+}
+
+/* Reduce box-shadow to make the UI feel more immersive */
+.card {
+  box-shadow: none !important;
+}
+
+/* Apply Transparent Glass Effect to Contact Form */
+form {
+  background: rgba(255, 255, 255, 0.1) !important; /* Light transparent white */
+  backdrop-filter: blur(10px) !important; /* Frosted glass effect */
+  border: 2px solid rgba(255, 255, 255, 0.3) !important; /* Subtle white border */
+  border-radius: 10px !important; /* Smooth rounded edges */
+  padding: 1rem !important;
+  box-shadow: none !important;
+}
+
+/* Ensure input fields and textarea match the transparent theme */
+input, textarea {
+  background: rgba(0, 0, 0, 0.3) !important; /* Darker transparency */
+  color: #ffffff !important; /* Bright text */
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  padding: 0.5rem !important;
+  border-radius: 5px !important;
+}
+
+/* Improve placeholder visibility */
+input::placeholder, textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Contact form title styling */
+.contact-title {
+  color: #ffffff !important;
+  text-shadow: 0px 0px 6px rgba(0, 255, 255, 0.7), 0px 0px 10px rgba(0, 162, 255, 0.5);
+}
+
+/* Contact form button styling */
+button[type="submit"] {
+  background: rgba(0, 255, 255, 0.7) !important;
+  border: 2px solid rgba(0, 255, 255, 0.9) !important;
+  color: #000000 !important;
+  font-weight: bold !important;
+  text-transform: uppercase !important;
+  transition: all 0.3s ease-in-out !important;
+}
+
+button[type="submit"]:hover {
+  background: rgba(0, 108, 170, 0.9) !important;
+  border: 2px solid rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Container for floating shapes */
+.floating-shapes-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none; /* Ensures it doesn’t interfere with UI */
+  z-index: -1;
+}
+
+/* Individual floating shapes */
+.floating-shape {
+  position: absolute;
+  background: rgba(0, 255, 255, 0.15); /* Semi-transparent neon */
+  border: 2px solid rgba(0, 255, 255, 0.3); /* Subtle border */
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%); /* Pentagon shape */
+  filter: drop-shadow(0px 0px 10px rgba(0, 255, 255, 0.6)); /* Soft glow */
+  animation: floatShape infinite alternate ease-in-out, rotateShape infinite linear;
+}
+
+/* Enhance floating shape rotation */
+@keyframes rotateShape {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Faster and more dynamic floating effect */
+@keyframes floatShape {
+  0% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(30px) scale(1.1);
+  }
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+}
+/* Up-Down Floating Effect */
+@keyframes floatUpDown {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-30px);
+  }
+}
+/* Rotate Left */
+@keyframes rotateLeft {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+/* Rotate Right */
+@keyframes rotateRight {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
