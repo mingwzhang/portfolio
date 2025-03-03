@@ -1,4 +1,3 @@
-// ContactForm.js
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
 
@@ -9,6 +8,7 @@ const ContactForm = () => {
     message: "",
   });
   const [status, setStatus] = useState("");
+  const [isSending, setIsSending] = useState(false); // Flag to prevent multiple sends
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,9 +17,13 @@ const ContactForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Replace these placeholders with your EmailJS details
+    
+    // Prevent duplicate submissions...
+    if (isSending) return;
+    setIsSending(true);
+  
     emailjs
-      .send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", formData, "YOUR_USER_ID")
+      .send("service_kh8lbtv", "template_8z0b6aa", formData, "mnQpaviz3_3d37L_1")
       .then(
         (result) => {
           setStatus("Message sent successfully!");
@@ -28,14 +32,16 @@ const ContactForm = () => {
         (error) => {
           setStatus("Failed to send message. Please try again.");
         }
-      );
+      )
+      .finally(() => setIsSending(false));
   };
+  
 
   return (
     <form
       onSubmit={handleSubmit}
       style={{
-        width: "700px", // Explicit container width
+        width: "700px",
         margin: "auto",
         backgroundColor: "#fff",
         padding: "1rem",
@@ -55,7 +61,7 @@ const ContactForm = () => {
           onChange={handleChange}
           required
           style={{
-            width: "100%", // Input spans full container width
+            width: "100%",
             padding: "0.5rem",
             borderRadius: "4px",
             border: "1px solid #ccc",
@@ -77,7 +83,6 @@ const ContactForm = () => {
             borderRadius: "4px",
             border: "1px solid #ccc",
             fontSize: "0.9rem",
-
           }}
         />
       </div>
@@ -95,7 +100,6 @@ const ContactForm = () => {
             borderRadius: "4px",
             border: "1px solid #ccc",
             fontSize: "0.9rem",
-
           }}
         />
       </div>
@@ -104,8 +108,11 @@ const ContactForm = () => {
           className="pixel-text pixel-btn-3d send-button-wrapper"
           type="submit"
           style={{ marginBottom: "20px" }}
+          disabled={isSending} // Disable when sending
         >
-          <span className="pixel-btn-content">Send Message</span>
+          <span className="pixel-btn-content">
+            {isSending ? "Sending..." : "Send Message"}
+          </span>
         </button>
       </div>
 
