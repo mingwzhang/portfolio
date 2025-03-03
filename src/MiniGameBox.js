@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import "./MiniGameBox.css";
 
 const MiniGameBox = () => {
   // Score and position state
@@ -50,8 +51,9 @@ const MiniGameBox = () => {
 
   // Create a stable moveTarget function.
   const moveTarget = useCallback(() => {
-    const top = Math.random() * (300 - frameHeight * scaleFactor);
-    const left = Math.random() * (300 - frameWidth * scaleFactor);
+    const boxSize = 500; // Updated box size
+    const top = Math.random() * (boxSize - frameHeight * scaleFactor);
+    const left = Math.random() * (boxSize - frameWidth * scaleFactor);
     setTargetPosition({ top, left });
   }, [frameHeight, frameWidth, scaleFactor]);
 
@@ -117,19 +119,7 @@ const MiniGameBox = () => {
   };
 
   return (
-    <div
-      style={{
-        width: "300px",
-        height: "300px",
-        margin: "auto",
-        border: "2px solid #333",
-        position: "relative",
-        overflow: "hidden",
-        background: "#f9f9f9",
-        cursor: "crosshair",
-        userSelect: "none"
-      }}
-    >
+    <div className="mini-game-container">
       {/* Main Target */}
       {isVisible && (
         <img
@@ -173,13 +163,12 @@ const MiniGameBox = () => {
       )}
 
       {/* Score Display */}
-      <div
+      <div className="mini-game-score"
         style={{
           position: "absolute",
           top: "10px",
           left: "10px",
           color: "#333",
-          fontWeight: "bold",
           userSelect: "none"
         }}
       >

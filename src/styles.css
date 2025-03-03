@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('./LoadingScreen.css');
 
 .pixel-text {
   font-family: 'Press Start 2P', cursive;
@@ -39,12 +40,13 @@
 }
 
 .pixel-bold-title {
+  color: #b0fff4 !important;
   font-weight: bold !important;
   font-size: 1.6rem !important;
   text-transform: uppercase;
   padding: 0.3rem 0.6rem;
   letter-spacing: 1px;
-  animation: glowPulse 3s infinite alternate ease-in-out !important; /* Apply the animation */
+  animation: glowPulse 2.5s infinite alternate ease-in-out !important; /* Apply the animation */
 }
 
 
@@ -56,9 +58,6 @@
 
 .emoji-large {
   font-size: 2em; /* Increase size relative to surrounding text */
-}
-.contact-title {
-  margin-bottom: 2rem; /* Adjust this value as needed */
 }
 .software-title {
   color: #2ecacf; /* Change this to your preferred color */
@@ -106,9 +105,10 @@ h1 {
   opacity: 1;
 }
 
+/*Adjust button scale*/
 .btn-fixed-size {
   width: 220px; /* Same width for all buttons */
-  height: 50px; /* Same height for all buttons */
+  height: 60px; /* Same height for all buttons */
   font-size: 1rem;
   text-align: center;
   display: flex;
@@ -180,6 +180,50 @@ h1 {
   box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5); /* Light glow */
 }
 
+/* Effects for keyboard like 3d button */
+
+.pixel-btn-3d {
+  font-family: 'Press Start 2P', cursive !important;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 1rem;
+  background: linear-gradient(to bottom, #48ffe744, #6ad3f348);
+  border: 2px solid transparent;
+  border-radius: 0; /* Square corners for retro style */
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin: 0 1rem;
+  text-shadow: 1px 1px 0px #ffffff;
+  box-shadow: 0 10px 0 #888;
+  /* Default state: no transform */
+  transform: scale(1);
+  transition: background 0.2s ease-in-out, 
+              transform 0.2s ease-in-out, 
+              box-shadow 0.2s ease-in-out;
+}
+
+/* Hover state: enlarge the button while keeping the box-shadow */
+.pixel-btn-3d:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to bottom, #6ad3f3, #48ffe7);
+  box-shadow: 0 10px 0 #888;
+}
+
+/* Active state: maintain the hover scale but shift down and gradually remove the shadow */
+.pixel-btn-3d:active {
+  transform: scale(1.05) translateY(12px);
+  box-shadow: 0 0 0 #888;
+}
+
+.send-button-wrapper {
+  display: inline-block;
+  width: 220px; /* Set to your button's fixed width */
+  height: 60px;  /* Set to your button's fixed height */
+  overflow: hidden; /* Prevent the scaled button from expanding the container */
+  vertical-align: middle; /* Ensure proper alignment if needed */
+}
+
+
  /* Add glow to logos */
 .icon-wrapper {
   position: relative;
@@ -241,9 +285,10 @@ h1 {
   }
 }
 
-#home, #about, #skills, #projects, #contact {
+#home, #about, #skills-education, #projects, #contact {
   scroll-margin-top: 80px;
 }
+
 
 .nav-button {
   background: none;
@@ -273,7 +318,7 @@ h1 {
   padding: 0.5rem 1rem;
   cursor: pointer;
   margin: 0 1rem;
-  color: #000 !important;
+  color: #ffffff;
   text-shadow: 2px 2px 0px #fff;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.2s ease;
 }
@@ -291,12 +336,12 @@ h1 {
 
 .fade-in-message {
   opacity: 0;
-  animation: fadeInOut 4s infinite ease-in-out, rgbShift 4s infinite linear; 
+  /* Remove rgbShift from the animation */
+  animation: fadeInOut 4s infinite ease-in-out;
   font-size: 1rem;
   margin-top: 0.5rem;
+  color: #eeff00 !important; /* Your desired fixed color */
 }
-
-
 
 
 @keyframes fadeInOut {
@@ -340,8 +385,7 @@ h1 {
 
 /* Add a soft glow effect */
 .pixel-heading, .pixel-subheading, .btn {
-  text-shadow: 0px 0px 8px rgba(0, 255, 255, 0.8), 0px 0px 12px rgba(0, 162, 255, 0.6);
-
+  text-shadow: 0px 0px 8px rgba(0, 255, 255, 0.8), 
 }
 
 .particle {
@@ -364,9 +408,14 @@ nav {
   backdrop-filter: blur(10px); /* Glassy effect */
 }
 
+.nav-text
+{
+  color: rgb(255, 255, 255) !important;
+}
+
 /* Ensure text remains readable */
 .pixel-text, .pixel-heading, .pixel-subheading {
-  text-shadow: 0px 0px 6px rgba(0, 255, 255, 0.7), 0px 0px 10px rgba(0, 162, 255, 0.5);
+  text-shadow: 0px 0px 6px rgba(0, 255, 255, 0.7);
 }
 
 /* Transparent and Glass Effect for Skills & Education */
@@ -380,7 +429,7 @@ nav {
 
 /* Improve readability of text inside transparent sections */
 .card h6, .pixel-text {
-  color: #ffffff !important; /* Ensure text remains visible */
+  color: #ffffff; /* Ensure text remains visible */
   text-shadow: 0px 0px 6px rgba(0, 255, 255, 0.7), 0px 0px 10px rgba(0, 162, 255, 0.5);
 }
 
@@ -415,22 +464,20 @@ input::placeholder, textarea::placeholder {
 
 /* Contact form title styling */
 .contact-title {
-  color: #ffffff !important;
+  margin-bottom: 2rem; /* Adjust this value as needed */
   text-shadow: 0px 0px 6px rgba(0, 255, 255, 0.7), 0px 0px 10px rgba(0, 162, 255, 0.5);
 }
 
 /* Contact form button styling */
 button[type="submit"] {
-  background: rgba(0, 255, 255, 0.7) !important;
-  border: 2px solid rgba(0, 255, 255, 0.9) !important;
-  color: #000000 !important;
-  font-weight: bold !important;
+  background: rgba(0, 108, 170, 0.9) !important;
+  border: 3px solid rgba(0, 255, 255, 0.9) !important;
+  color: #ffffff !important;
   text-transform: uppercase !important;
-  transition: all 0.3s ease-in-out !important;
 }
 
 button[type="submit"]:hover {
-  background: rgba(0, 108, 170, 0.9) !important;
+  background: rgba(0, 255, 255, 0.7) !important;
   border: 2px solid rgba(255, 255, 255, 0.9) !important;
 }
 
@@ -506,3 +553,10 @@ button[type="submit"]:hover {
   }
 }
 
+.mini-game-wrapper {
+  display: flex;
+  align-items: center;    /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  width: 100%;
+  height: 500px; /* Adjust this height as needed to fit your project container */
+}

@@ -32,19 +32,19 @@ const ContactForm = () => {
   };
 
   return (
-    <form 
-      onSubmit={handleSubmit} 
-      style={{ 
-        width: "500px", // Explicit container width
-        margin: "auto", 
-        backgroundColor: "#fff", 
-        padding: "1rem", 
-        borderRadius: "8px", 
-        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)"
+    <form
+      onSubmit={handleSubmit}
+      style={{
+        width: "700px", // Explicit container width
+        margin: "auto",
+        backgroundColor: "#fff",
+        padding: "1rem",
+        borderRadius: "8px",
+        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
       }}
     >
       <h4 className="pixel-text pixel-bold-title contact-title">
-      <span className="emoji-large">📩</span> Contact Me
+        <span className="emoji-large">📩</span> Contact Me
       </h4>
       <div style={{ marginBottom: "1rem" }}>
         <input
@@ -54,11 +54,11 @@ const ContactForm = () => {
           value={formData.name}
           onChange={handleChange}
           required
-          style={{ 
+          style={{
             width: "100%", // Input spans full container width
-            padding: "0.5rem", 
-            borderRadius: "4px", 
-            border: "1px solid #ccc" 
+            padding: "0.5rem",
+            borderRadius: "4px",
+            border: "1px solid #ccc",
           }}
         />
       </div>
@@ -70,11 +70,11 @@ const ContactForm = () => {
           value={formData.email}
           onChange={handleChange}
           required
-          style={{ 
-            width: "100%", 
-            padding: "0.5rem", 
-            borderRadius: "4px", 
-            border: "1px solid #ccc" 
+          style={{
+            width: "100%",
+            padding: "0.5rem",
+            borderRadius: "4px",
+            border: "1px solid #ccc",
           }}
         />
       </div>
@@ -85,32 +85,28 @@ const ContactForm = () => {
           value={formData.message}
           onChange={handleChange}
           required
-          style={{ 
-            width: "100%", 
-            padding: "0.5rem", 
-            minHeight: "300px", 
-            borderRadius: "4px", 
-            border: "1px solid #ccc" 
+          style={{
+            width: "100%",
+            padding: "0.5rem",
+            minHeight: "400px",
+            borderRadius: "4px",
+            border: "1px solid #ccc",
           }}
         />
       </div>
-      <button 
-        type="submit" 
-        style={{ 
-          padding: "0.5rem 1rem", 
-          borderRadius: "4px", 
-          border: "none", 
-          backgroundColor: "#007bff", 
-          color: "#fff", 
-          cursor: "pointer" 
-        }}
-      >
-        Send Message
-      </button>
+      <div>
+        <button
+          className="pixel-text pixel-btn-3d send-button-wrapper"
+          type="submit"
+          style={{ marginBottom: "20px" }}
+        >
+          <span className="pixel-btn-content">Send Message</span>
+        </button>
+      </div>
+
       {status && <p style={{ marginTop: "1rem" }}>{status}</p>}
     </form>
   );
 };
 
 export default ContactForm;
- 

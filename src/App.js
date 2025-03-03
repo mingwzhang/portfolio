@@ -120,6 +120,7 @@ function App() {
           Software & Game Developer
         </h3>
         <p className="pixel-text pixel-small fade-in-message">
+          
           🖱️ Feel free to click around!
         </p>
 
@@ -140,7 +141,7 @@ function App() {
         </p>
 
         {/* Skills and Education Section */}
-        <div id="skills" className="container w-75 mt-3">
+        <div id="skills-education" className="container w-75 mt-3">
           <div className="row">
             {/* Skills Section (Left Column) */}
             <div className="col-md-6">
@@ -190,16 +191,16 @@ function App() {
               {/* Education Card for Queens College */}
               <div className="card m-1 p-2 text-center">
                 <div className="d-flex flex-column align-items-center">
-                <img
-  src="/img/Queens_College_logo.png"
-  alt="Queens College Logo"
-  className="icon-wrapper-education"
-  style={{
-    width: "300px",
-    height: "auto",
-    marginBottom: "2rem",
-  }}
-/>
+                  <img
+                    src="/img/Queens_College_logo.png"
+                    alt="Queens College Logo"
+                    className="icon-wrapper-education"
+                    style={{
+                      width: "300px",
+                      height: "auto",
+                      marginBottom: "2rem",
+                    }}
+                  />
 
                   <p className="pixel-text" style={{ margin: 0 }}>
                     Master of Arts:
@@ -218,16 +219,16 @@ function App() {
               {/* Education Card for Stony Brook University */}
               <div className="card m-1 p-2 text-center">
                 <div className="d-flex flex-column align-items-center">
-                <img
-  src="/img/Stony_Brook_U_logo.png"
-  alt="Stony Brook University Logo"
-  className="icon-wrapper-education"
-  style={{
-    width: "400px",
-    height: "auto",
-    marginBottom: "2rem",
-  }}
-/>
+                  <img
+                    src="/img/Stony_Brook_U_logo.png"
+                    alt="Stony Brook University Logo"
+                    className="icon-wrapper-education"
+                    style={{
+                      width: "400px",
+                      height: "auto",
+                      marginBottom: "2rem",
+                    }}
+                  />
 
                   <p className="pixel-text" style={{ margin: 0 }}>
                     Bachelor of Science:
@@ -247,37 +248,77 @@ function App() {
           </div>
         </div>
 
-        {/* New Section for Resume and Projects */}
-        <div
-          id="projects"
-          className="container mt-5 d-flex flex-wrap justify-content-center"
-        >
-          {/* Projects */}
+        <div id="projects" className="container mt-5 text-center">
           <div className="m-3">
             <h4 className="pixel-text pixel-bold-title">
               <span className="emoji-large">💡</span> Projects
             </h4>
             <div className="d-flex justify-content-center">
               <button
-                className="btn btn-transparent m-2 pixel-text pixel-small btn-fixed-size"
+                className="m-2 pixel-text pixel-btn-3d btn-fixed-size pixel-btn-3d"
                 onClick={() =>
                   window.open("https://github.com/mingwzhang", "_blank")
                 }
               >
-                GitHub
+                Code & Projects
               </button>
               <button
-                className="btn btn-transparent m-2 pixel-text pixel-small btn-fixed-size"
+                className="m-2 pixel-text pixel-btn-3d btn-fixed-size pixel-btn-3d"
                 onClick={() =>
                   window.open("https://mindeveloper.itch.io/", "_blank")
                 }
               >
-                Games
+                Watch & Play
               </button>
             </div>
-            <div className="d-flex flex-column align-items-center mt-5">
-              <h5 className="pixel-text">Mini Game: Hit the Target!</h5>
-              <MiniGameBox />
+            {/* Outer container: flex with two columns */}
+            <div
+              className="d-flex justify-content-between align-items-center mt-5"
+              style={{ width: "100%" }}
+            >
+              {/* Left column: Mini Game */}
+              <div className="mini-game-column">
+                <h5 className="pixel-text">Mini Game: Hit the Target!</h5>
+                <MiniGameBox />
+              </div>
+              {/* Right column: Games and Assets */}
+              <div
+                className="d-flex flex-column justify-content-between"
+                style={{ marginLeft: "1rem" }}
+              >
+                <div className="games-section">
+                  <h5 className="pixel-text">Games (Low Budget)</h5>
+                  <div
+                    className="video-placeholder d-flex flex-column align-items-center"
+                    style={{
+                      width: "640px",
+                      height: "480px",
+                      border: "2px solid #ccc",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    Video Placeholder
+                  </div>
+                </div>
+                <div className="asset-section mt-3 d-flex flex-column align-items-center">
+                  <h5 className="pixel-text">Asset Display</h5>
+                  <div
+                    className="another-placeholder mt-3"
+                    style={{
+                      width: "400px",
+                      height: "400px",
+                      border: "2px solid #ccc",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    Another Placeholder
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -292,7 +333,7 @@ function App() {
         {/* Contact Me Section */}
         <div
           id="contact"
-          className="d-flex flex-column align-items-center text-center mt-5 pb-4 bottom-spacing "
+          className="mt-5 bottom-spacing pixel-text"
         >
           <ContactForm />
         </div>

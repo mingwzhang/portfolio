@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.loading-screen {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  color: #00ffcc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.5rem;
+  z-index: 9999;
+  opacity: 1;
+}
+
+.loading-text {
+  text-shadow: 0px 0px 8px rgba(0, 255, 255, 0.8), 0px 0px 12px rgba(0, 162, 255, 0.6);
+  animation: textFlicker 1s infinite alternate;
+  margin-top: 10px;
+}
+
+.loading-complete {
+  text-shadow: 0px 0px 8px rgba(0, 255, 255, 0.8), 0px 0px 12px rgba(0, 162, 255, 0.6);
+  animation: blinkText 1s infinite alternate;
+  margin-top: 10px;
+}
+
+/* Update the loading bar styles */
+.loading-bar {
+  width: 300px;
+  height: 12px;
+  background: rgba(0, 255, 255, 0.2);
+  border: 2px solid #00ffcc;
+  margin-top: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.loading-bar-inner {
+    height: 100%;
+    background: linear-gradient(to right, #00ffcc, #00bbaa);
+    transition: none; /* Remove the transition for instant update */
+  }
+
+/* Loading wheel styles remain unchanged */
+.loading-wheel {
+  width: 150px;
+  height: 150px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  animation: spin 1s linear infinite;
+}
+
+.loading-wheel::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 12px solid rgba(0, 255, 255, 0.2);
+  border-top: 12px solid #00ffcc;
+  animation: spin 1s linear infinite;
+}
+
+/* Keyframes for animations */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes textFlicker {
+  0% { opacity: 1; }
+  50% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+@keyframes blinkText {
+  0% { opacity: 1; }
+  50% { opacity: 0.2; }
+  100% { opacity: 1; }
+}
