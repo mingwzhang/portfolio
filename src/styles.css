@@ -136,9 +136,9 @@ h1 {
   animation: glow 2s infinite alternate;
 }
 
-/* Start https://www.cursors-4u.com */ 
-* {cursor: url(https://cur.cursors-4u.net/cursors/cur-10/cur952.ani), url(https://cur.cursors-4u.net/cursors/cur-10/cur952.png), auto !important;} 
-/* End https://www.cursors-4u.com */
+* {
+  cursor: url('./img_css/crosshair.png') 16 16, auto !important;
+}
 
 .hover-scale {
   display: inline-block; /* Ensure transform works on inline elements */
@@ -188,7 +188,7 @@ h1 {
   letter-spacing: 2px;
   font-size: 1rem;
   background: linear-gradient(to bottom, #48ffe744, #6ad3f348);
-  border: 2px solid transparent;
+  border: 2px solid;
   border-radius: 0; /* Square corners for retro style */
   padding: 0.5rem 1rem;
   cursor: pointer;

@@ -9,10 +9,9 @@ const ParticleExplosion = () => {
   useEffect(() => {
     const spawnParticles = (x, y) => {
       const newParticles = [];
-      // Spawn 30 particles per interval (adjust as needed)
       for (let i = 0; i < 30; i++) {
         const angle = Math.random() * 2 * Math.PI;
-        const distance = Math.random() * 80; // Explosion distance multiplier changed to 80
+        const distance = Math.random() * 80;
         const dx = Math.cos(angle) * distance;
         const dy = Math.sin(angle) * distance;
         const color = `hsl(${Math.floor(Math.random() * 360)}, 100%, 50%)`;
@@ -20,7 +19,7 @@ const ParticleExplosion = () => {
       }
       setParticles((prev) => [...prev, ...newParticles]);
 
-      // Remove particles after animation duration (1000ms in this example)
+      // Remove particles after animation duration (1000ms)
       setTimeout(() => {
         setParticles((prev) =>
           prev.filter((p) => !newParticles.some((np) => np.id === p.id))
@@ -29,29 +28,20 @@ const ParticleExplosion = () => {
     };
 
     const handleMouseMove = (e) => {
-      // Update current mouse position
       currentPosition.current = { x: e.clientX, y: e.clientY };
     };
 
     const handleMouseDown = (e) => {
-      // Set initial position on mousedown
+      if (intervalRef.current) return; // Prevent multiple intervals
       currentPosition.current = { x: e.clientX, y: e.clientY };
       spawnParticles(e.clientX, e.clientY);
-
-      // Listen for mousemove to update cursor position
       window.addEventListener("mousemove", handleMouseMove);
-
-      // Start interval to spawn particles at the updated cursor position
       intervalRef.current = setInterval(() => {
-        spawnParticles(
-          currentPosition.current.x,
-          currentPosition.current.y
-        );
+        spawnParticles(currentPosition.current.x, currentPosition.current.y);
       }, 100);
     };
 
     const handleMouseUp = () => {
-      // Clear interval and remove mousemove listener when mouse is released
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
         intervalRef.current = null;
@@ -59,11 +49,24 @@ const ParticleExplosion = () => {
       window.removeEventListener("mousemove", handleMouseMove);
     };
 
-    // Also stop on drag
+    // Stop particle spawning on visibility change (e.g., when switching tabs)
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        handleMouseUp();
+      }
+    };
+
+    // Stop particle spawning when window loses focus (e.g., Win+Alt)
+    const handleWindowBlur = () => {
+      handleMouseUp();
+    };
+
     window.addEventListener("mousedown", handleMouseDown);
     window.addEventListener("mouseup", handleMouseUp);
     window.addEventListener("mouseleave", handleMouseUp);
     window.addEventListener("dragstart", handleMouseUp);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    window.addEventListener("blur", handleWindowBlur);
 
     return () => {
       window.removeEventListener("mousedown", handleMouseDown);
@@ -71,6 +74,8 @@ const ParticleExplosion = () => {
       window.removeEventListener("mouseleave", handleMouseUp);
       window.removeEventListener("dragstart", handleMouseUp);
       window.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      window.removeEventListener("blur", handleWindowBlur);
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
   }, []);

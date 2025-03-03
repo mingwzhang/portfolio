@@ -9,6 +9,7 @@ import NavBar from "./NavBar"; // import the nav component
 import ResumeModal from "./ResumeModal"; // New component for the modal
 import AnimatedBackground from "./AnimatedBackground";
 import FloatingShapes from "./FloatingShapes"; // Import the new component
+import VideoCarousel from "./VideoCarousel";
 
 const skills = [
   {
@@ -94,11 +95,31 @@ function App() {
   const [showResumeModal, setShowResumeModal] = useState(false);
 
   return (
+
     <div>
+        {/* Fixed side banner */}
+        <div
+  style={{
+    position: "fixed",
+    top: "50%",
+    left: "0",
+    transform: "translateY(-50%) rotate(-45deg) scale(1.5)",
+    backgroundColor: "",
+    color: "red",
+    padding: "10px 20px",
+    fontWeight: "bold",
+    zIndex: 10000,
+    letterSpacing: "2px",
+  }}
+>
+STILL IN DEVELOPMENT
+</div>
+
       <AnimatedBackground />
       <FloatingShapes /> {/* Adds 3D-like floating effect */}
       {/* Render the NavBar at the top */}
       <NavBar onResumeClick={() => setShowResumeModal(true)} />
+        
       {/* Add padding at the top so the fixed NavBar doesn't cover the content */}
       <div
         id="home"
@@ -260,7 +281,7 @@ function App() {
                   window.open("https://github.com/mingwzhang", "_blank")
                 }
               >
-                Code & Projects
+                View Code (GitHub)
               </button>
               <button
                 className="m-2 pixel-text pixel-btn-3d btn-fixed-size pixel-btn-3d"
@@ -268,7 +289,7 @@ function App() {
                   window.open("https://mindeveloper.itch.io/", "_blank")
                 }
               >
-                Watch & Play
+                Play Game (itch.io)
               </button>
             </div>
             {/* Outer container: flex with two columns */}
@@ -286,22 +307,10 @@ function App() {
                 className="d-flex flex-column justify-content-between"
                 style={{ marginLeft: "1rem" }}
               >
-                <div className="games-section">
-                  <h5 className="pixel-text">Games (Low Budget)</h5>
-                  <div
-                    className="video-placeholder d-flex flex-column align-items-center"
-                    style={{
-                      width: "640px",
-                      height: "480px",
-                      border: "2px solid #ccc",
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    Video Placeholder
-                  </div>
-                </div>
+<div className="games-section">
+  <h5 className="pixel-text">Games (Low Budget)</h5>
+  <VideoCarousel />
+</div>
                 <div className="asset-section mt-3 d-flex flex-column align-items-center">
                   <h5 className="pixel-text">Asset Display</h5>
                   <div
