@@ -1,5 +1,5 @@
 import React from "react";
-import "./Modal.css"; // We'll define some basic styles here
+import "./Modal.css";
 
 const ResumeModal = ({ onClose }) => {
   return (
@@ -12,7 +12,7 @@ const ResumeModal = ({ onClose }) => {
           src="/Zhang-Mingwei-Resume.pdf"
           title="Resume"
           width="100%"
-          height="900px"
+          height="800px"
           style={{ border: "none" }}
         />
       </div>

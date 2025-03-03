@@ -112,7 +112,7 @@ function App() {
     letterSpacing: "2px",
   }}
 >
-STILL IN DEVELOPMENT
+STILL IN DEVELOPMENT!
 </div>
 
       <AnimatedBackground />
@@ -160,6 +160,28 @@ STILL IN DEVELOPMENT
             }}
           />
         </p>
+
+
+{/* About Me Section (placed directly here) */}
+<section id="about" className="container" style={{ margin: "40px 0" }}>
+  <h2 className="pixel-heading pixel-bold-title">
+    <span className="emoji-large">👤  </span> About Me
+  </h2>
+  <p className="pixel-text">
+    I’m a self-taught software and game developer who has grown through hands-on
+    experience in various projects. I've worked with a startup focused on innovative
+    game design and another startup investing in educational VR games. In these roles,
+    I helped build interactive applications and contributed to projects aimed at creating
+    engaging, immersive experiences.
+  </p>
+  <p className="pixel-text">
+    Over time, I’ve honed my skills in full-stack development, game design, and front-end
+    programming using Java, Python, JavaScript, and several game engines. My journey has
+    been all about learning on the fly and tackling challenges head-on, which fuels my
+    passion for building creative solutions.
+  </p>
+</section>
+
 
         {/* Skills and Education Section */}
         <div id="skills-education" className="container w-75 mt-3">
@@ -276,7 +298,7 @@ STILL IN DEVELOPMENT
             </h4>
             <div className="d-flex justify-content-center">
               <button
-                className="m-2 pixel-text pixel-btn-3d btn-fixed-size pixel-btn-3d"
+                className="m-2 pixel-text pixel-btn-3d btn-fixed-size"
                 onClick={() =>
                   window.open("https://github.com/mingwzhang", "_blank")
                 }
@@ -284,7 +306,7 @@ STILL IN DEVELOPMENT
                 View Code (GitHub)
               </button>
               <button
-                className="m-2 pixel-text pixel-btn-3d btn-fixed-size pixel-btn-3d"
+                className="m-2 pixel-text pixel-btn-3d btn-fixed-size"
                 onClick={() =>
                   window.open("https://mindeveloper.itch.io/", "_blank")
                 }

@@ -178,29 +178,30 @@ function VideoCarousel() {
         ))}
       </div>
       <button
-        onClick={goToPrevious}
-        style={{
-          position: "absolute",
-          left: "10px",
-          top: "50%",
-          transform: "translateY(-50%)",
-          zIndex: 1,
-        }}
-      >
-        ←
-      </button>
-      <button
-        onClick={goToNext}
-        style={{
-          position: "absolute",
-          right: "10px",
-          top: "50%",
-          transform: "translateY(-50%)",
-          zIndex: 1,
-        }}
-      >
-        →
-      </button>
+  onClick={goToPrevious}
+  className="m-2 pixel-text pixel-btn-3d"
+  style={{
+    position: "absolute",
+    left: "10px",
+    top: "50%",
+    zIndex: 1,
+  }}
+>
+  ←
+</button>
+<button
+  onClick={goToNext}
+  className="m-2 pixel-text pixel-btn-3d"
+  style={{
+    position: "absolute",
+    right: "10px",
+    top: "50%",
+    zIndex: 1,
+  }}
+>
+  →
+</button>
+
     </div>
   );
 }

@@ -59,6 +59,7 @@ const ContactForm = () => {
             padding: "0.5rem",
             borderRadius: "4px",
             border: "1px solid #ccc",
+            fontSize: "0.9rem",
           }}
         />
       </div>
@@ -75,6 +76,8 @@ const ContactForm = () => {
             padding: "0.5rem",
             borderRadius: "4px",
             border: "1px solid #ccc",
+            fontSize: "0.9rem",
+
           }}
         />
       </div>
@@ -91,6 +94,8 @@ const ContactForm = () => {
             minHeight: "400px",
             borderRadius: "4px",
             border: "1px solid #ccc",
+            fontSize: "0.9rem",
+
           }}
         />
       </div>
