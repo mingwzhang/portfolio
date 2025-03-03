@@ -1,4 +1,5 @@
 import React from "react";
+import { FaLinkedin } from "react-icons/fa"; // Import LinkedIn icon
 
 const NavBar = ({ onResumeClick }) => {
   const scrollToSection = (id) => {
@@ -105,6 +106,32 @@ const NavBar = ({ onResumeClick }) => {
           >
             Contact
           </button>
+
+          {/* LinkedIn Button */}
+          <a
+            href="https://www.linkedin.com/in/mingwei-zhang1/" // Replace with your LinkedIn URL
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn pixel-btn pixel-text"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              textDecoration: "none",
+              backgroundColor: "#0077b5", // LinkedIn Blue
+              color: "#ffffff", // White text
+              padding: "0.5rem 1rem",
+              borderRadius: "5px",
+              fontWeight: "bold",
+              letterSpacing: "2px",
+              textTransform: "uppercase",
+              fontSize: "1.1rem",
+              transition: "transform 0.2s ease-in-out, background-color 0.2s ease-in-out",
+              marginRight: "1rem",
+            }}
+          >
+            <FaLinkedin size={24} style={{ marginRight: "0.5rem", color: "white" }} />
+            LinkedIn
+          </a>
 
           {/* Resume Button */}
           <button
