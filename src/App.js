@@ -97,29 +97,29 @@ function App() {
   return (
 
     <div>
-        {/* Fixed side banner */}
-        <div
-  style={{
-    position: "fixed",
-    top: "50%",
-    left: "0",
-    transform: "translateY(-50%) rotate(-45deg) scale(1.5)",
-    backgroundColor: "",
-    color: "red",
-    padding: "10px 20px",
-    fontWeight: "bold",
-    zIndex: 10000,
-    letterSpacing: "2px",
-  }}
->
-STILL IN DEVELOPMENT!
-</div>
+      {/* Fixed side banner */}
+      <div
+        style={{
+          position: "fixed",
+          top: "50%",
+          left: "0",
+          transform: "translateY(-50%) rotate(-45deg) scale(1.5)",
+          backgroundColor: "",
+          color: "red",
+          padding: "10px 20px",
+          fontWeight: "bold",
+          zIndex: 10000,
+          letterSpacing: "2px",
+        }}
+      >
+        STILL IN DEVELOPMENT!
+      </div>
 
       <AnimatedBackground />
       <FloatingShapes /> {/* Adds 3D-like floating effect */}
       {/* Render the NavBar at the top */}
       <NavBar onResumeClick={() => setShowResumeModal(true)} />
-        
+
       {/* Add padding at the top so the fixed NavBar doesn't cover the content */}
       <div
         id="home"
@@ -141,7 +141,7 @@ STILL IN DEVELOPMENT!
           Software & Game Developer
         </h3>
         <p className="pixel-text pixel-small fade-in-message">
-          
+
           🖱️ Feel free to click around!
         </p>
 
@@ -165,20 +165,21 @@ STILL IN DEVELOPMENT!
 {/* About Me Section (placed directly here) */}
 <section id="about" className="container" style={{ margin: "40px 0" }}>
   <h2 className="pixel-heading pixel-bold-title">
-    <span className="emoji-large">👤  </span> About Me
+    <span className="emoji-large">👤</span> About Me
   </h2>
   <p className="pixel-text">
-    I’m a self-taught software and game developer who has grown through hands-on
-    experience in various projects. I've worked with a startup focused on innovative
-    game design and another startup investing in educational VR games. In these roles,
-    I helped build interactive applications and contributed to projects aimed at creating
-    engaging, immersive experiences.
-  </p>
-  <p className="pixel-text">
-    Over time, I’ve honed my skills in full-stack development, game design, and front-end
-    programming using Java, Python, JavaScript, and several game engines. My journey has
-    been all about learning on the fly and tackling challenges head-on, which fuels my
-    passion for building creative solutions.
+    <Typewriter
+      options={{
+        strings: [
+          "I’m a self-taught software and game developer who has grown through hands-on experience in various projects. I've worked with a startup focused on innovative game design and another startup investing in educational VR games. In these roles, I helped build interactive applications and contributed to projects aimed at creating engaging, immersive experiences.",
+          "Over time, I’ve honed my skills in full-stack development, game design, and front-end programming using Java, Python, JavaScript, and several game engines. My journey has been all about learning on the fly and tackling challenges head-on, which fuels my passion for building creative solutions."
+        ],
+        autoStart: true,
+        loop: false,
+        delay: 5, // Faster typing speed
+        deleteSpeed: Infinity,
+      }}
+    />
   </p>
 </section>
 
@@ -329,10 +330,10 @@ STILL IN DEVELOPMENT!
                 className="d-flex flex-column justify-content-between"
                 style={{ marginLeft: "1rem" }}
               >
-<div className="games-section">
-  <h5 className="pixel-text">Games (Low Budget)</h5>
-  <VideoCarousel />
-</div>
+                <div className="games-section">
+                  <h5 className="pixel-text">Games (Low Budget)</h5>
+                  <VideoCarousel />
+                </div>
                 <div className="asset-section mt-3 d-flex flex-column align-items-center">
                   <h5 className="pixel-text">Asset Display</h5>
                   <div
