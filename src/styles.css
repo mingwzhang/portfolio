@@ -17,12 +17,12 @@
   letter-spacing: 2px; /* More spacing for a retro look */
   padding: 0.5rem 1rem; /* Adds space around the text */
   background-color: transparent !important; /* Make background transparent */
-  color: #00e6b8; /* Same softer neon */
+  color: #ffda8a !important; /* Same softer neon */
 }
 
 .pixel-subheading {
   font-size: 1.5rem;
-  color: #00d4ff; /* Softer Neon Blue */
+  color: #00d4ff !important; /* Softer Neon Blue */
   text-shadow: 2px 2px 10px rgba(0, 212, 255, 0.6), 
                0px 0px 12px rgba(0, 212, 255, 0.5);
 }
@@ -241,7 +241,7 @@ h1 {
   position: relative;
   display: inline-block;
   margin: 0.1rem; /* Optional: spacing between icons */
-  filter: drop-shadow(0px 0px 3px #00e6b8) !important; /* Miku-style glow */
+  filter: drop-shadow(3px 3px 1.5px #d7fff6) !important;
 }
 .icon-label {
   position: absolute;
@@ -396,15 +396,6 @@ h1 {
   box-shadow: 0px 0px 10px rgba(0, 255, 255, 0.8);
 }
 
-/* Apply a glass effect to sections */
-.container, .card {
-  background: rgba(255, 255, 255, 0.1); /* Transparent white */
-  backdrop-filter: blur(10px); /* Frosted glass effect */
-  border: 2px solid rgba(255, 255, 255, 0.3); /* Subtle border */
-  border-radius: 10px; /* Slight rounding for modern feel */
-  padding: 1rem;
-}
-
 /* Navbar transparency */
 nav {
   background: rgba(0, 0, 0, 0.3) !important; /* Semi-transparent black */
@@ -423,12 +414,13 @@ nav {
 
 /* Transparent and Glass Effect for Skills & Education */
 .container, .card {
-  background: rgba(20, 20, 20, 0.8) !important; /* Light transparent white */
+  background: rgba(255, 255, 255, 0.062) !important; /* Light transparent white */
   backdrop-filter: blur(10px) !important; /* Frosted glass effect */
   border: 2px solid rgba(255, 255, 255, 0.3) !important; /* Subtle white border */
   border-radius: 10px !important; /* Smooth rounded edges */
   padding: 1rem !important;
 }
+
 
 /* Improve readability of text inside transparent sections */
 .card h6, .pixel-text {

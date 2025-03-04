@@ -18,7 +18,8 @@ const FloatingShapes = () => {
 
         // Ensure the new position is not too close to existing ones
         const tooClose = positions.some(
-          (pos) => Math.abs(pos.top - newTop) < 10 && Math.abs(pos.left - newLeft) < 10
+          (pos) =>
+            Math.abs(pos.top - newTop) < 10 && Math.abs(pos.left - newLeft) < 10
         );
 
         if (!tooClose) {
@@ -61,7 +62,8 @@ const FloatingShapes = () => {
             clipPath: shape.shape,
             background: "transparent",
             border: "4px solid rgba(82, 255, 171, 0.5)",
-            boxShadow: "0px 0px 15px rgba(0, 255, 100, 0.6), 0px 0px 25px rgba(0, 255, 100, 0.5)",
+            boxShadow:
+              "0px 0px 15px rgba(0, 255, 100, 0.6), 0px 0px 25px rgba(0, 255, 100, 0.5)",
             animation: `floatUpDown ${shape.floatSpeed}s infinite alternate ease-in-out, ${shape.rotateDirection} ${shape.rotateSpeed}s infinite linear`,
           }}
         ></div>

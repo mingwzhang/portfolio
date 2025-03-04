@@ -141,7 +141,7 @@ function App() {
           🖱️ Feel free to click around!
         </p>
 
-        {/* Short Bio */}
+        {/* Short Bio  
         <p className="mt-3 w-50 pixel-text mx-auto">
           <Typewriter
             options={{
@@ -151,28 +151,36 @@ function App() {
               ],
               autoStart: true,
               loop: false,
-              delay: 50,
+              delay: 15,
               deleteSpeed: Infinity,
             }}
           />
         </p>
-
+      */}
         {/* About Me Section (placed directly here) */}
         <section id="about" className="container" style={{ margin: "40px 0" }}>
-          <h2 className="pixel-heading pixel-bold-title">
+          <h2 className="mt-1 text-center pixel-text pixel-bold-title">
             <span className="emoji-large">👤</span> About Me
           </h2>
           <p className="pixel-text">
             <Typewriter
               options={{
-                strings: [
-                  "I’m a self-taught software and game developer who has grown through hands-on experience in various projects. I've worked with a startup focused on innovative game design and another startup investing in educational VR games. In these roles, I helped build interactive applications and contributed to projects aimed at creating engaging, immersive experiences.",
-                  "Over time, I’ve honed my skills in full-stack development, game design, and front-end programming using Java, Python, JavaScript, and several game engines. My journey has been all about learning on the fly and tackling challenges head-on, which fuels my passion for building creative solutions.",
-                ],
                 autoStart: true,
                 loop: false,
-                delay: 5, // Faster typing speed
+                delay: 2,
                 deleteSpeed: Infinity,
+              }}
+              onInit={(typewriter) => {
+                typewriter
+                  .typeString(
+                    "I'm a dedicated software and game developer with a passion for creating immersive digital experiences. My background in full-stack development and game design has led me to work with technologies like Java, Python, HTML, CSS, and game engines such as Unity and Unreal Engine. Whether I'm building interactive web applications or designing VR games, I enjoy turning complex challenges into simple, effective solutions."
+                  )
+                  .pauseFor(200) // Pause for 2/10 seconds before continuing
+                  .typeString("<br/><br/>") // New paragraph
+                  .typeString(
+                    "Currently, I am advancing my skills through graduate studies at Queens College. I combine creative vision with technical know-how on every project I take on. I value teamwork and continuous learning, and I'm always excited to try new ideas that improve interactive design. Feel free to explore my work and get in touch to share ideas or opportunities. ⬇"
+                  )
+                  .start();
               }}
             />
           </p>
@@ -265,6 +273,7 @@ function App() {
                       width: "400px",
                       height: "auto",
                       marginBottom: "2rem",
+                      color: "red"
                     }}
                   />
 

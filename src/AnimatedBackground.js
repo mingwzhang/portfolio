@@ -19,21 +19,25 @@ const AnimatedBackground = () => {
     }));
 
     const drawBackground = () => {
-        // Create gradient background to reduce eye strain
-        const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-        gradient.addColorStop(0, "#121212"); // Dark Gray
-        gradient.addColorStop(1, "#1a1a1a"); // Slightly lighter gray
-  
-        ctx.fillStyle = gradient;
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-      };
-  
+      // Create gradient background to reduce eye strain
+      const gradient = ctx.createLinearGradient(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+      );
+      gradient.addColorStop(0, "#121212"); // Dark Gray
+      gradient.addColorStop(1, "#1a1a1a"); // Slightly lighter gray
+
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    };
 
     const drawStars = () => {
       // Space-themed black background
       ctx.fillStyle = "#121212";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      
+
       // Draw Stars
       ctx.fillStyle = "white";
       stars.forEach((star) => {

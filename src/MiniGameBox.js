@@ -17,10 +17,10 @@ const MiniGameBox = () => {
   const respawnTimeoutRef = useRef(null);
 
   // Sprite settings
-  const totalFrames = 9;          // spritesheet has 9 frames
-  const frameWidth = 50;          // frame width in pixels
-  const frameHeight = 50;         // frame height in pixels
-  const animationSpeed = 150;     // ms between frames; extra frame delay is the same value
+  const totalFrames = 9; // spritesheet has 9 frames
+  const frameWidth = 50; // frame width in pixels
+  const frameHeight = 50; // frame height in pixels
+  const animationSpeed = 150; // ms between frames; extra frame delay is the same value
 
   // Delay settings for auto-move repositioning (1 to 2 seconds)
   const minAutoMoveInterval = 1000; // min delay (ms)
@@ -86,30 +86,28 @@ const MiniGameBox = () => {
     if (!isVisible) return;
 
     setScore((prev) => prev + 1);
-    setIsVisible(false);
+    // Start break animation without immediately hiding the target image.
     setIsBreaking(true);
 
-    // Clear any active auto-move and break timers.
+    // Optionally, delay hiding the target image just a bit.
+    setTimeout(() => {
+      setIsVisible(false);
+    }, 10); // a 10ms delay can be enough to cover the blink
+
     clearMovementTimer();
     clearBreakTimers();
-
-    // Reset break animation from the start.
     setBreakFrame(0);
     breakIntervalRef.current = setInterval(() => {
       setBreakFrame((prevFrame) => {
         if (prevFrame < totalFrames - 1) {
           return prevFrame + 1;
         } else {
-          // Reached the final frame.
           clearInterval(breakIntervalRef.current);
           breakIntervalRef.current = null;
-          // Wait an extra frame's delay before respawning.
           respawnTimeoutRef.current = setTimeout(() => {
-            // Reposition target immediately on respawn.
             moveTarget();
             setIsBreaking(false);
             setIsVisible(true);
-            // Restart auto-move timer after full break animation.
             scheduleNextMove();
           }, animationSpeed);
           return prevFrame;
@@ -138,7 +136,7 @@ const MiniGameBox = () => {
             transformOrigin: "top left",
             imageRendering: "pixelated",
             cursor: "crosshair",
-            userSelect: "none"
+            userSelect: "none",
           }}
         />
       )}
@@ -163,13 +161,14 @@ const MiniGameBox = () => {
       )}
 
       {/* Score Display */}
-      <div className="mini-game-score"
+      <div
+        className="mini-game-score"
         style={{
           position: "absolute",
           top: "10px",
           left: "10px",
           color: "#333",
-          userSelect: "none"
+          userSelect: "none",
         }}
       >
         Score: {score}

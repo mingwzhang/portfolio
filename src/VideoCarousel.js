@@ -8,10 +8,10 @@ function VideoCarousel() {
   ];
 
   const containerWidth = 640; // overall carousel container width
-  const slideWidth = 512;     // actual video width (smaller than container)
-  const gap = 20;             // gap between slides
+  const slideWidth = 512; // actual video width (smaller than container)
+  const gap = 20; // gap between slides
   const totalSlideWidth = slideWidth + gap;
-  const threshold = 50;       // minimum drag distance to change slide
+  const threshold = 50; // minimum drag distance to change slide
   const clickDragThreshold = 5; // small threshold to determine a drag vs. a click
 
   const centerOffset = (containerWidth - slideWidth) / 2;
@@ -37,14 +37,10 @@ function VideoCarousel() {
       wasDraggedRef.current = true;
     }
     if (dragOffset > threshold) {
-      setCurrentIndex((prev) =>
-        prev === 0 ? videos.length - 1 : prev - 1
-      );
+      setCurrentIndex((prev) => (prev === 0 ? videos.length - 1 : prev - 1));
       pauseAllVideos();
     } else if (dragOffset < -threshold) {
-      setCurrentIndex((prev) =>
-        prev === videos.length - 1 ? 0 : prev + 1
-      );
+      setCurrentIndex((prev) => (prev === videos.length - 1 ? 0 : prev + 1));
       pauseAllVideos();
     }
     setDragging(false);
@@ -99,16 +95,12 @@ function VideoCarousel() {
 
   // Optional arrow navigation
   const goToPrevious = () => {
-    setCurrentIndex((prev) =>
-      prev === 0 ? videos.length - 1 : prev - 1
-    );
+    setCurrentIndex((prev) => (prev === 0 ? videos.length - 1 : prev - 1));
     pauseAllVideos();
   };
 
   const goToNext = () => {
-    setCurrentIndex((prev) =>
-      prev === videos.length - 1 ? 0 : prev + 1
-    );
+    setCurrentIndex((prev) => (prev === videos.length - 1 ? 0 : prev + 1));
     pauseAllVideos();
   };
 
@@ -173,36 +165,37 @@ function VideoCarousel() {
               height="480"
               style={{ display: "block" }}
               onClick={handleVideoClick}
-              onLoadedMetadata={(e) => { e.target.volume = 0.5; }}
+              onLoadedMetadata={(e) => {
+                e.target.volume = 0.5;
+              }}
             />
           </div>
         ))}
       </div>
       <button
-  onClick={goToPrevious}
-  className="m-2 pixel-text pixel-btn-3d"
-  style={{
-    position: "absolute",
-    left: "10px",
-    top: "50%",
-    zIndex: 1,
-  }}
->
-  ←
-</button>
-<button
-  onClick={goToNext}
-  className="m-2 pixel-text pixel-btn-3d"
-  style={{
-    position: "absolute",
-    right: "10px",
-    top: "50%",
-    zIndex: 1,
-  }}
->
-  →
-</button>
-
+        onClick={goToPrevious}
+        className="m-2 pixel-text pixel-btn-3d"
+        style={{
+          position: "absolute",
+          left: "10px",
+          top: "50%",
+          zIndex: 1,
+        }}
+      >
+        ←
+      </button>
+      <button
+        onClick={goToNext}
+        className="m-2 pixel-text pixel-btn-3d"
+        style={{
+          position: "absolute",
+          right: "10px",
+          top: "50%",
+          zIndex: 1,
+        }}
+      >
+        →
+      </button>
     </div>
   );
 }

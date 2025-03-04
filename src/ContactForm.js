@@ -17,13 +17,18 @@ const ContactForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     // Prevent duplicate submissions...
     if (isSending) return;
     setIsSending(true);
-  
+
     emailjs
-      .send("service_kh8lbtv", "template_8z0b6aa", formData, "mnQpaviz3_3d37L_1")
+      .send(
+        "service_kh8lbtv",
+        "template_8z0b6aa",
+        formData,
+        "mnQpaviz3_3d37L_1"
+      )
       .then(
         (result) => {
           setStatus("Message sent successfully!");
@@ -35,7 +40,6 @@ const ContactForm = () => {
       )
       .finally(() => setIsSending(false));
   };
-  
 
   return (
     <form
