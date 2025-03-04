@@ -8,8 +8,11 @@ const FloatingShapes = () => {
   useEffect(() => {
     const numShapes = 10;
     const shapeTypes = ["polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"];
-    const sizeRanges = [50, 80, 120, 150, 200, 250, 300];
-
+    const isMobile = window.innerWidth < 768;
+    const sizeRanges = isMobile 
+      ? [25, 40, 60, 75, 100, 125, 150] 
+      : [50, 80, 120, 150, 200, 250, 300];
+    
     const generateUniquePositions = (count) => {
       const positions = [];
       while (positions.length < count) {
@@ -26,6 +29,7 @@ const FloatingShapes = () => {
           positions.push({ top: newTop, left: newLeft });
         }
       }
+
       return positions;
     };
 
@@ -37,10 +41,10 @@ const FloatingShapes = () => {
       size: sizeRanges[Math.floor(Math.random() * sizeRanges.length)],
       top: position.top,
       left: position.left,
-      rotateSpeed: Math.random() * 10 + 8,
       rotateDirection: Math.random() > 0.5 ? "rotateLeft" : "rotateRight",
-      floatSpeed: Math.random() * 3 + 2,
-      animationDuration: Math.random() * 6 + 6,
+      floatSpeed: isMobile ? Math.random() * 2 + 1 : Math.random() * 3 + 2,
+      rotateSpeed: isMobile ? Math.random() * 8 + 5 : Math.random() * 10 + 8,
+      animationDuration: isMobile ? Math.random() * 4 + 4 : Math.random() * 6 + 6,
       shape: shapeTypes[0],
     }));
 

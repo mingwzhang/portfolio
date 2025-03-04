@@ -1,5 +1,5 @@
 // App.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "devicon/devicon.min.css";
 import Typewriter from "typewriter-effect";
 import ParticleExplosion from "./ParticleExplosion";
@@ -10,6 +10,8 @@ import ResumeModal from "./ResumeModal"; // New component for the modal
 import AnimatedBackground from "./AnimatedBackground";
 import FloatingShapes from "./FloatingShapes"; // Import the new component
 import VideoCarousel from "./VideoCarousel";
+import { Helmet } from "react-helmet";
+
 
 const skills = [
   {
@@ -94,8 +96,16 @@ const skills = [
 function App() {
   const [showResumeModal, setShowResumeModal] = useState(false);
 
+  useEffect(() => {
+    document.addEventListener("touchstart", () => {}, false);
+  }, []);
+
   return (
+    
     <div>
+      <Helmet>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Helmet>
       {/* Fixed side banner */}
       <div
         style={{
@@ -238,7 +248,7 @@ function App() {
               <div className="card m-1 p-2 text-center">
                 <div className="d-flex flex-column align-items-center">
                   <img
-                    src={process.env.PUBLIC_URL +"/img/Queens_College_logo.png"}
+                    src={process.env.PUBLIC_URL + "/img/Queens_College_logo.png"}
                     alt="Queens College Logo"
                     className="icon-wrapper-education"
                     style={{
@@ -266,7 +276,7 @@ function App() {
               <div className="card m-1 p-2 text-center">
                 <div className="d-flex flex-column align-items-center">
                   <img
-                    src={process.env.PUBLIC_URL +"/img/Stony_Brook_U_logo.png"}
+                    src={process.env.PUBLIC_URL + "/img/Stony_Brook_U_logo.png"}
                     alt="Stony Brook University Logo"
                     className="icon-wrapper-education"
                     style={{

@@ -8,10 +8,24 @@ const AnimatedBackground = () => {
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
 
-    const stars = Array.from({ length: 150 }).map(() => ({
+    // Function to set canvas size using devicePixelRatio
+    const setCanvasSize = () => {
+      const dpr = window.devicePixelRatio || 1;
+      const width = window.visualViewport ? window.visualViewport.width : window.innerWidth;
+      const height = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+    
+
+    setCanvasSize();
+
+    // Adjust star count based on screen width (fewer stars on mobile)
+    const isMobile = window.innerWidth < 768;
+    const starCount = isMobile ? 75 : 150;
+    const stars = Array.from({ length: starCount }).map(() => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
       speed: Math.random() * 2 + 0.5,
@@ -19,26 +33,18 @@ const AnimatedBackground = () => {
     }));
 
     const drawBackground = () => {
-      // Create gradient background to reduce eye strain
-      const gradient = ctx.createLinearGradient(
-        0,
-        0,
-        canvas.width,
-        canvas.height
-      );
-      gradient.addColorStop(0, "#121212"); // Dark Gray
-      gradient.addColorStop(1, "#1a1a1a"); // Slightly lighter gray
-
+      const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+      gradient.addColorStop(0, "#121212");
+      gradient.addColorStop(1, "#1a1a1a");
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
 
     const drawStars = () => {
-      // Space-themed black background
+      // Redraw the background (space-themed)
       ctx.fillStyle = "#121212";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      // Draw Stars
+      // Draw stars
       ctx.fillStyle = "white";
       stars.forEach((star) => {
         ctx.beginPath();
@@ -67,11 +73,10 @@ const AnimatedBackground = () => {
     animate();
 
     const handleResize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      setCanvasSize();
     };
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener("orientationchange", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
