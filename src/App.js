@@ -125,7 +125,7 @@ function App() {
       >
         {/* Profile Picture */}
         <img
-          src="img/profile-picture.png"
+          src={process.env.PUBLIC_URL + "/img/profile-picture.png"}
           alt="Mingwei Zhang"
           className="rounded-circle mb-3 profile-pic"
           width="300"
@@ -238,7 +238,7 @@ function App() {
               <div className="card m-1 p-2 text-center">
                 <div className="d-flex flex-column align-items-center">
                   <img
-                    src="img/Queens_College_logo.png"
+                    src={process.env.PUBLIC_URL +"/img/Queens_College_logo.png"}
                     alt="Queens College Logo"
                     className="icon-wrapper-education"
                     style={{
@@ -266,7 +266,7 @@ function App() {
               <div className="card m-1 p-2 text-center">
                 <div className="d-flex flex-column align-items-center">
                   <img
-                    src="img/Stony_Brook_U_logo.png"
+                    src={process.env.PUBLIC_URL +"/img/Stony_Brook_U_logo.png"}
                     alt="Stony Brook University Logo"
                     className="icon-wrapper-education"
                     style={{

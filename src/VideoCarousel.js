@@ -1,11 +1,11 @@
 import React, { useState, useRef } from "react";
 
 function VideoCarousel() {
-  const videos = [
-    "video/AshVideo.mp4",
-    "video/FFBlazeVideo.mov",
-    "video/Project IOTA.mp4",
-  ];
+const videos = [
+  `${process.env.PUBLIC_URL}/video/AshVideo.mp4`,
+  `${process.env.PUBLIC_URL}/video/FFBlazeVideo.mov`,
+  `${process.env.PUBLIC_URL}/video/Project IOTA.mp4`,
+];
 
   const containerWidth = 640; // overall carousel container width
   const slideWidth = 512; // actual video width (smaller than container)
