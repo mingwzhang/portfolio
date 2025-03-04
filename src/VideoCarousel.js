@@ -2,9 +2,9 @@ import React, { useState, useRef } from "react";
 
 function VideoCarousel() {
   const videos = [
-    "/video/AshVideo.mp4",
-    "/video/FFBlazeVideo.mov",
-    "/video/Project IOTA.mp4",
+    "video/AshVideo.mp4",
+    "video/FFBlazeVideo.mov",
+    "video/Project IOTA.mp4",
   ];
 
   const containerWidth = 640; // overall carousel container width
@@ -173,6 +173,7 @@ function VideoCarousel() {
               height="480"
               style={{ display: "block" }}
               onClick={handleVideoClick}
+              onLoadedMetadata={(e) => { e.target.volume = 0.5; }}
             />
           </div>
         ))}

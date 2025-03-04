@@ -95,7 +95,6 @@ function App() {
   const [showResumeModal, setShowResumeModal] = useState(false);
 
   return (
-
     <div>
       {/* Fixed side banner */}
       <div
@@ -114,12 +113,10 @@ function App() {
       >
         STILL IN DEVELOPMENT!
       </div>
-
       <AnimatedBackground />
       <FloatingShapes /> {/* Adds 3D-like floating effect */}
       {/* Render the NavBar at the top */}
       <NavBar onResumeClick={() => setShowResumeModal(true)} />
-
       {/* Add padding at the top so the fixed NavBar doesn't cover the content */}
       <div
         id="home"
@@ -128,7 +125,7 @@ function App() {
       >
         {/* Profile Picture */}
         <img
-          src="/img/profile-picture.png"
+          src="img/profile-picture.png"
           alt="Mingwei Zhang"
           className="rounded-circle mb-3 profile-pic"
           width="300"
@@ -141,7 +138,6 @@ function App() {
           Software & Game Developer
         </h3>
         <p className="pixel-text pixel-small fade-in-message">
-
           🖱️ Feel free to click around!
         </p>
 
@@ -161,28 +157,26 @@ function App() {
           />
         </p>
 
-
-{/* About Me Section (placed directly here) */}
-<section id="about" className="container" style={{ margin: "40px 0" }}>
-  <h2 className="pixel-heading pixel-bold-title">
-    <span className="emoji-large">👤</span> About Me
-  </h2>
-  <p className="pixel-text">
-    <Typewriter
-      options={{
-        strings: [
-          "I’m a self-taught software and game developer who has grown through hands-on experience in various projects. I've worked with a startup focused on innovative game design and another startup investing in educational VR games. In these roles, I helped build interactive applications and contributed to projects aimed at creating engaging, immersive experiences.",
-          "Over time, I’ve honed my skills in full-stack development, game design, and front-end programming using Java, Python, JavaScript, and several game engines. My journey has been all about learning on the fly and tackling challenges head-on, which fuels my passion for building creative solutions."
-        ],
-        autoStart: true,
-        loop: false,
-        delay: 5, // Faster typing speed
-        deleteSpeed: Infinity,
-      }}
-    />
-  </p>
-</section>
-
+        {/* About Me Section (placed directly here) */}
+        <section id="about" className="container" style={{ margin: "40px 0" }}>
+          <h2 className="pixel-heading pixel-bold-title">
+            <span className="emoji-large">👤</span> About Me
+          </h2>
+          <p className="pixel-text">
+            <Typewriter
+              options={{
+                strings: [
+                  "I’m a self-taught software and game developer who has grown through hands-on experience in various projects. I've worked with a startup focused on innovative game design and another startup investing in educational VR games. In these roles, I helped build interactive applications and contributed to projects aimed at creating engaging, immersive experiences.",
+                  "Over time, I’ve honed my skills in full-stack development, game design, and front-end programming using Java, Python, JavaScript, and several game engines. My journey has been all about learning on the fly and tackling challenges head-on, which fuels my passion for building creative solutions.",
+                ],
+                autoStart: true,
+                loop: false,
+                delay: 5, // Faster typing speed
+                deleteSpeed: Infinity,
+              }}
+            />
+          </p>
+        </section>
 
         {/* Skills and Education Section */}
         <div id="skills-education" className="container w-75 mt-3">
@@ -236,7 +230,7 @@ function App() {
               <div className="card m-1 p-2 text-center">
                 <div className="d-flex flex-column align-items-center">
                   <img
-                    src="/img/Queens_College_logo.png"
+                    src="img/Queens_College_logo.png"
                     alt="Queens College Logo"
                     className="icon-wrapper-education"
                     style={{
@@ -264,7 +258,7 @@ function App() {
               <div className="card m-1 p-2 text-center">
                 <div className="d-flex flex-column align-items-center">
                   <img
-                    src="/img/Stony_Brook_U_logo.png"
+                    src="img/Stony_Brook_U_logo.png"
                     alt="Stony Brook University Logo"
                     className="icon-wrapper-education"
                     style={{
@@ -363,10 +357,7 @@ function App() {
         )}
 
         {/* Contact Me Section */}
-        <div
-          id="contact"
-          className="mt-5 bottom-spacing pixel-text"
-        >
+        <div id="contact" className="mt-5 bottom-spacing pixel-text">
           <ContactForm />
         </div>
       </div>

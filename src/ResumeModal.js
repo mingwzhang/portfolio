@@ -9,7 +9,7 @@ const ResumeModal = ({ onClose }) => {
           X
         </button>
         <iframe
-          src="/Zhang-Mingwei-Resume.pdf"
+          src="Zhang-Mingwei-Resume.pdf"
           title="Resume"
           width="100%"
           height="800px"

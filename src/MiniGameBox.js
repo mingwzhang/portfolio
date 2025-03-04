@@ -123,7 +123,7 @@ const MiniGameBox = () => {
       {/* Main Target */}
       {isVisible && (
         <img
-          src="/img/target_circle.png"
+          src="img/target_circle.png"
           alt="Target"
           onClick={handleTargetClick}
           draggable={false}
@@ -155,7 +155,7 @@ const MiniGameBox = () => {
             transform: `scale(${scaleFactor})`,
             transformOrigin: "top left",
             imageRendering: "pixelated",
-            backgroundImage: "url('/img/target_circle_break.png')",
+            backgroundImage: "url('img/target_circle_break.png')",
             backgroundRepeat: "no-repeat",
             backgroundPosition: `-${breakFrame * frameWidth}px 0px`,
           }}
