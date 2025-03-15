@@ -21,9 +21,10 @@
 
 .nav-left,
 .nav-right {
-  display: flex;
-  align-items: center;
-  gap: 0.2rem;
+  display: flex !important;
+  flex-wrap: wrap !important; /* Allows items to move to the next line */
+  justify-content: center; /* Center items when wrapped */
+  gap: 1rem; /* Maintain spacing */
 }
 
 /* -------------------------- */
@@ -173,7 +174,6 @@
     padding: 0.5rem 1rem;
     min-width: auto;
     align-items: center;
-
   }
   /* Remove extra left margin from the LinkedIn button on mobile */
   .nav-linkedin {
@@ -193,49 +193,38 @@
     right: 1rem;
     z-index: 1100;
   }
+
+  /* Hide the nav toggle button on desktop */
+
+  .nav-container {
+    position: relative; /* establish a positioning context */
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 3rem; /* make room for the toggle button */
+  }
+
   .nav-toggle-btn {
+    position: absolute;
+    left: 0;
+    bottom: 0; /* attach to the bottom of .nav-container */
+    width: 100%; /* extend full width of the container */
+    height: 3rem;
     background: rgba(0, 0, 0, 0.5);
     border: none;
-    color: #ffffff;
-    padding: 0.5rem;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 1.5rem;
-  }
-}
-
-/* Hide the nav toggle button on desktop */
-@media screen and (min-width: 768px) {
-  .nav-toggle-container {
-    display: none;
-  }
-}
-
-/* -------------------------- */
-/* End of NavBar.css          */
-
-@media screen and (max-width: 768px) {
-  .nav-toggle-btn {
-    position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 22.5%; /* Positioned 22% down from the viewport height */
-    transition: top 0.3s ease-in-out;
-    background: rgba(0, 0, 0, 0.5);
-    border: none;
-    width: 100%; /* 80% of the viewport width or container width */
-    height: 3rem; /* Using rem ensures scalable height */
-    border-radius: 5px; /* Slightly rounded corners */
-    cursor: pointer;
     font-size: 1.5rem;
     color: #ffffff;
-    z-index: 1100;
+    cursor: pointer;
+    z-index: 1100; /* ensure it appears above other elements */
+
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
   }
   /* When the nav is hidden (show state), adjust the top position */
-  .nav-toggle-btn.nav-hidden {
-    top: 0vh; /* Positioned lower when nav is hidden, adjust as needed */
+  .nav-bar.hidden {
+    transform: translateY(-88%);
   }
+  
 }

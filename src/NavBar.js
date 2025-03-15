@@ -1,113 +1,98 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaLinkedin, FaChevronUp, FaChevronDown } from "react-icons/fa";
 import "./NavBar.css"; // Import our nav-specific CSS
 
 const NavBar = ({ onResumeClick }) => {
   const [navHidden, setNavHidden] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [dragStartY, setDragStartY] = useState(null);
+  const [dragging, setDragging] = useState(false); // Only enable drag when holding toggle button
+
+  // Detect screen size changes
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    window.addEventListener("resize", handleResize);
+    
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Start dragging when toggle button is pressed
+  const handleTogglePress = (e) => {
+    setDragging(true);
+    setDragStartY(e.touches ? e.touches[0].clientY : e.clientY);
+  };
+
+  // Handle touch/mouse move (only if dragging is enabled)
+  const handleDragMove = (e) => {
+    if (!dragging || !dragStartY) return;
+
+    const currentY = e.touches ? e.touches[0].clientY : e.clientY;
+    const dragDistance = dragStartY - currentY;
+
+    if (dragDistance > 50) {
+      // Drag Up → Hide Navbar
+      setNavHidden(true);
+    } else if (dragDistance < -50) {
+      // Drag Down → Show Navbar
+      setNavHidden(false);
+    }
+  };
+
+  // Stop dragging when toggle button is released
+  const handleDragEnd = () => {
+    setDragging(false);
+    setDragStartY(null);
+  };
 
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
     if (section) section.scrollIntoView({ behavior: "smooth" });
   };
 
-  const handleLinkedInClick = (e) => {
-    e.preventDefault();
-    setTimeout(() => {
-      window.open("https://www.linkedin.com/in/mingwei-zhang1/", "_blank");
-    }, 200);
-  };
-
-  // Touch event handlers for mobile only (simulate hover)
-  const handleTouchStart = (e) => {
-    e.currentTarget.classList.add("hover");
-  };
-  const handleTouchEnd = (e) => {
-    e.currentTarget.classList.remove("hover");
-  };
-
   return (
-    <>
-      <nav className={`nav-bar ${navHidden ? "hidden" : ""}`}>
-        <div className="nav-container">
-          <div className="nav-left">
-            <button
-              onClick={() => scrollToSection("home")}
-              onTouchStart={handleTouchStart}
-              onTouchEnd={handleTouchEnd}
-              onTouchCancel={handleTouchEnd}
-              className="nav-btn nav-name nav-text"
-            >
-              Mingwei Zhang
-            </button>
-          </div>
-          <div className="nav-right">
-            <button
-              onClick={() => scrollToSection("about")}
-              onTouchStart={handleTouchStart}
-              onTouchEnd={handleTouchEnd}
-              onTouchCancel={handleTouchEnd}
-              className="nav-btn nav-item nav-text"
-            >
-              About
-            </button>
-            <button
-              onClick={() => scrollToSection("skills-education")}
-              onTouchStart={handleTouchStart}
-              onTouchEnd={handleTouchEnd}
-              onTouchCancel={handleTouchEnd}
-              className="nav-btn nav-item nav-text"
-            >
-              Skills/Education
-            </button>
-            <button
-              onClick={() => scrollToSection("projects")}
-              onTouchStart={handleTouchStart}
-              onTouchEnd={handleTouchEnd}
-              onTouchCancel={handleTouchEnd}
-              className="nav-btn nav-item nav-text"
-            >
-              Projects
-            </button>
-            <button
-              onClick={() => scrollToSection("contact")}
-              onTouchStart={handleTouchStart}
-              onTouchEnd={handleTouchEnd}
-              onTouchCancel={handleTouchEnd}
-              className="nav-btn nav-item nav-text"
-            >
-              Contact
-            </button>
-            <a
-              href="https://www.linkedin.com/in/mingwei-zhang1/"
-              onClick={handleLinkedInClick}
-              onTouchStart={handleTouchStart}
-              onTouchEnd={handleTouchEnd}
-              onTouchCancel={handleTouchEnd}
-              className="nav-btn nav-linkedin nav-text"
-            >
-              <FaLinkedin size={24} style={{ marginRight: "0.5rem" }} />
-              LinkedIn
-            </a>
-            <button
-              onClick={onResumeClick}
-              onTouchStart={handleTouchStart}
-              onTouchEnd={handleTouchEnd}
-              onTouchCancel={handleTouchEnd}
-              className="nav-btn nav-resume nav-text"
-            >
-              Resume <span role="img" aria-label="document">📎</span>
-            </button>
-          </div>
+    <nav 
+      className={`nav-bar ${navHidden ? "hidden" : ""}`}
+      onTouchMove={handleDragMove}
+      onMouseMove={handleDragMove}
+    >
+      <div className="nav-container">
+        <div className="nav-left">
+          <button onClick={() => scrollToSection("home")} className="nav-btn nav-name nav-text">
+            Mingwei Zhang
+          </button>
         </div>
-      </nav>
-      {/* Mobile-only toggle button */}
-      <button 
-        className={`nav-toggle-btn ${navHidden ? "nav-hidden" : ""}`}
-        onClick={() => setNavHidden(!navHidden)}
-      >
-        {navHidden ? <FaChevronDown /> : <FaChevronUp />}
-      </button>
-    </>
+        <div className="nav-right">
+          <button onClick={() => scrollToSection("about")} className="nav-btn nav-item nav-text">About</button>
+          <button onClick={() => scrollToSection("skills-education")} className="nav-btn nav-item nav-text">Skills & Education</button>
+          <button onClick={() => scrollToSection("projects")} className="nav-btn nav-item nav-text">Projects</button>
+          <button onClick={() => scrollToSection("contact")} className="nav-btn nav-item nav-text">Contact</button>
+          <a href="https://www.linkedin.com/in/mingwei-zhang1/" className="nav-btn nav-linkedin nav-text">
+            <FaLinkedin size={24} style={{ marginRight: "0.5rem" }} />
+            LinkedIn
+          </a>
+          <button onClick={onResumeClick} className="nav-btn nav-resume nav-text">
+            Resume <span role="img" aria-label="document">📎</span>
+          </button>
+        </div>
+      </div>
+
+      {/* Show Toggle Button on Mobile */}
+      {isMobile && (
+        <button 
+          className={`nav-toggle-btn ${navHidden ? "nav-hidden" : ""}`}
+          onClick={() => setNavHidden(!navHidden)}
+          onTouchStart={handleTogglePress}
+          onTouchEnd={handleDragEnd}
+          onMouseDown={handleTogglePress}
+          onMouseUp={handleDragEnd}
+          onMouseLeave={handleDragEnd}
+        >
+          {navHidden ? <FaChevronDown /> : <FaChevronUp />}
+        </button>
+      )}
+    </nav>
   );
 };
 

@@ -290,6 +290,17 @@ h1 {
 #home, #about, #skills-education, #projects, #contact {
   scroll-margin-top: 80px;
 }
+#home h1.pixel-heading,
+#about h2.pixel-bold-title,
+#skills-education h4,
+#projects h4,
+#contact .contact-title {
+  font-size: clamp(1.4rem, 6vw, 2.2rem); /* Adjust font size responsively */
+  text-align: center;
+  padding: 10px 0;
+  white-space: nowrap; /* Prevent wrapping */
+  transform: scale(1); /* Adjust scale for better fit */
+}
 
 .pixel-btn {
   font-family: 'Press Start 2P', cursive !important;
@@ -752,4 +763,15 @@ html, body {
     justify-content: center;
   }
 
+  #home h1.pixel-heading,
+  #about h2.pixel-bold-title,
+  #skills-education h4,
+  #projects h4,
+  #contact .contact-title {
+    font-size: clamp(1.4rem, 6vw, 2.2rem); /* Adjust font size responsively */
+    text-align: center;
+    padding: 10px 0;
+    white-space: nowrap; /* Prevent wrapping */
+    transform: scale(0.8); /* Adjust scale for better fit */
+  }
 }
