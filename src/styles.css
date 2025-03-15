@@ -518,6 +518,43 @@ button[type="submit"]:hover {
   }
 }
 
+
+/* Responsive adjustments for Project Section on PC and all screens */
+
+/* Video Carousel: maintain a 4:3 aspect ratio */
+#projects .video-carousel {
+  width: 100% !important;      /* Allow it to scale with its container */
+  max-width: 640px;            /* Do not exceed original maximum */
+  height: auto !important;     /* Let the browser calculate height */
+  aspect-ratio: 4 / 3;         /* Modern browsers: enforces a 4:3 ratio */
+  margin: 0 auto;              /* Center within the container */
+}
+
+/* Mini Game Container: maintain a square ratio */
+#projects .mini-game-container {
+  width: 100% !important;
+  max-width: 500px;            /* Original fixed size on PC */
+  height: auto !important;
+  aspect-ratio: 1 / 1;         /* Square aspect ratio */
+  margin: 0 auto;
+}
+
+/* Asset Display (Placeholder): maintain a square ratio */
+#projects .another-placeholder {
+  width: 100% !important;
+  max-width: 400px;            /* Original size */
+  height: auto !important;
+  aspect-ratio: 1 / 1;         /* Square aspect ratio */
+  margin: 0 auto;
+}
+
+/* Ensure the overall project container adapts by stacking or wrapping the inner columns */
+#projects .d-flex.justify-content-between.align-items-center.mt-5 {
+  flex-wrap: wrap;             /* Wrap columns if needed */
+  gap: 1rem;                   /* Optional gap between items */
+}
+
+
 .mini-game-wrapper {
   display: flex;
   align-items: center;    /* Center vertically */
@@ -542,3 +579,177 @@ html, body {
   overflow-x: hidden;
 }
 
+@media (max-width: 768px) {
+  /* Home section main heading */
+  #home h1.pixel-heading {
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  }
+  
+  /* About section heading */
+  #about h2.pixel-bold-title {
+    font-size: clamp(1.4rem, 3.5vw, 2rem);
+  }
+  
+  /* Skills & Education and Projects section headings */
+  #skills-education h4,
+  #projects h4 {
+    font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+  }
+  
+  /* Contact section heading */
+  #contact .contact-title {
+    font-size: clamp(1rem, 3.5vw, 1.6rem);
+  }
+}
+
+
+
+
+/* Adjust text and heading ratios on devices up to 768px wide */
+@media (max-width: 768px) {
+  .pixel-heading {
+    font-size: 2rem;  /* Reduced from 2.5rem */
+  }
+  .pixel-subheading {
+    font-size: 1.3rem; /* Reduced for better fit */
+  }
+  .pixel-text {
+    font-size: 0.9rem; /* Slightly smaller text */
+  }
+}
+
+@media (max-width: 768px) {
+  /* About Me Container */
+  #about {
+    margin: 20px 0;
+    padding: 0 10px;
+    width: 95%;
+    max-width: 100%;
+  }
+  
+  /* About Me Heading */
+  #about h2 {
+    font-size: clamp(1.4rem, 3.5vw, 2rem);
+    margin-bottom: 1rem;
+  }
+  
+  /* About Me Text */
+  #about p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin: 0 5px;
+  }
+}
+
+/* Ensure skills icons and education logos don't exceed their container */
+#skills-education .icon-wrapper img,
+#skills-education .icon-wrapper-education {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Override inline styles for education logos on mobile */
+@media (max-width: 768px) {
+  .icon-wrapper-education {
+    width: 80% !important;
+    max-width: 150px !important;
+    height: auto !important;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Adjust Project Section Buttons for Mobile Scaling */
+@media (max-width: 768px) {
+  .btn-fixed-size {
+    width: 160px !important;         /* Reduced width */
+    height: auto !important;         /* Reduced height */
+    font-size: 0.75rem;   /* Smaller font size */
+    padding: 0.4rem 0.8rem; /* Adjusted padding */
+    flex-wrap: wrap; /* Allow wrapping if needed */
+  }
+  
+  .pixel-btn-3d {
+    letter-spacing: 1px;  /* Reduced letter-spacing for better fit */
+  }
+}
+
+@media (max-width: 768px) {
+  /* Project container: scales to 90% of viewport width and centers children vertically */
+  #projects {
+    width: 90vw !important;
+    max-width: 90vw !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    box-sizing: border-box;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+    position: relative; /* Ensure the container is positioned */
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+  }
+  
+  /* Ensure all direct children of #projects take full container width */
+  #projects > * {
+    width: 100% !important;
+    margin: 0 auto !important;
+    position: relative; /* Ensure the container is positioned */
+
+  }
+  
+  /* Override the right column container that had margin-left in the PC layout */
+  /* This targets any flex-column container inside #projects that might have been offset */
+  #projects .d-flex.flex-column.justify-content-between {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+  
+  /* Video Carousel: full container width with 4:3 aspect ratio */
+  #projects .video-carousel {
+    width: 100% !important;
+    height: auto !important;
+    margin: 1rem 0 !important;
+  
+  }
+  
+  /* Make the video element fill its container */
+  #projects .video-carousel video {
+    width: 90% !important; /* Reduce video size (adjust as needed) */
+    max-width: 350px; /* Optional: Prevent it from getting too large */
+    height: auto !important;
+    object-fit: cover;
+    pointer-events: auto;
+    display: block;
+    position: relative;
+    left: 25%;  /* Move starting point to center */
+    transform: translateX(-50%); /* Shift it back to truly center */
+  }
+  /* Left and Right Navigation Buttons */
+  #projects .video-carousel .prev-button,
+  #projects .video-carousel .next-button {
+    transform: translateY(-200%);
+  }
+  
+  /* Mini Game Container: full container width, square ratio */
+  #projects .mini-game-container {
+    width: 95% !important;
+    aspect-ratio: 1 / 1;
+    height: auto !important;
+   }
+  
+  /* Asset Display: full container width, square ratio */
+  #projects .another-placeholder {
+    width: 95% !important;
+    aspect-ratio: 1 / 1;
+    margin: 1rem 0 !important;
+    height: auto !important;
+    border: 2px solid #ccc !important; /* Re-add a visible border */
+    background-color: rgba(255, 255, 255, 0.1); /* Example translucent background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+}

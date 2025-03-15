@@ -50,8 +50,15 @@ const MiniGameBox = () => {
   };
 
   // Create a stable moveTarget function.
+  const getBoxSize = () => {
+    const container = document.querySelector(".mini-game-container");
+    return container
+      ? container.offsetWidth
+      : Math.min(window.innerWidth * 0.9, 500);
+  };
+
   const moveTarget = useCallback(() => {
-    const boxSize = 500; // Updated box size
+    const boxSize = getBoxSize(); // Dynamically get current box size
     const top = Math.random() * (boxSize - frameHeight * scaleFactor);
     const left = Math.random() * (boxSize - frameWidth * scaleFactor);
     setTargetPosition({ top, left });
@@ -121,7 +128,7 @@ const MiniGameBox = () => {
       {/* Main Target */}
       {isVisible && (
         <img
-          src={process.env.PUBLIC_URL +"/img/target_circle.png"}
+          src={process.env.PUBLIC_URL + "/img/target_circle.png"}
           alt="Target"
           onClick={handleTargetClick}
           draggable={false}

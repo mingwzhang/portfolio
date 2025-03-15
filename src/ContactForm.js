@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
+import "./ContactForm.css"; // Import the new CSS file
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -42,17 +43,7 @@ const ContactForm = () => {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      style={{
-        width: "700px",
-        margin: "auto",
-        backgroundColor: "#fff",
-        padding: "1rem",
-        borderRadius: "8px",
-        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-      }}
-    >
+    <form onSubmit={handleSubmit} className="contact-form">
       <h4 className="pixel-text pixel-bold-title contact-title">
         <span className="emoji-large">📩</span> Contact Me
       </h4>
@@ -64,13 +55,7 @@ const ContactForm = () => {
           value={formData.name}
           onChange={handleChange}
           required
-          style={{
-            width: "100%",
-            padding: "0.5rem",
-            borderRadius: "4px",
-            border: "1px solid #ccc",
-            fontSize: "0.9rem",
-          }}
+          className="contact-input"
         />
       </div>
       <div style={{ marginBottom: "1rem" }}>
@@ -81,13 +66,7 @@ const ContactForm = () => {
           value={formData.email}
           onChange={handleChange}
           required
-          style={{
-            width: "100%",
-            padding: "0.5rem",
-            borderRadius: "4px",
-            border: "1px solid #ccc",
-            fontSize: "0.9rem",
-          }}
+          className="contact-input"
         />
       </div>
       <div style={{ marginBottom: "1rem" }}>
@@ -97,26 +76,12 @@ const ContactForm = () => {
           value={formData.message}
           onChange={handleChange}
           required
-          style={{
-            width: "100%",
-            padding: "0.5rem",
-            minHeight: "400px",
-            borderRadius: "4px",
-            border: "1px solid #ccc",
-            fontSize: "0.9rem",
-          }}
+          className="contact-textarea"
         />
       </div>
-      <div>
-        <button
-          className="pixel-text pixel-btn-3d send-button-wrapper"
-          type="submit"
-          style={{ marginBottom: "20px" }}
-          disabled={isSending} // Disable when sending
-        >
-          <span className="pixel-btn-content">
-            {isSending ? "Sending..." : "Send Message"}
-          </span>
+      <div className="send-button-container">
+        <button className="contact-button" type="submit" disabled={isSending}>
+          {isSending ? "Sending..." : "Send Message"}
         </button>
       </div>
 

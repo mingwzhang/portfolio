@@ -1,27 +1,33 @@
 .mini-game-container {
-    width: 500px;
-    height: 500px;
-    margin: auto;
-    border: 2px solid rgba(0, 255, 255, 0.5); /* Neon border */
-    position: relative;
-    overflow: hidden;
-    background: rgba(0, 255, 34, 0.075); /* Dark transparent */
-    backdrop-filter: blur(5px); /* Frosted glass effect */
-    box-shadow: 0px 0px 5px rgba(0, 255, 255, 0.5); /* Soft neon glow */
-    border-radius: 10px;
-  }
-  
+  width: 90vw; /* Adjust size based on screen */
+  max-width: 500px; /* Ensure it does not exceed 500px */
+  height: 90vw;
+  max-height: 500px;
+  margin: auto;
+  border: 2px solid rgba(0, 255, 255, 0.5); /* Neon border */
+  position: relative;
+  overflow: hidden;
+  background: rgba(0, 255, 34, 0.075); /* Dark transparent */
+  backdrop-filter: blur(5px); /* Frosted glass effect */
+  box-shadow: 0px 0px 5px rgba(0, 255, 255, 0.5); /* Soft neon glow */
+  border-radius: 10px;
+}
 
-  .mini-game-score {
-    font-family: 'Press Start 2P', cursive; /* Pixel-style font */
-    color: #ffffff !important; /* White text */
-    font-size: 0.9rem; /* Adjust size to fit well */
-    text-shadow: 2px 2px 5px rgba(0, 255, 255, 0.8); /* Soft neon glow */
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    padding: 4px 8px;
-    border-radius: 5px;
-  }
+.mini-game-score {
+  font-family: "Press Start 2P", cursive; /* Pixel-style font */
+  color: #ffffff !important; /* White text */
+  font-size: 0.9rem; /* Adjust size to fit well */
+  text-shadow: 2px 2px 5px rgba(0, 255, 255, 0.8); /* Soft neon glow */
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 4px 8px;
+  border-radius: 5px;
+}
 
-  
+@media (max-width: 480px) {
+  .mini-game-container {
+    width: 80vw;
+    height: 80vw;
+  }
+}

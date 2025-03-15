@@ -107,22 +107,7 @@ function App() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Helmet>
       {/* Fixed side banner */}
-      <div
-        style={{
-          position: "fixed",
-          top: "50%",
-          left: "0",
-          transform: "translateY(-50%) rotate(-45deg) scale(1.5)",
-          backgroundColor: "",
-          color: "red",
-          padding: "10px 20px",
-          fontWeight: "bold",
-          zIndex: 10000,
-          letterSpacing: "2px",
-        }}
-      >
-        STILL IN DEVELOPMENT!
-      </div>
+
       <AnimatedBackground />
       <FloatingShapes /> {/* Adds 3D-like floating effect */}
       {/* Render the NavBar at the top */}
@@ -384,5 +369,7 @@ function App() {
     </div>
   );
 }
+
+
 
 export default App;

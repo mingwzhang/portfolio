@@ -174,7 +174,7 @@ const videos = [
       </div>
       <button
         onClick={goToPrevious}
-        className="m-2 pixel-text pixel-btn-3d"
+        className="m-2 pixel-text pixel-btn-3d prev-button"
         style={{
           position: "absolute",
           left: "10px",
@@ -186,7 +186,7 @@ const videos = [
       </button>
       <button
         onClick={goToNext}
-        className="m-2 pixel-text pixel-btn-3d"
+        className="m-2 pixel-text pixel-btn-3d next-button ,"
         style={{
           position: "absolute",
           right: "10px",

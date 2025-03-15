@@ -2,233 +2,240 @@
 /* NavBar Base Layout         */
 /* -------------------------- */
 .nav-bar {
-    background-color: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px);
-    padding: 1rem;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-  }
-  
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  padding: 1rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 99%;
+}
+
+.nav-left,
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+/* -------------------------- */
+/* Pixel & Glow Base Styles   */
+/* (Duplicating .pixel-text and btn effects) */
+/* -------------------------- */
+.nav-text {
+  font-family: "Press Start 2P", cursive;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 1rem;
+  /* Force white text */
+  color: #ffffff !important;
+  text-shadow: 2px 2px 10px rgba(0, 255, 208, 0.81),
+    0px 0px 15px rgb(0, 217, 255) !important;
+}
+
+/* Base button style for nav items */
+.nav-btn {
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  margin: 0;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out,
+    background 0.2s ease-in-out;
+  color: inherit; /* inherit from .nav-text */
+}
+
+/* -------------------------- */
+/* Specific Element Styles    */
+/* -------------------------- */
+/* Name Button */
+.nav-name {
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  min-width: 200px;
+  text-align: left;
+}
+
+/* Other Nav Items */
+.nav-item {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+/* LinkedIn Link: Adjusted for a larger border radius and extra left margin */
+.nav-linkedin {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  background-color: #0077b5 !important;
+  color: #ffffff !important;
+  padding: 0.5rem 1rem !important; /* Increase horizontal padding for a larger button */
+  border-radius: 3px !important; /* Increase border radius */
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  margin-left: 4rem; /* Increase margin-left to push the button further right */
+  margin-right: 1rem;
+}
+
+/* Resume Button */
+.nav-resume {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border: 3px dashed rgba(65, 254, 213, 0.826);
+  color: #00ff88 !important;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  transition: transform 0.2s ease-in-out, background 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
+  margin-left: 1rem;
+  background: none;
+  cursor: pointer;
+}
+
+/* -------------------------- */
+/* Hover & Active Effects     */
+/* -------------------------- */
+/* For nav buttons (name, items, resume) */
+.nav-btn:hover,
+.nav-resume:hover,
+.nav-linkedin:hover {
+  transform: scale(1.08);
+  box-shadow: 4px 4px 0 #000;
+  background: linear-gradient(to bottom, #6ad3f381, #48ffe774);
+}
+
+.nav-btn:active,
+.nav-resume:active,
+.nav-linkedin:active {
+  transform: scale(1);
+  box-shadow: 0 0 0 #888;
+}
+
+/* Media Query for Mobile Devices */
+@media screen and (max-width: 768px) {
   .nav-container {
-    display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    width: 99%;
+    width: 100%;
   }
-  
-  .nav-left,
+  /* Full-width name at the top */
+  .nav-left {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  /* Arrange the right items in a 2-column grid */
   .nav-right {
-    display: flex;
-    align-items: center;
-    gap: 0.2rem;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 0.5rem;
+    width: 100%;
+    justify-content: center;
+    justify-items: center; /* This centers each grid item within its cell */
   }
-  
-  /* -------------------------- */
-  /* Pixel & Glow Base Styles   */
-  /* (Duplicating .pixel-text and btn effects) */
-  /* -------------------------- */
-  .nav-text {
-    font-family: 'Press Start 2P', cursive;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    font-size: 1rem;
-    /* Force white text */
-    color: #ffffff !important;
-    text-shadow: 2px 2px 10px rgba(0, 255, 208, 0.81),
-                 0px 0px 15px rgb(0, 217, 255) !important;
-  }
-  
-  /* Base button style for nav items */
   .nav-btn {
+    justify-content: center;
+    justify-items: center; /* This centers each grid item within its cell */
+    width: 100%;
+    max-width: 200px; /* Adjust as needed */
+    font-size: 0.8rem;
+    padding: 0.5rem;
     background: none;
     border: none;
     padding: 0.5rem;
     margin: 0;
     cursor: pointer;
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out,
-                background 0.2s ease-in-out;
-    color: inherit; /* inherit from .nav-text */
+      background 0.2s ease-in-out;
+    color: inherit;
+    -webkit-user-select: none; /* For Safari and Chrome */
+    -moz-user-select: none; /* For Firefox */
+    -ms-user-select: none; /* For Internet Explorer/Edge */
+    user-select: none; /* Standard syntax */
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
   }
-  
-  /* -------------------------- */
-  /* Specific Element Styles    */
-  /* -------------------------- */
-  /* Name Button */
   .nav-name {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     padding: 0.5rem 1rem;
-    min-width: 200px;
-    text-align: left;
-  }
-  
-  /* Other Nav Items */
-  .nav-item {
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-  }
-  
-/* LinkedIn Link: Adjusted for a larger border radius and extra left margin */
-.nav-linkedin {
-    display: inline-flex;
+    min-width: auto;
     align-items: center;
-    text-decoration: none;
-    background-color: #0077b5 !important;
-    color: #ffffff !important;
-    padding: 0.5rem 1rem !important;  /* Increase horizontal padding for a larger button */
-    border-radius: 3px !important;       /* Increase border radius */
-    font-weight: bold;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-size: 1.1rem;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    margin-left: 4rem;  /* Increase margin-left to push the button further right */
-    margin-right: 1rem;
+
   }
-  
-  
-  
-  /* Resume Button */
-  .nav-resume {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.5rem 1rem;
-    border: 3px dashed rgba(65, 254, 213, 0.826);
-    color: #00ff88 !important; 
-    font-weight: bold;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-size: 1.1rem;
-    transition: transform 0.2s ease-in-out, background 0.2s ease-in-out,
-                box-shadow 0.2s ease-in-out;
-    margin-left: 1rem;
-    background: none;
+  /* Remove extra left margin from the LinkedIn button on mobile */
+  .nav-linkedin {
+    margin-left: 0;
+  }
+
+  .nav-bar {
+    transition: transform 0.3s ease-in-out;
+  }
+  /* When hidden, slide the nav bar up out of view */
+  .nav-bar.hidden {
+    transform: translateY(-100%);
+  }
+  .nav-toggle-container {
+    position: fixed;
+    top: 0.5rem;
+    right: 1rem;
+    z-index: 1100;
+  }
+  .nav-toggle-btn {
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: #ffffff;
+    padding: 0.5rem;
+    border-radius: 50%;
     cursor: pointer;
+    font-size: 1.5rem;
   }
-  
-  /* -------------------------- */
-  /* Hover & Active Effects     */
-  /* -------------------------- */
-  /* For nav buttons (name, items, resume) */
-  .nav-btn:hover,
-  .nav-resume:hover, 
-  .nav-linkedin:hover{
-    transform: scale(1.08);
-    box-shadow: 4px 4px 0 #000;
-    background: linear-gradient(to bottom, #6ad3f381, #48ffe774);
-  }
-  
-  .nav-btn:active,
-  .nav-resume:active, 
-  .nav-linkedin:active{
-    transform: scale(1);
-    box-shadow: 0 0 0 #888;
-  }
+}
 
+/* Hide the nav toggle button on desktop */
+@media screen and (min-width: 768px) {
+  .nav-toggle-container {
+    display: none;
+  }
+}
 
-  /* Media Query for Mobile Devices */
+/* -------------------------- */
+/* End of NavBar.css          */
+
 @media screen and (max-width: 768px) {
-    .nav-container {
-      flex-direction: column;
-      align-items: center;
-    }
-    .nav-left,
-    .nav-right {
-      width: 100%;
-      justify-content: center;
-    }
-    .nav-right {
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 0.5rem;
-    }
-    .nav-btn {
-      font-size: 0.8rem;
-      padding: 0.5rem;
-      background: none;
-      border: none;
-      padding: 0.5rem;
-      margin: 0;
-      cursor: pointer;
-      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out,
-                  background 0.2s ease-in-out;
-      color: inherit;
-      -webkit-user-select: none; /* For Safari and Chrome */
-      -moz-user-select: none;    /* For Firefox */
-      -ms-user-select: none;     /* For Internet Explorer/Edge */
-      user-select: none;         /* Standard syntax */
-      -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
-    }
-    .nav-name {
-      font-size: 1.2rem;
-      padding: 0.5rem 1rem;
-      min-width: auto;
-    }
-    /* Remove extra left margin from the LinkedIn button on mobile */
-    .nav-linkedin {
-      margin-left: 0;
-    }
-
-    .nav-bar {
-      transition: transform 0.3s ease-in-out;
-    }
-    /* When hidden, slide the nav bar up out of view */
-    .nav-bar.hidden {
-      transform: translateY(-100%);
-    }
-    .nav-toggle-container {
-      position: fixed;
-      top: 0.5rem;
-      right: 1rem;
-      z-index: 1100;
-    }
-    .nav-toggle-btn {
-      background: rgba(0, 0, 0, 0.5);
-      border: none;
-      color: #ffffff;
-      padding: 0.5rem;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 1.5rem;
-    }
+  .nav-toggle-btn {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 22.5%; /* Positioned 22% down from the viewport height */
+    transition: top 0.3s ease-in-out;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    width: 100%; /* 80% of the viewport width or container width */
+    height: 3rem; /* Using rem ensures scalable height */
+    border-radius: 5px; /* Slightly rounded corners */
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #ffffff;
+    z-index: 1100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  
-  /* Hide the nav toggle button on desktop */
-  @media screen and (min-width: 769px) {
-    .nav-toggle-container {
-      display: none;
-    }
+  /* When the nav is hidden (show state), adjust the top position */
+  .nav-toggle-btn.nav-hidden {
+    top: 0vh; /* Positioned lower when nav is hidden, adjust as needed */
   }
-  
-  
-  /* -------------------------- */
-  /* End of NavBar.css          */
-  
-  @media screen and (max-width: 768px) {
-    .nav-toggle-btn {
-      position: fixed;
-      left: 50%;
-      transform: translateX(-50%);
-      top: 22.5vh;  /* Positioned 22% down from the viewport height */
-      transition: top 0.3s ease-in-out;
-      background: rgba(0, 0, 0, 0.5);
-      border: none;
-      width: 100%;       /* 80% of the viewport width or container width */
-      height: 3rem;     /* Using rem ensures scalable height */
-      border-radius: 5px;  /* Slightly rounded corners */
-      cursor: pointer;
-      font-size: 1.5rem;
-      color: #ffffff;
-      z-index: 1100;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    /* When the nav is hidden (show state), adjust the top position */
-    .nav-toggle-btn.nav-hidden {
-      top: 0vh; /* Positioned lower when nav is hidden, adjust as needed */
-    }
-  }
-  
+}
