@@ -1,22 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { FaLinkedin, FaChevronUp, FaChevronDown } from "react-icons/fa";
 import "./NavBar.css"; // Import our nav-specific CSS
 
 const NavBar = ({ onResumeClick }) => {
   const [navHidden, setNavHidden] = useState(window.innerWidth <= 768);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [dragStartY, setDragStartY] = useState(null);
   const [dragging, setDragging] = useState(false); // Only enable drag when holding toggle button
 
-  // Detect screen size changes
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   // Start dragging when toggle button is pressed
   const handleTogglePress = (e) => {
@@ -102,6 +92,8 @@ const NavBar = ({ onResumeClick }) => {
           </button>
           <a
             href="https://www.linkedin.com/in/mingwei-zhang1/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="nav-btn nav-linkedin nav-text"
           >
             <FaLinkedin size={24} style={{ marginRight: "0.5rem" }} />
@@ -110,29 +102,29 @@ const NavBar = ({ onResumeClick }) => {
         </div>
       </div>
 
-{/* Toggle Button (Always Visible Now) */}
-<button
-  className={`nav-toggle-btn ${navHidden ? "nav-hidden" : ""}`}
-  onClick={() => setNavHidden(!navHidden)}
-  onTouchStart={handleTogglePress}
-  onTouchEnd={handleDragEnd}
-  onMouseDown={handleTogglePress}
-  onMouseUp={handleDragEnd}
-  onMouseLeave={handleDragEnd}
-  title={navHidden ? "Show Menu" : "Hide Menu"}
->
-  {navHidden ? (
-    <>
-      <FaChevronDown style={{ marginRight: "8px" }} />
-      <span className="nav-toggle-text">Show Menu</span>
-    </>
-  ) : (
-    <>
-      <FaChevronUp style={{ marginRight: "8px" }} />
-      <span className="nav-toggle-text">Hide Menu</span>
-    </>
-  )}
-</button>
+      {/* Toggle Button (Always Visible Now) */}
+      <button
+        className={`nav-toggle-btn ${navHidden ? "nav-hidden" : ""}`}
+        onClick={() => setNavHidden(!navHidden)}
+        onTouchStart={handleTogglePress}
+        onTouchEnd={handleDragEnd}
+        onMouseDown={handleTogglePress}
+        onMouseUp={handleDragEnd}
+        onMouseLeave={handleDragEnd}
+        title={navHidden ? "Show Menu" : "Hide Menu"}
+      >
+        {navHidden ? (
+          <>
+            <FaChevronDown style={{ marginRight: "8px" }} />
+            <span className="nav-toggle-text">Show Menu</span>
+          </>
+        ) : (
+          <>
+            <FaChevronUp style={{ marginRight: "8px" }} />
+            <span className="nav-toggle-text">Hide Menu</span>
+          </>
+        )}
+      </button>
     </nav>
   );
 };
