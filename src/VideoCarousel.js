@@ -1,12 +1,28 @@
 import React, { useState, useRef } from "react";
 
 function VideoCarousel() {
+  const videos = [
+    `${process.env.PUBLIC_URL}/video/AshVideo.mp4`,
+    `${process.env.PUBLIC_URL}/video/FFBlazeVideo.mp4`,
+    `${process.env.PUBLIC_URL}/video/Project IOTA.mp4`,
+  ];
+
+  /*
+Failed in mobile after hosting
+
 const videos = [
   `${process.env.PUBLIC_URL}/video/AshVideo.mp4`,
-  `${process.env.PUBLIC_URL}/video/FFBlazeVideo.mov`,
+  `${process.env.PUBLIC_URL}/video/FFBlazeVideo.mp4`,
   `${process.env.PUBLIC_URL}/video/Project IOTA.mp4`,
+
+  const videos = [
+  "https://mingwzhang.github.io/portfolio/video/AshVideo.mp4",
+  "https://mingwzhang.github.io/portfolio/video/FFBlazeVideo.mp4",
+  "https://mingwzhang.github.io/portfolio/video/Project%20IOTA.mp4",
+];
 ];
 
+*/
   const containerWidth = 640; // overall carousel container width
   const slideWidth = 512; // actual video width (smaller than container)
   const gap = 20; // gap between slides
@@ -159,27 +175,40 @@ const videos = [
             <video
               src={video}
               controls
+              playsInline
+              autoPlay={false} // Prevents autoplay, so poster loads
+              preload="metadata" // Ensures Safari loads enough metadata for the poster
               width={slideWidth}
               height="480"
-              style={{ display: "block" }}
+              style={{ display: "block", backgroundColor: "#000" }} // Black background fallback
+              poster={`${process.env.PUBLIC_URL}/video/${video
+                .split("/")
+                .pop()
+                .replace(".mp4", ".jpg")}`}
               onClick={handleVideoClick}
               onLoadedMetadata={(e) => {
-                e.target.volume = 0.5;
+                e.target.volume = 0.25;
               }}
             />
           </div>
         ))}
       </div>
       <div className="prev-button-wrapper">
-  <button onClick={goToPrevious} className="m-2 pixel-text pixel-btn-3d prev-button">
-    ←
-  </button>
-</div>
-<div className="next-button-wrapper">
-  <button onClick={goToNext} className="m-2 pixel-text pixel-btn-3d next-button">
-    →
-  </button>
-</div>
+        <button
+          onClick={goToPrevious}
+          className="m-2 pixel-text pixel-btn-3d prev-button"
+        >
+          ←
+        </button>
+      </div>
+      <div className="next-button-wrapper">
+        <button
+          onClick={goToNext}
+          className="m-2 pixel-text pixel-btn-3d next-button"
+        >
+          →
+        </button>
+      </div>
     </div>
   );
 }

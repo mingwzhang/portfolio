@@ -153,32 +153,32 @@ function App() {
       */}
         {/* About Me Section (placed directly here) */}
         <section id="about" className="container" style={{ margin: "40px 0" }}>
-          <h2 className="mt-1 text-center pixel-text pixel-bold-title">
-            <span className="emoji-large">👤</span> About Me
-          </h2>
-          <p className="pixel-text">
-            <Typewriter
-              options={{
-                autoStart: true,
-                loop: false,
-                delay: 2,
-                deleteSpeed: Infinity,
-              }}
-              onInit={(typewriter) => {
-                typewriter
-                  .typeString(
-                    "I'm a dedicated software and game developer with a passion for creating immersive digital experiences. My background in full-stack development and game design has led me to work with technologies like Java, Python, HTML, CSS, and game engines such as Unity and Unreal Engine. Whether I'm building interactive web applications or designing VR games, I enjoy turning complex challenges into simple, effective solutions."
-                  )
-                  .pauseFor(200) // Pause for 2/10 seconds before continuing
-                  .typeString("<br/><br/>") // New paragraph
-                  .typeString(
-                    "Currently, I am advancing my skills through graduate studies at Queens College. I combine creative vision with technical know-how on every project I take on. I value teamwork and continuous learning, and I'm always excited to try new ideas that improve interactive design. Feel free to explore my work and get in touch to share ideas or opportunities. ⬇"
-                  )
-                  .start();
-              }}
-            />
-          </p>
-        </section>
+  <h2 className="mt-1 text-center pixel-text pixel-bold-title">
+    <span className="emoji-large">👤</span> About Me
+  </h2>
+  <p className="pixel-text">
+    <Typewriter
+      options={{
+        autoStart: true,
+        loop: false,
+        delay: window.innerWidth <= 768 ? 1 : 5, // Faster typing on mobile
+        deleteSpeed: Infinity,
+      }}
+      onInit={(typewriter) => {
+        typewriter
+          .typeString(
+            "I'm a dedicated software and game developer with a passion for creating immersive digital experiences. My background in full-stack development and game design has led me to work with technologies like Java, Python, HTML, CSS, and game engines such as Unity and Unreal Engine. Whether I'm building interactive web applications or designing VR games, I enjoy turning complex challenges into simple, effective solutions."
+          )
+          .pauseFor(window.innerWidth <= 768 ? 2 : 20) // Reduce pause time for mobile
+          .typeString("<br/><br/>") // New paragraph
+          .typeString(
+            "Currently, I am advancing my skills through graduate studies at Queens College. I combine creative vision with technical know-how on every project I take on. I value teamwork and continuous learning, and I'm always excited to try new ideas that improve interactive design. Feel free to explore my work and get in touch to share ideas or opportunities. ⬇"
+          )
+          .start();
+      }}
+    />
+  </p>
+</section>
 
         {/* Skills and Education Section */}
         <div id="skills-education" className="container w-75 mt-3">

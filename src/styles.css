@@ -474,17 +474,26 @@ h1 {
 /* Transparent and Glass Effect for Skills & Education */
 .container,
 .card {
-  background: rgba(
-    255,
-    255,
-    255,
-    0.062
-  ) !important; /* Light transparent white */
-  backdrop-filter: blur(10px) !important; /* Frosted glass effect */
-  border: 2px solid rgba(255, 255, 255, 0.3) !important; /* Subtle white border */
-  border-radius: 10px !important; /* Smooth rounded edges */
+  /* A subtle “glass” look using semi-opaque white */
+  background-color: rgba(255, 255, 255, 0.021) !important; /* Adjust alpha as needed */
+
+  /* Optional gradient for extra texture */
+  background-image: radial-gradient(
+    circle at 50% 50%,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.15)
+  ) !important;
+  background-blend-mode: lighten;
+
+  /* Keep your existing borders, rounding, etc. */
+  border: 2px solid rgba(0, 225, 255, 0.3) !important;
+  border-radius: 10px !important;
   padding: 1rem !important;
+
+  /* If you want minimal shadow or none at all */
+  box-shadow: none !important;
 }
+
 
 /* Improve readability of text inside transparent sections */
 .card h6,
@@ -898,6 +907,10 @@ body {
       top: -10px; /* Adjust as needed */
       margin-right: 20px; /* Add spacing between emoji and text */
       display: inline-block; /* Ensure the emoji behaves properly */
+    }
+
+    #skills-education {
+      margin-bottom: 3rem !important; /* Adjust the 3rem as desired */
     }
 }
 

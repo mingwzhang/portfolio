@@ -30,6 +30,7 @@
 
 /* Ensure the PDF container fits perfectly inside the modal */
 .pdf-container {
+  position: relative; /* Ensures buttons stay inside */
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -49,14 +50,14 @@
 /* Ensure buttons stay at the top-right */
 .pdf-header {
   position: absolute;
-  top: 10px; /* Attach to the top */
-  right: 10px; /* Attach to the right */
+  top: 75px; /* Keep it at the top */
+  left: 50px; /* Move to the left */
   display: flex;
   gap: 10px;
   align-items: center;
   background: rgba(255, 255, 255, 0.9); /* Slight transparency */
-  padding: 5px 10px;
-  border-radius: 8px;
+  padding: 5px 5px;
+  border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   z-index: 9999; /* Ensures it stays above everything */
 }
@@ -67,8 +68,8 @@
   color: white;
   font-size: 1.2rem;
   font-weight: bold;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -111,17 +112,18 @@
     position: relative;
   }
 
-  /* Ensure buttons are fixed to the top-right corner of the screen */
   .pdf-header {
-    top: -40px; /* Adjust for smaller screens */
-    gap: 5px;
+    top: 0px; /* Keep it at the top */
+    left: 0px; /* Move to the left */
+    padding: 3px 3px;
   }
 
   .download-button,
   .close-button {
-    width: 35px;
-    height: 35px;
-    font-size: 1rem;
+    width: 20px !important;
+    height: 20px !important;
+    font-size: 1rem !important
+    ;
   }
 
   /* Ensure the PDF container fills the available space */

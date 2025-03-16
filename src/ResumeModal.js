@@ -18,9 +18,9 @@ const ResumeModal = ({ onClose }) => {
 <div className="modal-content" onClick={(e) => e.stopPropagation()}>
   {/* Buttons placed outside the resume box but inside modal */}
   <div className="pdf-header">
-    <button className="download-button" onClick={downloadPdf}>⤓</button>
-    <button className="close-button" onClick={onClose}>X</button>
-  </div>
+  <button className="download-button" onClick={downloadPdf}>⤓</button>
+  <button className="close-button" onClick={onClose}>X</button>
+</div>
 
   {/* Resume container */}
   <div className="pdf-container">

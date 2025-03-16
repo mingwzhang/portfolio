@@ -1,8 +1,8 @@
 /* Contact Form Styling */
 .contact-form {
   width: 95%; /* Expands more on larger screens */
-  max-width: 1000px; /* Increases max width for PC */
-  min-width: 800px; /* Ensures it does not shrink too much */
+  max-width: 800px; /* Increases max width for PC */
+  min-width: 700px; /* Ensures it does not shrink too much */
   margin: auto;
   background-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
@@ -19,12 +19,12 @@
 .contact-input,
 .contact-textarea {
   width: 85%;
-  max-width: 800px;
+  max-width: 600px;
   min-width: 600px;
   padding: 1rem;
   border-radius: 5px;
   border: 2px solid rgba(255, 255, 255, 0.5);
-  font-size: 1.2rem;
+  font-size: .9rem;
   background: rgba(0, 0, 0, 0.6);
   color: #ffffff;
   font-family: "Press Start 2P", cursive;
@@ -107,10 +107,16 @@
 
   .contact-input,
   .contact-textarea {
-    width: 90%; /* Ensures inputs take 90% of the form width */
-    max-width: none; /* Removes any fixed width limits */
-    min-width: 250px; /* Prevents inputs from getting too small */
-    font-size: 1rem;
+    width:100%;
+    min-width: 330px;
+    padding: 1rem;
+    border-radius: 5px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    font-size: .8rem;
+    background: rgba(0, 0, 0, 0.6);
+    color: #ffffff;
+    font-family: "Press Start 2P", cursive;
+    text-align: left;
   }
 
   .contact-textarea {
