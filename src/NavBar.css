@@ -59,6 +59,7 @@
 /* -------------------------- */
 /* Name Button */
 .nav-name {
+  color: #ffda8a !important;
   font-size: 1.5rem;
   padding: 0.5rem 1rem;
   min-width: 200px;
@@ -128,6 +129,15 @@
 
 /* Media Query for Mobile Devices */
 @media screen and (max-width: 768px) {
+
+  .nav-toggle-text {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.8rem;  /* Scale down the font size */
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0 #000;  /* Optional: adds a pixel-like effect */
+    color: #ffffff;
+  }
   .nav-container {
     flex-direction: column;
     align-items: center;

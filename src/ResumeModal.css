@@ -1,48 +1,138 @@
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0,0,0,0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2000;
-  }
-  
+.resume-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999; /* ensures it’s on top */
+  background: rgba(0, 0, 0, 0.5); /* semi-transparent backdrop */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Ensure modal scales better on larger screens */
+.modal-content {
+  background: #fff;
+  padding: 40px;
+  border: 1.5vh solid #444; /* Keeps the border proportional */
+  border-radius: 8px; /* Slightly rounded corners for a cleaner look */
+  width: 70vw; /* Reduce width slightly for better proportion */
+  height: 100vh; /* Adjust height for a better display */
+  max-width: 1000px; /* Prevent it from getting too wide */
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Ensure the PDF container fits perfectly inside the modal */
+.pdf-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Adjust the iframe to fit within the modal properly */
+.pdf-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* Ensure buttons stay at the top-right */
+.pdf-header {
+  position: absolute;
+  top: 10px; /* Attach to the top */
+  right: 10px; /* Attach to the right */
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.9); /* Slight transparency */
+  padding: 5px 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  z-index: 9999; /* Ensures it stays above everything */
+}
+.download-button,
+.close-button {
+  background: #007bff; /* Blue for download */
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  border-radius: 5px;
+}
+
+/* Different color for close button */
+.close-button {
+  background: #ff4d4d;
+}
+
+/* Hover effects */
+.download-button:hover {
+  background: #0056b3;
+}
+.close-button:hover {
+  background: #d43f3f;
+}
+
+
+/* PDF container remains inside the modal */
+.pdf-container {
+  width: 100%;
+  height: calc(100% - 5vh);
+  overflow: hidden;
+}
+
+/* Mobile styles: ensure buttons stay on top-right of the screen */
+@media screen and (max-width: 768px) {
   .modal-content {
-    background: #fff;
-    padding: 40px;
-    border-radius: 8px;
-    width: 100%;
-    max-width: 1000px;
+    width: 90vw; /* Make it slightly smaller on mobile */
+    height: 90vh;
+    border: 1.5vh solid #444; /* Slightly thinner border on mobile */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
     position: relative;
   }
-  
+
+  /* Ensure buttons are fixed to the top-right corner of the screen */
+  .pdf-header {
+    top: -40px; /* Adjust for smaller screens */
+    gap: 5px;
+  }
+
+  .download-button,
   .close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: #ff4d4d; /* Bright red background for high contrast */
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+
+  /* Ensure the PDF container fills the available space */
+  .pdf-container {
+    flex: 1;
+    overflow: hidden;
+  }
+
+  .pdf-container iframe {
+    width: 100%;
+    height: 100%;
     border: none;
-    color: white;
-    font-size: 1.5rem;
-    font-weight: bold;
-    border-radius: 50%; /* Makes it circular */
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    transition: transform 0.2s ease;
   }
-  
-  .close-button:hover {
-    transform: scale(1.1); /* Slightly enlarges on hover */
-  }
-  
-  
-  
+}

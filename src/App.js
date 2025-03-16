@@ -12,7 +12,6 @@ import FloatingShapes from "./FloatingShapes"; // Import the new component
 import VideoCarousel from "./VideoCarousel";
 import { Helmet } from "react-helmet";
 
-
 const skills = [
   {
     category: "Programming Languages",
@@ -101,13 +100,14 @@ function App() {
   }, []);
 
   return (
-    
     <div>
       <Helmet>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        />
       </Helmet>
       {/* Fixed side banner */}
-
       <AnimatedBackground />
       <FloatingShapes /> {/* Adds 3D-like floating effect */}
       {/* Render the NavBar at the top */}
@@ -195,18 +195,17 @@ function App() {
                     <div className="card m-1 p-2 text-center">
                       <h6 className="pixel-text">{skill.category}</h6>
                       <div
-                        className="d-flex justify-content-center flex-nowrap"
+                        className="d-flex justify-content-center flex-wrap"
                         style={{ width: "100%" }}
                       >
                         {skill.icons.map((icon, idx) => (
-                          <div key={idx} className="icon-wrapper">
+                          <div key={idx} className="icon-wrapper m-1 hover-scale">
                             {icon.src ? (
                               <img
                                 src={icon.src}
-                                width="40"
-                                height="40"
+                                width="45"
+                                height="45"
                                 alt={icon.name}
-                                className="m-1 hover-scale"
                               />
                             ) : (
                               <i
@@ -232,16 +231,11 @@ function App() {
               {/* Education Card for Queens College */}
               <div className="card m-1 p-2 text-center">
                 <div className="d-flex flex-column align-items-center">
-                  <img
-                    src={process.env.PUBLIC_URL + "/img/Queens_College_logo.png"}
-                    alt="Queens College Logo"
-                    className="icon-wrapper-education"
-                    style={{
-                      width: "300px",
-                      height: "auto",
-                      marginBottom: "2rem",
-                    }}
-                  />
+                <img
+  src={process.env.PUBLIC_URL + "/img/Queens_College_logo.png"}
+  alt="Queens College Logo"
+  className="icon-wrapper-education queens-college-logo"
+/>
 
                   <p className="pixel-text" style={{ margin: 0 }}>
                     Master of Arts:
@@ -260,17 +254,11 @@ function App() {
               {/* Education Card for Stony Brook University */}
               <div className="card m-1 p-2 text-center">
                 <div className="d-flex flex-column align-items-center">
-                  <img
-                    src={process.env.PUBLIC_URL + "/img/Stony_Brook_U_logo.png"}
-                    alt="Stony Brook University Logo"
-                    className="icon-wrapper-education"
-                    style={{
-                      width: "400px",
-                      height: "auto",
-                      marginBottom: "2rem",
-                      color: "red"
-                    }}
-                  />
+                <img
+  src={process.env.PUBLIC_URL + "/img/Stony_Brook_U_logo.png"}
+  alt="Stony Brook University Logo"
+  className="icon-wrapper-education stony-brook-logo"
+/>
 
                   <p className="pixel-text" style={{ margin: 0 }}>
                     Bachelor of Science:
@@ -369,7 +357,5 @@ function App() {
     </div>
   );
 }
-
-
 
 export default App;
