@@ -111,8 +111,6 @@ const videos = [
       className="video-carousel"
       style={{
         position: "relative",
-        width: `${containerWidth}px`,
-        height: "480px",
         margin: "auto",
         overflow: "hidden",
         cursor: dragging ? "grabbing" : "grab",
@@ -172,30 +170,16 @@ const videos = [
           </div>
         ))}
       </div>
-      <button
-        onClick={goToPrevious}
-        className="m-2 pixel-text pixel-btn-3d prev-button"
-        style={{
-          position: "absolute",
-          left: "10px",
-          top: "50%",
-          zIndex: 1,
-        }}
-      >
-        ←
-      </button>
-      <button
-        onClick={goToNext}
-        className="m-2 pixel-text pixel-btn-3d next-button ,"
-        style={{
-          position: "absolute",
-          right: "10px",
-          top: "50%",
-          zIndex: 1,
-        }}
-      >
-        →
-      </button>
+      <div className="prev-button-wrapper">
+  <button onClick={goToPrevious} className="m-2 pixel-text pixel-btn-3d prev-button">
+    ←
+  </button>
+</div>
+<div className="next-button-wrapper">
+  <button onClick={goToNext} className="m-2 pixel-text pixel-btn-3d next-button">
+    →
+  </button>
+</div>
     </div>
   );
 }

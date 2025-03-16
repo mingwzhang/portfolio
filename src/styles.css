@@ -241,6 +241,33 @@ h1 {
   margin: 0.1rem; /* Optional: spacing between icons */
   filter: drop-shadow(0px 0px 3px #00e6b8) !important; /* Miku-style glow */
 }
+.icon-wrapper {
+  display: flex;               /* Place icon + label in a column or row */
+  flex-direction: column;      /* Stack icon on top, label below (optional) */
+  align-items: center;         /* Center horizontally */
+  justify-content: center;     /* Center vertically */
+  width: 60px;                 /* Enough space for 40x40 icon + label */
+  height: 60px;                /* Adjust as needed */
+  position: relative;          /* For label positioning if needed */
+}
+
+/* Ensure both <img> and <i> share the same 40x40 dimensions */
+.icon-wrapper img,
+.icon-wrapper i {
+  width: 40px;
+  height: 40px;
+  display: block;
+  object-fit: contain;         /* Keeps aspect ratio for images */
+}
+
+/* Increase <i> font-size so the icon roughly fits the 40x40 box */
+.icon-wrapper i {
+  font-size: 40px; 
+  line-height: 40px;
+  text-align: center;          /* Center the icon glyph within its box */
+}
+
+
  
 /* Add glow to college logos */
 .icon-wrapper-education {
@@ -601,11 +628,30 @@ button[type="submit"]:hover {
 
 /* Video Carousel: maintain a 4:3 aspect ratio */
 #projects .video-carousel {
-  width: 100% !important; /* Allow it to scale with its container */
-  max-width: 640px; /* Do not exceed original maximum */
-  height: auto !important; /* Let the browser calculate height */
-  aspect-ratio: 4 / 3; /* Modern browsers: enforces a 4:3 ratio */
-  margin: 0 auto; /* Center within the container */
+  width: 100%;
+  max-width: 640px;      /* Don’t exceed 640px on large screens */
+  aspect-ratio: 4 / 3;   /* 4:3 ratio automatically sets height */
+  margin: 0 auto;
+  position: relative;    /* So arrow wrappers can absolutely position within */
+  overflow: hidden;
+  
+}
+
+.prev-button-wrapper,
+.next-button-wrapper {
+  position: absolute;
+  top: 50%;
+  transform: translateY(0%);
+  z-index: 1;
+}
+
+/* Place them to the left or right */
+.prev-button-wrapper {
+  left: 10px; /* or wherever you like */
+}
+
+.next-button-wrapper {
+  right: 10px; /* or wherever you like */
 }
 
 /* Mini Game Container: maintain a square ratio */
@@ -775,13 +821,6 @@ body {
     width: 100% !important;
   }
 
-  /* Video Carousel: full container width with 4:3 aspect ratio */
-  #projects .video-carousel {
-    width: 100% !important;
-    height: auto !important;
-    margin: 1rem 0 !important;
-  }
-
   /* Make the video element fill its container */
   #projects .video-carousel video {
     width: 90% !important; /* Reduce video size (adjust as needed) */
@@ -792,12 +831,16 @@ body {
     display: block;
     position: relative;
     left: 25%; /* Move starting point to center */
-    transform: translateX(-50%); /* Shift it back to truly center */
+    transform: translateX(-50%) translateY(50px) !important;
+    margin: 1rem 0 !important;
+  
   }
-  /* Left and Right Navigation Buttons */
-  #projects .video-carousel .prev-button,
-  #projects .video-carousel .next-button {
-    transform: translateY(-200%);
+  .prev-button-wrapper,
+  .next-button-wrapper {
+    position: absolute;
+    top: 45%;
+    transform: translateY(0%) !important;
+    z-index: 1;
   }
 
   /* Mini Game Container: full container width, square ratio */

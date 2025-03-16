@@ -110,31 +110,29 @@ const NavBar = ({ onResumeClick }) => {
         </div>
       </div>
 
-      {/* Show Toggle Button on Mobile */}
-      {isMobile && (
-        <button
-          className={`nav-toggle-btn ${navHidden ? "nav-hidden" : ""}`}
-          onClick={() => setNavHidden(!navHidden)}
-          onTouchStart={handleTogglePress}
-          onTouchEnd={handleDragEnd}
-          onMouseDown={handleTogglePress}
-          onMouseUp={handleDragEnd}
-          onMouseLeave={handleDragEnd}
-          title={navHidden ? "Show Menu" : "Hide Menu"}
-        >
-          {navHidden ? (
-            <>
-              <FaChevronDown style={{ marginRight: "8px" }} />
-              <span className="nav-toggle-text">Show Menu</span>
-            </>
-          ) : (
-            <>
-              <FaChevronUp style={{ marginRight: "8px" }} />
-              <span className="nav-toggle-text">Hide Menu</span>
-            </>
-          )}
-        </button>
-      )}
+{/* Toggle Button (Always Visible Now) */}
+<button
+  className={`nav-toggle-btn ${navHidden ? "nav-hidden" : ""}`}
+  onClick={() => setNavHidden(!navHidden)}
+  onTouchStart={handleTogglePress}
+  onTouchEnd={handleDragEnd}
+  onMouseDown={handleTogglePress}
+  onMouseUp={handleDragEnd}
+  onMouseLeave={handleDragEnd}
+  title={navHidden ? "Show Menu" : "Hide Menu"}
+>
+  {navHidden ? (
+    <>
+      <FaChevronDown style={{ marginRight: "8px" }} />
+      <span className="nav-toggle-text">Show Menu</span>
+    </>
+  ) : (
+    <>
+      <FaChevronUp style={{ marginRight: "8px" }} />
+      <span className="nav-toggle-text">Hide Menu</span>
+    </>
+  )}
+</button>
     </nav>
   );
 };

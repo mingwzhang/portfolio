@@ -126,18 +126,58 @@
   transform: scale(1);
   box-shadow: 0 0 0 #888;
 }
+.nav-toggle-text {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.8rem;  /* Scale down the font size */
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 #000;  /* Optional: adds a pixel-like effect */
+  color: #ffffff;
+}
+.nav-container {
+  position: relative; /* establish a positioning context */
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 3rem; /* make room for the toggle button */
+}
+
+.nav-toggle-btn {
+  position: absolute;
+  left: 0;
+  bottom: 0; /* attach to the bottom of .nav-container */
+  width: 100%; /* extend full width of the container */
+  height: 3rem;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  font-size: 1.5rem;
+  color: #ffffff;
+  cursor: pointer;
+  z-index: 1100; /* ensure it appears above other elements */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+/* When the nav is hidden (show state), adjust the top position */
+.nav-bar.hidden {
+  transform: translateY(-75%);
+}
+
+.nav-bar {
+  transition: transform 0.3s ease-in-out;
+}
+
+.nav-toggle-container {
+  position: fixed;
+  top: 0.5rem;
+  right: 1rem;
+  z-index: 1100;
+}
 
 /* Media Query for Mobile Devices */
 @media screen and (max-width: 768px) {
-
-  .nav-toggle-text {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 0.8rem;  /* Scale down the font size */
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    text-shadow: 2px 2px 0 #000;  /* Optional: adds a pixel-like effect */
-    color: #ffffff;
-  }
   .nav-container {
     flex-direction: column;
     align-items: center;
@@ -189,52 +229,8 @@
   .nav-linkedin {
     margin-left: 0;
   }
-
-  .nav-bar {
-    transition: transform 0.3s ease-in-out;
-  }
-  /* When hidden, slide the nav bar up out of view */
   .nav-bar.hidden {
-    transform: translateY(-100%);
-  }
-  .nav-toggle-container {
-    position: fixed;
-    top: 0.5rem;
-    right: 1rem;
-    z-index: 1100;
-  }
-
-  /* Hide the nav toggle button on desktop */
-
-  .nav-container {
-    position: relative; /* establish a positioning context */
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding-bottom: 3rem; /* make room for the toggle button */
-  }
-
-  .nav-toggle-btn {
-    position: absolute;
-    left: 0;
-    bottom: 0; /* attach to the bottom of .nav-container */
-    width: 100%; /* extend full width of the container */
-    height: 3rem;
-    background: rgba(0, 0, 0, 0.5);
-    border: none;
-    font-size: 1.5rem;
-    color: #ffffff;
-    cursor: pointer;
-    z-index: 1100; /* ensure it appears above other elements */
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
-  /* When the nav is hidden (show state), adjust the top position */
-  .nav-bar.hidden {
-    transform: translateY(-88%);
+    transform: translateY(-88%) !important;
   }
   
 }

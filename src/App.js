@@ -20,11 +20,11 @@ const skills = [
         name: "Python",
         src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg",
       },
-      { name: "C#", class: "devicon-csharp-plain colored" },
       {
         name: "Java",
         src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg",
       },
+      { name: "C#", class: "devicon-csharp-plain colored" },
       { name: "C++", class: "devicon-cplusplus-plain colored" },
       { name: "HTML5", class: "devicon-html5-plain colored" },
       { name: "CSS3", class: "devicon-css3-plain colored" },
@@ -87,7 +87,6 @@ const skills = [
       { name: "MySQL", class: "devicon-mysql-plain colored" },
       { name: "Oracle", class: "devicon-oracle-original colored" },
       { name: "SQLite", class: "devicon-sqlite-plain colored" },
-      { name: "MS Access", class: "devicon-msaccess-plain colored" },
     ],
   },
 ];
@@ -116,7 +115,7 @@ function App() {
       <div
         id="home"
         className="d-flex flex-column align-items-center text-center"
-        style={{ paddingTop: "80px" }}
+        style={{ paddingTop: "150px" }}
       >
         {/* Profile Picture */}
         <img
@@ -199,17 +198,15 @@ function App() {
                         style={{ width: "100%" }}
                       >
                         {skill.icons.map((icon, idx) => (
-                          <div key={idx} className="icon-wrapper m-1 hover-scale">
+                          <div
+                            key={idx}
+                            className="icon-wrapper m-1 hover-scale"
+                          >
                             {icon.src ? (
-                              <img
-                                src={icon.src}
-                                width="45"
-                                height="45"
-                                alt={icon.name}
-                              />
+                              <img src={icon.src} alt={icon.name} />
                             ) : (
                               <i
-                                className={`${icon.class} display-6 m-1 hover-scale`}
+                                className={`${icon.class}`}
                                 title={icon.name}
                               ></i>
                             )}
@@ -231,11 +228,13 @@ function App() {
               {/* Education Card for Queens College */}
               <div className="card m-1 p-2 text-center">
                 <div className="d-flex flex-column align-items-center">
-                <img
-  src={process.env.PUBLIC_URL + "/img/Queens_College_logo.png"}
-  alt="Queens College Logo"
-  className="icon-wrapper-education queens-college-logo"
-/>
+                  <img
+                    src={
+                      process.env.PUBLIC_URL + "/img/Queens_College_logo.png"
+                    }
+                    alt="Queens College Logo"
+                    className="icon-wrapper-education queens-college-logo"
+                  />
 
                   <p className="pixel-text" style={{ margin: 0 }}>
                     Master of Arts:
@@ -254,11 +253,11 @@ function App() {
               {/* Education Card for Stony Brook University */}
               <div className="card m-1 p-2 text-center">
                 <div className="d-flex flex-column align-items-center">
-                <img
-  src={process.env.PUBLIC_URL + "/img/Stony_Brook_U_logo.png"}
-  alt="Stony Brook University Logo"
-  className="icon-wrapper-education stony-brook-logo"
-/>
+                  <img
+                    src={process.env.PUBLIC_URL + "/img/Stony_Brook_U_logo.png"}
+                    alt="Stony Brook University Logo"
+                    className="icon-wrapper-education stony-brook-logo"
+                  />
 
                   <p className="pixel-text" style={{ margin: 0 }}>
                     Bachelor of Science:
@@ -316,7 +315,7 @@ function App() {
                 className="d-flex flex-column justify-content-between"
                 style={{ marginLeft: "1rem" }}
               >
-                <div className="games-section">
+                <div className="games-section shifted-content">
                   <h5 className="pixel-text">Games (Low Budget)</h5>
                   <VideoCarousel />
                 </div>
