@@ -8,29 +8,44 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const RootComponent = () => {
   const [loading, setLoading] = useState(true);
+  const observerErrorHandler = (error) => {
+    if (error.message.includes("ResizeObserver loop")) {
+      console.warn("ResizeObserver loop error suppressed");
+      return;
+    }
+    console.error(error);
+  };
 
-  // Prevent consecutive single-finger tap (double-tap) zoom behavior
+  window.addEventListener("error", observerErrorHandler);
+  window.addEventListener("unhandledrejection", (event) =>
+    observerErrorHandler(event.reason)
+  );
+
+
   useEffect(() => {
+    // Prevent pinch-to-zoom on mobile
+    const handleTouchMove = (event) => {
+      if (event.touches.length > 1) {
+        event.preventDefault(); // Prevent pinch gesture
+      }
+    };
+
+    // Prevent double-tap zoom (optional)
     let lastTouchEnd = 0;
     const handleTouchEnd = (event) => {
       const now = Date.now();
-      // If two touchend events occur within 300ms, prevent zoom
       if (now - lastTouchEnd <= 300) {
         event.preventDefault();
-        // Simulate a click so the particle explosion effect still fires
-        const simulatedClick = new MouseEvent("click", {
-          view: window,
-          bubbles: true,
-          cancelable: true,
-        });
-        event.target.dispatchEvent(simulatedClick);
       }
       lastTouchEnd = now;
     };
 
-    // Attach the listener with passive: false so preventDefault works
+    // Attach listeners
+    document.addEventListener("touchmove", handleTouchMove, { passive: false });
     document.addEventListener("touchend", handleTouchEnd, { passive: false });
+
     return () => {
+      document.removeEventListener("touchmove", handleTouchMove);
       document.removeEventListener("touchend", handleTouchEnd);
     };
   }, []);

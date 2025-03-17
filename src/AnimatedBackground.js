@@ -24,7 +24,7 @@ const AnimatedBackground = () => {
 
     // Adjust star count based on screen width (fewer stars on mobile)
     const isMobile = window.innerWidth < 768;
-    const starCount = isMobile ? 75 : 150;
+    const starCount = isMobile ? 100 : 150;
     const stars = Array.from({ length: starCount }).map(() => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,

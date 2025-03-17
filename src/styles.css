@@ -428,7 +428,7 @@ h1 {
 }
 
 .animated-background {
-  position: fixed;
+  position: fixed;           /* stays fixed relative to the viewport */
   top: 0;
   left: 0;
   width: 100vw;
@@ -436,8 +436,10 @@ h1 {
   z-index: -1;
   pointer-events: none;
   background: linear-gradient(120deg, #2ecacf, #00a2ff, #ffffff);
+  background-size: cover;    /* makes sure it fills the viewport */
   animation: backgroundMove 10s ease-in-out infinite alternate;
 }
+
 
 /* Animate the background to shift colors subtly */
 @keyframes backgroundMove {
@@ -703,16 +705,19 @@ textarea:-webkit-autofill {
   transition: background-color 5000s ease-in-out 0s;
 }
 
-html,
-body {
-  margin: 0;
-  padding: 0;
+html, body {
   width: 100%;
   height: 100%;
-  overflow-x: hidden;
+  overflow-x: hidden; /* Prevents horizontal scroll */
+  overflow-y: auto; /* Ensures vertical scrolling works */
+  touch-action: pan-y; /* Allows vertical scrolling but prevents pinch zoom */
 }
 
-
+* {
+  -webkit-user-drag: none; /* Prevents dragging elements */
+  touch-action: manipulation; /* Prevents pinch zooming but allows normal scrolling */
+}
+ 
 
 @media (max-width: 768px) {
   /* Home section main heading */
@@ -756,9 +761,12 @@ body {
 
   /* About Me Text */
   #about p {
-    font-size: 0.9rem;
-    line-height: 1.4;
-    margin: 0 5px;
+    font-size: 0.6rem;
+    line-height: 1.5;
+    text-align: left; /* Keeps text natural */
+    word-break: break-word; /* Prevents overflow */ 
+    max-width: 100%; /* Prevents text from stretching too wide */
+
   }
 
   /* Ensure skills icons and education logos don't exceed their container */

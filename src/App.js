@@ -1,12 +1,11 @@
 // App.js
-import React, { useState, useEffect } from "react";
+import React, {useEffect } from "react";
 import "devicon/devicon.min.css";
 import Typewriter from "typewriter-effect";
 import ParticleExplosion from "./ParticleExplosion";
 import MiniGameBox from "./MiniGameBox";
 import ContactForm from "./ContactForm";
 import NavBar from "./NavBar"; // import the nav component
-import ResumeModal from "./ResumeModal"; // New component for the modal
 import AnimatedBackground from "./AnimatedBackground";
 import FloatingShapes from "./FloatingShapes"; // Import the new component
 import VideoCarousel from "./VideoCarousel";
@@ -92,7 +91,6 @@ const skills = [
 ];
 
 function App() {
-  const [showResumeModal, setShowResumeModal] = useState(false);
 
   useEffect(() => {
     document.addEventListener("touchstart", () => {}, false);
@@ -100,17 +98,24 @@ function App() {
 
   return (
     <div>
-      <Helmet>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-        />
-      </Helmet>
+<Helmet>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+  />
+</Helmet>
       {/* Fixed side banner */}
       <AnimatedBackground />
       <FloatingShapes /> {/* Adds 3D-like floating effect */}
       {/* Render the NavBar at the top */}
-      <NavBar onResumeClick={() => setShowResumeModal(true)} />
+      <NavBar
+  onResumeClick={() =>
+    window.open(
+      "https://drive.google.com/file/d/1l4ogfowT21Bnl6IRi_3qX6Ht-0JtPB7O/preview",
+      "_blank"
+    )
+  }
+/>
       {/* Add padding at the top so the fixed NavBar doesn't cover the content */}
       <div
         id="home"
@@ -134,51 +139,34 @@ function App() {
         <p className="pixel-text pixel-small fade-in-message">
           🖱️ Feel free to click around!
         </p>
-
-        {/* Short Bio  
-        <p className="mt-3 w-50 pixel-text mx-auto">
-          <Typewriter
-            options={{
-              strings: [
-                "Dedicated developer with expertise in full-stack development, game design, and front-end technologies.",
-                "Passionate about creating interactive applications and immersive experiences.",
-              ],
-              autoStart: true,
-              loop: false,
-              delay: 15,
-              deleteSpeed: Infinity,
-            }}
-          />
-        </p>
-      */}
         {/* About Me Section (placed directly here) */}
         <section id="about" className="container" style={{ margin: "40px 0" }}>
-  <h2 className="mt-1 text-center pixel-text pixel-bold-title">
-    <span className="emoji-large">👤</span> About Me
-  </h2>
-  <p className="pixel-text">
-    <Typewriter
-      options={{
-        autoStart: true,
-        loop: false,
-        delay: window.innerWidth <= 768 ? 1 : 5, // Faster typing on mobile
-        deleteSpeed: Infinity,
-      }}
-      onInit={(typewriter) => {
-        typewriter
-          .typeString(
-            "I'm a dedicated software and game developer with a passion for creating immersive digital experiences. My background in full-stack development and game design has led me to work with technologies like Java, Python, HTML, CSS, and game engines such as Unity and Unreal Engine. Whether I'm building interactive web applications or designing VR games, I enjoy turning complex challenges into simple, effective solutions."
-          )
-          .pauseFor(window.innerWidth <= 768 ? 2 : 20) // Reduce pause time for mobile
-          .typeString("<br/><br/>") // New paragraph
-          .typeString(
-            "Currently, I am advancing my skills through graduate studies at Queens College. I combine creative vision with technical know-how on every project I take on. I value teamwork and continuous learning, and I'm always excited to try new ideas that improve interactive design. Feel free to explore my work and get in touch to share ideas or opportunities. ⬇"
-          )
-          .start();
-      }}
-    />
-  </p>
-</section>
+          <h2 className="mt-1 text-center pixel-text pixel-bold-title">
+            <span className="emoji-large">👤</span> About Me
+          </h2>
+          <p className="pixel-text">
+            <Typewriter
+              options={{
+                autoStart: true,
+                loop: false,
+                delay: window.innerWidth <= 768 ? 0 : 0.5, // 0 for instant typing on mobile
+                deleteSpeed: Infinity,
+              }}
+              onInit={(typewriter) => {
+                typewriter
+                  .typeString(
+                    "I'm a dedicated software and game developer with a passion for creating immersive digital experiences. My background in full-stack development and game design has led me to work with technologies like Java, Python, HTML, CSS, and game engines such as Unity and Unreal Engine. Whether I'm building interactive web applications or designing VR games, I enjoy turning complex challenges into simple, effective solutions."
+                  )
+                  .pauseFor(window.innerWidth <= 768 ? 0 : 1) // Reduce pause time for mobile
+                  .typeString("<br/><br/>") // New paragraph
+                  .typeString(
+                    "Currently, I am advancing my skills through graduate studies at Queens College. I combine creative vision with technical know-how on every project I take on. I value teamwork and continuous learning, and I'm always excited to try new ideas that improve interactive design. Feel free to explore my work and get in touch to share ideas or opportunities. ⬇"
+                  )
+                  .start();
+              }}
+            />
+          </p>
+        </section>
 
         {/* Skills and Education Section */}
         <div id="skills-education" className="container w-75 mt-3">
@@ -343,9 +331,7 @@ function App() {
         {/* The ResumeModal is conditionally rendered based on state.
             It can be placed anywhere in the return statement,
             but placing it here ensures it overlays your page content. */}
-        {showResumeModal && (
-          <ResumeModal onClose={() => setShowResumeModal(false)} />
-        )}
+
 
         {/* Contact Me Section */}
         <div id="contact" className="mt-5 bottom-spacing pixel-text">
