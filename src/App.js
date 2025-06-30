@@ -111,7 +111,7 @@ function App() {
       <NavBar
   onResumeClick={() =>
     window.open(
-      "https://drive.google.com/file/d/1l4ogfowT21Bnl6IRi_3qX6Ht-0JtPB7O/preview",
+      "https://drive.google.com/file/d/1WnNJx3P6rJXduuo34JcGIqvAVfGZPixU/view?usp=sharing",
       "_blank"
     )
   }
@@ -234,7 +234,7 @@ function App() {
                     Expected graduation:
                   </p>
                   <p className="pixel-text" style={{ margin: 0 }}>
-                    May 2025
+                    May 2026
                   </p>
                 </div>
               </div>
