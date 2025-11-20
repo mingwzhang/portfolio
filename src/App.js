@@ -1,5 +1,5 @@
 // App.js
-import React, {useEffect } from "react";
+import React, { useEffect } from "react";
 import "devicon/devicon.min.css";
 import Typewriter from "typewriter-effect";
 import ParticleExplosion from "./ParticleExplosion";
@@ -9,6 +9,7 @@ import NavBar from "./NavBar"; // import the nav component
 import AnimatedBackground from "./AnimatedBackground";
 import FloatingShapes from "./FloatingShapes"; // Import the new component
 import VideoCarousel from "./VideoCarousel";
+import AssetGallery from "./AssetGallery";
 import { Helmet } from "react-helmet";
 
 const skills = [
@@ -307,21 +308,11 @@ function App() {
                   <h5 className="pixel-text">Games (Low Budget)</h5>
                   <VideoCarousel />
                 </div>
-                <div className="asset-section mt-3 d-flex flex-column align-items-center">
-                  <h5 className="pixel-text">Asset Display</h5>
-                  <div
-                    className="another-placeholder mt-3"
-                    style={{
-                      width: "400px",
-                      height: "400px",
-                      border: "2px solid #ccc",
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    Another Placeholder
-                  </div>
+                {/* Asset Links */}
+                <div className="asset-links mt-3">
+                  <ul className="asset-link-list">
+<AssetGallery />
+                  </ul>
                 </div>
               </div>
             </div>
@@ -338,7 +329,12 @@ function App() {
           <ContactForm />
         </div>
       </div>
+
+      {/* Particle explosion background */}
       <ParticleExplosion />
+
+      {/* Asset Gallery Modal */}
+<AssetGallery />
     </div>
   );
 }

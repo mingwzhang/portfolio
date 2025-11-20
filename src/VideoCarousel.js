@@ -2,9 +2,10 @@ import React, { useState, useRef } from "react";
 
 function VideoCarousel() {
   const videos = [
+    `${process.env.PUBLIC_URL}/video/!ERRORi.mp4`,
     `${process.env.PUBLIC_URL}/video/AshVideo.mp4`,
     `${process.env.PUBLIC_URL}/video/FFBlazeVideo.mp4`,
-    `${process.env.PUBLIC_URL}/video/Project IOTA.mp4`,
+    `${process.env.PUBLIC_URL}/video/ProjectIOTA.mp4`,
   ];
 
   /*

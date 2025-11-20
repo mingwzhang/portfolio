@@ -1,0 +1,83 @@
+.asset-link-list {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.asset-link-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.asset-link-list li {
+  font-family: "VT323", monospace;
+  font-size: 22px;
+  cursor: pointer;
+  color: #88f7ff;
+  margin: 6px 0;
+  transition: 0.2s;
+}
+
+.asset-link-list li:hover {
+  color: white;
+  text-shadow: 0 0 10px cyan;
+}
+
+/* Modal Overlay */
+.asset-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(3px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* Modal Window */
+.asset-modal {
+  background: #0b0b0b;
+  padding: 20px;
+  border: 2px solid #44ffff;
+  width: 80%;
+  max-height: 80%;
+  overflow-y: auto;
+  border-radius: 8px;
+  box-shadow: 0 0 20px cyan;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header button {
+  font-size: 20px;
+  cursor: pointer;
+  background: #222;
+  color: cyan;
+  border: 1px solid cyan;
+  padding: 4px 10px;
+}
+
+.modal-header button:hover {
+  background: cyan;
+  color: black;
+}
+
+.modal-content {
+  margin-top: 15px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 15px;
+}
+
+.asset-item img {
+  width: 100%;
+  border: 1px solid #444;
+  border-radius: 4px;
+}
