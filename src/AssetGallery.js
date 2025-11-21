@@ -6,39 +6,45 @@ function AssetGallery() {
 
   const categories = {
     "Magic Wand": [
-      "/art_assets/3D/MagicWand/3D_MagicWand_VR.gif",
+      process.env.PUBLIC_URL + "/img/art_assets/3D/MagicWand/VR_MagicWand.gif",
     ],
+
     "Marble Race": [
-      "/art_assets/3D/MarbleRace/3D_MarbleRace_Parts.png",
-      "/art_assets/3D/MarbleRace/3D_MarbleRace_Model.png",
-      "/art_assets/3D/MarbleRace/VR_MarbleRaceDisplay1.gif",
-      "/art_assets/3D/MarbleRace/VR_MarbleRaceDisplay2.gif",
+      process.env.PUBLIC_URL + "/img/art_assets/3D/MarbleRace/3D_MarbleRace_Model.png",
+      process.env.PUBLIC_URL + "/img/art_assets/3D/MarbleRace/3D_MarbleRace_Parts.png",
+      process.env.PUBLIC_URL + "/img/art_assets/3D/MarbleRace/VR_MarbleRace_Display1.gif",
+      process.env.PUBLIC_URL + "/img/art_assets/3D/MarbleRace/VR_MarbleRace_Display2.gif",
     ],
-    "Piano": [
-      "/art_assets/3D/Piano/VR_Piano.gif",
-      "/art_assets/3D/Piano/VR_PianoHand.png",
+
+    Piano: [
+      process.env.PUBLIC_URL + "/img/art_assets/3D/Piano/VR_Piano.gif",
+      process.env.PUBLIC_URL + "/img/art_assets/3D/Piano/VR_Piano_Hand.png",
     ],
+
     "Ring Toss": [
-      "/art_assets/3D/RingToss/VR_RingToss.gif",
+      process.env.PUBLIC_URL + "/img/art_assets/3D/RingToss/VR_RingToss.gif",
     ],
+
     "Sea Snail": [
-      "/art_assets/3D/SeaSnail/3D_SeaSnail_Model.png",
-      "/art_assets/3D/SeaSnail/3D_SeaSnail_Outline.png",
-      "/art_assets/3D/SeaSnail/3D_SeaSnail_Animation.gif",
+      process.env.PUBLIC_URL + "/img/art_assets/3D/SeaSnail/3D_SeaSnail_Model.png",
+      process.env.PUBLIC_URL + "/img/art_assets/3D/SeaSnail/3D_SeaSnail_Outline.png",
+      process.env.PUBLIC_URL + "/img/art_assets/3D/SeaSnail/3D_SeaSnail_Animation.gif",
+      process.env.PUBLIC_URL + "/img/art_assets/3D/SeaSnail/VR_Sea1.png",
+      process.env.PUBLIC_URL + "/img/art_assets/3D/SeaSnail/VR_Sea2.gif",
     ],
-    "Terrain": [
-      "/art_assets/3D/Terrain/3D_Terrain.png",
+
+    Terrain: [
+      process.env.PUBLIC_URL + "/img/art_assets/3D/Terrain/3D_Terrain.png",
     ],
+
     "AI Demos": [
-      "/art_assets/3D/AI/VR_VehicleFollow.gif",
-      "/art_assets/3D/AI/VR_VehicleTargetSelector.gif",
+      process.env.PUBLIC_URL + "/img/art_assets/3D/AI/VR_MarsRoverAI1.gif",
+      process.env.PUBLIC_URL + "/img/art_assets/3D/AI/VR_MarsRoverAI2.gif",
     ],
   };
 
   return (
     <div className="asset-gallery">
-
-      {/* Link List */}
       <div className="asset-link-list">
         <h3 className="pixel-text">3D Asset Categories</h3>
         <ul>
@@ -50,12 +56,14 @@ function AssetGallery() {
         </ul>
       </div>
 
-      {/* Modal Window */}
       {openCategory && (
-        <div className="asset-modal-overlay" onClick={() => setOpenCategory(null)}>
+        <div
+          className="asset-modal-overlay"
+          onClick={() => setOpenCategory(null)}
+        >
           <div
             className="asset-modal"
-            onClick={(e) => e.stopPropagation()} // stop closing when clicking inside
+            onClick={(e) => e.stopPropagation()}
           >
             <div className="modal-header">
               <h2 className="pixel-text">{openCategory}</h2>

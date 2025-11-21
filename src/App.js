@@ -94,29 +94,29 @@ const skills = [
 function App() {
 
   useEffect(() => {
-    document.addEventListener("touchstart", () => {}, false);
+    document.addEventListener("touchstart", () => { }, false);
   }, []);
 
   return (
     <div>
-<Helmet>
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-  />
-</Helmet>
+      <Helmet>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        />
+      </Helmet>
       {/* Fixed side banner */}
       <AnimatedBackground />
       <FloatingShapes /> {/* Adds 3D-like floating effect */}
       {/* Render the NavBar at the top */}
       <NavBar
-  onResumeClick={() =>
-    window.open(
-      "https://drive.google.com/file/d/1WnNJx3P6rJXduuo34JcGIqvAVfGZPixU/view?usp=sharing",
-      "_blank"
-    )
-  }
-/>
+        onResumeClick={() =>
+          window.open(
+            "https://drive.google.com/file/d/1WnNJx3P6rJXduuo34JcGIqvAVfGZPixU/view?usp=sharing",
+            "_blank"
+          )
+        }
+      />
       {/* Add padding at the top so the fixed NavBar doesn't cover the content */}
       <div
         id="home"
@@ -311,7 +311,7 @@ function App() {
                 {/* Asset Links */}
                 <div className="asset-links mt-3">
                   <ul className="asset-link-list">
-<AssetGallery />
+                    <AssetGallery />
                   </ul>
                 </div>
               </div>
@@ -332,9 +332,6 @@ function App() {
 
       {/* Particle explosion background */}
       <ParticleExplosion />
-
-      {/* Asset Gallery Modal */}
-<AssetGallery />
     </div>
   );
 }
