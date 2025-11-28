@@ -1,7 +1,6 @@
 // App.js
 import React, { useEffect } from "react";
 import "devicon/devicon.min.css";
-import Typewriter from "typewriter-effect";
 import ParticleExplosion from "./ParticleExplosion";
 import MiniGameBox from "./MiniGameBox";
 import ContactForm from "./ContactForm";
@@ -9,8 +8,12 @@ import NavBar from "./NavBar"; // import the nav component
 import AnimatedBackground from "./AnimatedBackground";
 import FloatingShapes from "./FloatingShapes"; // Import the new component
 import VideoCarousel from "./VideoCarousel";
-import AssetGallery from "./AssetGallery";
 import { Helmet } from "react-helmet";
+import AboutMe from "./AboutMe";
+import SkillsEducation from "./SkillsEducation";
+import TopButton from "./TopButton";
+import AssetGallery2D from "./2DAssetGallery";
+import AssetGallery3D from "./3DAssetGallery";
 
 const skills = [
   {
@@ -106,6 +109,7 @@ function App() {
         />
       </Helmet>
       {/* Fixed side banner */}
+      <TopButton />
       <AnimatedBackground />
       <FloatingShapes /> {/* Adds 3D-like floating effect */}
       {/* Render the NavBar at the top */}
@@ -140,137 +144,17 @@ function App() {
         <p className="pixel-text pixel-small fade-in-message">
           🖱️ Feel free to click around!
         </p>
-        {/* About Me Section (placed directly here) */}
-        <section id="about" className="container" style={{ margin: "40px 0" }}>
-          <h2 className="mt-1 text-center pixel-text pixel-bold-title">
-            <span className="emoji-large">👤</span> About Me
-          </h2>
-          <p className="pixel-text">
-            <Typewriter
-              options={{
-                autoStart: true,
-                loop: false,
-                delay: window.innerWidth <= 768 ? 0 : 0.5, // 0 for instant typing on mobile
-                deleteSpeed: Infinity,
-              }}
-              onInit={(typewriter) => {
-                typewriter
-                  .typeString(
-                    "I'm a dedicated software and game developer with a passion for creating immersive digital experiences. My background in full-stack development and game design has led me to work with technologies like Java, Python, HTML, CSS, and game engines such as Unity and Unreal Engine. Whether I'm building interactive web applications or designing VR games, I enjoy turning complex challenges into simple, effective solutions."
-                  )
-                  .pauseFor(window.innerWidth <= 768 ? 0 : 1) // Reduce pause time for mobile
-                  .typeString("<br/><br/>") // New paragraph
-                  .typeString(
-                    "Currently, I am advancing my skills through graduate studies at Queens College. I combine creative vision with technical know-how on every project I take on. I value teamwork and continuous learning, and I'm always excited to try new ideas that improve interactive design. Feel free to explore my work and get in touch to share ideas or opportunities. ⬇"
-                  )
-                  .start();
-              }}
-            />
-          </p>
-        </section>
 
-        {/* Skills and Education Section */}
-        <div id="skills-education" className="container w-75 mt-3">
-          <div className="row">
-            {/* Skills Section (Left Column) */}
-            <div className="col-md-6">
-              <h4 className="mt-1 text-center pixel-text pixel-bold-title">
-                <span className="emoji-large">💻</span> Skills
-              </h4>
-              <div className="row">
-                {skills.map((skill, index) => (
-                  <div key={index} className="col-12">
-                    <div className="card m-1 p-2 text-center">
-                      <h6 className="pixel-text">{skill.category}</h6>
-                      <div
-                        className="d-flex justify-content-center flex-wrap"
-                        style={{ width: "100%" }}
-                      >
-                        {skill.icons.map((icon, idx) => (
-                          <div
-                            key={idx}
-                            className="icon-wrapper m-1 hover-scale"
-                          >
-                            {icon.src ? (
-                              <img src={icon.src} alt={icon.name} />
-                            ) : (
-                              <i
-                                className={`${icon.class}`}
-                                title={icon.name}
-                              ></i>
-                            )}
-                            <span className="icon-label">{icon.name}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+        <AboutMe />
+        <SkillsEducation skills={skills} />
 
-            {/* Education Section (Right Column) */}
-            <div className="col-md-6">
-              <h4 className="mt-1 text-center pixel-text pixel-bold-title">
-                <span className="emoji-large">🎓</span> Education
-              </h4>
-              {/* Education Card for Queens College */}
-              <div className="card m-1 p-2 text-center">
-                <div className="d-flex flex-column align-items-center">
-                  <img
-                    src={
-                      process.env.PUBLIC_URL + "/img/Queens_College_logo.png"
-                    }
-                    alt="Queens College Logo"
-                    className="icon-wrapper-education queens-college-logo"
-                  />
-
-                  <p className="pixel-text" style={{ margin: 0 }}>
-                    Master of Arts:
-                  </p>
-                  <p className="pixel-text" style={{ margin: 0 }}>
-                    Computer Science
-                  </p>
-                  <p className="pixel-text" style={{ margin: "2rem 0 0 0" }}>
-                    Expected graduation:
-                  </p>
-                  <p className="pixel-text" style={{ margin: 0 }}>
-                    May 2026
-                  </p>
-                </div>
-              </div>
-              {/* Education Card for Stony Brook University */}
-              <div className="card m-1 p-2 text-center">
-                <div className="d-flex flex-column align-items-center">
-                  <img
-                    src={process.env.PUBLIC_URL + "/img/Stony_Brook_U_logo.png"}
-                    alt="Stony Brook University Logo"
-                    className="icon-wrapper-education stony-brook-logo"
-                  />
-
-                  <p className="pixel-text" style={{ margin: 0 }}>
-                    Bachelor of Science:
-                  </p>
-                  <p className="pixel-text" style={{ margin: 0 }}>
-                    Double Major in Information Systems and Applied Mathematics
-                  </p>
-                  <p className="pixel-text" style={{ margin: "2rem 0 0 0" }}>
-                    Graduated:
-                  </p>
-                  <p className="pixel-text" style={{ margin: 0 }}>
-                    Aug 2021
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
+        {/* PROJECTS */}
         <div id="projects" className="container mt-5 text-center">
           <div className="m-3">
             <h4 className="pixel-text pixel-bold-title">
               <span className="emoji-large">💡</span> Projects
             </h4>
+
             <div className="d-flex justify-content-center">
               <button
                 className="m-2 pixel-text pixel-btn-3d btn-fixed-size"
@@ -289,33 +173,37 @@ function App() {
                 Play Game (itch.io)
               </button>
             </div>
-            {/* Outer container: flex with two columns */}
+
+            {/* TOP: Mini Game + Video */}
             <div
-              className="d-flex justify-content-between align-items-center mt-5"
+              className="d-flex justify-content-between align-items-start mt-5"
               style={{ width: "100%" }}
             >
-              {/* Left column: Mini Game */}
               <div className="mini-game-column">
                 <h5 className="pixel-text">Mini Game: Hit the Target!</h5>
                 <MiniGameBox />
               </div>
-              {/* Right column: Games and Assets */}
-              <div
-                className="d-flex flex-column justify-content-between"
-                style={{ marginLeft: "1rem" }}
-              >
-                <div className="games-section shifted-content">
-                  <h5 className="pixel-text">Games (Low Budget)</h5>
-                  <VideoCarousel />
-                </div>
-                {/* Asset Links */}
-                <div className="asset-links mt-3">
-                  <ul className="asset-link-list">
-                    <AssetGallery />
-                  </ul>
-                </div>
+
+              <div className="games-section shifted-content" style={{ marginLeft: "1rem" }}>
+                <h5 className="pixel-text">Games (Low Budget)</h5>
+                <VideoCarousel />
               </div>
             </div>
+
+            {/* BOTTOM: 2D + 3D side by side */}
+            <div
+              className="d-flex justify-content-between align-items-start mt-5"
+              style={{ width: "100%" }}
+            >
+              <div style={{ width: "48%" }}>
+                <AssetGallery2D />
+              </div>
+
+              <div style={{ width: "48%" }}>
+                <AssetGallery3D />
+              </div>
+            </div>
+
           </div>
         </div>
 
