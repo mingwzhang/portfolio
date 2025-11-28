@@ -1,0 +1,185 @@
+/* ============================
+   SHARED ASSET CATEGORY BUTTONS
+============================ */
+.asset-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.asset-list li {
+  font-family: VT323, monospace;
+  font-size: 18px;
+  cursor: pointer;
+  margin: 10px auto;
+  padding: 10px;
+  width: 90%;
+  text-align: center;
+
+  color: #ffffff;
+  background: rgba(0, 255, 255, 0.05);
+  border: 1px solid rgba(0, 255, 255, 0.25);
+  border-radius: 6px;
+
+  transition: 0.25s ease;
+}
+
+.asset-list li:hover {
+  color: #ffffff;
+  background: rgba(0, 255, 255, 0.15);
+  border-color: rgba(0,255,255,0.7);
+  transform: scale(1.03);
+  text-shadow: 0 0 8px #00faff;
+}
+
+.asset-list li:active {
+  transform: scale(0.97);
+  background: rgba(0, 255, 255, 0.25);
+}
+
+
+/* ============================
+   SHARED MODAL BACKGROUND
+============================ */
+.modal-bg,
+.modal-bg-3d {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(2px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9000;
+}
+
+
+/* ============================
+   SHARED MODAL CONTAINER
+============================ */
+.modal-2d,
+.modal-3d {
+  position: relative;
+  background: #101010;
+  border: 2px solid #00faff;
+  border-radius: 8px;
+  padding: 0;
+  max-height: 90vh;
+  max-width: 125vh;
+  overflow-y: auto;
+  text-align: center;
+}
+
+
+/* ============================
+   SHARED MODAL HEADER
+============================ */
+.modal-header,
+.modal-header-3d {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px;
+  margin: 0;
+  background: rgba(0,0,0,0.25);
+  backdrop-filter: blur(4px);
+  z-index: 20;
+  border-bottom: 1px solid rgba(0,255,255,0.15);
+}
+
+
+/* ============================
+   SHARED MODAL TITLE
+============================ */
+.modal-title,
+.modal-title-3d {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  width: 100%;
+  font-size: 18px !important;
+}
+
+
+/* ============================
+   SHARED IMAGES
+============================ */
+.modal-images,
+.modal-images-3d {
+  display: block;
+  width: 100%;
+}
+
+.pixel-img,
+.pixel-img-3d {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 8px auto;
+  image-rendering: pixelated;
+  background: transparent;
+  border: none;
+}
+
+
+/* ============================
+   SHARED EXIT BUTTON
+============================ */
+.modal-exit-btn,
+.modal-exit-btn-3d {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+.modal-exit-btn:hover,
+.modal-exit-btn-3d:hover {
+  transform: scale(1.1);
+  background: rgba(0, 255, 255, 0.25);
+  border-color: rgba(0, 255, 255, 1);
+}
+.modal-title,
+.modal-title-3d {
+  white-space: normal !important;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  text-align: center;
+}
+
+/* ============================
+   MOBILE
+============================ */
+@media (max-width: 768px) {
+  .pixel-img,
+  .pixel-img-3d {
+    max-width: 100vw;
+    height: auto;
+    max-height: none;
+  }
+
+  .modal-title,
+  .modal-title-3d {
+    font-size: 14px !important;
+    white-space: normal !important;
+    word-wrap: break-word;
+    line-height: 1.2;
+    padding: 4px 10px;
+  }
+}

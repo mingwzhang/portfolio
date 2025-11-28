@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./3DAssetGallery.css";
+import "./2D3DAssetGallery.css";
 
 export default function AssetGallery3D() {
   const [open, setOpen] = useState(null);
@@ -41,7 +41,7 @@ export default function AssetGallery3D() {
 
   return (
     <div>
-<h5 className="pixel-text">3D Assets</h5>
+      <h5 className="pixel-text">3D Assets</h5>
 
       <ul className="asset-list">
         {Object.keys(categories).map((cat) => (
@@ -51,21 +51,28 @@ export default function AssetGallery3D() {
         ))}
       </ul>
 
-      {open && (
-        <div className="modal-bg" onClick={() => setOpen(null)}>
-<div className="modal-3d" style={{ position: "relative", maxHeight: "80vh", overflowY: "auto" }} onClick={(e) => e.stopPropagation()}>
-            <h4 className="pixel-text modal-title">{open}</h4>
+{open && (
+  <div className="modal-bg-3d" onClick={() => setOpen(null)}>
+    <div
+      className="modal-3d"
+      onClick={(e) => e.stopPropagation()}
+    >
+      <div className="modal-header-3d">
+        <h4 className="pixel-text modal-title">{open}</h4>
+        <button className="modal-exit-btn-3d" onClick={() => setOpen(false)}>
+          ✕
+        </button>
+      </div>
 
-            <div className="modal-images">
-              {categories[open].map((img, idx) => (
-                <img key={idx} src={img} alt="" className="render-img" />
-              ))}
-            </div>
+      <div className="modal-images">
+        {categories[open].map((img, idx) => (
+          <img key={idx} src={img} alt="" className="pixel-img-3d" />
+        ))}
+      </div>
+    </div>
+  </div>
+)}
 
-            <button className="modal-exit-btn" onClick={() => setOpen(false)}>✕</button>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

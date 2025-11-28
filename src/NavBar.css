@@ -17,7 +17,14 @@
   justify-content: space-between;
   align-items: center;
   width: 99%;
+
+  position: relative; /* establish a positioning context */
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 3rem; /* make room for the toggle button */
 }
+  
 
 .nav-left,
 .nav-right {
@@ -133,13 +140,6 @@
   text-transform: uppercase;
   text-shadow: 2px 2px 0 #000;  /* Optional: adds a pixel-like effect */
   color: #ffffff;
-}
-.nav-container {
-  position: relative; /* establish a positioning context */
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  padding-bottom: 3rem; /* make room for the toggle button */
 }
 
 .nav-toggle-btn {

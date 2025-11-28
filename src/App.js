@@ -98,6 +98,18 @@ function App() {
 
   useEffect(() => {
     document.addEventListener("touchstart", () => { }, false);
+    let resizeTimeout = null;
+
+  const handler = () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      // any resize side effects you need
+    }, 250);
+  };
+
+  window.addEventListener("resize", handler);
+  return () => window.removeEventListener("resize", handler);
+  
   }, []);
 
   return (
@@ -176,7 +188,7 @@ function App() {
 
             {/* TOP: Mini Game + Video */}
             <div
-              className="d-flex justify-content-between align-items-start mt-5"
+              className="d-flex justify-content-between align-items-start mt-5 projects-top-row"
               style={{ width: "100%" }}
             >
               <div className="mini-game-column">
@@ -184,7 +196,7 @@ function App() {
                 <MiniGameBox />
               </div>
 
-              <div className="games-section shifted-content" style={{ marginLeft: "1rem" }}>
+              <div className="games-section shifted-content" style={{ width: "600px" }}>
                 <h5 className="pixel-text">Games (Low Budget)</h5>
                 <VideoCarousel />
               </div>

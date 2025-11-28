@@ -156,21 +156,6 @@ h1 {
   transform: scale(1.5);
 }
 
-@media (max-width: 768px) {
-  .container {
-    width: 95%;
-  }
-  .profile-pic {
-    width: 200px;
-    height: 200px;
-  }
-  .btn-fixed-size {
-    width: 180px;
-    height: 45px;
-    font-size: 0.9rem;
-  }
-}
-
 /* Transparent button style */
 .btn-transparent {
   background-color: transparent !important; /* Fully transparent background */
@@ -240,17 +225,14 @@ h1 {
   display: inline-block;
   margin: 0.1rem; /* Optional: spacing between icons */
   filter: drop-shadow(0px 0px 3px #00e6b8) !important; /* Miku-style glow */
-}
-.icon-wrapper {
-  display: flex;               /* Place icon + label in a column or row */
+
   flex-direction: column;      /* Stack icon on top, label below (optional) */
   align-items: center;         /* Center horizontally */
   justify-content: center;     /* Center vertically */
   width: 60px;                 /* Enough space for 40x40 icon + label */
   height: 60px;                /* Adjust as needed */
-  position: relative;          /* For label positioning if needed */
 }
-
+ 
 /* Ensure both <img> and <i> share the same 40x40 dimensions */
 .icon-wrapper img,
 .icon-wrapper i {
@@ -530,12 +512,6 @@ textarea {
   border-radius: 5px !important;
 }
 
-/* Improve placeholder visibility */
-input::placeholder,
-textarea::placeholder {
-  color: rgba(255, 255, 255, 0.6) !important;
-}
-
 /* Contact form title styling */
 .contact-title {
   margin-bottom: 2rem; /* Adjust this value as needed */
@@ -615,7 +591,7 @@ button[type="submit"]:hover {
     transform: translateY(-30px);
   }
 }
-/* Rotate Left */
+/* Background Square Animation Rotate Left */
 @keyframes rotateLeft {
   from {
     transform: rotate(0deg);
@@ -625,7 +601,7 @@ button[type="submit"]:hover {
   }
 }
 
-/* Rotate Right */
+/* Background Square Animation Rotate Right */
 @keyframes rotateRight {
   from {
     transform: rotate(0deg);
@@ -634,20 +610,7 @@ button[type="submit"]:hover {
     transform: rotate(360deg);
   }
 }
-
-/* Responsive adjustments for Project Section on PC and all screens */
-
-/* Video Carousel: maintain a 4:3 aspect ratio */
-#projects .video-carousel {
-  width: 100%;
-  max-width: 640px;      /* Don’t exceed 640px on large screens */
-  aspect-ratio: 4 / 3;   /* 4:3 ratio automatically sets height */
-  margin: 0 auto;
-  position: relative;    /* So arrow wrappers can absolutely position within */
-  overflow: hidden;
-  
-}
-
+ 
 .prev-button-wrapper,
 .next-button-wrapper {
   position: absolute;
@@ -665,37 +628,12 @@ button[type="submit"]:hover {
   right: 10px; /* or wherever you like */
 }
 
-/* Mini Game Container: maintain a square ratio */
-#projects .mini-game-container {
-  width: 100% !important;
-  max-width: 500px; /* Original fixed size on PC */
-  height: auto !important;
-  aspect-ratio: 1 / 1; /* Square aspect ratio */
-  margin: 0 auto;
-}
-
-/* Asset Display (Placeholder): maintain a square ratio */
-#projects .another-placeholder {
-  width: 100% !important;
-  max-width: 400px; /* Original size */
-  height: auto !important;
-  aspect-ratio: 1 / 1; /* Square aspect ratio */
-  margin: 0 auto;
-}
-
 /* Ensure the overall project container adapts by stacking or wrapping the inner columns */
 #projects .d-flex.justify-content-between.align-items-center.mt-5 {
   flex-wrap: wrap; /* Wrap columns if needed */
   gap: 1rem; /* Optional gap between items */
 }
 
-.mini-game-wrapper {
-  display: flex;
-  align-items: center; /* Center vertically */
-  justify-content: center; /* Center horizontally */
-  width: 100%;
-  height: 500px; /* Adjust this height as needed to fit your project container */
-}
 
 input:-webkit-autofill,
 textarea:-webkit-autofill {
@@ -717,9 +655,21 @@ html, body {
   -webkit-user-drag: none; /* Prevents dragging elements */
   touch-action: manipulation; /* Prevents pinch zooming but allows normal scrolling */
 }
- 
+
 
 @media (max-width: 768px) {
+    .container {
+    width: 95%;
+  }
+  .profile-pic {
+    width: 200px;
+    height: 200px;
+  }
+  .btn-fixed-size {
+    width: 180px;
+    height: 45px;
+    font-size: 0.9rem;
+  }
   /* Home section main heading */
   #home h1.pixel-heading {
     font-size: clamp(1.6rem, 3.5vw, 2.2rem);
@@ -838,20 +788,6 @@ html, body {
     width: 100% !important;
   }
 
-  /* Make the video element fill its container */
-  #projects .video-carousel video {
-    width: 90% !important; /* Reduce video size (adjust as needed) */
-    max-width: 350px; /* Optional: Prevent it from getting too large */
-    height: auto !important;
-    object-fit: cover;
-    pointer-events: auto;
-    display: block;
-    position: relative;
-    left: 25%; /* Move starting point to center */
-    transform: translateX(-50%) translateY(50px) !important;
-    margin: 1rem 0 !important;
-  
-  }
   .prev-button-wrapper,
   .next-button-wrapper {
     position: absolute;
@@ -860,30 +796,38 @@ html, body {
     z-index: 1;
   }
 
-  /* Mini Game Container: full container width, square ratio */
-  #projects .mini-game-container {
-    width: 95% !important;
-    aspect-ratio: 1 / 1;
-    height: auto !important;
+
+  
+  /* ========================= */
+  /* PROJECTS LAYOUT — MOBILE  */
+  /* ========================= */
+
+  /* Top row: mini game + video stack vertically */
+  #projects .projects-top-row {
+    display: flex;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    width: 100% !important;
+    gap: 1.25rem;
+  }
+ 
+ 
+
+  /* Bottom row: keep 2D + 3D side-by-side */
+  #projects .projects-bottom-row {
+    display: flex;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    gap: 1rem !important;
+    width: 100% !important;
   }
 
-  /* Asset Display: full container width, square ratio */
-  #projects .another-placeholder {
-    width: 95% !important;
-    aspect-ratio: 1 / 1;
-    margin: 1rem 0 !important;
-    height: auto !important;
-    border: 2px solid #ccc !important; /* Re-add a visible border */
-    background-color: rgba(
-      255,
-      255,
-      255,
-      0.1
-    ); /* Example translucent background */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  #projects .projects-bottom-row > div {
+    width: 48% !important;
   }
+
 
   #home h1.pixel-heading,
   #about h2.pixel-bold-title,
@@ -892,7 +836,7 @@ html, body {
   #contact .contact-title {
     font-size: clamp(1.4rem, 6vw, 2.2rem); /* Adjust font size responsively */
     text-align: center;
-    padding: 10=px 0;
+    padding: 10px 0;
     white-space: nowrap; /* Prevent wrapping */
     transform: scale(0.8); /* Adjust scale for better fit */
 
@@ -920,6 +864,34 @@ html, body {
     #skills-education {
       margin-bottom: 3rem !important; /* Adjust the 3rem as desired */
     }
-}
+ }
 
- 
+@media screen and (max-width: 1280px) {
+  #projects .projects-top-row {
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 1.5rem !important;
+  }
+
+  .mini-game-column,
+  .games-section {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+  }
+
+  .mini-game-container {
+    width: min(85vw, 500px) !important;
+    height: min(85vw, 500px) !important;
+  }
+
+  .carousel-viewport {
+    width: min(85vw, 600px) !important;
+  }
+
+  .video-slide {
+    width: min(85vw, 600px) !important;
+    height: calc(min(85vw, 600px) * 0.6) !important;
+  }
+}

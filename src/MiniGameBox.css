@@ -41,7 +41,10 @@
   padding: 4px 8px;
   border-radius: 5px;
 }
-
+html {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
 @media (max-width: 480px) {
   .mini-game-container {
     width: 80vw;

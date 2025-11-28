@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./2DAssetGallery.css";
+import "./2D3DAssetGallery.css";
 
 export default function AssetGallery2D() {
   const [open, setOpen] = useState(null);
@@ -60,21 +60,30 @@ export default function AssetGallery2D() {
         ))}
       </ul>
 
-      {open && (
-        <div className="modal-bg" onClick={() => setOpen(null)}>
-          <div className="modal-2d" style={{ position: "relative", maxHeight: "80vh", overflowY: "auto" }} onClick={(e) => e.stopPropagation()}>
-            <h4 className="pixel-text modal-title">{open}</h4>
+{open && (
+  <div className="modal-bg" onClick={() => setOpen(null)}>
+    <div
+      className="modal-2d"
+      onClick={(e) => e.stopPropagation()}
+    >
+      {/* Sticky header with title + close button */}
+      <div className="modal-header">
+        <h4 className="pixel-text modal-title">{open}</h4>
+        <button className="modal-exit-btn" onClick={() => setOpen(false)}>
+          ✕
+        </button>
+      </div>
 
-            <div className="modal-images">
-              {categories[open].map((img, idx) => (
-                <img key={idx} src={img} alt="" className="pixel-img" />
-              ))}
-            </div>
+      {/* Scrollable content */}
+      <div className="modal-images">
+        {categories[open].map((img, idx) => (
+          <img key={idx} src={img} alt="" className="pixel-img" />
+        ))}
+      </div>
+    </div>
+  </div>
+)}
 
-            <button className="modal-exit-btn" onClick={() => setOpen(false)}>✕</button>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
