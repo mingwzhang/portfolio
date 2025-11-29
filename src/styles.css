@@ -886,12 +886,4 @@ html, body {
     height: min(85vw, 500px) !important;
   }
 
-  .carousel-viewport {
-    width: min(85vw, 600px) !important;
-  }
-
-  .video-slide {
-    width: min(85vw, 600px) !important;
-    height: calc(min(85vw, 600px) * 0.6) !important;
-  }
 }
