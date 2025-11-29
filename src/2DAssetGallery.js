@@ -91,8 +91,8 @@ export default function AssetGallery2D() {
                   }}
                 >
                   <img src={img} alt="" className="pixel-img" />
-<div className={`info-icon ${(hovered[idx] && !clicked[idx]) || (isMobile && clicked[idx]) ? "active" : ""}`}>
 
+                  <div className={`info-icon ${(hovered[idx] && !clicked[idx]) || (isMobile && clicked[idx]) ? "active" : ""}`}>
                     i
                   </div>
 

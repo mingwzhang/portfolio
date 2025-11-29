@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./VideoCarousel.css";
 
 function VideoCarousel() {
@@ -9,24 +9,27 @@ function VideoCarousel() {
     `${process.env.PUBLIC_URL}/video/ProjectIOTA.mp4`,
   ];
 
-  const isMobile = window.innerWidth < 640;
-  const slideWidth = isMobile ? window.innerWidth * 0.9 : 600;
-  const totalSlideWidth = slideWidth;
-  const containerWidth = slideWidth;
-
-  const threshold = 50;
-  const clickDragThreshold = 5;
-
+  const slideRef = useRef(null);
+  const [slideWidth, setSlideWidth] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [dragStart, setDragStart] = useState(null);
   const [dragOffset, setDragOffset] = useState(0);
   const [dragging, setDragging] = useState(false);
   const wasDraggedRef = useRef(false);
 
-  const translateX =
-    (containerWidth / 2 - slideWidth / 2) -
-    currentIndex * totalSlideWidth +
-    dragOffset;
+  // 💡 Measure actual slide width
+  useEffect(() => {
+    const updateSlideWidth = () => {
+      if (slideRef.current) {
+        setSlideWidth(slideRef.current.offsetWidth);
+      }
+    };
+    updateSlideWidth();
+    window.addEventListener("resize", updateSlideWidth);
+    return () => window.removeEventListener("resize", updateSlideWidth);
+  }, []);
+
+  const translateX = -currentIndex * slideWidth + dragOffset;
 
   const pauseAllVideos = () => {
     const videoElements = document.querySelectorAll(".video-element");
@@ -34,14 +37,14 @@ function VideoCarousel() {
   };
 
   const finishDrag = () => {
-    if (Math.abs(dragOffset) > clickDragThreshold) {
+    if (Math.abs(dragOffset) > 5) {
       wasDraggedRef.current = true;
     }
 
-    if (dragOffset > threshold) {
+    if (dragOffset > 50) {
       setCurrentIndex((prev) => (prev === 0 ? videos.length - 1 : prev - 1));
       pauseAllVideos();
-    } else if (dragOffset < -threshold) {
+    } else if (dragOffset < -50) {
       setCurrentIndex((prev) => (prev === videos.length - 1 ? 0 : prev + 1));
       pauseAllVideos();
     }
@@ -121,7 +124,11 @@ function VideoCarousel() {
           }}
         >
           {videos.map((video, idx) => (
-            <div key={video} className="video-slide">
+            <div
+              key={idx}
+              className="video-slide"
+              ref={idx === 0 ? slideRef : null}
+            >
               <div className="video-slide-number">
                 {idx + 1} / {videos.length}
               </div>
