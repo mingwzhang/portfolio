@@ -14,12 +14,7 @@
     cursor: grabbing;
 }
 
-.video-carousel>div {
-    width: max-content;
-    margin-left: auto;
-    margin-right: auto;
-}
-
+/* Outer viewport */
 .carousel-viewport {
     width: 600px;
     max-width: 100%;
@@ -28,14 +23,21 @@
     position: relative;
 }
 
+/* Track that slides left/right */
+.video-track {
+    display: flex;
+    height: 100%;
+}
+
+/* Each slide fills the viewport width */
 .video-slide {
     position: relative;
     flex-shrink: 0;
-    width: 600px;
+    width: 100%;
     height: 500px;
-    margin-right: 0px;
 }
 
+/* Slide number label */
 .video-slide-number {
     position: absolute;
     top: 10px;
@@ -63,15 +65,15 @@
     right: 10px;
 }
 
+/* Mobile */
 @media (max-width: 640px) {
-    .video-slide {
-        width: 90vw;
-        height: calc(90vw * 0.6);
-        /* 16:9 */
-    }
-
     .carousel-viewport {
         width: 90vw;
+    }
+
+    .video-slide {
+        width: 100%;
+        height: calc(90vw * 0.6); /* ~16:9 */
     }
 
     .prev-button-wrapper,

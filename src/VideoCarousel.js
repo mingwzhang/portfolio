@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import "./VideoCarousel.css";
 
 function VideoCarousel() {
@@ -9,27 +9,14 @@ function VideoCarousel() {
     `${process.env.PUBLIC_URL}/video/ProjectIOTA.mp4`,
   ];
 
-  const slideRef = useRef(null);
-  const [slideWidth, setSlideWidth] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [dragStart, setDragStart] = useState(null);
+  const [dragStartX, setDragStartX] = useState(null);
   const [dragOffset, setDragOffset] = useState(0);
   const [dragging, setDragging] = useState(false);
   const wasDraggedRef = useRef(false);
 
-  // 💡 Measure actual slide width
-  useEffect(() => {
-    const updateSlideWidth = () => {
-      if (slideRef.current) {
-        setSlideWidth(slideRef.current.offsetWidth);
-      }
-    };
-    updateSlideWidth();
-    window.addEventListener("resize", updateSlideWidth);
-    return () => window.removeEventListener("resize", updateSlideWidth);
-  }, []);
-
-  const translateX = -currentIndex * slideWidth + dragOffset;
+  // Move track by slide index (in %) + drag offset (px)
+  const trackTransform = `translateX(calc(${-currentIndex * 100}% + ${dragOffset}px))`;
 
   const pauseAllVideos = () => {
     const videoElements = document.querySelectorAll(".video-element");
@@ -41,28 +28,33 @@ function VideoCarousel() {
       wasDraggedRef.current = true;
     }
 
-    if (dragOffset > 50) {
+    const THRESHOLD = 50;
+
+    if (dragOffset > THRESHOLD) {
+      // swipe right → previous
       setCurrentIndex((prev) => (prev === 0 ? videos.length - 1 : prev - 1));
       pauseAllVideos();
-    } else if (dragOffset < -50) {
+    } else if (dragOffset < -THRESHOLD) {
+      // swipe left → next
       setCurrentIndex((prev) => (prev === videos.length - 1 ? 0 : prev + 1));
       pauseAllVideos();
     }
 
     setDragging(false);
-    setDragStart(null);
+    setDragStartX(null);
     setDragOffset(0);
   };
 
+  // mouse
   const handleMouseDown = (e) => {
-    setDragStart(e.clientX);
+    setDragStartX(e.clientX);
     setDragging(true);
     wasDraggedRef.current = false;
   };
 
   const handleMouseMove = (e) => {
-    if (!dragging || dragStart === null) return;
-    setDragOffset(e.clientX - dragStart);
+    if (!dragging || dragStartX === null) return;
+    setDragOffset(e.clientX - dragStartX);
   };
 
   const handleMouseUp = () => {
@@ -70,15 +62,16 @@ function VideoCarousel() {
     finishDrag();
   };
 
+  // touch
   const handleTouchStart = (e) => {
-    setDragStart(e.touches[0].clientX);
+    setDragStartX(e.touches[0].clientX);
     setDragging(true);
     wasDraggedRef.current = false;
   };
 
   const handleTouchMove = (e) => {
-    if (!dragging || dragStart === null) return;
-    setDragOffset(e.touches[0].clientX - dragStart);
+    if (!dragging || dragStartX === null) return;
+    setDragOffset(e.touches[0].clientX - dragStartX);
   };
 
   const handleTouchEnd = () => {
@@ -86,6 +79,7 @@ function VideoCarousel() {
     finishDrag();
   };
 
+  // prevent click after drag
   const handleVideoClick = (e) => {
     if (wasDraggedRef.current) {
       e.preventDefault();
@@ -117,18 +111,14 @@ function VideoCarousel() {
         onTouchEnd={handleTouchEnd}
       >
         <div
+          className="video-track"
           style={{
-            display: "flex",
-            transform: `translateX(${translateX}px)`,
+            transform: trackTransform,
             transition: dragging ? "none" : "transform 0.3s ease-out",
           }}
         >
           {videos.map((video, idx) => (
-            <div
-              key={idx}
-              className="video-slide"
-              ref={idx === 0 ? slideRef : null}
-            >
+            <div key={idx} className="video-slide">
               <div className="video-slide-number">
                 {idx + 1} / {videos.length}
               </div>
@@ -137,7 +127,6 @@ function VideoCarousel() {
                 controls
                 playsInline
                 preload="metadata"
-                autoPlay={false}
                 className="video-element"
                 poster={`${process.env.PUBLIC_URL}/video/${video
                   .split("/")
