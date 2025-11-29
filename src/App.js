@@ -197,7 +197,9 @@ function App() {
               </div>
 
               <div className="games-section shifted-content" style={{ width: "600px" }}>
-                <h5 className="pixel-text">Games (Low Budget)</h5>
+                <h5 className="pixel-text">
+                  Indie & Collaborative<br />Game Projects
+                </h5>
                 <VideoCarousel />
               </div>
             </div>
@@ -233,7 +235,7 @@ function App() {
       {/* Particle explosion background */}
       <ParticleExplosion />
       <div className="footer-note">
-      © 2025 Mingwei Zhang — Built with React.
+        © 2025 Mingwei Zhang — Built with React.
       </div>
     </div>
   );
