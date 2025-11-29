@@ -1,6 +1,4 @@
-/* =======================================================
-   VIDEO ELEMENT STYLING
-======================================================= */
+/* === VIDEO STYLING ==================================== */
 .video-element {
     width: 100%;
     height: 100%;
@@ -9,14 +7,12 @@
     cursor: grab;
 }
 
-/* Cursor while dragging */
 .video-carousel.dragging {
     cursor: grabbing;
 }
 
-/* =======================================================
-   CAROUSEL LAYOUT
-======================================================= */
+
+/* === CAROUSEL LAYOUT ==================================== */
 .carousel-viewport {
     width: 600px;
     max-width: 100%;
@@ -37,13 +33,13 @@
     height: 500px;
 }
 
-/* =======================================================
-   SLIDE NUMBER LABEL
-======================================================= */
+
+/* === SLIDE NUMBER ===================================== */
 .video-slide-number {
     position: absolute;
     top: 10px;
-    left: 10px;
+    left: 50%;
+    transform: translateX(-50%);
     padding: 5px 10px;
     background-color: rgba(0, 0, 0, 0.6);
     color: #fff;
@@ -52,30 +48,121 @@
     border-radius: 4px;
 }
 
-/* =======================================================
-   PLAY OVERLAY BEFORE ACTIVATION
-======================================================= */
+
+/* === REMOVE DEFAULT PLAY BUTTONS ====================== */
+video::-webkit-media-controls-start-playback-button,
+video::-webkit-media-controls-overlay-play-button {
+    display: none !important;
+}
+
+video {
+    -webkit-media-controls: none !important;
+}
+
+
+/* === CUSTOM PLAY OVERLAY =============================== */
 .custom-play-overlay {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 70px;
-    color: white;
-    opacity: 0.85;
+    transform: translate(-50%, -50%) scale(1);
+    transform-origin: 50% 50%;
     cursor: pointer;
     z-index: 3;
-    pointer-events: auto;
+
+    width: 95px;
+    height: 95px;
+    border: 3px solid rgba(0,255,255,0.65);
+    border-radius: 50%;
+    background-color: rgba(0,255,255,0.06);
+    opacity: 1;
+
+    transition:
+        transform 0.15s ease,
+        border-color 0.15s ease,
+        background-color 0.15s ease,
+        opacity 0.2s ease;
 }
 
-/* Ensure video still receives events */
-.video-element {
-    pointer-events: auto;
+
+/* HOVER */
+.custom-play-overlay:hover {
+    transform: translate(-50%, -50%) scale(1.12);
+    border-color: rgba(0,255,255,0.95);
+    background-color: rgba(0,210,255,0.22);
 }
 
-/* =======================================================
-   NAV BUTTONS
-======================================================= */
+
+/* PRESSED */
+.custom-play-overlay:active {
+    transform: translate(-50%, -50%) scale(0.92);
+    border-color: rgba(0,200,255,0.9);
+    background-color: rgba(0,160,230,0.28);
+}
+
+
+/* === FADE-OUT CLASS (OPTIONAL JS CONTROL) =============== */
+.custom-play-overlay.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+/* === TRIANGLE ========================================== */
+.custom-play-overlay::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-36%, -50%) scale(1);
+
+    border-left: 36px solid #00f0ff;
+    border-top: 24px solid transparent;
+    border-bottom: 24px solid transparent;
+
+    filter: drop-shadow(1px 1px 3px rgba(0,0,0,0.7));
+
+    transition:
+        transform 0.15s ease,
+        border-left 0.15s ease,
+        filter 0.15s ease;
+}
+
+
+/* TRIANGLE HOVER = grows smoothly */
+.custom-play-overlay:hover::before {
+    transform: translate(-36%, -50%) scale(1.15);
+}
+
+
+/* TRIANGLE PRESSED = compress */
+.custom-play-overlay:active::before {
+    transform: translate(-36%, -50%) scale(0.88);
+}
+
+
+/* === PLAYING INDICATOR ================================= */
+.playing-indicator {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    width: 34px;
+    height: 34px;
+    z-index: 5;
+    background-color: rgba(0,255,120,0.5);
+    border: 2px solid rgba(0,255,120,0.9);
+    border-radius: 50%;
+    animation: fadeOut 1s forwards ease-out;
+}
+
+@keyframes fadeOut {
+    0%   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    100% { opacity: 0; transform: translate(-50%, -50%) scale(1.9); }
+}
+
+
+/* === NAV BUTTONS ======================================= */
 .prev-button-wrapper,
 .next-button-wrapper {
     position: absolute;
@@ -84,40 +171,24 @@
     z-index: 4;
 }
 
-.prev-button-wrapper {
-    left: 10px;
-}
+.prev-button-wrapper { left: 10px; }
+.next-button-wrapper { right: 10px; }
 
-.next-button-wrapper {
-    right: 10px;
-}
 
-/* =======================================================
-   MOBILE RESPONSIVE
-======================================================= */
+/* === MOBILE ============================================ */
 @media (max-width: 640px) {
+
     .carousel-viewport {
         width: 90vw;
     }
 
     .video-slide {
         width: 100%;
-        height: calc(90vw * 0.6); /* 16:9 ratio */
+        height: calc(90vw * 0.6);
     }
 
-    .prev-button-wrapper,
-    .next-button-wrapper {
-        top: 50% !important;
-        transform: translateY(-50%) !important;
-    }
-
-    .prev-button-wrapper {
-        left: 5px;
-    }
-
-    .next-button-wrapper {
-        right: 5px;
-    }
+    .prev-button-wrapper { left: 5px; }
+    .next-button-wrapper { right: 5px; }
 
     .prev-button,
     .next-button {

@@ -3,41 +3,56 @@
 
 .pixel-text {
   font-family: "Press Start 2P", cursive;
-  text-transform: uppercase; /* Retro feel */
-  letter-spacing: 1.5px; /* Adds space between letters */
-  font-size: 1rem; /* Adjust if needed */
-  color: #00e6b8; /* Softer Neon Green */
+  text-transform: uppercase;
+  /* Retro feel */
+  letter-spacing: 1.5px;
+  /* Adds space between letters */
+  font-size: 1rem;
+  /* Adjust if needed */
+  color: #00e6b8;
+  /* Softer Neon Green */
   text-shadow: 2px 2px 10px rgba(0, 230, 120, 0.6),
-    0px 0px 15px rgba(0, 255, 100, 0.5); /* Softer Glow */
+    0px 0px 15px rgba(0, 255, 100, 0.5);
+  /* Softer Glow */
 }
 
 .pixel-heading {
-  font-size: 2.5rem; /* Increase size for prominence */
-  text-shadow: 2px 2px 0px #000000; /* Creates a pixelated shadow */
-  letter-spacing: 2px; /* More spacing for a retro look */
-  padding: 0.5rem 1rem; /* Adds space around the text */
-  background-color: transparent !important; /* Make background transparent */
-  color: #ffda8a !important; /* Same softer neon */
+  font-size: 2.5rem;
+  /* Increase size for prominence */
+  text-shadow: 2px 2px 0px #000000;
+  /* Creates a pixelated shadow */
+  letter-spacing: 2px;
+  /* More spacing for a retro look */
+  padding: 0.5rem 1rem;
+  /* Adds space around the text */
+  background-color: transparent !important;
+  /* Make background transparent */
+  color: #ffda8a !important;
+  /* Same softer neon */
 }
 
 .pixel-subheading {
   font-size: 1.5rem;
-  color: #00d4ff !important; /* Softer Neon Blue */
+  color: #00d4ff !important;
+  /* Softer Neon Blue */
   text-shadow: 2px 2px 10px rgba(0, 212, 255, 0.6),
     0px 0px 12px rgba(0, 212, 255, 0.5);
 }
 
 .pixel-small {
-  font-size: 0.9rem; /* Slightly smaller text for descriptions */
+  font-size: 0.9rem;
+  /* Slightly smaller text for descriptions */
 }
 
 @keyframes glowPulse {
   0% {
     text-shadow: 0px 0px 12px rgb(0, 255, 128), 0px 0px 10px rgb(0, 225, 255);
   }
+
   50% {
     text-shadow: 0px 0px 15px rgb(0, 247, 255), 0px 0px 30px rgb(0, 225, 255);
   }
+
   100% {
     text-shadow: 0px 0px 12px rgb(0, 255, 234), 0px 0px 10px rgb(0, 225, 255);
   }
@@ -50,20 +65,27 @@
   text-transform: uppercase;
   padding: 0.3rem 0.6rem;
   letter-spacing: 1px;
-  animation: glowPulse 2.5s infinite alternate ease-in-out !important; /* Apply the animation */
+  animation: glowPulse 2.5s infinite alternate ease-in-out !important;
+  /* Apply the animation */
 }
 
 .profile-pic {
-  border: 10px solid #000; /* existing style */
-  image-rendering: pixelated; /* existing style */
-  margin-top: 20px; /* moved inline style here */
+  border: 10px solid #000;
+  /* existing style */
+  image-rendering: pixelated;
+  /* existing style */
+  margin-top: 20px;
+  /* moved inline style here */
 }
 
 .emoji-large {
-  font-size: 2em; /* Increase size relative to surrounding text */
+  font-size: 2em;
+  /* Increase size relative to surrounding text */
 }
+
 .software-title {
-  color: #2ecacf; /* Change this to your preferred color */
+  color: #2ecacf;
+  /* Change this to your preferred color */
 }
 
 body {
@@ -101,15 +123,18 @@ h1 {
 }
 
 .iframe-container.show {
-  max-height: 1200px; /* Ensure it's high enough for full-page display */
+  max-height: 1200px;
+  /* Ensure it's high enough for full-page display */
   pointer-events: auto;
   opacity: 1;
 }
 
 /*Adjust button scale*/
 .btn-fixed-size {
-  width: 220px; /* Same width for all buttons */
-  height: 60px; /* Same height for all buttons */
+  width: 220px;
+  /* Same width for all buttons */
+  height: 60px;
+  /* Same height for all buttons */
   font-size: 1rem;
   text-align: center;
   display: flex;
@@ -117,23 +142,29 @@ h1 {
   justify-content: center;
   border-radius: 10px;
 }
+
 .bottom-spacing {
-  padding-bottom: 100px; /* Adjust this value as needed */
+  padding-bottom: 100px;
+  /* Adjust this value as needed */
 }
 
 .btn:hover {
-  transform: scale(1.05); /* Slightly increase size on hover */
+  transform: scale(1.05);
+  /* Slightly increase size on hover */
   transition: transform 0.2s ease-in-out;
-  box-shadow: 4px 4px 0px #000; /* Retro pixel-like shadow */
+  box-shadow: 4px 4px 0px #000;
+  /* Retro pixel-like shadow */
 }
 
 @keyframes glow {
   0% {
     border-color: #ffcc00;
   }
+
   50% {
     border-color: #ff5733;
   }
+
   100% {
     border-color: #ffcc00;
   }
@@ -148,7 +179,8 @@ h1 {
 }
 
 .hover-scale {
-  display: inline-block; /* Ensure transform works on inline elements */
+  display: inline-block;
+  /* Ensure transform works on inline elements */
   transition: transform 0.1s ease-in-out;
 }
 
@@ -158,23 +190,27 @@ h1 {
 
 /* Transparent button style */
 .btn-transparent {
-  background-color: transparent !important; /* Fully transparent background */
-  border: 2px solid #ffffff !important; /* White border for visibility */
-  color: #ffffff !important; /* White text */
-  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7); /* Soft glow effect */
+  background-color: transparent !important;
+  /* Fully transparent background */
+  border: 2px solid #ffffff !important;
+  /* White border for visibility */
+  color: #ffffff !important;
+  /* White text */
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
+  /* Soft glow effect */
   transition: all 0.3s ease-in-out;
 }
 
 /* Hover effect for transparent buttons */
 .btn-transparent:hover {
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.2
-  ) !important; /* Slight opacity on hover */
+  background-color: rgba(255,
+      255,
+      255,
+      0.2) !important;
+  /* Slight opacity on hover */
   transform: scale(1.05);
-  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5); /* Light glow */
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+  /* Light glow */
 }
 
 /* Effects for keyboard like 3d button */
@@ -186,7 +222,8 @@ h1 {
   font-size: 1rem;
   background: linear-gradient(to bottom, #48ffe744, #6ad3f348);
   border: 2px solid;
-  border-radius: 0; /* Square corners for retro style */
+  border-radius: 0;
+  /* Square corners for retro style */
   padding: 0.5rem 1rem;
   cursor: pointer;
   margin: 0 1rem;
@@ -213,93 +250,118 @@ h1 {
 
 .send-button-wrapper {
   display: inline-block;
-  width: 220px; /* Set to your button's fixed width */
-  height: 60px; /* Set to your button's fixed height */
-  overflow: hidden; /* Prevent the scaled button from expanding the container */
-  vertical-align: middle; /* Ensure proper alignment if needed */
+  width: 220px;
+  /* Set to your button's fixed width */
+  height: 60px;
+  /* Set to your button's fixed height */
+  overflow: hidden;
+  /* Prevent the scaled button from expanding the container */
+  vertical-align: middle;
+  /* Ensure proper alignment if needed */
 }
 
 /* Add glow to logos */
 .icon-wrapper {
   position: relative;
   display: inline-block;
-  margin: 0.1rem; /* Optional: spacing between icons */
-  filter: drop-shadow(0px 0px 3px #00e6b8) !important; /* Miku-style glow */
+  margin: 0.1rem;
+  /* Optional: spacing between icons */
+  filter: drop-shadow(0px 0px 3px #00e6b8) !important;
+  /* Miku-style glow */
 
-  flex-direction: column;      /* Stack icon on top, label below (optional) */
-  align-items: center;         /* Center horizontally */
-  justify-content: center;     /* Center vertically */
-  width: 60px;                 /* Enough space for 40x40 icon + label */
-  height: 60px;                /* Adjust as needed */
+  flex-direction: column;
+  /* Stack icon on top, label below (optional) */
+  align-items: center;
+  /* Center horizontally */
+  justify-content: center;
+  /* Center vertically */
+  width: 60px;
+  /* Enough space for 40x40 icon + label */
+  height: 60px;
+  /* Adjust as needed */
 }
- 
+
 /* Ensure both <img> and <i> share the same 40x40 dimensions */
 .icon-wrapper img,
 .icon-wrapper i {
   width: 40px;
   height: 40px;
   display: block;
-  object-fit: contain;         /* Keeps aspect ratio for images */
+  object-fit: contain;
+  /* Keeps aspect ratio for images */
 }
 
 /* Increase <i> font-size so the icon roughly fits the 40x40 box */
 .icon-wrapper i {
-  font-size: 40px; 
+  font-size: 40px;
   line-height: 40px;
-  text-align: center;          /* Center the icon glyph within its box */
+  text-align: center;
+  /* Center the icon glyph within its box */
 }
 
 
- 
+
 /* Add glow to college logos */
 .icon-wrapper-education {
   position: relative;
   display: inline-block;
-  margin: 0.1rem; /* Optional: spacing between icons */
+  margin: 0.1rem;
+  /* Optional: spacing between icons */
   filter: drop-shadow(3px 3px 1.5px #d7fff6) !important;
 }
 
 /* Default styles for desktop (Non-Mobile) */
 .stony-brook-logo {
-  width: 400px; /* Keep original width */
+  width: 400px;
+  /* Keep original width */
   height: auto;
-  max-width: 100%; /* Prevent overflow */
+  max-width: 100%;
+  /* Prevent overflow */
   display: block;
-  margin-bottom: 1.5rem; /* Adds space below */
+  margin-bottom: 1.5rem;
+  /* Adds space below */
 }
 
 .queens-college-logo {
-  width: 300px; /* Keep original width */
+  width: 300px;
+  /* Keep original width */
   height: auto;
   max-width: 75%;
   display: block;
-  margin-bottom: 1.5rem; /* Adds space below */
+  margin-bottom: 1.5rem;
+  /* Adds space below */
 }
 
 .icon-label {
   position: absolute;
-  bottom: 100%; /* Position above the icon */
+  bottom: 100%;
+  /* Position above the icon */
   left: 50%;
   transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  background-color: rgba(0, 0, 0, 0.7);
+  /* Semi-transparent background */
   color: #fff;
   padding: 2px 6px;
   border-radius: 4px;
   font-size: 1.25rem;
   white-space: nowrap;
-  opacity: 0; /* Hidden by default */
+  opacity: 0;
+  /* Hidden by default */
   transition: opacity 0.2s ease-in-out;
-  pointer-events: none; /* Allows smooth hover without interference */
+  pointer-events: none;
+  /* Allows smooth hover without interference */
 }
 
 .icon-wrapper:hover .icon-label {
-  opacity: 1; /* Shows the label on hover */
+  opacity: 1;
+  /* Shows the label on hover */
 }
 
 /* Increase overall duration from 600ms to 1000ms for a slower fade and extended movement */
 .particle {
   position: absolute;
-  width: 7px; /* Adjust size if needed */
+  width: 7px;
+  /* Adjust size if needed */
   height: 7px;
   pointer-events: none;
   animation: explode 1000ms ease-out forwards;
@@ -311,9 +373,11 @@ h1 {
     transform: translate(0, 0);
     opacity: 1;
   }
+
   50% {
     opacity: 0.5;
   }
+
   100% {
     /* Increase multiplier for a bigger range */
     transform: translate(calc(var(--dx) * 2), calc(var(--dy) * 2));
@@ -328,16 +392,20 @@ h1 {
 #contact {
   scroll-margin-top: 80px;
 }
+
 #home h1.pixel-heading,
 #about h2.pixel-bold-title,
 #skills-education h4,
 #projects h4,
 #contact .contact-title {
-  font-size: clamp(1.4rem, 6vw, 2.2rem); /* Adjust font size responsively */
+  font-size: clamp(1.4rem, 6vw, 2.2rem);
+  /* Adjust font size responsively */
   text-align: center;
   padding: 10px 0;
-  white-space: nowrap; /* Prevent wrapping */
-  transform: scale(1); /* Adjust scale for better fit */
+  white-space: nowrap;
+  /* Prevent wrapping */
+  transform: scale(1);
+  /* Adjust scale for better fit */
 }
 
 .pixel-btn {
@@ -347,7 +415,8 @@ h1 {
   font-size: 1rem;
   background-color: transparent;
   border: 2px solid #000;
-  border-radius: 0; /* Square corners for pixel style */
+  border-radius: 0;
+  /* Square corners for pixel style */
   padding: 0.5rem 1rem;
   cursor: pointer;
   margin: 0 1rem;
@@ -360,7 +429,8 @@ h1 {
 .pixel-btn:hover {
   transform: scale(1.05);
   box-shadow: 4px 4px 0px #000;
-  background-color: #2ecacfa8 !important; /* Change the button background on hover */
+  background-color: #2ecacfa8 !important;
+  /* Change the button background on hover */
 }
 
 .pixel-btn:active {
@@ -373,7 +443,8 @@ h1 {
   animation: fadeInOut 4s infinite ease-in-out;
   font-size: 1rem;
   margin-top: 0.5rem;
-  color: #eeff00 !important; /* Your desired fixed color */
+  color: #eeff00 !important;
+  /* Your desired fixed color */
 }
 
 @keyframes fadeInOut {
@@ -381,10 +452,13 @@ h1 {
     opacity: 0;
     transform: translateY(5px);
   }
+
   50% {
     opacity: 1;
     transform: translateY(0px);
-  } /* Holds visibility longer */
+  }
+
+  /* Holds visibility longer */
   100% {
     opacity: 0;
     transform: translateY(5px);
@@ -394,23 +468,34 @@ h1 {
 @keyframes rgbShift {
   0% {
     color: rgb(240, 116, 0);
-  } /* Orange */
+  }
+
+  /* Orange */
   25% {
     color: rgb(255, 0, 102);
-  } /* Pink */
+  }
+
+  /* Pink */
   50% {
     color: rgb(0, 204, 255);
-  } /* Light Blue */
+  }
+
+  /* Light Blue */
   75% {
     color: rgb(0, 255, 102);
-  } /* Green */
+  }
+
+  /* Green */
   100% {
     color: rgb(240, 116, 0);
-  } /* Back to Orange */
+  }
+
+  /* Back to Orange */
 }
 
 .animated-background {
-  position: fixed;           /* stays fixed relative to the viewport */
+  position: fixed;
+  /* stays fixed relative to the viewport */
   top: 0;
   left: 0;
   width: 100vw;
@@ -418,7 +503,8 @@ h1 {
   z-index: -1;
   pointer-events: none;
   background: linear-gradient(120deg, #2ecacf, #00a2ff, #ffffff);
-  background-size: cover;    /* makes sure it fills the viewport */
+  background-size: cover;
+  /* makes sure it fills the viewport */
   animation: backgroundMove 10s ease-in-out infinite alternate;
 }
 
@@ -428,9 +514,11 @@ h1 {
   0% {
     filter: brightness(1);
   }
+
   50% {
     filter: brightness(1.2);
   }
+
   100% {
     filter: brightness(1);
   }
@@ -444,7 +532,8 @@ h1 {
 }
 
 .particle {
-  background-color: rgba(0, 255, 255, 0.9); /* Miku cyan glow */
+  background-color: rgba(0, 255, 255, 0.9);
+  /* Miku cyan glow */
   box-shadow: 0px 0px 10px rgba(0, 255, 255, 0.8);
 }
 
@@ -459,14 +548,13 @@ h1 {
 .container,
 .card {
   /* A subtle “glass” look using semi-opaque white */
-  background-color: rgba(255, 255, 255, 0.021) !important; /* Adjust alpha as needed */
+  background-color: rgba(255, 255, 255, 0.021) !important;
+  /* Adjust alpha as needed */
 
   /* Optional gradient for extra texture */
-  background-image: radial-gradient(
-    circle at 50% 50%,
-    rgba(255, 255, 255, 0.05),
-    rgba(255, 255, 255, 0.15)
-  ) !important;
+  background-image: radial-gradient(circle at 50% 50%,
+      rgba(255, 255, 255, 0.05),
+      rgba(255, 255, 255, 0.15)) !important;
   background-blend-mode: lighten;
 
   /* Keep your existing borders, rounding, etc. */
@@ -482,7 +570,8 @@ h1 {
 /* Improve readability of text inside transparent sections */
 .card h6,
 .pixel-text {
-  color: #ffffff; /* Ensure text remains visible */
+  color: #ffffff;
+  /* Ensure text remains visible */
   text-shadow: 0px 0px 6px rgba(0, 255, 255, 0.7),
     0px 0px 10px rgba(0, 162, 255, 0.5);
 }
@@ -494,10 +583,14 @@ h1 {
 
 /* Apply Transparent Glass Effect to Contact Form */
 form {
-  background: rgba(255, 255, 255, 0.1) !important; /* Light transparent white */
-  backdrop-filter: blur(10px) !important; /* Frosted glass effect */
-  border: 2px solid rgba(255, 255, 255, 0.3) !important; /* Subtle white border */
-  border-radius: 10px !important; /* Smooth rounded edges */
+  background: rgba(255, 255, 255, 0.1) !important;
+  /* Light transparent white */
+  backdrop-filter: blur(10px) !important;
+  /* Frosted glass effect */
+  border: 2px solid rgba(255, 255, 255, 0.3) !important;
+  /* Subtle white border */
+  border-radius: 10px !important;
+  /* Smooth rounded edges */
   padding: 1rem !important;
   box-shadow: none !important;
 }
@@ -505,8 +598,10 @@ form {
 /* Ensure input fields and textarea match the transparent theme */
 input,
 textarea {
-  background: rgba(0, 0, 0, 0.3) !important; /* Darker transparency */
-  color: #ffffff !important; /* Bright text */
+  background: rgba(0, 0, 0, 0.3) !important;
+  /* Darker transparency */
+  color: #ffffff !important;
+  /* Bright text */
   border: 1px solid rgba(255, 255, 255, 0.3) !important;
   padding: 0.5rem !important;
   border-radius: 5px !important;
@@ -514,7 +609,8 @@ textarea {
 
 /* Contact form title styling */
 .contact-title {
-  margin-bottom: 2rem; /* Adjust this value as needed */
+  margin-bottom: 2rem;
+  /* Adjust this value as needed */
   text-shadow: 0px 0px 6px rgba(0, 255, 255, 0.7),
     0px 0px 10px rgba(0, 162, 255, 0.5);
 }
@@ -539,23 +635,26 @@ button[type="submit"]:hover {
   left: 0;
   width: 100vw;
   height: 100vh;
-  pointer-events: none; /* Ensures it doesn’t interfere with UI */
+  pointer-events: none;
+  /* Ensures it doesn’t interfere with UI */
   z-index: -1;
 }
 
 /* Individual floating shapes */
 .floating-shape {
   position: absolute;
-  background: rgba(0, 255, 255, 0.15); /* Semi-transparent neon */
-  border: 2px solid rgba(0, 255, 255, 0.3); /* Subtle border */
-  clip-path: polygon(
-    50% 0%,
-    100% 38%,
-    82% 100%,
-    18% 100%,
-    0% 38%
-  ); /* Pentagon shape */
-  filter: drop-shadow(0px 0px 10px rgba(0, 255, 255, 0.6)); /* Soft glow */
+  background: rgba(0, 255, 255, 0.15);
+  /* Semi-transparent neon */
+  border: 2px solid rgba(0, 255, 255, 0.3);
+  /* Subtle border */
+  clip-path: polygon(50% 0%,
+      100% 38%,
+      82% 100%,
+      18% 100%,
+      0% 38%);
+  /* Pentagon shape */
+  filter: drop-shadow(0px 0px 10px rgba(0, 255, 255, 0.6));
+  /* Soft glow */
   animation: floatShape infinite alternate ease-in-out,
     rotateShape infinite linear;
 }
@@ -565,6 +664,7 @@ button[type="submit"]:hover {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -575,27 +675,33 @@ button[type="submit"]:hover {
   0% {
     transform: translateY(0px) scale(1);
   }
+
   50% {
     transform: translateY(30px) scale(1.1);
   }
+
   100% {
     transform: translateY(0px) scale(1);
   }
 }
+
 /* Up-Down Floating Effect */
 @keyframes floatUpDown {
   0% {
     transform: translateY(0px);
   }
+
   100% {
     transform: translateY(-30px);
   }
 }
+
 /* Background Square Animation Rotate Left */
 @keyframes rotateLeft {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(-360deg);
   }
@@ -606,11 +712,12 @@ button[type="submit"]:hover {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
- 
+
 .prev-button-wrapper,
 .next-button-wrapper {
   position: absolute;
@@ -621,17 +728,21 @@ button[type="submit"]:hover {
 
 /* Place them to the left or right */
 .prev-button-wrapper {
-  left: 10px; /* or wherever you like */
+  left: 10px;
+  /* or wherever you like */
 }
 
 .next-button-wrapper {
-  right: 10px; /* or wherever you like */
+  right: 10px;
+  /* or wherever you like */
 }
 
 /* Ensure the overall project container adapts by stacking or wrapping the inner columns */
 #projects .d-flex.justify-content-between.align-items-center.mt-5 {
-  flex-wrap: wrap; /* Wrap columns if needed */
-  gap: 1rem; /* Optional gap between items */
+  flex-wrap: wrap;
+  /* Wrap columns if needed */
+  gap: 1rem;
+  /* Optional gap between items */
 }
 
 
@@ -643,33 +754,58 @@ textarea:-webkit-autofill {
   transition: background-color 5000s ease-in-out 0s;
 }
 
-html, body {
+html,
+body {
   width: 100%;
   height: 100%;
-  overflow-x: hidden; /* Prevents horizontal scroll */
-  overflow-y: auto; /* Ensures vertical scrolling works */
-  touch-action: pan-y; /* Allows vertical scrolling but prevents pinch zoom */
+  overflow-x: hidden;
+  /* Prevents horizontal scroll */
+  overflow-y: auto;
+  /* Ensures vertical scrolling works */
+  touch-action: pan-y;
+  /* Allows vertical scrolling but prevents pinch zoom */
 }
 
 * {
-  -webkit-user-drag: none; /* Prevents dragging elements */
-  touch-action: manipulation; /* Prevents pinch zooming but allows normal scrolling */
+  -webkit-user-drag: none;
+  /* Prevents dragging elements */
+  touch-action: manipulation;
+  /* Prevents pinch zooming but allows normal scrolling */
 }
 
+.footer-note {
+  text-align: center;
+  padding: 28px 0;
+  font-family: "Press Start 2P", cursive;
+  font-size: 10px;
+  letter-spacing: 1.2px;
+  color: rgb(255, 255, 255);
+  opacity: 0.8;
+  user-select: none;
+  text-shadow: 0px 0px 6px rgba(0,255,200,0.5);
+  cursor: default;
+}
+
+  /* ========================= */
+  /* PROJECTS LAYOUT — MOBILE  */
+  /* ========================= */
 
 @media (max-width: 768px) {
-    .container {
+  .container {
     width: 95%;
   }
+
   .profile-pic {
     width: 200px;
     height: 200px;
   }
+
   .btn-fixed-size {
     width: 180px;
     height: 45px;
     font-size: 0.9rem;
   }
+
   /* Home section main heading */
   #home h1.pixel-heading {
     font-size: clamp(1.6rem, 3.5vw, 2.2rem);
@@ -686,13 +822,18 @@ html, body {
   }
 
   .pixel-heading {
-    font-size: 2rem; /* Reduced from 2.5rem */
+    font-size: 2rem;
+    /* Reduced from 2.5rem */
   }
+
   .pixel-subheading {
-    font-size: 1.3rem; /* Reduced for better fit */
+    font-size: 1.3rem;
+    /* Reduced for better fit */
   }
+
   .pixel-text {
-    font-size: 0.9rem; /* Slightly smaller text */
+    font-size: 0.9rem;
+    /* Slightly smaller text */
   }
 
   /* About Me Container */
@@ -713,9 +854,12 @@ html, body {
   #about p {
     font-size: 0.6rem;
     line-height: 1.5;
-    text-align: left; /* Keeps text natural */
-    word-break: break-word; /* Prevents overflow */ 
-    max-width: 100%; /* Prevents text from stretching too wide */
+    text-align: left;
+    /* Keeps text natural */
+    word-break: break-word;
+    /* Prevents overflow */
+    max-width: 100%;
+    /* Prevents text from stretching too wide */
 
   }
 
@@ -726,36 +870,48 @@ html, body {
     height: auto;
     display: block;
   }
- 
 
-  
-/* Default styles for desktop */
-.stony-brook-logo {
-  width: 400px !important; /* Keep original width */
-  height: auto !important;
-  max-width: 100% !important; /* Prevent overflow */
-  display: block;
-  margin-bottom: 1.5rem; /* Extra spacing below for better layout */
-}
 
-.queens-college-logo {
-  width: 300px !important; /* Keep original width */
-  height: auto !important;
-  max-width: 75% !important;
-  display: block;
-  margin-bottom: 1.5rem; /* Extra spacing below for better layout */
 
-}
+  /* Default styles for desktop */
+  .stony-brook-logo {
+    width: 400px !important;
+    /* Keep original width */
+    height: auto !important;
+    max-width: 100% !important;
+    /* Prevent overflow */
+    display: block;
+    margin-bottom: 1.5rem;
+    /* Extra spacing below for better layout */
+  }
+
+  .queens-college-logo {
+    width: 300px !important;
+    /* Keep original width */
+    height: auto !important;
+    max-width: 75% !important;
+    display: block;
+    margin-bottom: 1.5rem;
+    /* Extra spacing below for better layout */
+
+  }
+
   .btn-fixed-size {
-    width: 160px !important; /* Reduced width */
-    height: auto !important; /* Reduced height */
-    font-size: 0.75rem; /* Smaller font size */
-    padding: 0.4rem 0.8rem; /* Adjusted padding */
-    flex-wrap: wrap; /* Allow wrapping if needed */
+    width: 160px !important;
+    /* Reduced width */
+    height: auto !important;
+    /* Reduced height */
+    font-size: 0.75rem;
+    /* Smaller font size */
+    padding: 0.4rem 0.8rem;
+    /* Adjusted padding */
+    flex-wrap: wrap;
+    /* Allow wrapping if needed */
   }
 
   .pixel-btn-3d {
-    letter-spacing: 1px; /* Reduced letter-spacing for better fit */
+    letter-spacing: 1px;
+    /* Reduced letter-spacing for better fit */
   }
 
   /* Project container: scales to 90% of viewport width and centers children vertically */
@@ -768,17 +924,21 @@ html, body {
     flex-direction: column;
     align-items: center;
     overflow-x: hidden;
-    position: relative; /* Ensure the container is positioned */
+    position: relative;
+    /* Ensure the container is positioned */
     display: flex;
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
+    justify-content: center;
+    /* Center content horizontally */
+    align-items: center;
+    /* Center content vertically */
   }
 
   /* Ensure all direct children of #projects take full container width */
-  #projects > * {
+  #projects>* {
     width: 100% !important;
     margin: 0 auto !important;
-    position: relative; /* Ensure the container is positioned */
+    position: relative;
+    /* Ensure the container is positioned */
   }
 
   /* Override the right column container that had margin-left in the PC layout */
@@ -796,12 +956,6 @@ html, body {
     z-index: 1;
   }
 
-
-  
-  /* ========================= */
-  /* PROJECTS LAYOUT — MOBILE  */
-  /* ========================= */
-
   /* Top row: mini game + video stack vertically */
   #projects .projects-top-row {
     display: flex;
@@ -811,8 +965,8 @@ html, body {
     width: 100% !important;
     gap: 1.25rem;
   }
- 
- 
+
+
 
   /* Bottom row: keep 2D + 3D side-by-side */
   #projects .projects-bottom-row {
@@ -824,7 +978,7 @@ html, body {
     width: 100% !important;
   }
 
-  #projects .projects-bottom-row > div {
+  #projects .projects-bottom-row>div {
     width: 48% !important;
   }
 
@@ -834,11 +988,14 @@ html, body {
   #skills-education h4,
   #projects h4,
   #contact .contact-title {
-    font-size: clamp(1.4rem, 6vw, 2.2rem); /* Adjust font size responsively */
+    font-size: clamp(1.4rem, 6vw, 2.2rem);
+    /* Adjust font size responsively */
     text-align: center;
     padding: 10px 0;
-    white-space: nowrap; /* Prevent wrapping */
-    transform: scale(0.8); /* Adjust scale for better fit */
+    white-space: nowrap;
+    /* Prevent wrapping */
+    transform: scale(0.8);
+    /* Adjust scale for better fit */
 
     display: flex;
     justify-content: center;
@@ -846,25 +1003,30 @@ html, body {
     width: 100%;
     text-align: center;
     padding: 10px 0;
-    flex-wrap: nowrap; /* Prevents wrapping */
+    flex-wrap: nowrap;
+    /* Prevents wrapping */
   }
 
-    /* Fix emoji vertical alignment */
-    #skills-education h4 span,
-    #home h1.pixel-heading span,
-    #about h2.pixel-bold-title span,
-    #projects h4 span,
-    #contact .contact-title span {
-      position: relative;
-      top: -10px; /* Adjust as needed */
-      margin-right: 20px; /* Add spacing between emoji and text */
-      display: inline-block; /* Ensure the emoji behaves properly */
-    }
+  /* Fix emoji vertical alignment */
+  #skills-education h4 span,
+  #home h1.pixel-heading span,
+  #about h2.pixel-bold-title span,
+  #projects h4 span,
+  #contact .contact-title span {
+    position: relative;
+    top: -10px;
+    /* Adjust as needed */
+    margin-right: 20px;
+    /* Add spacing between emoji and text */
+    display: inline-block;
+    /* Ensure the emoji behaves properly */
+  }
 
-    #skills-education {
-      margin-bottom: 3rem !important; /* Adjust the 3rem as desired */
-    }
- }
+  #skills-education {
+    margin-bottom: 3rem !important;
+    /* Adjust the 3rem as desired */
+  }
+}
 
 @media screen and (max-width: 1280px) {
   #projects .projects-top-row {

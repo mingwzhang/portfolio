@@ -100,16 +100,16 @@ function App() {
     document.addEventListener("touchstart", () => { }, false);
     let resizeTimeout = null;
 
-  const handler = () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => {
-      // any resize side effects you need
-    }, 250);
-  };
+    const handler = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        // any resize side effects you need
+      }, 250);
+    };
 
-  window.addEventListener("resize", handler);
-  return () => window.removeEventListener("resize", handler);
-  
+    window.addEventListener("resize", handler);
+    return () => window.removeEventListener("resize", handler);
+
   }, []);
 
   return (
@@ -232,6 +232,9 @@ function App() {
 
       {/* Particle explosion background */}
       <ParticleExplosion />
+      <div className="footer-note">
+      © 2025 Mingwei Zhang — Built with React.
+      </div>
     </div>
   );
 }

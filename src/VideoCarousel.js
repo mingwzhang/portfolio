@@ -9,11 +9,9 @@ function VideoCarousel() {
     `${process.env.PUBLIC_URL}/video/ProjectIOTA.mp4`,
   ];
 
-  // Track which videos have controls enabled
   const [activated, setActivated] = useState({});
-  // Track which videos are currently playing (for overlay)
   const [isPlaying, setIsPlaying] = useState({});
-  const videoRefs = useRef([]);
+  const videoRefs = useRef(new Array(videos.length));
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [dragStartX, setDragStartX] = useState(null);
@@ -23,35 +21,29 @@ function VideoCarousel() {
 
   const trackTransform = `translateX(calc(${-currentIndex * 100}% + ${dragOffset}px))`;
 
-  // Pause + reset all videos when slide changes
-const pauseAllVideos = () => {
-  videoRefs.current.forEach((video, i) => {
-    if (video) {
-      video.pause();
-      video.currentTime = 0;     // reset to start
-      video.removeAttribute("controls"); // HIDE PLAYBAR
-      video.load();              // RESTORE POSTER
-    }
-  });
+  const pauseAllVideos = () => {
+    videoRefs.current.forEach((video) => {
+      if (video) {
+        video.pause();
+        video.currentTime = 0;
+        video.removeAttribute("controls");
+        video.load();
+      }
+    });
 
-  setIsPlaying({});
-  setActivated({});
-};
-
+    setIsPlaying({});
+    setActivated({});
+  };
 
   const finishDrag = () => {
-    if (Math.abs(dragOffset) > 5) {
-      wasDraggedRef.current = true;
-    }
+    if (Math.abs(dragOffset) > 5) wasDraggedRef.current = true;
 
     const THRESHOLD = 50;
 
     if (dragOffset > THRESHOLD) {
-      // swipe right → previous
       setCurrentIndex((prev) => (prev === 0 ? videos.length - 1 : prev - 1));
       pauseAllVideos();
     } else if (dragOffset < -THRESHOLD) {
-      // swipe left → next
       setCurrentIndex((prev) => (prev === videos.length - 1 ? 0 : prev + 1));
       pauseAllVideos();
     }
@@ -61,41 +53,6 @@ const pauseAllVideos = () => {
     setDragOffset(0);
   };
 
-  // mouse drag
-  const handleMouseDown = (e) => {
-    setDragStartX(e.clientX);
-    setDragging(true);
-    wasDraggedRef.current = false;
-  };
-
-  const handleMouseMove = (e) => {
-    if (!dragging || dragStartX === null) return;
-    setDragOffset(e.clientX - dragStartX);
-  };
-
-  const handleMouseUp = () => {
-    if (!dragging) return;
-    finishDrag();
-  };
-
-  // touch drag
-  const handleTouchStart = (e) => {
-    setDragStartX(e.touches[0].clientX);
-    setDragging(true);
-    wasDraggedRef.current = false;
-  };
-
-  const handleTouchMove = (e) => {
-    if (!dragging || dragStartX === null) return;
-    setDragOffset(e.touches[0].clientX - dragStartX);
-  };
-
-  const handleTouchEnd = () => {
-    if (!dragging) return;
-    finishDrag();
-  };
-
-  // Click directly on video area
   const handleVideoClick = (e, idx) => {
     if (wasDraggedRef.current) {
       e.preventDefault();
@@ -104,21 +61,22 @@ const pauseAllVideos = () => {
       return;
     }
 
-    // First-time activation via video click
     if (!activated[idx]) {
       e.preventDefault();
-      setActivated((prev) => ({ ...prev, [idx]: true }));
       const videoEl = videoRefs.current[idx];
-      if (videoEl) videoEl.play();
+      if (videoEl) {
+        setActivated((prev) => ({ ...prev, [idx]: true }));
+        videoEl.play();
+      }
     }
-    // If already activated, normal controls behavior
   };
 
-  // Click on overlay (big play button)
   const handleOverlayClick = (idx) => {
-    setActivated((prev) => ({ ...prev, [idx]: true }));
     const videoEl = videoRefs.current[idx];
-    if (videoEl) videoEl.play();
+    if (videoEl) {
+      setActivated((prev) => ({ ...prev, [idx]: true }));
+      videoEl.play();
+    }
   };
 
   const goToPrevious = () => {
@@ -135,13 +93,13 @@ const pauseAllVideos = () => {
     <div className="carousel-viewport">
       <div
         className={`video-carousel ${dragging ? "dragging" : ""}`}
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseUp}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
+        onMouseDown={(e) => { setDragStartX(e.clientX); setDragging(true); wasDraggedRef.current = false; }}
+        onMouseMove={(e) => dragging && dragStartX !== null && setDragOffset(e.clientX - dragStartX)}
+        onMouseUp={finishDrag}
+        onMouseLeave={finishDrag}
+        onTouchStart={(e) => { setDragStartX(e.touches[0].clientX); setDragging(true); wasDraggedRef.current = false; }}
+        onTouchMove={(e) => dragging && dragStartX !== null && setDragOffset(e.touches[0].clientX - dragStartX)}
+        onTouchEnd={finishDrag}
       >
         <div
           className="video-track"
@@ -156,48 +114,32 @@ const pauseAllVideos = () => {
               .pop()
               .replace(".mp4", ".jpg")}`;
 
-            const playing = !!isPlaying[idx];
-
             return (
               <div key={idx} className="video-slide">
                 <div className="video-slide-number">
                   {idx + 1} / {videos.length}
                 </div>
 
-                {/* PLAY OVERLAY:
-                    - shown before first play
-                    - shown again whenever video is paused or ended
-                */}
-                {!playing && (
+                {!isPlaying[idx] && (
                   <div
                     className="custom-play-overlay"
                     onClick={() => handleOverlayClick(idx)}
-                  >
-                    ▶
-                  </div>
+                  ></div>
                 )}
 
                 <video
                   ref={(el) => (videoRefs.current[idx] = el)}
                   src={video}
-                  playsInline
-                  preload="metadata"
                   className="video-element"
                   poster={poster}
+                  playsInline
+                  preload="metadata"
                   controls={activated[idx] === true}
                   onClick={(e) => handleVideoClick(e, idx)}
-                  onLoadedMetadata={(e) => {
-                    e.target.volume = 0.25;
-                  }}
-                  onPlay={() =>
-                    setIsPlaying((prev) => ({ ...prev, [idx]: true }))
-                  }
-onPause={() => {
-    setIsPlaying((prev) => ({ ...prev, [idx]: false }));
-}}
-onEnded={() => {
-    setIsPlaying((prev) => ({ ...prev, [idx]: false }));
-}}
+                  onLoadedMetadata={(e) => { e.target.volume = 0.25; }}
+                  onPlay={() => setIsPlaying((prev) => ({ ...prev, [idx]: true }))}
+                  onPause={() => setIsPlaying((prev) => ({ ...prev, [idx]: false }))}
+                  onEnded={() => setIsPlaying((prev) => ({ ...prev, [idx]: false }))}
                 />
               </div>
             );
