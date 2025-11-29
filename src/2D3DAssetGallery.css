@@ -74,7 +74,7 @@
   text-align: center;
   scrollbar-gutter: stable;
   overflow-y: scroll;
-
+padding-bottom: 60px; 
 }
 .modal-2d:after,
 .modal-3d:after {
@@ -182,6 +182,8 @@
   display: inline-block;
   margin: 10px;
   pointer-events: auto;
+    touch-action: manipulation;
+
 }
 
 .asset-hover-text {
@@ -261,4 +263,18 @@
     .asset-hover-text {
     font-size: 19px;
   }
+.img-wrapper {
+  touch-action: manipulation;
+}
+
+.modal-2d {
+  padding-bottom: 60px;
+}
+}
+
+@media (hover: none) {
+.modal-2d::after {
+  pointer-events: none !important;
+  touch-action: none !important;
+}
 }

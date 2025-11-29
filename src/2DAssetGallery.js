@@ -1,27 +1,24 @@
 import React, { useState } from "react";
 import "./2D3DAssetGallery.css";
 
+const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
 export default function AssetGallery2D() {
   const [open, setOpen] = useState(null);
   const [clicked, setClicked] = useState({});
   const [hovered, setHovered] = useState({});
+
   const categories = {
     "Character Sprites": [
-      process.env.PUBLIC_URL +
-      "/img/art_assets/2D/SpriteSheets/character_spritesheet.png",
-      process.env.PUBLIC_URL +
-      "/img/art_assets/2D/SpriteSheets/character_example.gif",
+      process.env.PUBLIC_URL + "/img/art_assets/2D/SpriteSheets/character_spritesheet.png",
+      process.env.PUBLIC_URL + "/img/art_assets/2D/SpriteSheets/character_example.gif",
     ],
 
     "Enemy Sprites": [
-      process.env.PUBLIC_URL +
-      "/img/art_assets/2D/Enemy/enemy_dark1.gif",
-      process.env.PUBLIC_URL +
-      "/img/art_assets/2D/Enemy/enemy_dark2.gif",
-      process.env.PUBLIC_URL +
-      "/img/art_assets/2D/Enemy/enemy_pig.gif",
-      process.env.PUBLIC_URL +
-      "/img/art_assets/2D/Enemy/enemy_slime.gif",
+      process.env.PUBLIC_URL + "/img/art_assets/2D/Enemy/enemy_dark1.gif",
+      process.env.PUBLIC_URL + "/img/art_assets/2D/Enemy/enemy_dark2.gif",
+      process.env.PUBLIC_URL + "/img/art_assets/2D/Enemy/enemy_pig.gif",
+      process.env.PUBLIC_URL + "/img/art_assets/2D/Enemy/enemy_slime.gif",
     ],
 
     "Props & Environment Objects": [
@@ -29,23 +26,16 @@ export default function AssetGallery2D() {
     ],
 
     "Tileset/Tilemap & Example Usage": [
-      process.env.PUBLIC_URL +
-      "/img/art_assets/2D/TerrainTilemap/Terrain_Tilesheet.png",
-      process.env.PUBLIC_URL +
-      "/img/art_assets/2D/TerrainTilemap/Terrain_InGame.png",
-      process.env.PUBLIC_URL +
-      "/img/art_assets/2D/TerrainTilemap/TerrainCorrupted_InGame.png",
+      process.env.PUBLIC_URL + "/img/art_assets/2D/TerrainTilemap/Terrain_Tilesheet.png",
+      process.env.PUBLIC_URL + "/img/art_assets/2D/TerrainTilemap/Terrain_InGame.png",
+      process.env.PUBLIC_URL + "/img/art_assets/2D/TerrainTilemap/TerrainCorrupted_InGame.png",
     ],
 
     "Complex Animations": [
-      process.env.PUBLIC_URL +
-      "/img/art_assets/2D/Animation/komachi_pose.gif",
-      process.env.PUBLIC_URL +
-      "/img/art_assets/2D/Animation/komachi_run.gif",
-      process.env.PUBLIC_URL +
-      "/img/art_assets/2D/Animation/komachi_attacklist_melee.gif",
-      process.env.PUBLIC_URL +
-      "/img/art_assets/2D/Animation/komachi_attacklist_aerial.gif",
+      process.env.PUBLIC_URL + "/img/art_assets/2D/Animation/komachi_pose.gif",
+      process.env.PUBLIC_URL + "/img/art_assets/2D/Animation/komachi_run.gif",
+      process.env.PUBLIC_URL + "/img/art_assets/2D/Animation/komachi_attacklist_melee.gif",
+      process.env.PUBLIC_URL + "/img/art_assets/2D/Animation/komachi_attacklist_aerial.gif",
     ],
   };
 
@@ -63,59 +53,70 @@ export default function AssetGallery2D() {
 
       {open && (
         <div className="modal-bg" onClick={() => setOpen(null)}>
-          <div
-            className="modal-2d"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Sticky header with title + close button */}
+          <div className="modal-2d" onClick={(e) => e.stopPropagation()}>
+
             <div className="modal-header">
               <h4 className="pixel-text modal-title">{open}</h4>
-              <button className="modal-exit-btn" onClick={() => setOpen(false)}>
-                ✕
-              </button>
+              <button className="modal-exit-btn" onClick={() => setOpen(false)}>✕</button>
             </div>
 
-            {/* Scrollable content */}
             <div className="modal-images">
               {categories[open].map((img, idx) => (
-
                 <div
                   className="img-wrapper"
                   key={idx}
-                  onMouseEnter={() => setHovered(prev => ({ ...prev, [idx]: true }))}
-                  onMouseLeave={() => {
-                    setHovered(prev => ({ ...prev, [idx]: false }));
-                    setClicked(prev => ({ ...prev, [idx]: false }));
+
+                  onMouseEnter={() => {
+                    if (!isMobile) {
+                      setHovered((prev) => ({ ...prev, [idx]: true }));
+                    }
                   }}
+
+                  onMouseLeave={() => {
+                    if (!isMobile) {
+                      setHovered((prev) => ({ ...prev, [idx]: false }));
+                      setClicked((prev) => ({ ...prev, [idx]: false }));
+                    }
+                  }}
+
                   onClick={() => {
-                    if (hovered[idx]) {
+                    if (isMobile) {
+                      setHovered({});  // clear hover just in case
                       setClicked(prev => ({ ...prev, [idx]: !prev[idx] }));
+                    } else {
+                      if (hovered[idx]) {
+                        setClicked(prev => ({ ...prev, [idx]: !prev[idx] }));
+                      }
                     }
                   }}
                 >
                   <img src={img} alt="" className="pixel-img" />
+<div className={`info-icon ${(hovered[idx] && !clicked[idx]) || (isMobile && clicked[idx]) ? "active" : ""}`}>
 
-                  <div className={`info-icon ${hovered[idx] && !clicked[idx] ? "active" : ""}`}>
                     i
                   </div>
 
-                  <div className="asset-hover-text"
+                  <div
+                    className="asset-hover-text"
                     style={{
-                      opacity: hovered[idx] && !clicked[idx] ? 1 : 0,
-                      transform: hovered[idx] && !clicked[idx] ? "translateY(0)" : "translateY(20px)"
+                      opacity: isMobile
+                        ? (clicked[idx] ? 1 : 0)
+                        : (hovered[idx] && !clicked[idx] ? 1 : 0),
+
+                      transform: isMobile
+                        ? (clicked[idx] ? "translateY(0)" : "translateY(20px)")
+                        : (hovered[idx] && !clicked[idx] ? "translateY(0)" : "translateY(20px)")
                     }}
                   >
                     {imgDescriptions[img] || "No description yet"}
                   </div>
 
                 </div>
-
               ))}
             </div>
           </div>
         </div>
       )}
-
     </div>
   );
 }
