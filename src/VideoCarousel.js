@@ -4,6 +4,7 @@ import "./VideoCarousel.css";
 function VideoCarousel() {
   const videos = [
     `${process.env.PUBLIC_URL}/video/!ERRORi.mp4`,
+    `${process.env.PUBLIC_URL}/video/HSSRR.mp4`,
     `${process.env.PUBLIC_URL}/video/AshVideo.mp4`,
     `${process.env.PUBLIC_URL}/video/FFBlazeVideo.mp4`,
     `${process.env.PUBLIC_URL}/video/ProjectIOTA.mp4`,

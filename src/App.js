@@ -128,7 +128,7 @@ function App() {
       <NavBar
         onResumeClick={() =>
           window.open(
-            "https://drive.google.com/file/d/1WnNJx3P6rJXduuo34JcGIqvAVfGZPixU/view?usp=sharing",
+            "https://drive.google.com/file/d/18SDaeXFnaLmSgyC7rZn_S57QF9EqWCm1/view?usp=sharing",
             "_blank"
           )
         }
