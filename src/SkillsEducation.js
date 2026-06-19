@@ -60,7 +60,7 @@ function SkillsEducation({ skills }) {
               <p className="pixel-text" style={{ margin: 0 }}>Master of Arts:</p>
               <p className="pixel-text" style={{ margin: 0 }}>Computer Science</p>
               <p className="pixel-text" style={{ margin: "2rem 0 0 0" }}>Expected graduation:</p>
-              <p className="pixel-text" style={{ margin: 0 }}>Aug 2026</p>
+              <p className="pixel-text" style={{ margin: 0 }}>Dec 2026</p>
             </div>
           </div>
 
