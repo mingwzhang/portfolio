@@ -8,7 +8,8 @@ const ContactForm = () => {
     email: "",
     message: "",
   });
-  const [status, setStatus] = useState("");
+ const [status, setStatus] = useState("");
+ const [statusType, setStatusType] = useState("");
   const [isSending, setIsSending] = useState(false); // Flag to prevent multiple sends
 
   const handleChange = (e) => {
@@ -25,18 +26,20 @@ const ContactForm = () => {
 
     emailjs
       .send(
-        "service_kh8lbtv",
-        "template_8z0b6aa",
-        formData,
-        "mnQpaviz3_3d37L_1"
+        "service_s3eh3hi",  // Service ID
+        "template_7i16ush", // Template ID
+        formData,           // Template parameters / form data
+        "mnQpaviz3_3d37L_1" // Public key
       )
       .then(
         (result) => {
           setStatus("Message sent successfully!");
+          setStatusType("success");
           setFormData({ name: "", email: "", message: "" });
         },
         (error) => {
           setStatus("Failed to send message. Please try again.");
+          setStatusType("error");
         }
       )
       .finally(() => setIsSending(false));
@@ -85,7 +88,21 @@ const ContactForm = () => {
         </button>
       </div>
 
-      {status && <p style={{ marginTop: "1rem" }}>{status}</p>}
+      {status && (
+        <p className={`contact-status ${statusType}`}>
+          {status}
+        </p>
+      )}
+
+      <div className="contact-fallback">
+        <p>If the form does not work, you can contact me directly:</p>
+        <p>
+          Email:{" "}
+          <a href="mailto:mingw.zhang123@gmail.com">
+            mingw.zhang123@gmail.com
+          </a>
+        </p>
+      </div>
     </form>
   );
 };

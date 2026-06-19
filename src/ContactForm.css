@@ -157,3 +157,36 @@
   transform: translateY(15px); /* Moves button down but keeps its size */
   box-shadow: 0 0 0 #888;
 }
+
+.contact-status {
+  margin-top: 1rem;
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+.contact-status.success {
+  color: #3dff4d;
+}
+
+.contact-status.error {
+  color: #ff6c65;
+}
+
+.contact-fallback {
+  margin-top: 1rem;
+  text-align: center;
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.7rem;
+  color: #e5ff00;
+  line-height: 1.8;
+}
+
+.contact-fallback a {
+  color: #00ff9d;
+  text-decoration: none;
+}
+
+.contact-fallback a:hover {
+  text-decoration: underline;
+}
