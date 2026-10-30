@@ -1,130 +1,69 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { FaLinkedin, FaChevronUp, FaChevronDown } from "react-icons/fa";
-import "./NavBar.css"; // Import our nav-specific CSS
+import "./NavBar.css";
 
 const NavBar = ({ onResumeClick }) => {
-  const [navHidden, setNavHidden] = useState(window.innerWidth <= 768);
-  const [dragStartY, setDragStartY] = useState(null);
-  const [dragging, setDragging] = useState(false); // Only enable drag when holding toggle button
-
-
-  // Start dragging when toggle button is pressed
-  const handleTogglePress = (e) => {
-    setDragging(true);
-    setDragStartY(e.touches ? e.touches[0].clientY : e.clientY);
-  };
-
-  // Handle touch/mouse move (only if dragging is enabled)
-  const handleDragMove = (e) => {
-    if (!dragging || !dragStartY) return;
-
-    const currentY = e.touches ? e.touches[0].clientY : e.clientY;
-    const dragDistance = dragStartY - currentY;
-
-    if (dragDistance > 50) {
-      // Drag Up → Hide Navbar
-      setNavHidden(true);
-    } else if (dragDistance < -50) {
-      // Drag Down → Show Navbar
-      setNavHidden(false);
-    }
-  };
-
-  // Stop dragging when toggle button is released
-  const handleDragEnd = () => {
-    setDragging(false);
-    setDragStartY(null);
-  };
+  const [navHidden, setNavHidden] = useState(() => window.innerWidth <= 768);
+  const dragStartY = useRef(null);
 
   const scrollToSection = (id) => {
-    const section = document.getElementById(id);
-    if (section) section.scrollIntoView({ behavior: "smooth" });
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    if (window.innerWidth <= 768) setNavHidden(true);
   };
 
+  const beginDrag = (event) => {
+    dragStartY.current = event.touches ? event.touches[0].clientY : event.clientY;
+  };
+
+  const moveDrag = (event) => {
+    if (dragStartY.current === null) return;
+    const currentY = event.touches ? event.touches[0].clientY : event.clientY;
+    const distance = dragStartY.current - currentY;
+    if (distance > 45) { setNavHidden(true); dragStartY.current = null; }
+    if (distance < -45) { setNavHidden(false); dragStartY.current = null; }
+  };
+
+  const navigation = [
+    { label: "Projects", section: "projects" },
+    { label: "About", section: "about" },
+    { label: "Skills", section: "skills-section" },
+    { label: "More Work", section: "more-work" },
+    { label: "Contact", section: "contact" },
+  ];
+
   return (
-    <nav
-      className={`nav-bar ${navHidden ? "hidden" : ""}`}
-      onTouchMove={handleDragMove}
-      onMouseMove={handleDragMove}
-    >
+    <nav className={`nav-bar ${navHidden ? "hidden" : ""}`} aria-label="Main navigation">
       <div className="nav-container">
         <div className="nav-left">
-          <button
-            onClick={() => scrollToSection("home")}
-            className="nav-btn nav-name nav-text"
-          >
-            Mingwei Zhang
-          </button>
+          <button type="button" className="nav-btn nav-name nav-text" onClick={() => scrollToSection("home")}>Mingwei Zhang</button>
         </div>
-        <div className="nav-right">
-          <button
-            onClick={() => scrollToSection("about")}
-            className="nav-btn nav-item nav-text"
-          >
-            About
-          </button>
-          <button
-            onClick={() => scrollToSection("skills-education")}
-            className="nav-btn nav-item nav-text"
-          >
-            Skills & Education
-          </button>
-          <button
-            onClick={() => scrollToSection("projects")}
-            className="nav-btn nav-item nav-text"
-          >
-            Projects
-          </button>
-          <button
-            onClick={() => scrollToSection("contact")}
-            className="nav-btn nav-item nav-text"
-          >
-            Contact
-          </button>
-          <button
-            onClick={onResumeClick}
-            className="nav-btn nav-resume nav-text"
-          >
-            Resume{" "}
-            <span role="img" aria-label="document">
-              📎
-            </span>
-          </button>
-          <a
-            href="https://www.linkedin.com/in/mingwei-zhang1/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="nav-btn nav-linkedin nav-text"
-          >
-            <FaLinkedin size={24} style={{ marginRight: "0.5rem" }} />
-            LinkedIn
+        <div className="nav-right" id="portfolio-navigation">
+          {navigation.map(({ label, section }) => (
+            <button type="button" key={section} onClick={() => scrollToSection(section)} className="nav-btn nav-item nav-text">{label}</button>
+          ))}
+          <button type="button" onClick={onResumeClick} className="nav-btn nav-resume nav-text">Résumé 📎</button>
+          <a href="https://www.linkedin.com/in/mingwei-zhang1/" target="_blank" rel="noopener noreferrer" className="nav-btn nav-linkedin nav-text">
+            <FaLinkedin size={16} style={{ marginRight: "0.35rem" }} />LinkedIn
           </a>
         </div>
+        <button
+          type="button"
+          className={`nav-toggle-btn ${navHidden ? "nav-hidden" : ""}`}
+          onClick={() => setNavHidden((previous) => !previous)}
+          onTouchStart={beginDrag}
+          onTouchMove={moveDrag}
+          onTouchEnd={() => { dragStartY.current = null; }}
+          onMouseDown={beginDrag}
+          onMouseMove={moveDrag}
+          onMouseUp={() => { dragStartY.current = null; }}
+          onMouseLeave={() => { dragStartY.current = null; }}
+          aria-expanded={!navHidden}
+          aria-controls="portfolio-navigation"
+          title={navHidden ? "Show menu" : "Hide menu"}
+        >
+          {navHidden ? <><FaChevronDown aria-hidden="true" /><span className="nav-toggle-text">Show Menu</span></> : <><FaChevronUp aria-hidden="true" /><span className="nav-toggle-text">Hide Menu</span></>}
+        </button>
       </div>
-
-      {/* Toggle Button (Always Visible Now) */}
-      <button
-        className={`nav-toggle-btn ${navHidden ? "nav-hidden" : ""}`}
-        onClick={() => setNavHidden(!navHidden)}
-        onTouchStart={handleTogglePress}
-        onTouchEnd={handleDragEnd}
-        onMouseDown={handleTogglePress}
-        onMouseUp={handleDragEnd}
-        onMouseLeave={handleDragEnd}
-        title={navHidden ? "Show Menu" : "Hide Menu"}
-      >
-        {navHidden ? (
-          <>
-            <FaChevronDown style={{ marginRight: "8px" }} />
-            <span className="nav-toggle-text">Show Menu</span>
-          </>
-        ) : (
-          <>
-            <FaChevronUp style={{ marginRight: "8px" }} />
-            <span className="nav-toggle-text">Hide Menu</span>
-          </>
-        )}
-      </button>
     </nav>
   );
 };

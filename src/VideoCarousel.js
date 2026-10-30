@@ -1,191 +1,210 @@
-import React, { useState, useRef } from "react";
-import "./VideoCarousel.css";
+import React, { useEffect, useRef, useState } from "react";
+
+// Information here is based on the linked public game pages. Keep role and
+// contribution statements specific to what you can explain in an interview.
+const projects = [
+  {
+    id: "errori",
+    title: "!ERRORi",
+    label: "Solo game jam · 2025",
+    stack: ["Godot", "2D Platformer"],
+    summary: "A five-level platformer set inside a digital world that is falling apart, ending in a boss encounter.",
+    role: "Solo developer",
+    contribution: "Designed and developed the game independently, including varied platforming levels, combat and movement mechanics.",
+    file: "!ERRORi",
+    itchUrl: "https://minmakesgames.itch.io/error",
+    action: "Play on itch.io",
+  },
+  {
+    id: "hssrr",
+    title: "Holly’s Splendid Sugar Rush Rally",
+    label: "Collaborative game jam · 2026",
+    stack: ["Godot", "Action Platformer"],
+    summary: "A candy-themed action platformer made with a collaborator for Brackeys Game Jam 2026.1, later expanded into a full version.",
+    role: "Co-creator / collaborative developer",
+    contribution: "Collaborated on a released platformer featuring movement, combat, checkpoints, boss encounters and configurable controls.",
+    file: "HSSRR",
+    itchUrl: "https://minmakesgames.itch.io/hollys-splendid-sugar-rush-rally",
+    action: "View full game",
+  },
+  {
+    id: "ash",
+    title: "Ash: Protector of Ignicity",
+    label: "Team internship project · 2022",
+    stack: ["Unity", "C#", "3D Action Adventure"],
+    summary: "A third-person adventure in which the player explores environments, activates totems and battles enemies.",
+    role: "Gameplay programming, AI and content development",
+    contribution: "Contributed C# programming, enemy NPC behavior, creature rigging and animation, and level design for two levels.",
+    file: "AshVideo",
+    itchUrl: "https://minmakesgames.itch.io/ash-protector-of-ignicity",
+    action: "View game page",
+  },
+  {
+    id: "iota",
+    title: "Project IOTA",
+    label: "Team internship project · 2022",
+    stack: ["Unity", "C#", "First-Person Puzzle"],
+    summary: "A first-person puzzle and exploration game set inside a space base, with interactable systems and enemy encounters.",
+    role: "Gameplay and AI programming",
+    contribution: "Programmed player controls, interactions, minigames, health and stamina systems, and enemy NPC AI; also created 3D assets.",
+    file: "ProjectIOTA",
+    itchUrl: "https://minmakesgames.itch.io/project-iota",
+    action: "View game page",
+  },
+  {
+    id: "blaze",
+    title: "Fire Fighter BLAZE!!",
+    label: "Team collaboration · 2023",
+    stack: ["Unreal Engine", "3D Action"],
+    summary: "A third-person action game built around high-mobility combat and fighting fire-themed enemies.",
+    role: "Development and QA contributor",
+    contribution: "Assisted with the later stages of development and quality assurance on a collaborative Unreal Engine project.",
+    file: "FFBlazeVideo",
+    itchUrl: "https://anoymous1.itch.io/ffblaze",
+    action: "View game page",
+  },
+];
 
 function VideoCarousel() {
-  // Replace placeholders with VERIFIED contributions before publishing.
-  // Leave codeUrl blank until a project-specific repository is confirmed.
-  const projects = [
-    { title: "!ERRORi", file: "!ERRORi", role: "Add your role", contribution: "Add 1–2 specific systems or features you implemented.", tech: "Add verified tools / languages", codeUrl: "" },
-    { title: "HSSRR", file: "HSSRR", role: "Add your role", contribution: "Add 1–2 specific systems or features you implemented.", tech: "Add verified tools / languages", codeUrl: "" },
-    { title: "Ash", file: "AshVideo", role: "Add your role", contribution: "Add 1–2 specific systems or features you implemented.", tech: "Add verified tools / languages", codeUrl: "" },
-    { title: "FF Blaze", file: "FFBlazeVideo", role: "Add your role", contribution: "Add 1–2 specific systems or features you implemented.", tech: "Add verified tools / languages", codeUrl: "" },
-    { title: "Project IOTA", file: "ProjectIOTA", role: "Add your role", contribution: "Add 1–2 specific systems or features you implemented.", tech: "Add verified tools / languages", codeUrl: "" },
-  ];
-  const videos = projects.map((project) => `${process.env.PUBLIC_URL}/video/${project.file}.mp4`);
-
-  const [activated, setActivated] = useState({});
-  const [isPlaying, setIsPlaying] = useState({});
-  const videoRefs = useRef(new Array(videos.length));
-
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [dragStartX, setDragStartX] = useState(null);
-  const [dragOffset, setDragOffset] = useState(0);
-  const [dragging, setDragging] = useState(false);
-  const wasDraggedRef = useRef(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const videoRef = useRef(null);
+  const tabRefs = useRef([]);
+  const pointerStart = useRef(null);
+  const justSwiped = useRef(false);
+  const current = projects[currentIndex];
 
-  const trackTransform = `translateX(calc(${-currentIndex * 100}% + ${dragOffset}px))`;
+  useEffect(() => {
+    setIsPlaying(false);
+  }, [currentIndex]);
 
-  const pauseAllVideos = () => {
-    videoRefs.current.forEach((video) => {
-      if (video) {
-        video.pause();
-        video.currentTime = 0;
-        video.removeAttribute("controls");
-        video.load();
-      }
-    });
-
-    setIsPlaying({});
-    setActivated({});
+  const selectIndex = (index) => {
+    if (videoRef.current) videoRef.current.pause();
+    setCurrentIndex((index + projects.length) % projects.length);
+    setIsPlaying(false);
   };
 
-  const finishDrag = () => {
-    if (Math.abs(dragOffset) > 5) wasDraggedRef.current = true;
-
-    const THRESHOLD = 50;
-
-    if (dragOffset > THRESHOLD) {
-      setCurrentIndex((prev) => (prev === 0 ? videos.length - 1 : prev - 1));
-      pauseAllVideos();
-    } else if (dragOffset < -THRESHOLD) {
-      setCurrentIndex((prev) => (prev === videos.length - 1 ? 0 : prev + 1));
-      pauseAllVideos();
-    }
-
-    setDragging(false);
-    setDragStartX(null);
-    setDragOffset(0);
-  };
-
-  const handleVideoClick = (e, idx) => {
-    if (wasDraggedRef.current) {
-      e.preventDefault();
-      e.stopPropagation();
-      wasDraggedRef.current = false;
+  const playSelected = () => {
+    if (justSwiped.current) {
+      justSwiped.current = false;
       return;
     }
-
-    if (!activated[idx]) {
-      e.preventDefault();
-      const videoEl = videoRefs.current[idx];
-      if (videoEl) {
-        setActivated((prev) => ({ ...prev, [idx]: true }));
-        videoEl.play();
+    const video = videoRef.current;
+    if (video) {
+      const request = video.play();
+      if (request && typeof request.catch === "function") {
+        request.catch(() => setIsPlaying(false));
       }
     }
   };
 
-  const handleOverlayClick = (idx) => {
-    const videoEl = videoRefs.current[idx];
-    if (videoEl) {
-      setActivated((prev) => ({ ...prev, [idx]: true }));
-      videoEl.play();
+  const handleTabKeyDown = (event, index) => {
+    const offset = event.key === "ArrowRight" ? 1 : event.key === "ArrowLeft" ? -1 : 0;
+    if (!offset) return;
+    event.preventDefault();
+    const next = (index + offset + projects.length) % projects.length;
+    selectIndex(next);
+    tabRefs.current[next]?.focus();
+  };
+
+  const handlePointerDown = (event) => {
+    pointerStart.current = { x: event.clientX, y: event.clientY };
+    justSwiped.current = false;
+  };
+
+  const handlePointerUp = (event) => {
+    if (!pointerStart.current) return;
+    const deltaX = event.clientX - pointerStart.current.x;
+    const deltaY = event.clientY - pointerStart.current.y;
+    pointerStart.current = null;
+    if (Math.abs(deltaX) >= 65 && Math.abs(deltaX) > Math.abs(deltaY) * 1.2) {
+      justSwiped.current = true;
+      selectIndex(currentIndex + (deltaX < 0 ? 1 : -1));
     }
-  };
-
-  const goToPrevious = () => {
-    setCurrentIndex((prev) => (prev === 0 ? videos.length - 1 : prev - 1));
-    pauseAllVideos();
-  };
-
-  const goToNext = () => {
-    setCurrentIndex((prev) => (prev === videos.length - 1 ? 0 : prev + 1));
-    pauseAllVideos();
   };
 
   return (
-    <>
-      <div className="carousel-viewport">
-      <div
-        className={`video-carousel ${dragging ? "dragging" : ""}`}
-        onMouseDown={(e) => { setDragStartX(e.clientX); setDragging(true); wasDraggedRef.current = false; }}
-        onMouseMove={(e) => dragging && dragStartX !== null && setDragOffset(e.clientX - dragStartX)}
-        onMouseUp={finishDrag}
-        onMouseLeave={finishDrag}
-        onTouchStart={(e) => { setDragStartX(e.touches[0].clientX); setDragging(true); wasDraggedRef.current = false; }}
-        onTouchMove={(e) => dragging && dragStartX !== null && setDragOffset(e.touches[0].clientX - dragStartX)}
-        onTouchEnd={finishDrag}
-      >
-        <div
-          className="video-track"
-          style={{
-            transform: trackTransform,
-            transition: dragging ? "none" : "transform 0.3s ease-out",
-          }}
-        >
-          {videos.map((video, idx) => {
-            const poster = `${process.env.PUBLIC_URL}/video/${video
-              .split("/")
-              .pop()
-              .replace(".mp4", ".jpg")}`;
-
-            return (
-              <div key={idx} className="video-slide">
-                <div className="video-slide-number">
-                  {idx + 1} / {videos.length} · {projects[idx].title}
-                </div>
-
-                {!isPlaying[idx] && (
-                  <button
-                    type="button"
-                    className="custom-play-overlay"
-                    aria-label={`Play ${projects[idx].title} gameplay video`}
-                    onClick={() => handleOverlayClick(idx)}
-                  />
-                )}
-
-                <video
-                  ref={(el) => (videoRefs.current[idx] = el)}
-                  src={video}
-                  className="video-element"
-                  poster={poster}
-                  playsInline
-                  preload="metadata"
-                  controls={activated[idx] === true}
-                  onClick={(e) => handleVideoClick(e, idx)}
-                  onLoadedMetadata={(e) => { e.target.volume = 0.25; }}
-                  onPlay={() => setIsPlaying((prev) => ({ ...prev, [idx]: true }))}
-                  onPause={() => setIsPlaying((prev) => ({ ...prev, [idx]: false }))}
-                  onEnded={() => setIsPlaying((prev) => ({ ...prev, [idx]: false }))}
-                />
-              </div>
-            );
-          })}
-        </div>
-
-        <div className="prev-button-wrapper">
+    <div className="featured-project-browser">
+      <div className="featured-project-picker" role="tablist" aria-label="Choose a featured project">
+        {projects.map((project, index) => (
           <button
-            onClick={goToPrevious}
-            aria-label="Previous project video"
-            className="m-2 pixel-text pixel-btn-3d prev-button"
+            type="button"
+            key={project.id}
+            role="tab"
+            ref={(element) => { tabRefs.current[index] = element; }}
+            id={`project-tab-${project.id}`}
+            aria-controls="featured-project-panel"
+            aria-selected={currentIndex === index}
+            tabIndex={currentIndex === index ? 0 : -1}
+            className={`featured-project-tab ${currentIndex === index ? "selected" : ""}`}
+            onClick={() => selectIndex(index)}
+            onKeyDown={(event) => handleTabKeyDown(event, index)}
           >
-            ←
+            <img
+              src={`${process.env.PUBLIC_URL}/video/${project.file}.jpg`}
+              alt=""
+              loading="lazy"
+            />
+            <span>{project.title}</span>
           </button>
+        ))}
+      </div>
+
+      <div id="featured-project-panel" role="tabpanel" aria-labelledby={`project-tab-${current.id}`} className="featured-project-detail">
+        <div className="featured-project-media">
+          <div
+            className="featured-video-frame"
+            onPointerDown={handlePointerDown}
+            onPointerUp={handlePointerUp}
+            onPointerCancel={() => { pointerStart.current = null; }}
+          >
+            <video
+              key={current.file}
+              ref={videoRef}
+              src={`${process.env.PUBLIC_URL}/video/${current.file}.mp4`}
+              poster={`${process.env.PUBLIC_URL}/video/${current.file}.jpg`}
+              preload="none"
+              playsInline
+              controls={isPlaying}
+              onPlay={() => setIsPlaying(true)}
+              onPause={() => setIsPlaying(false)}
+              onEnded={() => setIsPlaying(false)}
+              onLoadedMetadata={(event) => { event.currentTarget.volume = 0.25; }}
+              aria-label={`${current.title} gameplay video`}
+            />
+            {!isPlaying && (
+              <button type="button" className="featured-play-button" onClick={playSelected} aria-label={`Play ${current.title} gameplay video`}>
+                <span aria-hidden="true">▶</span>
+                <span className="featured-play-caption">Play footage</span>
+              </button>
+            )}
+          </div>
+          <div className="featured-video-controls">
+            <button type="button" onClick={() => selectIndex(currentIndex - 1)} aria-label="Previous featured project">← Previous</button>
+            <span aria-live="polite">{currentIndex + 1} / {projects.length}</span>
+            <button type="button" onClick={() => selectIndex(currentIndex + 1)} aria-label="Next featured project">Next →</button>
+          </div>
+          <p className="portfolio-muted featured-swipe-hint">Select a thumbnail, use the arrows, or swipe the footage to switch projects.</p>
         </div>
 
-        <div className="next-button-wrapper">
-          <button
-            onClick={goToNext}
-            aria-label="Next project video"
-            className="m-2 pixel-text pixel-btn-3d next-button"
-          >
-            →
-          </button>
-        </div>
+        <article className="featured-project-copy" aria-live="polite">
+          <span className="portfolio-kicker">{current.label}</span>
+          <h3>{current.title}</h3>
+          <p className="featured-project-summary">{current.summary}</p>
+          <div className="featured-project-facts">
+            <div><span className="featured-fact-label">My role</span><p>{current.role}</p></div>
+            <div><span className="featured-fact-label">My contribution</span><p>{current.contribution}</p></div>
+          </div>
+          <div className="featured-project-tags" aria-label="Project technologies and genres">
+            {current.stack.map((tag) => <span key={tag}>{tag}</span>)}
+          </div>
+          <div className="featured-project-links">
+            <a className="portfolio-action portfolio-action-primary" href={current.itchUrl} target="_blank" rel="noopener noreferrer">{current.action} ↗</a>
+          </div>
+        </article>
       </div>
-      </div>
-      <section className="project-evidence pixel-text" aria-live="polite" aria-label="Current project details">
-        <h6 className="project-evidence-title">{projects[currentIndex].title}</h6>
-        <p><strong>My role:</strong> {projects[currentIndex].role}</p>
-        <p><strong>What I built:</strong> {projects[currentIndex].contribution}</p>
-        <p><strong>Technology:</strong> {projects[currentIndex].tech}</p>
-        {projects[currentIndex].codeUrl && (
-          <a href={projects[currentIndex].codeUrl} target="_blank" rel="noopener noreferrer">
-            View this project's code
-          </a>
-        )}
-      </section>
-    </>
+      <p className="portfolio-muted featured-profile-link">More projects: <a href="https://minmakesgames.itch.io/" target="_blank" rel="noopener noreferrer">itch.io</a> · <a href="https://github.com/mingwzhang" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+    </div>
   );
 }
 

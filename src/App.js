@@ -1,5 +1,5 @@
 // App.js
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import "devicon/devicon.min.css";
 import ParticleExplosion from "./ParticleExplosion";
 import MiniGameBox from "./MiniGameBox";
@@ -14,6 +14,7 @@ import SkillsEducation from "./SkillsEducation";
 import TopButton from "./TopButton";
 import AssetGallery2D from "./2DAssetGallery";
 import AssetGallery3D from "./3DAssetGallery";
+import "./PortfolioEnhancements.css";
 
 const skills = [
   {
@@ -95,161 +96,114 @@ const skills = [
 ];
 
 function App() {
-
-  useEffect(() => {
-    document.addEventListener("touchstart", () => { }, false);
-    let resizeTimeout = null;
-
-    const handler = () => {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => {
-        // any resize side effects you need
-      }, 250);
-    };
-
-    window.addEventListener("resize", handler);
-    return () => window.removeEventListener("resize", handler);
-
-  }, []);
+  const [showAssets, setShowAssets] = useState(false);
+  const resumeUrl = "https://drive.google.com/file/d/1f_YqmpuhB_b4VpNf5T6ttGoPCm9yQUBc/view?usp=sharing";
 
   return (
-    <div>
+    <div className="portfolio-v2">
       <Helmet>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Helmet>
-      {/* Fixed side banner */}
       <TopButton />
       <AnimatedBackground />
-      <FloatingShapes /> {/* Adds 3D-like floating effect */}
-      {/* Render the NavBar at the top */}
-      <NavBar
-        onResumeClick={() =>
-          window.open(
-            "https://drive.google.com/file/d/1f_YqmpuhB_b4VpNf5T6ttGoPCm9yQUBc/view?usp=sharing",
-            "_blank"
-          )
-        }
-      />
-      {/* Add padding at the top so the fixed NavBar doesn't cover the content */}
-      <div
-        id="home"
-        className="d-flex flex-column align-items-center text-center"
-        style={{ paddingTop: "150px" }}
-      >
-        {/* Profile Picture */}
-        <img
-          src={process.env.PUBLIC_URL + "/img/profile-picture.png"}
-          alt="Mingwei Zhang"
-          className="rounded-circle mb-3 profile-pic"
-          width="300"
-          height="300"
-        />
+      <FloatingShapes />
+      <NavBar onResumeClick={() => window.open(resumeUrl, "_blank", "noopener,noreferrer")} />
 
-        {/* Name & Title */}
-        <h1 className="pixel-text pixel-heading">Mingwei Zhang</h1>
-        <h3 className="pixel-text pixel-subheading software-title">
-          Software & Game Developer
-        </h3>
-        <p className="pixel-text pixel-small fade-in-message">
-          Explore gameplay projects, technical work, and source code.
-        </p>
-
-        <div className="d-flex justify-content-center flex-wrap gap-2 mt-2">
-          <button
-            type="button"
-            className="pixel-text pixel-btn-3d btn-fixed-size"
-            onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
-          >
-            Explore Projects
-          </button>
-        </div>
+      <main id="home" className="portfolio-main">
+        <header className="portfolio-hero">
+          <img
+            src={`${process.env.PUBLIC_URL}/img/profile-picture.png`}
+            alt="Pixel-art portrait of Mingwei Zhang"
+            className="rounded-circle profile-pic portfolio-avatar"
+            width="220"
+            height="220"
+          />
+          <p className="portfolio-eyebrow pixel-text">WELCOME TO MY PORTFOLIO</p>
+          <h1 className="pixel-text pixel-heading">Mingwei Zhang</h1>
+          <p className="pixel-text pixel-subheading software-title">Software &amp; Game Developer</p>
+          <p className="portfolio-hero-subtitle">
+            Gameplay programming, interactive systems, and software development.
+          </p>
+          <div className="portfolio-hero-actions">
+            <a className="portfolio-action portfolio-action-primary" href="#projects">Explore projects</a>
+            <a className="portfolio-action" href={resumeUrl} target="_blank" rel="noopener noreferrer">View résumé</a>
+            <a className="portfolio-action" href="https://github.com/mingwzhang" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
+          <div className="portfolio-tech-strip" aria-label="Featured technologies">
+            <span>Unity</span><span>Unreal Engine</span><span>C#</span><span>JavaScript</span><span>React</span>
+          </div>
+        </header>
 
         <AboutMe />
-        <SkillsEducation skills={skills} />
 
-        {/* PROJECTS */}
-        <div id="projects" className="container mt-5 text-center">
-          <div className="m-3">
-            <h4 className="pixel-text pixel-bold-title">
-              <span className="emoji-large">💡</span> Projects
-            </h4>
-            <p className="pixel-text project-section-intro">
-              Watch gameplay footage, explore my work, and view project details.
-            </p>
-
-            <div className="d-flex justify-content-center">
-              <button
-                className="m-2 pixel-text pixel-btn-3d btn-fixed-size"
-                onClick={() =>
-                  window.open("https://github.com/mingwzhang", "_blank")
-                }
-              >
-                View Code (GitHub)
-              </button>
-              <button
-                className="m-2 pixel-text pixel-btn-3d btn-fixed-size"
-                onClick={() =>
-                  window.open("https://mindeveloper.itch.io/", "_blank")
-                }
-              >
-                Play Game (itch.io)
-              </button>
-            </div>
-
-            {/* TOP: Mini Game + Video */}
-            <div
-              className="d-flex justify-content-between align-items-start mt-5 projects-top-row"
-              style={{ width: "100%" }}
-            >
-              <div className="mini-game-column">
-                <h5 className="pixel-text">Mini Game: Hit the Target!</h5>
-                <MiniGameBox />
-              </div>
-
-              <div className="games-section shifted-content" style={{ width: "600px" }}>
-                <h5 className="pixel-text">
-                  Indie & Collaborative<br />Game Projects
-                </h5>
-                <VideoCarousel />
-              </div>
-            </div>
-
-            {/* BOTTOM: 2D + 3D side by side */}
-            <div
-              className="d-flex justify-content-between align-items-start mt-5"
-              style={{ width: "100%" }}
-            >
-              <div style={{ width: "48%" }}>
-                <AssetGallery2D />
-              </div>
-
-              <div style={{ width: "48%" }}>
-                <AssetGallery3D />
-              </div>
-            </div>
-
+        <section id="projects" className="portfolio-section portfolio-featured-section" aria-labelledby="portfolio-projects-heading">
+          <div className="portfolio-section-heading">
+            <span className="portfolio-kicker">01 / SELECTED WORK</span>
+            <h2 id="portfolio-projects-heading" className="pixel-text pixel-bold-title">Featured Projects</h2>
+            <p>Explore game footage, verified project responsibilities, and links to each release.</p>
           </div>
-        </div>
+          <VideoCarousel />
+        </section>
 
-        {/* The ResumeModal is conditionally rendered based on state.
-            It can be placed anywhere in the return statement,
-            but placing it here ensures it overlays your page content. */}
+        <section id="skills-section" className="portfolio-section portfolio-skills-section" aria-labelledby="portfolio-skills-heading">
+          <div className="portfolio-section-heading">
+            <span className="portfolio-kicker">02 / TECHNICAL BACKGROUND</span>
+            <h2 id="portfolio-skills-heading" className="pixel-text pixel-bold-title">Skills &amp; Education</h2>
+            <p>Programming languages, game engines, development tools, and education.</p>
+          </div>
+          <SkillsEducation skills={skills} />
+        </section>
 
+        <section id="more-work" className="portfolio-section portfolio-more-work" aria-labelledby="more-work-heading">
+          <div className="portfolio-section-heading">
+            <span className="portfolio-kicker">03 / EXPLORE MORE</span>
+            <h2 id="more-work-heading" className="pixel-text pixel-bold-title">Interactive Demo &amp; Assets</h2>
+            <p>A playable React mini-game and examples of 2D and 3D development work.</p>
+          </div>
+          <div className="portfolio-demo-panel">
+            <div className="portfolio-demo-description">
+              <span className="portfolio-kicker">BUILT INTO THIS WEBSITE</span>
+              <h3 className="pixel-text">Hit the Target!</h3>
+              <p>Try the interactive mini-game. Click or tap the moving target to increase your score.</p>
+              <p className="portfolio-muted">An interactive component of this React portfolio.</p>
+            </div>
+            <div className="portfolio-demo-game"><MiniGameBox /></div>
+          </div>
+          <button
+            type="button"
+            className="portfolio-action portfolio-asset-toggle"
+            aria-controls="portfolio-asset-galleries"
+            aria-expanded={showAssets}
+            onClick={() => setShowAssets((previous) => !previous)}
+          >
+            {showAssets ? "Hide 2D & 3D asset galleries −" : "Explore 2D & 3D asset galleries +"}
+          </button>
+          {showAssets && (
+            <div id="portfolio-asset-galleries" className="portfolio-assets-grid">
+              <div className="portfolio-asset-panel"><AssetGallery2D /></div>
+              <div className="portfolio-asset-panel"><AssetGallery3D /></div>
+            </div>
+          )}
+        </section>
 
-        {/* Contact Me Section */}
-        <div id="contact" className="mt-5 bottom-spacing pixel-text">
+        <section id="contact" className="portfolio-section portfolio-contact-section" aria-labelledby="portfolio-contact-heading">
+          <div className="portfolio-section-heading">
+            <span className="portfolio-kicker">04 / GET IN TOUCH</span>
+            <h2 id="portfolio-contact-heading" className="pixel-text pixel-bold-title">Contact</h2>
+            <p>Feel free to reach out about software engineering, gameplay development, or collaboration.</p>
+          </div>
+          <div className="portfolio-contact-actions">
+            <a href="mailto:mingw.zhang123@gmail.com" className="portfolio-action">Email</a>
+            <a href="https://www.linkedin.com/in/mingwei-zhang1/" className="portfolio-action" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </div>
           <ContactForm />
-        </div>
-      </div>
+        </section>
+      </main>
 
-      {/* Particle explosion background */}
       <ParticleExplosion />
-      <div className="footer-note">
+      <footer className="footer-note portfolio-footer">
         © {new Date().getFullYear()} Mingwei Zhang — Built with React.
-      </div>
+      </footer>
     </div>
   );
 }
