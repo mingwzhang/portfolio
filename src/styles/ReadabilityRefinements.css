@@ -1,0 +1,228 @@
+/* Portfolio V11 — navigation, reading comfort, skills, demo alignment, contact.
+   Imported LAST by App.js so these small overrides are easy to find/edit.
+   No changes to game behavior, video controls, page content or assets. */
+
+/* 1. Make section navigation unmistakably interactive, without changing the
+   second row containing Resume / GitHub / LinkedIn. */
+.portfolio-v2 .nav-section-row-v7 {
+  column-gap: clamp(9px, 1.15vw, 17px);
+  row-gap: 8px;
+  min-height: 60px;
+  padding: 9px 0 12px;
+}
+.portfolio-v2 .nav-section-row-v7 .nav-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 13px;
+  min-height: 43px;
+  font-size: clamp(11px, .78vw, 13px);
+  letter-spacing: 0;
+  line-height: 1.55;
+  color: #ebffff !important;
+  background: rgba(18, 52, 65, .93);
+  border: 1px solid rgba(88, 213, 218, .48);
+  border-radius: 5px;
+  box-shadow: inset 0 1px 0 rgba(156, 249, 245, .05);
+  text-shadow: 0 0 2px rgba(83, 236, 239, .18) !important;
+  transition: background-color .16s ease, border-color .16s ease, transform .16s ease;
+}
+.portfolio-v2 .nav-section-row-v7 .nav-item:hover {
+  color: #fff !important;
+  background: rgba(28, 91, 104, .98);
+  border-color: #71efed;
+  transform: translateY(-2px);
+  box-shadow: 0 3px 0 rgba(0, 0, 0, .35);
+}
+.portfolio-v2 .nav-section-row-v7 .nav-item:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+.portfolio-v2 .nav-section-row-v7 .nav-item:focus-visible {
+  outline: 3px solid #ffe49d;
+  outline-offset: 3px;
+}
+
+/* 2. About Me: keep the pixel-art title, use the existing lighter VT323 font
+   for multi-line body copy. Both typed and skip-animation views inherit it. */
+.portfolio-v2 #about .portfolio-about-content {
+  max-width: 890px;
+  margin: 12px auto 3px;
+  font-family: 'VT323', monospace !important;
+  font-weight: 400 !important;
+  font-size: clamp(22px, 1.65vw, 26px) !important;
+  line-height: 1.5 !important;
+  letter-spacing: .25px !important;
+  text-transform: none !important;
+  text-align: left;
+  color: #e2f0f2 !important;
+  text-shadow: 0 0 2px rgba(93, 223, 228, .12) !important;
+}
+.portfolio-v2 #about .portfolio-about-content .Typewriter__wrapper {
+  font-family: inherit;
+  font-weight: inherit;
+  text-shadow: inherit;
+}
+
+/* 3. Skills: reduce the strong green drop-shadows and magnification; make
+   each icon readable against a solid, calm surface with a persistent label. */
+.portfolio-v2 #skills-education .icon-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  width: 79px;
+  min-height: 86px;
+  height: auto;
+  padding: 10px 6px 7px;
+  margin: 4px !important;
+  border-radius: 7px;
+  background: rgba(14, 35, 47, .82);
+  border: 1px solid rgba(117, 203, 205, .25);
+  filter: none !important;
+  box-shadow: none !important;
+  transform: none;
+  transition: border-color .15s ease, background-color .15s ease;
+}
+.portfolio-v2 #skills-education .icon-wrapper:hover {
+  filter: none !important;
+  transform: none;
+  background: rgba(24, 61, 71, .96);
+  border-color: rgba(124, 225, 225, .65);
+}
+.portfolio-v2 #skills-education .icon-wrapper img,
+.portfolio-v2 #skills-education .icon-wrapper i {
+  display: block;
+  flex: 0 0 auto;
+  width: 42px !important;
+  height: 42px !important;
+  max-width: 100%;
+  object-fit: contain;
+  font-size: 42px !important;
+  line-height: 42px !important;
+  filter: none !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+}
+.portfolio-v2 #skills-education .icon-wrapper .icon-label,
+.portfolio-v2 #skills-education .icon-wrapper:hover .icon-label {
+  position: static;
+  display: block;
+  opacity: 1;
+  transform: none;
+  width: 100%;
+  padding: 0;
+  background: transparent;
+  font: 14px/1.1 'VT323', monospace;
+  color: #d8f2f2;
+  white-space: normal;
+  text-align: center;
+  overflow-wrap: anywhere;
+  text-shadow: none !important;
+}
+/* Keep the school crests crisp, without a glowing outline. */
+.portfolio-v2 #skills-education .icon-wrapper-education {
+  filter: none !important;
+}
+
+/* 4. Align the demo explanation's first line to the mini-game's top border. */
+.portfolio-v2 .portfolio-demo-panel {
+  align-items: start;
+}
+.portfolio-v2 .portfolio-demo-description {
+  align-self: start;
+  padding-top: 5px;
+}
+.portfolio-v2 .portfolio-demo-game {
+  align-self: start;
+}
+
+/* 5. Contact: retain all fields and direct-contact links but make the form
+   proportional to other sections. The previous textarea was 450px tall. */
+.portfolio-v2 #contact .contact-form {
+  width: min(100%, 640px) !important;
+  max-width: 640px !important;
+  min-width: 0 !important;
+  padding: 20px 24px !important;
+  margin: 16px auto 0 !important;
+  background: rgba(27, 45, 56, .9) !important;
+  border-color: rgba(83, 185, 191, .38) !important;
+}
+.portfolio-v2 #contact .contact-form > div {
+  width: 100%;
+  max-width: 560px;
+  margin-bottom: 12px !important;
+}
+.portfolio-v2 #contact .contact-input,
+.portfolio-v2 #contact .contact-textarea {
+  display: block;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box;
+  font-size: 12px;
+}
+.portfolio-v2 #contact .contact-textarea {
+  height: 175px;
+  min-height: 175px !important;
+  resize: vertical;
+}
+.portfolio-v2 #contact .send-button-container {
+  min-height: 56px;
+  height: 56px;
+  margin-top: 8px;
+  margin-bottom: 5px !important;
+  overflow: visible;
+}
+.portfolio-v2 #contact .contact-button {
+  font-size: 12px;
+  min-height: 43px;
+  padding: 10px 16px;
+  margin: 0 0 5px;
+  box-shadow: 0 4px 0 rgba(0,0,0,.45);
+}
+.portfolio-v2 #contact .contact-button:hover { box-shadow: 0 4px 0 rgba(0,0,0,.45); }
+.portfolio-v2 #contact .contact-button:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 rgba(0,0,0,.45);
+}
+.portfolio-v2 #contact .contact-fallback {
+  margin-top: 8px;
+}
+.portfolio-v2 #contact .portfolio-section-heading { margin-bottom: 18px; }
+.portfolio-v2 #contact .portfolio-contact-actions { margin-bottom: 13px; }
+
+@media (max-width: 1100px) {
+  .portfolio-v2 .nav-section-row-v7 { column-gap: 8px; }
+  .portfolio-v2 .portfolio-main { padding-top: 218px; }
+  .portfolio-v2 .nav-section-row-v7 .nav-item { font-size: 10px; padding: 10px 9px; }
+}
+@media (max-width: 768px) {
+  .portfolio-v2 .portfolio-main { padding-top: 82px; }
+  .portfolio-v2 .nav-section-row-v7 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+  }
+  .portfolio-v2 .nav-section-row-v7 .nav-item {
+    width: 100%;
+    min-height: 46px;
+    font-size: 10px;
+    padding: 10px 7px;
+    white-space: normal;
+  }
+  .portfolio-v2 .portfolio-demo-description { padding-top: 0; }
+  .portfolio-v2 #about .portfolio-about-content { font-size: 21px !important; }
+  .portfolio-v2 #contact .contact-form { padding: 16px 13px !important; }
+  .portfolio-v2 #contact .contact-textarea { height: 160px; min-height: 160px !important; }
+  .portfolio-v2 #skills-education .icon-wrapper {
+    width: 75px;
+    min-height: 82px;
+    padding: 8px 5px 6px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-v2 .nav-section-row-v7 .nav-item,
+  .portfolio-v2 #skills-education .icon-wrapper { transition: none; }
+}

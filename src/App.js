@@ -19,6 +19,7 @@ import "./styles/PortfolioEnhancements.css";
 import "./styles/PolishControls.css";
 import "./styles/LayoutRefinements.css";
 import "./styles/HeroRefinements.css";
+import "./styles/ReadabilityRefinements.css";
 
 const skills = [
   {
