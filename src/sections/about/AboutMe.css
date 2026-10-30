@@ -1,0 +1,25 @@
+/* V17: One font and one scale for both About Me text rendering modes.
+   AboutMe.js already imports this file. Extra selector specificity is intentional:
+   it overrides the older global and V15 rules even when loaded before them. */
+.portfolio-v2 #about .portfolio-about-content.portfolio-about-content,
+.portfolio-v2 #about .portfolio-about-content.portfolio-about-content .Typewriter__wrapper {
+  font-family: "Silkscreen", "Press Start 2P", monospace !important;
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  line-height: 1.8 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+/* Keep the animated cursor proportional to the same text, without
+   applying it to the About Me heading. */
+.portfolio-v2 #about .portfolio-about-content.portfolio-about-content .Typewriter__cursor {
+  font-family: "Silkscreen", "Press Start 2P", monospace !important;
+  font-size: 20px !important;
+  line-height: 1.8 !important;
+}
+
+/* On narrow devices, allow long words to wrap rather than forcing overflow. */
+.portfolio-v2 #about .portfolio-about-content.portfolio-about-content {
+  overflow-wrap: break-word;
+}
