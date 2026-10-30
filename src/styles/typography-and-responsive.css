@@ -697,7 +697,7 @@
 /* Featured technology names and project descriptors are informational tags.
    Use simple separators and zero pill styling; never imply they are buttons. */
 .portfolio-v2 .portfolio-tech-details-v8 .portfolio-tech-strip span,
-.portfolio-v2 .featured-project-copy .featured-project-tags span {
+.portfolio-v2 #projects .featured-project-metadata .featured-project-tags span {
   display: inline-flex;
   align-items: baseline;
   gap: 6px;
@@ -714,14 +714,14 @@
   transition: none !important;
 }
 .portfolio-v2 .portfolio-tech-details-v8 .portfolio-tech-strip span::before,
-.portfolio-v2 .featured-project-copy .featured-project-tags span::before {
+.portfolio-v2 #projects .featured-project-metadata .featured-project-tags span::before {
   content: "•";
   color: #6dd0cc;
   font-family: monospace;
   font-size: .9em;
 }
 .portfolio-v2 .portfolio-tech-details-v8 .portfolio-tech-strip,
-.portfolio-v2 .featured-project-copy .featured-project-tags {
+.portfolio-v2 #projects .featured-project-metadata .featured-project-tags {
   column-gap: 13px;
   row-gap: 8px;
 }
@@ -888,15 +888,15 @@
   line-height: 1.72 !important;
 }
 
-/* Technology and genre are supporting metadata, not a fourth information
-   card or interactive buttons. A quiet slate panel keeps the information
-   distinct from blue Overview, indigo Role, and teal Contribution. */
+/* Technology and genre are supporting metadata below the video controls.
+   Keep the existing text/genre labels, without any surrounding card. */
 .portfolio-v2 #projects .featured-project-metadata {
-  margin: 0 0 17px;
-  padding: 11px 12px 12px;
-  background: rgba(35, 45, 59, .42);
-  border-left: 3px solid rgba(136, 173, 193, .65);
-  border-radius: 3px;
+  margin: 16px 0 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
 }
 .portfolio-v2 #projects .featured-project-metadata .featured-detail-label {
   margin: 0 0 8px;
@@ -951,4 +951,93 @@
 .portfolio-v2 #projects .featured-project-media > .featured-project-links {
   justify-content: center;
   margin: 17px 0 0;
+}
+
+/* Featured Projects: quiet technical readout below the video.
+   This is informational metadata, not a fourth colored information card
+   or a collection of buttons. */
+.portfolio-v2 #projects .featured-project-media > .featured-project-metadata {
+  margin: 20px 0 0;
+  padding: 0 5px;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* A small signal marker and hairline distinguish the readout from the
+   colored Overview / Role / Contribution blocks on the right. */
+.portfolio-v2 #projects .featured-project-media .featured-project-metadata > .featured-detail-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 10px;
+  color: #9dd4d9 !important;
+  font-size: 12px !important;
+  font-weight: 700;
+  letter-spacing: .5px;
+  text-align: left !important;
+}
+.portfolio-v2 #projects .featured-project-media .featured-project-metadata > .featured-detail-label::before {
+  content: "";
+  display: block;
+  flex: 0 0 4px;
+  height: 13px;
+  border-radius: 1px;
+  background: #69bfbe;
+}
+.portfolio-v2 #projects .featured-project-media .featured-project-metadata > .featured-detail-label::after {
+  content: "";
+  display: block;
+  flex: 1 1 auto;
+  height: 1px;
+  min-width: 15px;
+  background: linear-gradient(to right, rgba(110, 197, 197, .45), transparent);
+}
+
+/* Read as Godot · 2D Platformer, not Godot2D Platformer. Flat text,
+   no fills, borders, shadows, or hover treatment that suggests a button. */
+.portfolio-v2 #projects .featured-project-media .featured-project-metadata .featured-project-tags {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  column-gap: 0;
+  row-gap: 7px;
+  margin: 0 0 0 14px !important;
+  padding: 0;
+}
+.portfolio-v2 #projects .featured-project-media .featured-project-metadata .featured-project-tags span {
+  display: inline-flex;
+  align-items: baseline;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  color: #d4e8e9 !important;
+  text-shadow: none !important;
+  cursor: default;
+}
+.portfolio-v2 #projects .featured-project-media .featured-project-metadata .featured-project-tags span:first-child {
+  color: #83ddd4 !important;
+}
+.portfolio-v2 #projects .featured-project-media .featured-project-metadata .featured-project-tags span::before {
+  content: none !important;
+}
+.portfolio-v2 #projects .featured-project-media .featured-project-metadata .featured-project-tags span + span::before {
+  content: "·" !important;
+  display: inline-block;
+  padding: 0 11px;
+  color: #739fa6;
+  font-family: inherit;
+}
+
+@media (max-width: 640px) {
+  .portfolio-v2 #projects .featured-project-media .featured-project-metadata > .featured-detail-label {
+    font-size: 12px !important;
+  }
+  .portfolio-v2 #projects .featured-project-media .featured-project-metadata .featured-project-tags span {
+    font-size: 14px !important;
+  }
 }

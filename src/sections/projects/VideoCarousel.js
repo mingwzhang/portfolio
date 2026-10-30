@@ -213,6 +213,12 @@ function VideoCarousel() {
             <span aria-live="polite">{currentIndex + 1} / {projects.length}</span>
             <button type="button" onClick={() => selectIndex(currentIndex + 1)} aria-label="Next featured project">Next →</button>
           </div>
+          <section className="featured-project-metadata" aria-label="Project technologies and genres">
+            <h4 className="featured-detail-label">Technology &amp; genre</h4>
+            <div className="featured-project-tags">
+              {current.stack.map((tag) => <span key={tag}>{tag}</span>)}
+            </div>
+          </section>
           <div className="featured-project-links">
             <a className="portfolio-action portfolio-action-primary" href={current.itchUrl} target="_blank" rel="noopener noreferrer">{current.action} ↗</a>
           </div>
@@ -237,12 +243,6 @@ function VideoCarousel() {
               <p>{current.contribution}</p>
             </div>
           </div>
-          <section className="featured-project-metadata" aria-label="Project technologies and genres">
-            <h4 className="featured-detail-label">Technology &amp; genre</h4>
-            <div className="featured-project-tags">
-              {current.stack.map((tag) => <span key={tag}>{tag}</span>)}
-            </div>
-          </section>
         </article>
       </div>
       <p className="portfolio-muted featured-profile-link">More projects: <a href="https://minmakesgames.itch.io/" target="_blank" rel="noopener noreferrer">itch.io</a> · <a href="https://github.com/mingwzhang" target="_blank" rel="noopener noreferrer">GitHub</a></p>
