@@ -18,6 +18,7 @@ import AssetGallery3D from "./sections/assets/3DAssetGallery";
 import "./styles/PortfolioEnhancements.css";
 import "./styles/PolishControls.css";
 import "./styles/LayoutRefinements.css";
+import "./styles/HeroRefinements.css";
 
 const skills = [
   {
@@ -84,7 +85,6 @@ function App() {
     typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches
   );
   const resumeUrl = "https://drive.google.com/file/d/1f_YqmpuhB_b4VpNf5T6ttGoPCm9yQUBc/view?usp=sharing";
-  const visibleTechnologies = showAllTech ? featuredTechnologies : featuredTechnologies.slice(0, 6);
 
   return (
     <div className={`portfolio-v2${effectsPaused ? " effects-paused" : ""}`}>
@@ -98,39 +98,47 @@ function App() {
       <NavBar onResumeClick={() => window.open(resumeUrl, "_blank", "noopener,noreferrer")} />
 
       <main id="home" className="portfolio-main">
-        <header className="portfolio-hero">
-          <img
-            src={`${process.env.PUBLIC_URL}/img/profile-picture.png`}
-            alt="Pixel-art portrait of Mingwei Zhang"
-            className="rounded-circle profile-pic portfolio-avatar"
-            width="220"
-            height="220"
-          />
-          <p className="portfolio-eyebrow pixel-text">WELCOME TO MY PORTFOLIO</p>
-          <h1 className="pixel-text pixel-heading">Mingwei Zhang</h1>
-          <p className="pixel-text pixel-subheading software-title">Software &amp; Game Developer</p>
-          <p className="portfolio-hero-subtitle">
-            Gameplay programming, interactive systems, and software development.
-          </p>
-          <div className="portfolio-hero-actions">
-            <a className="portfolio-action portfolio-action-primary" href="#projects">Explore projects</a>
-            <a className="portfolio-action" href={resumeUrl} target="_blank" rel="noopener noreferrer">View Resume</a>
-            <a className="portfolio-action" href="https://github.com/mingwzhang" target="_blank" rel="noopener noreferrer">GitHub</a>
-          </div>
-          <div className="portfolio-tech-summary">
-            <span className="portfolio-tech-label">TECHNOLOGIES I WORK WITH</span>
-            <div className="portfolio-tech-strip" aria-label="Highlighted technologies; the full list is available below">
-              {visibleTechnologies.map((name) => <span key={name}>{name}</span>)}
+        <header className="portfolio-hero portfolio-hero-v8">
+          <div className="portfolio-hero-intro-v8">
+            <div className="portfolio-hero-portrait-v8">
+              <img
+                src={`${process.env.PUBLIC_URL}/img/profile-picture.png`}
+                alt="Pixel-art portrait of Mingwei Zhang"
+                className="rounded-circle profile-pic portfolio-avatar"
+                width="260"
+                height="260"
+              />
             </div>
-            <div className="portfolio-tech-links">
-              <button
-                type="button"
-                className="portfolio-tech-expand"
-                onClick={() => setShowAllTech((previous) => !previous)}
-                aria-expanded={showAllTech}
-              >
-                {showAllTech ? "Show fewer technologies −" : `Show all ${featuredTechnologies.length} technologies +`}
-              </button>
+            <div className="portfolio-hero-copy-v8">
+              <p className="portfolio-eyebrow pixel-text">WELCOME TO MY PORTFOLIO</p>
+              <h1 className="pixel-text pixel-heading">Mingwei Zhang</h1>
+              <p className="pixel-text pixel-subheading software-title">Software &amp; Game Developer</p>
+              <p className="portfolio-hero-subtitle">
+                Gameplay programming, interactive systems, and software development.
+              </p>
+              <div className="portfolio-hero-actions">
+                <a className="portfolio-action portfolio-action-primary" href="#projects">Explore projects</a>
+                <a className="portfolio-hero-secondary-link-v8" href={resumeUrl} target="_blank" rel="noopener noreferrer">View Resume</a>
+                <a className="portfolio-hero-secondary-link-v8" href="https://github.com/mingwzhang" target="_blank" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </div>
+
+          <div className="portfolio-tech-summary portfolio-tech-summary-v8">
+            <button
+              type="button"
+              className="portfolio-tech-toggle-v8"
+              onClick={() => setShowAllTech((previous) => !previous)}
+              aria-expanded={showAllTech}
+              aria-controls="portfolio-tech-details-v8"
+            >
+              <span>TECHNOLOGIES I WORK WITH</span>
+              <span className="portfolio-tech-toggle-action-v8">{showAllTech ? "Hide tools −" : "Explore tools +"}</span>
+            </button>
+            <div id="portfolio-tech-details-v8" className="portfolio-tech-details-v8" hidden={!showAllTech}>
+              <div className="portfolio-tech-strip" aria-label="Highlighted technologies">
+                {featuredTechnologies.map((name) => <span key={name}>{name}</span>)}
+              </div>
               <a className="portfolio-all-skills-link" href="#skills-section">See all skills &amp; tools ↓</a>
             </div>
           </div>

@@ -68,6 +68,8 @@ function VideoCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
   // Video controls persist after the initial Play click. They must not disappear on pause/seek.
   const [hasStarted, setHasStarted] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isSeeking, setIsSeeking] = useState(false);
   const videoRef = useRef(null);
   const tabRefs = useRef([]);
   const pointerStart = useRef(null);
@@ -79,6 +81,8 @@ function VideoCarousel() {
     videoRef.current?.pause();
     resumeAfterSeek.current = false;
     setHasStarted(false);
+    setIsPlaying(false);
+    setIsSeeking(false);
     setCurrentIndex((index + projects.length) % projects.length);
   };
 
@@ -176,12 +180,14 @@ function VideoCarousel() {
               preload="none"
               playsInline
               controls={hasStarted}
-              onPlay={() => setHasStarted(true)}
+              onPlay={() => { setHasStarted(true); setIsPlaying(true); }}
+              onPause={() => setIsPlaying(false)}
               onSeeking={(event) => {
+                setIsSeeking(true);
                 if (!event.currentTarget.paused) resumeAfterSeek.current = true;
               }}
-              onSeeked={handleSeeked}
-              onEnded={() => { resumeAfterSeek.current = false; }}
+              onSeeked={(event) => { setIsSeeking(false); handleSeeked(event); }}
+              onEnded={() => { resumeAfterSeek.current = false; setIsPlaying(false); }}
               onLoadedMetadata={(event) => { event.currentTarget.volume = 0.25; }}
               aria-label={`${current.title} gameplay video`}
             />
@@ -189,6 +195,17 @@ function VideoCarousel() {
               <button type="button" className="featured-play-button" onClick={playSelected} aria-label={`Play ${current.title} gameplay video`}>
                 <span aria-hidden="true">▶</span>
                 <span className="featured-play-caption">Play footage</span>
+              </button>
+            )}
+            {hasStarted && !isPlaying && !isSeeking && (
+              <button
+                type="button"
+                className="featured-resume-button-v8"
+                onClick={playSelected}
+                aria-label={`Resume ${current.title} gameplay video`}
+                title="Resume playback"
+              >
+                <span aria-hidden="true">▶</span> Resume video
               </button>
             )}
           </div>
