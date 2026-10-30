@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import "./2D3DAssetGallery.css";
 import "./AssetGalleryViewer.css";
 
@@ -9,27 +9,60 @@ import "./AssetGalleryViewer.css";
 export default function AssetGalleryViewer({ title, type, categories }) {
   const [activeCategory, setActiveCategory] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  // Keep showing the current image until the requested image is loaded/decoded.
+  // A request counter prevents an older preload from overwriting a newer click.
+  const imageRequestRef = useRef(0);
+  const requestedIndexRef = useRef(0);
   const closeRef = useRef(null);
   const dialogRef = useRef(null);
   const triggerRef = useRef(null);
   const dialogTitleId = `asset-viewer-${type}-title`;
-  const images = activeCategory ? categories[activeCategory] : [];
+  const images = useMemo(() => activeCategory ? (categories[activeCategory] || []) : [], [activeCategory, categories]);
   const selected = images[activeIndex];
 
   const openCategory = (category, event) => {
+    imageRequestRef.current += 1;
+    requestedIndexRef.current = 0;
     triggerRef.current = event.currentTarget;
     setActiveIndex(0);
     setActiveCategory(category);
   };
 
-  const closeCategory = () => {
+  const closeCategory = useCallback(() => {
+    imageRequestRef.current += 1;
+    requestedIndexRef.current = 0;
     setActiveCategory(null);
     setActiveIndex(0);
-  };
+  }, []);
 
-  const step = (direction) => {
-    setActiveIndex((previous) => (previous + direction + images.length) % images.length);
-  };
+  // Preload (and decode, when supported) before switching. This prevents the
+  // previous image from disappearing for a frame while the next image loads.
+  const showImage = useCallback((index) => {
+    if (!images.length) return;
+    const nextIndex = (index + images.length) % images.length;
+    requestedIndexRef.current = nextIndex;
+    const requestId = ++imageRequestRef.current;
+    const preload = new Image();
+    const commit = () => {
+      if (requestId === imageRequestRef.current) setActiveIndex(nextIndex);
+      preload.onload = null;
+      preload.onerror = null;
+    };
+    preload.onload = () => {
+      if (typeof preload.decode === "function") {
+        preload.decode().then(commit, commit);
+      } else {
+        commit();
+      }
+    };
+    // Preserve existing missing-image behavior rather than leaving navigation stuck.
+    preload.onerror = commit;
+    preload.src = images[nextIndex].src;
+  }, [images]);
+
+  const step = useCallback((direction) => {
+    showImage(requestedIndexRef.current + direction);
+  }, [showImage]);
 
   useEffect(() => {
     if (!activeCategory) return undefined;
@@ -41,15 +74,12 @@ export default function AssetGalleryViewer({ title, type, categories }) {
     const handleKeyDown = (event) => {
       if (event.key === "Escape") {
         event.preventDefault();
-        setActiveCategory(null);
-        setActiveIndex(0);
+        closeCategory();
         return;
       }
       if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
         event.preventDefault();
-        setActiveIndex((previous) =>
-          (previous + (event.key === "ArrowRight" ? 1 : -1) + images.length) % images.length
-        );
+        step(event.key === "ArrowRight" ? 1 : -1);
         return;
       }
       if (event.key !== "Tab") return;
@@ -73,7 +103,7 @@ export default function AssetGalleryViewer({ title, type, categories }) {
       document.removeEventListener("keydown", handleKeyDown);
       triggerRef.current?.focus();
     };
-  }, [activeCategory, images.length]);
+  }, [activeCategory, closeCategory, step]);
 
   return (
     <div className="asset-browser">
@@ -125,7 +155,6 @@ export default function AssetGalleryViewer({ title, type, categories }) {
 
             <div className="portfolio-asset-feature">
               <img
-                key={selected.src}
                 src={selected.src}
                 alt={selected.description}
                 className={type === "2d" ? "portfolio-asset-illustration pixel-art" : "portfolio-asset-illustration"}
@@ -143,7 +172,7 @@ export default function AssetGalleryViewer({ title, type, categories }) {
                     className={index === activeIndex ? "selected" : ""}
                     aria-current={index === activeIndex ? "true" : undefined}
                     aria-label={`Show example ${index + 1}: ${entry.description}`}
-                    onClick={() => setActiveIndex(index)}
+                    onClick={() => showImage(index)}
                   >{index + 1}</button>
                 ))}
               </div>
