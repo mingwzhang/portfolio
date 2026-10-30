@@ -79,8 +79,8 @@ const featuredTechnologies = [
 ];
 
 function App() {
-  const [showAssets, setShowAssets] = useState(false);
-  const [showAllTech, setShowAllTech] = useState(false);
+  const [showAssets, setShowAssets] = useState(true);
+  const [showAllTech, setShowAllTech] = useState(true);
   const [effectsPaused, setEffectsPaused] = useState(() =>
     typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches
   );

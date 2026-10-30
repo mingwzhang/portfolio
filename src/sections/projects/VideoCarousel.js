@@ -205,7 +205,7 @@ function VideoCarousel() {
                 aria-label={`Resume ${current.title} gameplay video`}
                 title="Resume playback"
               >
-                <span aria-hidden="true">▶</span> Resume video
+                <span aria-hidden="true">▶</span>
               </button>
             )}
           </div>

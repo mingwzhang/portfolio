@@ -9,9 +9,9 @@
 }
 .portfolio-v2 .portfolio-hero-intro-v8 {
   display: grid;
-  grid-template-columns: minmax(220px, 275px) minmax(0, 1fr);
+  grid-template-columns: minmax(248px, 300px) minmax(0, 1fr);
   align-items: center;
-  gap: clamp(36px, 4.6vw, 78px);
+  gap: clamp(30px, 3.7vw, 64px);
   text-align: left;
   max-width: 1030px;
   margin: 0 auto;
@@ -23,8 +23,8 @@
 }
 .portfolio-v2 .portfolio-hero-portrait-v8 .portfolio-avatar {
   display: block;
-  width: clamp(218px, 18vw, 250px);
-  height: clamp(218px, 18vw, 250px);
+  width: clamp(240px, 19vw, 280px);
+  height: clamp(240px, 19vw, 280px);
   object-fit: cover;
   margin: 0;
 }
@@ -42,6 +42,15 @@
   text-align: left;
   margin: 0 0 17px;
   padding: 0;
+}
+/* The global #home h1.pixel-heading rule centers headings by ID.
+   Match its specificity so this name shares the welcome/title left edge. */
+.portfolio-v2 #home .portfolio-hero-copy-v8 h1.pixel-heading {
+  text-align: left;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
 }
 .portfolio-v2 .portfolio-hero-copy-v8 .software-title {
   font-size: clamp(14px, 1.25vw, 18px) !important;
@@ -122,29 +131,34 @@
   outline-offset: 4px;
 }
 
-/* Paused video: preserve Chrome's native timeline and controls.
-   Only the small centered button captures clicks; the seek bar stays usable. */
+/* Paused video: icon-only button with an accessible name supplied in JSX.
+   Native timeline remains usable because this button only occupies the center. */
 .portfolio-v2 .featured-resume-button-v8 {
   position: absolute;
   z-index: 3;
-  top: 41%;
+  top: 44%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: auto;
-  max-width: calc(100% - 28px);
-  padding: 12px 16px;
-  border: 1px solid rgba(113, 252, 251, .85);
-  border-radius: 6px;
-  background: rgba(1, 31, 41, .91);
-  box-shadow: 0 2px 14px rgba(0, 0, 0, .4);
-  color: #dcffff;
-  font: 20px/1.3 VT323, monospace;
-  text-align: center;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 2px solid rgba(113, 252, 251, .85);
+  border-radius: 50%;
+  background: rgba(1, 31, 41, .89);
+  box-shadow: 0 2px 14px rgba(0, 0, 0, .40);
+  color: #81fdf5;
   cursor: pointer;
 }
 .portfolio-v2 .featured-resume-button-v8:hover { background: rgba(14, 79, 90, .96); }
 .portfolio-v2 .featured-resume-button-v8:focus-visible { outline: 3px solid #ffe49d; outline-offset: 3px; }
-.portfolio-v2 .featured-resume-button-v8 span { color: #81fdf5; padding-right: 6px; }
+.portfolio-v2 .featured-resume-button-v8 span {
+  font: 28px/1 Arial, sans-serif;
+  padding: 0;
+  transform: translateX(2px);
+}
 
 @media (max-width: 920px) {
   .portfolio-v2 .portfolio-hero.portfolio-hero-v8 { padding: 28px 18px 44px; }
@@ -154,13 +168,14 @@
     gap: 21px;
   }
   .portfolio-v2 .portfolio-hero-portrait-v8 .portfolio-avatar {
-    width: 212px;
-    height: 212px;
+    width: 226px;
+    height: 226px;
   }
   .portfolio-v2 .portfolio-hero-copy-v8 .portfolio-eyebrow,
   .portfolio-v2 .portfolio-hero-copy-v8 h1.pixel-heading,
   .portfolio-v2 .portfolio-hero-copy-v8 .software-title,
   .portfolio-v2 .portfolio-hero-copy-v8 .portfolio-hero-subtitle { text-align: center; }
+  .portfolio-v2 #home .portfolio-hero-copy-v8 h1.pixel-heading { text-align: center; }
   .portfolio-v2 .portfolio-hero-copy-v8 .portfolio-hero-subtitle { margin: 18px auto 23px; }
   .portfolio-v2 .portfolio-hero-copy-v8 .portfolio-hero-actions { justify-content: center; }
   .portfolio-v2 .portfolio-tech-summary-v8 { margin-top: 34px; }
@@ -168,7 +183,7 @@
 @media (max-width: 540px) {
   .portfolio-v2 .portfolio-hero.portfolio-hero-v8 { padding: 12px 2px 35px; }
   .portfolio-v2 .portfolio-hero-intro-v8 { gap: 17px; }
-  .portfolio-v2 .portfolio-hero-portrait-v8 .portfolio-avatar { width: 176px; height: 176px; }
+  .portfolio-v2 .portfolio-hero-portrait-v8 .portfolio-avatar { width: 192px; height: 192px; }
   .portfolio-v2 .portfolio-hero-copy-v8 .portfolio-eyebrow { font-size: 11px !important; }
   .portfolio-v2 .portfolio-hero-copy-v8 h1.pixel-heading {
     font-size: clamp(22px, 5.6vw, 28px) !important;
@@ -178,5 +193,29 @@
   .portfolio-v2 .portfolio-hero-copy-v8 .portfolio-hero-subtitle { font-size: 19px; }
   .portfolio-v2 .portfolio-tech-toggle-v8 { font-size: 11px; }
   .portfolio-v2 .portfolio-tech-toggle-action-v8 { font-size: 18px; }
-  .portfolio-v2 .featured-resume-button-v8 { font-size: 18px; padding: 9px 11px; }
+  .portfolio-v2 .featured-resume-button-v8 { width: 60px; height: 60px; }
+  .portfolio-v2 .featured-resume-button-v8 span { font-size: 24px; }
+}
+
+/* V9 — darker blue About Me card: the global .container rule applies a
+   semi-white gradient with !important, so override both layers explicitly. */
+.portfolio-v2 #about.container {
+  background-color: rgba(15, 24, 32, .93) !important;
+  background-image: none !important;
+  background-blend-mode: normal !important;
+  border: 1px solid rgba(72, 212, 216, .36) !important;
+  border-radius: 12px !important;
+  padding: 28px !important;
+}
+
+/* V9 — more solid teal technology chips, preserving the existing rounded look. */
+.portfolio-v2 .portfolio-tech-details-v8 .portfolio-tech-strip span {
+  color: #c9fffb;
+  background: rgba(14, 61, 71, .95);
+  border: 1px solid rgba(98, 225, 222, .63);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, .14);
+}
+
+@media (max-width: 640px) {
+  .portfolio-v2 #about.container { padding: 18px 12px !important; }
 }
