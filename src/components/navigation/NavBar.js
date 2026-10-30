@@ -3,8 +3,8 @@ import { FaLinkedin, FaChevronUp, FaChevronDown } from "react-icons/fa";
 import "./NavBar.css";
 
 const navigation = [
-  { label: "Featured Projects", section: "projects" },
   { label: "About Me", section: "about" },
+  { label: "Featured Projects", section: "projects" },
   { label: "Skills & Education", section: "skills-section" },
   { label: "Interactive Demo & Assets", section: "more-work" },
   { label: "Contact", section: "contact" },
