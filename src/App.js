@@ -21,6 +21,7 @@ import "./styles/LayoutRefinements.css";
 import "./styles/HeroRefinements.css";
 import "./styles/ReadabilityRefinements.css";
 import "./styles/NavigationSkillsV12.css";
+import "./styles/PixelTypographyV13.css";
 
 const skills = [
   {

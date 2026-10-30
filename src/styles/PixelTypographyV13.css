@@ -1,0 +1,259 @@
+/* V13 — Consistent pixel typography, legible at 100% browser zoom.
+   Loaded LAST from src/App.js, after NavigationSkillsV12.css.
+
+   Display headings: Press Start 2P (existing arcade identity).
+   Body and controls: Silkscreen (legible pixel letterforms, 400 / 700).
+   The Silkscreen font is already loaded by NavigationSkillsV12.css.
+
+   Do not globally override <i> or pseudo-elements: devicon uses an icon font.
+   Avoid scaling whole containers: the changes below size text by its role.
+*/
+
+.portfolio-v2 {
+  --pixel-ui: "Silkscreen", "Press Start 2P", monospace;
+  --pixel-display: "Press Start 2P", "Silkscreen", monospace;
+  font-family: var(--pixel-ui) !important;
+}
+
+/* Step 1: unify actual text nodes in every part of the site. The explicit
+   !important defeats old VT323 / generic monospace `font:` shorthand rules.
+   Do not touch <i>, <svg>, image assets, or the video player controls. */
+.portfolio-v2 :where(
+  h1, h2, h3, h4, h5, h6, p, a, button, input, textarea, label,
+  div, span:not([aria-hidden="true"]), small, strong, em, figcaption,
+  summary, li, time, output
+) {
+  font-family: var(--pixel-ui) !important;
+}
+
+/* Section and primary titles stay in the more distinctive arcade display face. */
+.portfolio-v2 :where(
+  .portfolio-hero-copy-v8 h1.pixel-heading,
+  .portfolio-hero-copy-v8 .software-title,
+  .portfolio-section-heading h2,
+  #about h2.pixel-bold-title,
+  #skills-education h4,
+  #skills-education h6,
+  .portfolio-demo-description h3,
+  .portfolio-asset-panel h5,
+  .featured-project-copy h3
+) {
+  font-family: var(--pixel-display) !important;
+}
+
+/* Step 2: scale text by hierarchy. Keep the accents and existing glow small. */
+/* HEADER / HERO */
+.portfolio-v2 .nav-upper-v7 .nav-name {
+  font-size: clamp(15px, 1.05vw, 18px) !important;
+  line-height: 1.5 !important;
+}
+.portfolio-v2 .nav-section-row-v7 .nav-item {
+  font-size: clamp(12px, .84vw, 14px) !important;
+  line-height: 1.4 !important;
+  padding: 12px 14px !important;
+}
+.portfolio-v2 .nav-actions-v7 :is(.nav-resume, .nav-github, .nav-linkedin) {
+  font-size: clamp(12px, .82vw, 14px) !important;
+  line-height: 1.45 !important;
+}
+.portfolio-v2 .nav-layout-v7 .nav-toggle-text {
+  font-size: 12px !important;
+}
+.portfolio-v2 .portfolio-hero-copy-v8 .portfolio-hero-subtitle {
+  font-size: clamp(16px, 1.2vw, 18px) !important;
+  line-height: 1.75 !important;
+  max-width: 585px;
+}
+.portfolio-v2 .portfolio-hero-copy-v8 .portfolio-eyebrow {
+  font-size: clamp(13px, 1.02vw, 15px) !important;
+}
+.portfolio-v2 .portfolio-hero-copy-v8 .portfolio-hero-secondary-link-v8 {
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+}
+.portfolio-v2 .portfolio-hero-actions .portfolio-action,
+.portfolio-v2 .portfolio-action {
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+}
+.portfolio-v2 .portfolio-tech-toggle-v8 {
+  font-size: 13px !important;
+  line-height: 1.65 !important;
+}
+.portfolio-v2 .portfolio-tech-toggle-action-v8,
+.portfolio-v2 .portfolio-all-skills-link {
+  font-size: 15px !important;
+  line-height: 1.65 !important;
+}
+.portfolio-v2 .portfolio-tech-strip span {
+  font-size: 14px !important;
+  line-height: 1.45 !important;
+  overflow-wrap: anywhere;
+}
+
+/* SECTION INTRODUCTIONS / ABOUT */
+.portfolio-v2 .portfolio-kicker {
+  font-size: 12px !important;
+  line-height: 1.8 !important;
+  letter-spacing: .2px !important;
+}
+.portfolio-v2 .portfolio-section-heading h2,
+.portfolio-v2 #about h2.pixel-bold-title {
+  font-size: clamp(20px, 1.65vw, 25px) !important;
+  line-height: 1.65 !important;
+}
+.portfolio-v2 .portfolio-section-heading p {
+  font-size: clamp(16px, 1.08vw, 18px) !important;
+  line-height: 1.75 !important;
+  max-width: 800px;
+}
+.portfolio-v2 #about .portfolio-about-content {
+  font-size: clamp(16px, 1.07vw, 18px) !important;
+  line-height: 1.85 !important;
+  letter-spacing: 0 !important;
+  font-weight: 400 !important;
+  text-transform: none !important;
+  max-width: 900px;
+}
+.portfolio-v2 #about .portfolio-about-content .Typewriter__wrapper {
+  font-family: var(--pixel-ui) !important;
+  font-weight: 400 !important;
+}
+
+/* FEATURED PROJECTS — thumbnails, description and project evidence. */
+.portfolio-v2 .featured-project-tab span {
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+  overflow-wrap: anywhere;
+}
+.portfolio-v2 .featured-project-copy > .portfolio-kicker {
+  font-size: 13px !important;
+}
+.portfolio-v2 .featured-project-copy h3 {
+  font-size: clamp(17px, 1.25vw, 21px) !important;
+  line-height: 1.7 !important;
+}
+.portfolio-v2 .featured-project-summary {
+  font-size: 16px !important;
+  line-height: 1.7 !important;
+}
+.portfolio-v2 .featured-fact-label {
+  font-size: 12px !important;
+  line-height: 1.6 !important;
+}
+.portfolio-v2 .featured-project-facts p {
+  font-size: 15px !important;
+  line-height: 1.75 !important;
+}
+.portfolio-v2 .featured-project-tags span {
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+}
+.portfolio-v2 :is(.featured-video-controls button, .featured-video-controls span,
+  .featured-play-caption, .featured-swipe-hint, .featured-profile-link) {
+  font-size: 13px !important;
+  line-height: 1.65 !important;
+}
+.portfolio-v2 .featured-play-button > span:first-child,
+.portfolio-v2 .featured-resume-button-v8 > span[aria-hidden="true"] {
+  font-family: Arial, sans-serif !important; /* Play triangle is a symbol, not text. */
+}
+
+/* SKILLS / EDUCATION — compact tiles, readable labels, unchanged icon glyphs. */
+.portfolio-v2 #skills-education h4 {
+  font-size: clamp(19px, 1.45vw, 23px) !important;
+  line-height: 1.6 !important;
+}
+.portfolio-v2 #skills-education h6 {
+  font-size: clamp(12px, .95vw, 15px) !important;
+  line-height: 1.65 !important;
+}
+.portfolio-v2 #skills-education .icon-wrapper .icon-label {
+  font-size: 12px !important;
+  line-height: 1.25 !important;
+  letter-spacing: -.15px !important;
+  overflow-wrap: anywhere;
+}
+.portfolio-v2 #skills-education .card p.pixel-text {
+  font-size: clamp(13px, .96vw, 15px) !important;
+  line-height: 1.7 !important;
+  letter-spacing: .15px !important;
+}
+
+/* INTERACTIVE DEMO / ASSET GALLERIES */
+.portfolio-v2 .portfolio-demo-description p {
+  font-size: 16px !important;
+  line-height: 1.75 !important;
+}
+.portfolio-v2 .portfolio-demo-description h3 {
+  font-size: 17px !important;
+  line-height: 1.75 !important;
+}
+.portfolio-v2 .mini-game-score {
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+}
+.portfolio-v2 .portfolio-asset-panel :is(h5, .asset-category-label) {
+  font-size: 16px !important;
+  line-height: 1.6 !important;
+}
+.portfolio-v2 :is(.asset-category-count, .portfolio-asset-overline,
+  .portfolio-asset-hint, .portfolio-asset-caption,
+  .asset-category-trigger, .portfolio-asset-heading) {
+  font-size: 14px !important;
+  line-height: 1.65 !important;
+}
+.portfolio-v2 .portfolio-asset-caption { font-size: 15px !important; }
+
+/* CONTACT / FOOTER — all form controls and status text are pixel styled. */
+.portfolio-v2 #contact :is(input, textarea) {
+  font-size: 14px !important;
+  line-height: 1.65 !important;
+  letter-spacing: .1px !important;
+}
+.portfolio-v2 #contact :is(.contact-button, .portfolio-contact-actions .portfolio-action) {
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+}
+.portfolio-v2 #contact :is(.contact-fallback, .contact-status) {
+  font-size: 13px !important;
+  line-height: 1.9 !important;
+}
+.portfolio-v2 .portfolio-footer { font-size: 13px !important; line-height: 1.65 !important; }
+.portfolio-v2 :is(.effects-toggle, .nav-toggle-btn, .top-button) { font-size: 12px !important; }
+
+/* Avoid clipping when full-sized pixel text meets narrow screens. */
+@media (max-width: 1100px) {
+  .portfolio-v2 .nav-section-row-v7 { gap: 7px !important; }
+  .portfolio-v2 .nav-section-row-v7 .nav-item { font-size: 12px !important; padding: 10px 10px !important; }
+}
+@media (max-width: 768px) {
+  .portfolio-v2 .nav-section-row-v7 .nav-item {
+    font-size: 11px !important;
+    padding: 10px 6px !important;
+    white-space: normal !important;
+  }
+  .portfolio-v2 .nav-actions-v7 :is(.nav-resume, .nav-github, .nav-linkedin) {
+    font-size: 11px !important;
+    padding: 9px 8px !important;
+  }
+  .portfolio-v2 .nav-upper-v7 .nav-name { font-size: 14px !important; }
+  .portfolio-v2 .portfolio-hero-copy-v8 .portfolio-hero-subtitle { font-size: 15px !important; }
+  .portfolio-v2 .portfolio-section-heading p { font-size: 15px !important; }
+  .portfolio-v2 #about .portfolio-about-content { font-size: 15px !important; line-height: 1.9 !important; }
+  .portfolio-v2 .featured-project-tab span { font-size: 12px !important; }
+  .portfolio-v2 .featured-project-summary, .portfolio-v2 .portfolio-demo-description p { font-size: 15px !important; }
+  .portfolio-v2 .featured-project-facts p { font-size: 14px !important; }
+  .portfolio-v2 #skills-education .icon-wrapper .icon-label { font-size: 11px !important; }
+  .portfolio-v2 #skills-education .card p.pixel-text { font-size: 12px !important; }
+  .portfolio-v2 .portfolio-section-heading h2,
+  .portfolio-v2 #about h2.pixel-bold-title { font-size: 18px !important; }
+}
+@media (max-width: 480px) {
+  .portfolio-v2 .featured-project-tab span { font-size: 11px !important; }
+  .portfolio-v2 .portfolio-kicker { font-size: 11px !important; }
+  .portfolio-v2 .portfolio-section-heading h2,
+  .portfolio-v2 #about h2.pixel-bold-title { font-size: 16px !important; }
+  .portfolio-v2 #contact :is(input, textarea) { font-size: 13px !important; }
+  .portfolio-v2 .portfolio-tech-strip span { font-size: 12px !important; }
+}
