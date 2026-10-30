@@ -1,6 +1,6 @@
 // FloatingShapes.js
 import React, { useEffect, useState } from "react";
-import "./styles.css";
+import "../../styles/styles.css";
 
 const FloatingShapes = () => {
   const [shapes, setShapes] = useState([]);

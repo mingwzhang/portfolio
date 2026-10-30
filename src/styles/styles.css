@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
-@import url("./LoadingScreen.css");
+@import url("../components/loading/LoadingScreen.css");
 
 .pixel-text {
   font-family: "Press Start 2P", cursive;
@@ -175,7 +175,7 @@ h1 {
 }
 
 * {
-  cursor: url("./img_css/crosshair.png") 16 16, auto !important;
+  cursor: url("../assets/crosshair.png") 16 16, auto !important;
 }
 
 .hover-scale {

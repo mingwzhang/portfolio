@@ -1,20 +1,20 @@
 // App.js
 import React, { useState } from "react";
 import "devicon/devicon.min.css";
-import ParticleExplosion from "./ParticleExplosion";
-import MiniGameBox from "./MiniGameBox";
-import ContactForm from "./ContactForm";
-import NavBar from "./NavBar"; // import the nav component
-import AnimatedBackground from "./AnimatedBackground";
-import FloatingShapes from "./FloatingShapes"; // Import the new component
-import VideoCarousel from "./VideoCarousel";
+import ParticleExplosion from "./components/effects/ParticleExplosion";
+import MiniGameBox from "./sections/interactive/MiniGameBox";
+import ContactForm from "./sections/contact/ContactForm";
+import NavBar from "./components/navigation/NavBar"; // import the nav component
+import AnimatedBackground from "./components/effects/AnimatedBackground";
+import FloatingShapes from "./components/effects/FloatingShapes"; // Import the new component
+import VideoCarousel from "./sections/projects/VideoCarousel";
 import { Helmet } from "react-helmet";
-import AboutMe from "./AboutMe";
-import SkillsEducation from "./SkillsEducation";
-import TopButton from "./TopButton";
-import AssetGallery2D from "./2DAssetGallery";
-import AssetGallery3D from "./3DAssetGallery";
-import "./PortfolioEnhancements.css";
+import AboutMe from "./sections/about/AboutMe";
+import SkillsEducation from "./sections/skills/SkillsEducation";
+import TopButton from "./components/navigation/TopButton";
+import AssetGallery2D from "./sections/assets/2DAssetGallery";
+import AssetGallery3D from "./sections/assets/3DAssetGallery";
+import "./styles/PortfolioEnhancements.css";
 
 const skills = [
   {

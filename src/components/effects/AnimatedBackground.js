@@ -1,6 +1,6 @@
 // AnimatedBackground.js
 import React, { useEffect, useRef } from "react";
-import "./styles.css";
+import "../../styles/styles.css";
 
 const AnimatedBackground = () => {
   const canvasRef = useRef(null);

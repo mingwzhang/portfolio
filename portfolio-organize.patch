@@ -1,0 +1,230 @@
+diff --git a/src/App.js b/src/App.js
+--- a/src/App.js
++++ b/src/App.js
+@@ -1,20 +1,20 @@
+ // App.js
+ import React, { useState } from "react";
+ import "devicon/devicon.min.css";
+-import ParticleExplosion from "./ParticleExplosion";
+-import MiniGameBox from "./MiniGameBox";
+-import ContactForm from "./ContactForm";
+-import NavBar from "./NavBar"; // import the nav component
+-import AnimatedBackground from "./AnimatedBackground";
+-import FloatingShapes from "./FloatingShapes"; // Import the new component
+-import VideoCarousel from "./VideoCarousel";
++import ParticleExplosion from "./components/effects/ParticleExplosion";
++import MiniGameBox from "./sections/interactive/MiniGameBox";
++import ContactForm from "./sections/contact/ContactForm";
++import NavBar from "./components/navigation/NavBar"; // import the nav component
++import AnimatedBackground from "./components/effects/AnimatedBackground";
++import FloatingShapes from "./components/effects/FloatingShapes"; // Import the new component
++import VideoCarousel from "./sections/projects/VideoCarousel";
+ import { Helmet } from "react-helmet";
+-import AboutMe from "./AboutMe";
+-import SkillsEducation from "./SkillsEducation";
+-import TopButton from "./TopButton";
+-import AssetGallery2D from "./2DAssetGallery";
+-import AssetGallery3D from "./3DAssetGallery";
+-import "./PortfolioEnhancements.css";
++import AboutMe from "./sections/about/AboutMe";
++import SkillsEducation from "./sections/skills/SkillsEducation";
++import TopButton from "./components/navigation/TopButton";
++import AssetGallery2D from "./sections/assets/2DAssetGallery";
++import AssetGallery3D from "./sections/assets/3DAssetGallery";
++import "./styles/PortfolioEnhancements.css";
+ 
+ const skills = [
+   {
+diff --git a/src/index.js b/src/index.js
+--- a/src/index.js
++++ b/src/index.js
+@@ -1,7 +1,7 @@
+ import React, { useState, useEffect } from "react";
+ import ReactDOM from "react-dom/client";
+ import { BrowserRouter as Router } from "react-router-dom";
+ import App from "./App";
+-import LoadingScreen from "./LoadingScreen";
+-import "./styles.css";
++import LoadingScreen from "./components/loading/LoadingScreen";
++import "./styles/styles.css";
+ import "bootstrap/dist/css/bootstrap.min.css";
+diff --git a/src/AnimatedBackground.js b/src/components/effects/AnimatedBackground.js
+rename from src/AnimatedBackground.js
+rename to src/components/effects/AnimatedBackground.js
+--- a/src/AnimatedBackground.js
++++ b/src/components/effects/AnimatedBackground.js
+@@ -1,4 +1,4 @@
+ // AnimatedBackground.js
+ import React, { useEffect, useRef } from "react";
+-import "./styles.css";
++import "../../styles/styles.css";
+ 
+diff --git a/src/FloatingShapes.js b/src/components/effects/FloatingShapes.js
+rename from src/FloatingShapes.js
+rename to src/components/effects/FloatingShapes.js
+--- a/src/FloatingShapes.js
++++ b/src/components/effects/FloatingShapes.js
+@@ -1,4 +1,4 @@
+ // FloatingShapes.js
+ import React, { useEffect, useState } from "react";
+-import "./styles.css";
++import "../../styles/styles.css";
+ 
+diff --git a/src/styles.css b/src/styles/styles.css
+rename from src/styles.css
+rename to src/styles/styles.css
+--- a/src/styles.css
++++ b/src/styles/styles.css
+@@ -1,3 +1,3 @@
+ @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+-@import url("./LoadingScreen.css");
++@import url("../components/loading/LoadingScreen.css");
+ 
+@@ -176,5 +176,5 @@
+ 
+ * {
+-  cursor: url("./img_css/crosshair.png") 16 16, auto !important;
++  cursor: url("../assets/crosshair.png") 16 16, auto !important;
+ }
+ 
+diff --git a/src/AboutMe.js b/src/sections/about/AboutMe.js
+similarity index 100%
+rename from src/AboutMe.js
+rename to src/sections/about/AboutMe.js
+diff --git a/src/AboutMe.css b/src/sections/about/AboutMe.css
+similarity index 100%
+rename from src/AboutMe.css
+rename to src/sections/about/AboutMe.css
+diff --git a/src/SkillsEducation.js b/src/sections/skills/SkillsEducation.js
+similarity index 100%
+rename from src/SkillsEducation.js
+rename to src/sections/skills/SkillsEducation.js
+diff --git a/src/SkillsEducation.css b/src/sections/skills/SkillsEducation.css
+similarity index 100%
+rename from src/SkillsEducation.css
+rename to src/sections/skills/SkillsEducation.css
+diff --git a/src/VideoCarousel.js b/src/sections/projects/VideoCarousel.js
+similarity index 100%
+rename from src/VideoCarousel.js
+rename to src/sections/projects/VideoCarousel.js
+diff --git a/src/VideoCarousel.css b/src/sections/projects/VideoCarousel.css
+similarity index 100%
+rename from src/VideoCarousel.css
+rename to src/sections/projects/VideoCarousel.css
+diff --git a/src/MiniGameBox.js b/src/sections/interactive/MiniGameBox.js
+similarity index 100%
+rename from src/MiniGameBox.js
+rename to src/sections/interactive/MiniGameBox.js
+diff --git a/src/MiniGameBox.css b/src/sections/interactive/MiniGameBox.css
+similarity index 100%
+rename from src/MiniGameBox.css
+rename to src/sections/interactive/MiniGameBox.css
+diff --git a/src/2DAssetGallery.js b/src/sections/assets/2DAssetGallery.js
+similarity index 100%
+rename from src/2DAssetGallery.js
+rename to src/sections/assets/2DAssetGallery.js
+diff --git a/src/3DAssetGallery.js b/src/sections/assets/3DAssetGallery.js
+similarity index 100%
+rename from src/3DAssetGallery.js
+rename to src/sections/assets/3DAssetGallery.js
+diff --git a/src/AssetGalleryViewer.js b/src/sections/assets/AssetGalleryViewer.js
+similarity index 100%
+rename from src/AssetGalleryViewer.js
+rename to src/sections/assets/AssetGalleryViewer.js
+diff --git a/src/AssetGalleryViewer.css b/src/sections/assets/AssetGalleryViewer.css
+similarity index 100%
+rename from src/AssetGalleryViewer.css
+rename to src/sections/assets/AssetGalleryViewer.css
+diff --git a/src/2D3DAssetGallery.css b/src/sections/assets/2D3DAssetGallery.css
+similarity index 100%
+rename from src/2D3DAssetGallery.css
+rename to src/sections/assets/2D3DAssetGallery.css
+diff --git a/src/ContactForm.js b/src/sections/contact/ContactForm.js
+similarity index 100%
+rename from src/ContactForm.js
+rename to src/sections/contact/ContactForm.js
+diff --git a/src/ContactForm.css b/src/sections/contact/ContactForm.css
+similarity index 100%
+rename from src/ContactForm.css
+rename to src/sections/contact/ContactForm.css
+diff --git a/src/NavBar.js b/src/components/navigation/NavBar.js
+similarity index 100%
+rename from src/NavBar.js
+rename to src/components/navigation/NavBar.js
+diff --git a/src/NavBar.css b/src/components/navigation/NavBar.css
+similarity index 100%
+rename from src/NavBar.css
+rename to src/components/navigation/NavBar.css
+diff --git a/src/TopButton.js b/src/components/navigation/TopButton.js
+similarity index 100%
+rename from src/TopButton.js
+rename to src/components/navigation/TopButton.js
+diff --git a/src/TopButton.css b/src/components/navigation/TopButton.css
+similarity index 100%
+rename from src/TopButton.css
+rename to src/components/navigation/TopButton.css
+diff --git a/src/ParticleExplosion.js b/src/components/effects/ParticleExplosion.js
+similarity index 100%
+rename from src/ParticleExplosion.js
+rename to src/components/effects/ParticleExplosion.js
+diff --git a/src/LoadingScreen.js b/src/components/loading/LoadingScreen.js
+similarity index 100%
+rename from src/LoadingScreen.js
+rename to src/components/loading/LoadingScreen.js
+diff --git a/src/LoadingScreen.css b/src/components/loading/LoadingScreen.css
+similarity index 100%
+rename from src/LoadingScreen.css
+rename to src/components/loading/LoadingScreen.css
+diff --git a/src/PortfolioEnhancements.css b/src/styles/PortfolioEnhancements.css
+similarity index 100%
+rename from src/PortfolioEnhancements.css
+rename to src/styles/PortfolioEnhancements.css
+diff --git a/src/img_css/crosshair.png b/src/assets/crosshair.png
+similarity index 100%
+rename from src/img_css/crosshair.png
+rename to src/assets/crosshair.png
+diff --git a/src/ResumeModal.js b/src/legacy/ResumeModal.js
+similarity index 100%
+rename from src/ResumeModal.js
+rename to src/legacy/ResumeModal.js
+diff --git a/src/ResumeModal.css b/src/legacy/ResumeModal.css
+similarity index 100%
+rename from src/ResumeModal.css
+rename to src/legacy/ResumeModal.css
+diff --git a/src/README.md b/src/README.md
+new file mode 100644
+--- /dev/null
++++ b/src/README.md
+@@ -0,0 +1,32 @@
++# Source organization — where to edit
++
++The portfolio is organized by **feature**, with component logic and its CSS stored together.
++The public-facing content and retro design have not been intentionally changed in this reorganization.
++
++| I want to edit… | Go to… |
++| --- | --- |
++| Page sections and their order, hero actions, tech badges | `src/App.js` |
++| App startup and loading | `src/index.js`, `src/components/loading/` |
++| About Me text and typewriter interaction | `src/sections/about/AboutMe.js` |
++| Featured projects, videos, roles, tags, links | `src/sections/projects/VideoCarousel.js` |
++| Skills or education cards | `src/sections/skills/SkillsEducation.js`; skill data currently lives in `src/App.js` |
++| Playable target mini-game | `src/sections/interactive/MiniGameBox.js` |
++| 2D and 3D asset categories, images, captions | `src/sections/assets/` |
++| Contact form and messaging | `src/sections/contact/ContactForm.js` |
++| Top menu or back-to-top control | `src/components/navigation/` |
++| Floating polygons, particles, animated background | `src/components/effects/` |
++| Overall retro styling, section layout and responsive rules | `src/styles/` |
++| Crosshair image used by global CSS | `src/assets/crosshair.png` |
++| Game videos, posters, gallery GIFs and portraits | `public/video/`, `public/img/` (UNCHANGED) |
++| Unused, empty legacy components | `src/legacy/` |
++
++**Important:** Keep the `public/` folder as it is. The media references use
++`process.env.PUBLIC_URL`, so moving public files would require further changes.
++
++**Styles:** `src/styles/styles.css` is the global stylesheet. `src/styles/PortfolioEnhancements.css`
++contains site-wide layout and responsive design. Component-specific CSS lives beside its `.js`.
++
++**Next steps after applying the patch:** run `npm start` and `npm run build`, and verify
++navigation, About typing/skip, project videos, galleries, target mini-game, and contact form.
++
++This organization does not add or remove features, assets, or dependencies.
