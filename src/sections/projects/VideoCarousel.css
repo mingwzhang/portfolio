@@ -1,4 +1,8 @@
-/* === VIDEO STYLING ==================================== */
+/* Legacy carousel styles retained for reference. The current featured project
+   browser is styled primarily in src/styles/PortfolioEnhancements.css and
+   src/styles/typography-and-responsive.css; this file is not imported by it. */
+
+/* VIDEO STYLING */
 .video-element {
     width: 100%;
     height: 100%;
@@ -197,7 +201,7 @@ video {
     }
 }
 
-/* Portfolio review: project-specific evidence under each gameplay video */
+/* Legacy project-evidence selectors from the earlier carousel layout. */
 .project-evidence {
     width: 600px;
     max-width: 100%;

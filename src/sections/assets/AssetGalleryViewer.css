@@ -63,8 +63,7 @@
   .portfolio-asset-pagination { order: 2; width: 100%; }
 }
 
-/* V18: Keep the image viewport's size stable as pages are changed.
-   Without this, portrait/landscape images reflow the dialog while swapping. */
+/* Hold the image viewport at a stable height when changing gallery images. */
 .portfolio-asset-dialog .portfolio-asset-feature {
   height: clamp(260px, 52vh, 480px);
   min-height: 0;

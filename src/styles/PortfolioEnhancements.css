@@ -1,4 +1,4 @@
-/* Portfolio review v2: additions are scoped to the existing retro design. */
+/* Core section layout, navigation, video browser, and responsive styles. */
 html { scroll-behavior: smooth; }
 .portfolio-v2, .portfolio-v2 *, .portfolio-v2 *::before, .portfolio-v2 *::after { box-sizing: border-box; }
 .portfolio-v2 { color: #f1fbfc; }
@@ -68,7 +68,7 @@ html { scroll-behavior: smooth; }
 .portfolio-section-heading p { font-size: 22px; font-family: VT323, monospace; color: #d5eded; max-width: 750px; margin: auto; line-height: 1.4; }
 .portfolio-muted { color: #afd0d0; font-family: VT323, monospace; font-size: 17px; }
 
-/* Recruiter-focused project browser: navigation, video and factual contributions. */
+/* Featured project selector, video presentation, and project details. */
 .featured-project-picker { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 10px; margin-bottom: 22px; }
 .featured-project-tab {
   overflow: hidden; text-align: left; display: flex; flex-direction: column;
@@ -109,7 +109,7 @@ html { scroll-behavior: smooth; }
 .featured-profile-link { text-align: center; margin: 21px 0 0; }
 .featured-profile-link a { color: #8bfaff; }
 
-/* Smaller secondary content so project evidence leads the page. */
+/* Keep supporting sections visually quieter than featured project details. */
 .portfolio-skills-section #skills-education.container { width: 100% !important; max-width: none; margin: 0; }
 
 .portfolio-skills-section #skills-education .card { background: rgba(65,75,81,.62); border-color: rgba(68,192,195,.46); }

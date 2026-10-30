@@ -3,14 +3,13 @@ import "./2D3DAssetGallery.css";
 import "./AssetGalleryViewer.css";
 
 /**
- * Shared, keyboard-accessible gallery for the portfolio's existing 2D / 3D assets.
- * Each category contains { src, description } entries, with no new content claims.
+ * Shared 2D/3D gallery with keyboard navigation and image preloading.
+ * Categories map names to arrays of { src, description } entries.
  */
 export default function AssetGalleryViewer({ title, type, categories }) {
   const [activeCategory, setActiveCategory] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  // Keep showing the current image until the requested image is loaded/decoded.
-  // A request counter prevents an older preload from overwriting a newer click.
+  // Keep the displayed image until the next one is ready. Request IDs discard stale loads.
   const imageRequestRef = useRef(0);
   const requestedIndexRef = useRef(0);
   const closeRef = useRef(null);
@@ -35,8 +34,7 @@ export default function AssetGalleryViewer({ title, type, categories }) {
     setActiveIndex(0);
   }, []);
 
-  // Preload (and decode, when supported) before switching. This prevents the
-  // previous image from disappearing for a frame while the next image loads.
+  // Decode the requested image before switching to avoid a blank frame.
   const showImage = useCallback((index) => {
     if (!images.length) return;
     const nextIndex = (index + images.length) % images.length;
@@ -55,7 +53,7 @@ export default function AssetGalleryViewer({ title, type, categories }) {
         commit();
       }
     };
-    // Preserve existing missing-image behavior rather than leaving navigation stuck.
+    // Advance even if an image fails to load, rather than freezing navigation.
     preload.onerror = commit;
     preload.src = images[nextIndex].src;
   }, [images]);

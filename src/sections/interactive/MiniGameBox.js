@@ -1,5 +1,4 @@
-// MiniGameBox.js — moving target mini-game
-// Position using BOTH measured dimensions so the whole target stays visible.
+// Keep the moving target inside the measured game area on every screen size.
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import "./MiniGameBox.css";
 
@@ -45,8 +44,7 @@ const MiniGameBox = () => {
     const container = containerRef.current;
     if (!container) return;
 
-    // The game area is wider than it is tall on desktop. Never use width
-    // when calculating the vertical movement limit.
+    // Horizontal and vertical limits use their respective container dimensions.
     const maxLeft = Math.max(0, container.clientWidth - TARGET_SIZE - EDGE_PADDING);
     const maxTop = Math.max(0, container.clientHeight - TARGET_SIZE - EDGE_PADDING);
     const minLeft = Math.min(EDGE_PADDING, maxLeft);
@@ -71,7 +69,7 @@ const MiniGameBox = () => {
     moveTarget();
     scheduleNextMove();
 
-    // Reposition after a layout change so the target cannot remain clipped.
+    // Reposition when the container or viewport changes size.
     const container = containerRef.current;
     const observer = typeof ResizeObserver !== "undefined"
       ? new ResizeObserver(() => moveTarget())

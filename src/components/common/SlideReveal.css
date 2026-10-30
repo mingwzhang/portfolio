@@ -1,6 +1,5 @@
-/* Portfolio V16 — smooth expand/collapse for tools and asset galleries.
-   Both sections remain open by default (their App state is still true).
-   Grid row animation follows content height, even as the window changes. */
+/* Expand/collapse animation shared by the technology list and asset galleries.
+   Grid rows animate between zero and the natural content height. */
 .portfolio-v2 .slide-reveal {
   display: grid;
   grid-template-rows: 0fr;
@@ -24,8 +23,7 @@
   min-height: 0;
   overflow: hidden;
 }
-/* The original gallery uses margin-top. It remains inside the animation so
-   collapsing leaves no 24px blank gap. */
+/* Keep the content wrapper inside the animated row so margins collapse with it. */
 .portfolio-v2 .portfolio-assets-slide,
 .portfolio-v2 .portfolio-tech-slide {
   width: 100%;

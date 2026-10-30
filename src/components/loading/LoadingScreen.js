@@ -6,7 +6,7 @@ const LoadingScreen = ({ onFinish }) => {
   const delayTimeoutRef = useRef(null);
 
   useEffect(() => {
-    // Increase progress every 10ms for a faster loading (approximately 1 second to reach 100%).
+    // Simulated progress increases by 1% every 10 ms; it does not measure asset downloads.
     const interval = setInterval(() => {
       setProgress((prev) => {
         const next = prev + 1;
@@ -23,7 +23,7 @@ const LoadingScreen = ({ onFinish }) => {
 
   useEffect(() => {
     if (progress === 100 && !delayTimeoutRef.current) {
-      // Once progress reaches 100, wait 1 second before calling onFinish.
+      // Leave the completed state visible for one second before entering the app.
       delayTimeoutRef.current = setTimeout(() => {
         onFinish();
       }, 1000);

@@ -23,14 +23,14 @@ const RootComponent = () => {
 
 
   useEffect(() => {
-    // Prevent pinch-to-zoom on mobile
+    // Existing touch policy suppresses multi-finger zoom on mobile devices.
     const handleTouchMove = (event) => {
       if (event.touches.length > 1) {
-        event.preventDefault(); // Prevent pinch gesture
+        event.preventDefault();
       }
     };
 
-    // Prevent double-tap zoom (optional)
+    // Suppress rapid successive touch-end gestures as well.
     let lastTouchEnd = 0;
     const handleTouchEnd = (event) => {
       const now = Date.now();
@@ -40,7 +40,6 @@ const RootComponent = () => {
       lastTouchEnd = now;
     };
 
-    // Attach listeners
     document.addEventListener("touchmove", handleTouchMove, { passive: false });
     document.addEventListener("touchend", handleTouchEnd, { passive: false });
 

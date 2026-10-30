@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
-import "./ContactForm.css"; // Import the new CSS file
+import "./ContactForm.css";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -10,7 +10,7 @@ const ContactForm = () => {
   });
  const [status, setStatus] = useState("");
  const [statusType, setStatusType] = useState("");
-  const [isSending, setIsSending] = useState(false); // Flag to prevent multiple sends
+  const [isSending, setIsSending] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,16 +20,16 @@ const ContactForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Prevent duplicate submissions...
+    // Ignore additional submits while an EmailJS request is in flight.
     if (isSending) return;
     setIsSending(true);
 
     emailjs
       .send(
-        "service_s3eh3hi",  // Service ID
-        "template_7i16ush", // Template ID
-        formData,           // Template parameters / form data
-        "mnQpaviz3_3d37L_1" // Public key
+        "service_s3eh3hi",  // EmailJS service ID
+        "template_7i16ush", // EmailJS template ID
+        formData,           // Values supplied by the contact form
+        "mnQpaviz3_3d37L_1" // EmailJS public key (client-visible)
       )
       .then(
         (result) => {

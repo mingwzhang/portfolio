@@ -1,12 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=VT323&display=swap");
 
-/* Consolidated stylesheet: selectors and declaration order preserved from the checked-in version.
-   Later cleanups can remove redundant overrides after visual comparison. */
+/* Navigation affordances, skills presentation, and supporting readability.
+   Source order is intentional because some later selectors refine earlier ones. */
 
-/* ========== ReadabilityRefinements.css: existing rules (unchanged) ========== */
-/* Portfolio V11 — navigation, reading comfort, skills, demo alignment, contact.
-   Imported LAST by App.js so these small overrides are easy to find/edit.
-   No changes to game behavior, video controls, page content or assets. */
+/* Section readability and contact form proportions */
+/* Reading comfort and interactive navigation affordances. */
 
 /* 1. Make section navigation unmistakably interactive, without changing the
    second row containing Resume / GitHub / LinkedIn. */
@@ -49,8 +47,7 @@
   outline-offset: 3px;
 }
 
-/* 2. About Me: keep the pixel-art title, use the existing lighter VT323 font
-   for multi-line body copy. Both typed and skip-animation views inherit it. */
+/* Earlier About Me typography rules; AboutMe.css supplies the final 20px override. */
 .portfolio-v2 #about .portfolio-about-content {
   max-width: 890px;
   margin: 12px auto 3px;
@@ -233,9 +230,8 @@
   .portfolio-v2 #skills-education .icon-wrapper { transition: none; }
 }
 
-/* ========== NavigationSkillsV12.css: existing rules (unchanged) ========== */
-/* V12 — Compact skill tiles, clearer retro controls, better logo contrast.
-   Imported LAST from App.js. Edit this file for this visual polish. */
+/* Navigation layout and skill icon tiles */
+/* Compact skill tiles, profile navigation, and accessible contrast. */
 
 /* NAV: increase the three profile/action controls without enlarging the entire menu.
    Keep the already-established "Press Start 2P" pixel style and restrained glow. */
@@ -338,7 +334,7 @@
 .portfolio-v2 #skills-education .icon-wrapper .devicon-unrealengine-original { color: #f3f7f8 !important; }
 .portfolio-v2 #skills-education .icon-wrapper .devicon-github-original { color: #f2f4f6 !important; }
 .portfolio-v2 #skills-education .icon-wrapper .devicon-cplusplus-plain { color: #49a5e9 !important; }
-/* These are presentation tiles, not buttons, so don't make them jump on hover. */
+/* Skill tiles display information, while later hover styling adds only a small scale cue. */
 .portfolio-v2 #skills-education .icon-wrapper.hover-scale:hover { transform: none !important; }
 
 /* Make the hero Skills shortcut look like a link but react as smoothly as nav.

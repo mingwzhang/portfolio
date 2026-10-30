@@ -1,17 +1,9 @@
-/* Consolidated stylesheet: selectors and declaration order preserved from the checked-in version.
-   Later cleanups can remove redundant overrides after visual comparison. */
+/* Typography, responsive sizing, and the current featured-project details.
+   Keep the cascade order: later blocks refine earlier styles. */
 
-/* ========== PixelTypographyV13.css: existing rules (unchanged) ========== */
-/* V13 — Consistent pixel typography, legible at 100% browser zoom.
-   Loaded LAST from src/App.js, after NavigationSkillsV12.css.
-
-   Display headings: Press Start 2P (existing arcade identity).
-   Body and controls: Silkscreen (legible pixel letterforms, 400 / 700).
-   The Silkscreen font is already loaded by NavigationSkillsV12.css.
-
-   Do not globally override <i> or pseudo-elements: devicon uses an icon font.
-   Avoid scaling whole containers: the changes below size text by its role.
-*/
+/* Pixel font families and text hierarchy */
+/* Display headings use Press Start 2P; body copy and controls use Silkscreen.
+   Icon-font elements are excluded so devicon glyphs are not overwritten. */
 
 .portfolio-v2 {
   --pixel-ui: "Silkscreen", "Press Start 2P", monospace;
@@ -262,10 +254,8 @@
   .portfolio-v2 .portfolio-tech-strip span { font-size: 12px !important; }
 }
 
-/* ========== WidthAndTypeV14.css: existing rules (unchanged) ========== */
-/* Portfolio V14 — wider section layout and readable pixel text.
-   This file is imported AFTER PixelTypographyV13.css. Keep all responsive
-   overrides here so subsequent text-size changes have one home. */
+/* Content widths and text scaling */
+/* Readable text at the current page width, with responsive adjustments below. */
 
 /* 1. Wider content: use the available desktop screen width without stretching
    to full bleed, which would make long paragraphs difficult to read. */
@@ -447,12 +437,10 @@
   .portfolio-v2 #skills-education .icon-wrapper .icon-label { font-size: 12px !important; }
 }
 
-/* ========== VisualPolishV15.css: existing rules (unchanged) ========== */
-/* Portfolio V15 — modest refinements to the existing V14 layout.
-   Import AFTER WidthAndTypeV14.css so this is the final override layer.
-   All selectors are scoped to .portfolio-v2 for safety. */
+/* Fine typography, spacing, and responsive details */
+/* Final layout and reading-size refinements scoped to the portfolio. */
 
-/* 1. Comfortable panel width: narrower than the previous 1500px cap. */
+/* Main content width. */
 .portfolio-v2 .portfolio-main {
   max-width: 1400px !important;
 }
@@ -607,7 +595,7 @@
   }
   .portfolio-v2 .nav-section-row-v7 .nav-item { font-size: 11px !important; }
 }
-/* About Me — Both typing and skipped versions */
+/* Base About Me text sizing; the component stylesheet sets its final font. */
 .portfolio-v2 #about .portfolio-about-content,
 .portfolio-v2 #about .portfolio-about-content .Typewriter__wrapper {
   font-size: 25px !important;

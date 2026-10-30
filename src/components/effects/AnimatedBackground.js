@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import "../../styles/styles.css";
 
-// Pausing cancels requestAnimationFrame and preserves star positions.
+// Stop the animation loop when paused; redraw the existing stars without repositioning them.
 export default function AnimatedBackground({ paused = false }) {
   const canvasRef = useRef(null);
   const rafRef = useRef(null);

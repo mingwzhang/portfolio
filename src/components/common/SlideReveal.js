@@ -1,8 +1,8 @@
 import React from "react";
 import "./SlideReveal.css";
 
-// Keep content mounted while sliding, including on close.
-// The hidden state is unfocusable after collapsing, and aria-hidden is updated immediately.
+// Keep children mounted so grid-row transitions can animate in both directions.
+// aria-hidden reflects the open state; CSS hides collapsed content.
 export default function SlideReveal({ id, open, className = "", children }) {
   return (
     <div

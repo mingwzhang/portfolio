@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./ImpactSparks.css";
 
-// A single mouse click / touch creates a brief bullet-impact spark burst.
-// Pointer events are used once per press; holding no longer spawns more sparks.
+// One burst is spawned per pointer press, rather than continuously while held.
 const SPARK_COUNT = 15;
 const LIFE_MS = 560;
 
@@ -12,6 +11,8 @@ export default function ParticleExplosion() {
   const timers = useRef(new Set());
 
   useEffect(() => {
+    // Use the same timer set throughout this effect and its cleanup.
+    const activeTimers = timers.current;
     const handleImpact = (event) => {
       if (event.pointerType === "mouse" && event.button !== 0) return;
       if (event.isPrimary === false) return;
@@ -34,16 +35,16 @@ export default function ParticleExplosion() {
       setImpacts((previous) => [...previous.slice(-11), { id, x: event.clientX, y: event.clientY, sparks }]);
       const timeout = window.setTimeout(() => {
         setImpacts((previous) => previous.filter((impact) => impact.id !== id));
-        timers.current.delete(timeout);
+        activeTimers.delete(timeout);
       }, LIFE_MS);
-      timers.current.add(timeout);
+      activeTimers.add(timeout);
     };
 
     window.addEventListener("pointerdown", handleImpact, { passive: true });
     return () => {
       window.removeEventListener("pointerdown", handleImpact);
-      timers.current.forEach((timeout) => window.clearTimeout(timeout));
-      timers.current.clear();
+      activeTimers.forEach((timeout) => window.clearTimeout(timeout));
+      activeTimers.clear();
     };
   }, []);
 

@@ -1,6 +1,5 @@
-/* V17: One font and one scale for both About Me text rendering modes.
-   AboutMe.js already imports this file. Extra selector specificity is intentional:
-   it overrides the older global and V15 rules even when loaded before them. */
+/* Match text size and family between animated typing and the skipped version.
+   Extra selector specificity is required to override global typography rules. */
 .portfolio-v2 #about .portfolio-about-content.portfolio-about-content,
 .portfolio-v2 #about .portfolio-about-content.portfolio-about-content .Typewriter__wrapper {
   font-family: "Silkscreen", "Press Start 2P", monospace !important;

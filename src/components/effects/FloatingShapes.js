@@ -1,4 +1,4 @@
-// FloatingShapes.js
+// Decorative shapes are positioned once when the component mounts.
 import React, { useEffect, useState } from "react";
 import "../../styles/styles.css";
 
@@ -19,7 +19,7 @@ const FloatingShapes = () => {
         let newTop = Math.random() * 100;
         let newLeft = Math.random() * 100;
 
-        // Ensure the new position is not too close to existing ones
+        // Reject positions within 10 percentage points on both axes.
         const tooClose = positions.some(
           (pos) =>
             Math.abs(pos.top - newTop) < 10 && Math.abs(pos.left - newLeft) < 10
@@ -33,7 +33,6 @@ const FloatingShapes = () => {
       return positions;
     };
 
-    // Generate positions before mapping
     const shapePositions = generateUniquePositions(numShapes);
 
     const newShapes = shapePositions.map((position) => ({

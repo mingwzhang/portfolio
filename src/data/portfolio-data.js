@@ -51,7 +51,7 @@ export const skills = [
   },
 ];
 
-// Hero shows a concise sample first; all technologies and the full skills section remain accessible.
+// Short technology list used in the expandable hero summary; detailed categories are above.
 export const featuredTechnologies = [
   "Unity", "Unreal Engine", "Godot", "C#", "Python", "Java",
   "JavaScript", "React", "C++", "HTML / CSS", "MySQL",

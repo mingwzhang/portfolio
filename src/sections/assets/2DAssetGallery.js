@@ -4,7 +4,7 @@ import AssetGalleryViewer from "./AssetGalleryViewer";
 const base = `${process.env.PUBLIC_URL}/img/art_assets/2D`;
 const image = (path, description) => ({ src: `${base}/${path}`, description });
 
-// These are the existing assets and descriptions, now displayed as persistent captions.
+// Asset paths and captions are grouped by 2D art category.
 const categories = {
   "Character Sprites": [
     image("SpriteSheets/character_spritesheet.png", "Full player animation sheet I drew, with frames for movement and combat"),

@@ -1,4 +1,4 @@
-// App.js — portfolio page structure and homepage content
+// Main page layout, section order, and shared expand/collapse state.
 import React, { useState } from "react";
 import "devicon/devicon.min.css";
 import ParticleExplosion from "./components/effects/ParticleExplosion";

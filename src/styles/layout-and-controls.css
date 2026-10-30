@@ -1,8 +1,8 @@
-/* Consolidated stylesheet: selectors and declaration order preserved from the checked-in version.
-   Later cleanups can remove redundant overrides after visual comparison. */
+/* Layout, background controls, and hero styling.
+   Later overrides intentionally retain the cascade used by the current design. */
 
-/* ========== PolishControls.css: existing rules (unchanged) ========== */
-/* V5 – targeted readability and background animation controls. */
+/* Background controls and visual readability */
+/* Motion controls and title readability. */
 /* The original .pixel-bold-title runs glowPulse indefinitely; remove it for headings only. */
 .portfolio-v2 .pixel-bold-title {
   animation: none !important;
@@ -48,8 +48,7 @@
 .portfolio-all-skills-link:hover { color: #fff; }
 
 
-/* V6: minimal but visibly present neon bloom across all typography.
-   The previous About Me/body text remained brighter than the headings. */
+/* Restrained glow and color adjustments for headings and supporting text. */
 .portfolio-v2 .pixel-text,
 .portfolio-v2 .nav-text,
 .portfolio-v2 .pixel-subheading,
@@ -136,10 +135,8 @@
   .portfolio-v2 .nav-item, .portfolio-v2 .nav-resume, .portfolio-v2 .nav-linkedin { font-size: 9px; }
 }
 
-/* ========== LayoutRefinements.css: existing rules (unchanged) ========== */
-/* V7 layout and reading-size adjustments.
-   Loaded after PortfolioEnhancements.css and PolishControls.css.
-   No changes to the existing retro palette or reduced glow. */
+/* Navigation and section spacing */
+/* Responsive layout refinements that follow the base section styles. */
 
 /* NAVIGATION — two intentional rows rather than one compressed line. */
 .portfolio-v2 .nav-bar {
@@ -319,9 +316,8 @@
   .portfolio-v2 .featured-project-copy > .portfolio-kicker { font-size: 10px; }
 }
 
-/* ========== HeroRefinements.css: existing rules (unchanged) ========== */
-/* V8 — calmer introduction. Loaded after V7 overrides.
-   Keep the established palette and understated neon accents. */
+/* Hero layout and highlighted technologies */
+/* Two-column hero presentation with restrained highlights. */
 
 /* Give the portrait, name and professional title distinct reading areas. */
 .portfolio-v2 .portfolio-hero.portfolio-hero-v8 {
@@ -519,8 +515,7 @@
   .portfolio-v2 .featured-resume-button-v8 span { font-size: 24px; }
 }
 
-/* V9 — darker blue About Me card: the global .container rule applies a
-   semi-white gradient with !important, so override both layers explicitly. */
+/* Override the global container gradient for the darker About Me panel. */
 .portfolio-v2 #about.container {
   background-color: rgba(15, 24, 32, .93) !important;
   background-image: none !important;
@@ -530,7 +525,7 @@
   padding: 28px !important;
 }
 
-/* V9 — more solid teal technology chips, preserving the existing rounded look. */
+/* Use solid teal for the highlighted technology labels. */
 .portfolio-v2 .portfolio-tech-details-v8 .portfolio-tech-strip span {
   color: #c9fffb;
   background: rgba(14, 61, 71, .95);

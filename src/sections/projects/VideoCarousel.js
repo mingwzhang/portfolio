@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 
-// Project descriptions come from the linked public game pages.
+// Featured project metadata, preview assets, and outbound game links.
 const projects = [
   {
     id: "errori",
@@ -66,7 +66,7 @@ const projects = [
 
 function VideoCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  // Video controls persist after the initial Play click. They must not disappear on pause/seek.
+  // Once playback starts, keep native controls available during pauses and seeking.
   const [hasStarted, setHasStarted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isSeeking, setIsSeeking] = useState(false);
@@ -108,7 +108,7 @@ function VideoCarousel() {
   };
 
   const handlePointerDown = (event) => {
-    // Never interpret an interaction with the native video controls as a project swipe.
+    // Do not treat native video-control interaction as a project swipe.
     if (hasStarted && event.target.closest("video")) {
       pointerStart.current = null;
       resumeAfterSeek.current = !!videoRef.current && !videoRef.current.paused;
@@ -130,8 +130,7 @@ function VideoCarousel() {
   };
 
   const handleSeeked = (event) => {
-    // On browsers that briefly pause while scrubbing, continue only if playback
-    // was running when the seek began. A deliberately paused video stays paused.
+    // Resume after seeking only if playback was active when the seek began.
     const shouldResume = resumeAfterSeek.current;
     resumeAfterSeek.current = false;
     const video = event.currentTarget;

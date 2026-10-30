@@ -4,7 +4,7 @@ import AssetGalleryViewer from "./AssetGalleryViewer";
 const base = `${process.env.PUBLIC_URL}/img/art_assets/3D`;
 const image = (path, description) => ({ src: `${base}/${path}`, description });
 
-// Reuses the original gallery's asset paths and factual descriptions.
+// Asset paths and captions are grouped by 3D project category.
 const categories = {
   "Marble Race (Modular)": [
     image("MarbleRace/3D_MarbleRace_Model.png", "Modular VR marble race model built with detachable components."),
