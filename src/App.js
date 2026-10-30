@@ -47,8 +47,8 @@ const skills = [
       { name: "Photoshop", class: "devicon-photoshop-plain colored" },
       { name: "GIMP", class: "devicon-gimp-plain colored" },
       { name: "DaVinci Resolve", src: "https://upload.wikimedia.org/wikipedia/commons/9/90/DaVinci_Resolve_17_logo.svg" },
-      { name: "Aseprite", src: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Logo_Aseprite.svg/1200px-Logo_Aseprite.svg.png" },
-      { name: "Krita", src: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Calligrakrita-base.svg/1200px-Calligrakrita-base.svg.png" },
+      { name: "Aseprite", src: `${process.env.PUBLIC_URL}/img/skills/aseprite.svg` },
+      { name: "Krita", src: `${process.env.PUBLIC_URL}/img/skills/krita.svg` },
       { name: "Spine2D", src: "https://styles.redditmedia.com/t5_2mvt3f/styles/communityIcon_apt5vcye2tw41.png" },
     ],
   },
@@ -195,3 +195,4 @@ function App() {
 }
 
 export default App;
+

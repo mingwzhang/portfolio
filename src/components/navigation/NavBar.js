@@ -24,10 +24,10 @@ const NavBar = ({ onResumeClick }) => {
   };
 
   const navigation = [
-    { label: "Projects", section: "projects" },
-    { label: "About", section: "about" },
-    { label: "Skills", section: "skills-section" },
-    { label: "More Work", section: "more-work" },
+    { label: "Featured Projects", section: "projects" },
+    { label: "About Me", section: "about" },
+    { label: "Skills & Education", section: "skills-section" },
+    { label: "Interactive Demo & Assets", section: "more-work" },
     { label: "Contact", section: "contact" },
   ];
 
@@ -42,6 +42,7 @@ const NavBar = ({ onResumeClick }) => {
             <button type="button" key={section} onClick={() => scrollToSection(section)} className="nav-btn nav-item nav-text">{label}</button>
           ))}
           <button type="button" onClick={onResumeClick} className="nav-btn nav-resume nav-text">Resume 📎</button>
+          <a href="https://github.com/mingwzhang" target="_blank" rel="noopener noreferrer" className="nav-btn nav-item nav-text nav-github">GitHub</a>
           <a href="https://www.linkedin.com/in/mingwei-zhang1/" target="_blank" rel="noopener noreferrer" className="nav-btn nav-linkedin nav-text">
             <FaLinkedin size={16} style={{ marginRight: "0.35rem" }} />LinkedIn
           </a>
@@ -69,3 +70,4 @@ const NavBar = ({ onResumeClick }) => {
 };
 
 export default NavBar;
+
