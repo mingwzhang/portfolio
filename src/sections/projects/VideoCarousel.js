@@ -194,7 +194,6 @@ function VideoCarousel() {
             {!hasStarted && (
               <button type="button" className="featured-play-button" onClick={playSelected} aria-label={`Play ${current.title} gameplay video`}>
                 <span aria-hidden="true">▶</span>
-                <span className="featured-play-caption">Play footage</span>
               </button>
             )}
             {hasStarted && !isPlaying && !isSeeking && (

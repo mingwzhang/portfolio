@@ -15,6 +15,7 @@ import SkillsEducation from "./sections/skills/SkillsEducation";
 import TopButton from "./components/navigation/TopButton";
 import AssetGallery2D from "./sections/assets/2DAssetGallery";
 import AssetGallery3D from "./sections/assets/3DAssetGallery";
+import SlideReveal from "./components/common/SlideReveal";
 import "./styles/PortfolioEnhancements.css";
 import "./styles/PolishControls.css";
 import "./styles/LayoutRefinements.css";
@@ -23,6 +24,7 @@ import "./styles/ReadabilityRefinements.css";
 import "./styles/NavigationSkillsV12.css";
 import "./styles/PixelTypographyV13.css";
 import "./styles/WidthAndTypeV14.css";
+import "./styles/VisualPolishV15.css";
 
 const skills = [
   {
@@ -139,23 +141,25 @@ function App() {
               <span>TECHNOLOGIES I WORK WITH</span>
               <span className="portfolio-tech-toggle-action-v8">{showAllTech ? "Hide tools −" : "Explore tools +"}</span>
             </button>
-            <div id="portfolio-tech-details-v8" className="portfolio-tech-details-v8" hidden={!showAllTech}>
-              <div className="portfolio-tech-strip" aria-label="Highlighted technologies">
-                {featuredTechnologies.map((name) => <span key={name}>{name}</span>)}
+            <SlideReveal id="portfolio-tech-details-v8" open={showAllTech} className="portfolio-tech-slide">
+              <div className="portfolio-tech-details-v8">
+                <div className="portfolio-tech-strip" aria-label="Highlighted technologies">
+                  {featuredTechnologies.map((name) => <span key={name}>{name}</span>)}
+                </div>
+                <a
+                  className="portfolio-all-skills-link"
+                  href="#skills-section"
+                  onClick={(event) => {
+                    event.preventDefault();
+                    document.getElementById("skills-section")?.scrollIntoView({
+                      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+                      block: "start",
+                    });
+                    window.history.replaceState(null, "", "#skills-section");
+                  }}
+                >See all skills &amp; tools ↓</a>
               </div>
-              <a
-                className="portfolio-all-skills-link"
-                href="#skills-section"
-                onClick={(event) => {
-                  event.preventDefault();
-                  document.getElementById("skills-section")?.scrollIntoView({
-                    behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
-                    block: "start",
-                  });
-                  window.history.replaceState(null, "", "#skills-section");
-                }}
-              >See all skills &amp; tools ↓</a>
-            </div>
+            </SlideReveal>
           </div>
         </header>
 
@@ -203,12 +207,12 @@ function App() {
           >
             {showAssets ? "Hide 2D & 3D asset galleries −" : "Explore 2D & 3D asset galleries +"}
           </button>
-          {showAssets && (
-            <div id="portfolio-asset-galleries" className="portfolio-assets-grid">
+          <SlideReveal id="portfolio-asset-galleries" open={showAssets} className="portfolio-assets-slide">
+            <div className="portfolio-assets-grid">
               <div className="portfolio-asset-panel"><AssetGallery2D /></div>
               <div className="portfolio-asset-panel"><AssetGallery3D /></div>
             </div>
-          )}
+          </SlideReveal>
         </section>
 
         <section id="contact" className="portfolio-section portfolio-contact-section" aria-labelledby="portfolio-contact-heading">
