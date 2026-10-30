@@ -1,12 +1,13 @@
-// App.js
+// App.js — portfolio page structure and homepage content
 import React, { useState } from "react";
 import "devicon/devicon.min.css";
 import ParticleExplosion from "./components/effects/ParticleExplosion";
 import MiniGameBox from "./sections/interactive/MiniGameBox";
 import ContactForm from "./sections/contact/ContactForm";
-import NavBar from "./components/navigation/NavBar"; // import the nav component
+import NavBar from "./components/navigation/NavBar";
 import AnimatedBackground from "./components/effects/AnimatedBackground";
-import FloatingShapes from "./components/effects/FloatingShapes"; // Import the new component
+import FloatingShapes from "./components/effects/FloatingShapes";
+import EffectsToggle from "./components/navigation/EffectsToggle";
 import VideoCarousel from "./sections/projects/VideoCarousel";
 import { Helmet } from "react-helmet";
 import AboutMe from "./sections/about/AboutMe";
@@ -15,19 +16,14 @@ import TopButton from "./components/navigation/TopButton";
 import AssetGallery2D from "./sections/assets/2DAssetGallery";
 import AssetGallery3D from "./sections/assets/3DAssetGallery";
 import "./styles/PortfolioEnhancements.css";
+import "./styles/PolishControls.css";
 
 const skills = [
   {
     category: "Programming Languages",
     icons: [
-      {
-        name: "Python",
-        src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg",
-      },
-      {
-        name: "Java",
-        src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg",
-      },
+      { name: "Python", src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" },
+      { name: "Java", src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" },
       { name: "C#", class: "devicon-csharp-plain colored" },
       { name: "C++", class: "devicon-cplusplus-plain colored" },
       { name: "HTML5", class: "devicon-html5-plain colored" },
@@ -38,43 +34,22 @@ const skills = [
   {
     category: "Game Engines",
     icons: [
-      {
-        name: "Unity",
-        src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/unity/unity-original.svg",
-      },
+      { name: "Unity", src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/unity/unity-original.svg" },
       { name: "Unreal Engine", class: "devicon-unrealengine-original colored" },
       { name: "Godot", class: "devicon-godot-plain colored" },
-      {
-        name: "Ren'Py",
-        src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/renpy/renpy-original.svg",
-      },
+      { name: "Ren'Py", src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/renpy/renpy-original.svg" },
     ],
   },
   {
     category: "Design & Multimedia",
     icons: [
-      {
-        name: "Blender",
-        src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/blender/blender-original.svg",
-      },
+      { name: "Blender", src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/blender/blender-original.svg" },
       { name: "Photoshop", class: "devicon-photoshop-plain colored" },
       { name: "GIMP", class: "devicon-gimp-plain colored" },
-      {
-        name: "DaVinci Resolve",
-        src: "https://upload.wikimedia.org/wikipedia/commons/9/90/DaVinci_Resolve_17_logo.svg",
-      },
-      {
-        name: "Aseprite",
-        src: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Logo_Aseprite.svg/1200px-Logo_Aseprite.svg.png",
-      },
-      {
-        name: "Krita",
-        src: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Calligrakrita-base.svg/1200px-Calligrakrita-base.svg.png",
-      },
-      {
-        name: "Spine2D",
-        src: "https://styles.redditmedia.com/t5_2mvt3f/styles/communityIcon_apt5vcye2tw41.png",
-      },
+      { name: "DaVinci Resolve", src: "https://upload.wikimedia.org/wikipedia/commons/9/90/DaVinci_Resolve_17_logo.svg" },
+      { name: "Aseprite", src: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Logo_Aseprite.svg/1200px-Logo_Aseprite.svg.png" },
+      { name: "Krita", src: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Calligrakrita-base.svg/1200px-Calligrakrita-base.svg.png" },
+      { name: "Spine2D", src: "https://styles.redditmedia.com/t5_2mvt3f/styles/communityIcon_apt5vcye2tw41.png" },
     ],
   },
   {
@@ -95,18 +70,28 @@ const skills = [
   },
 ];
 
+// Short homepage highlights; the full skills list remains in Skills & Education.
+const featuredTechnologies = [
+  "Unity", "Unreal Engine", "Godot", "C#", "Python", "Java",
+  "JavaScript", "React", "C++", "HTML / CSS", "MySQL",
+];
+
 function App() {
   const [showAssets, setShowAssets] = useState(false);
+  const [effectsPaused, setEffectsPaused] = useState(() =>
+    typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
   const resumeUrl = "https://drive.google.com/file/d/1f_YqmpuhB_b4VpNf5T6ttGoPCm9yQUBc/view?usp=sharing";
 
   return (
-    <div className="portfolio-v2">
+    <div className={`portfolio-v2${effectsPaused ? " effects-paused" : ""}`}>
       <Helmet>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Helmet>
       <TopButton />
-      <AnimatedBackground />
+      <AnimatedBackground paused={effectsPaused} />
       <FloatingShapes />
+      <EffectsToggle paused={effectsPaused} onToggle={() => setEffectsPaused((previous) => !previous)} />
       <NavBar onResumeClick={() => window.open(resumeUrl, "_blank", "noopener,noreferrer")} />
 
       <main id="home" className="portfolio-main">
@@ -126,12 +111,13 @@ function App() {
           </p>
           <div className="portfolio-hero-actions">
             <a className="portfolio-action portfolio-action-primary" href="#projects">Explore projects</a>
-            <a className="portfolio-action" href={resumeUrl} target="_blank" rel="noopener noreferrer">View résumé</a>
+            <a className="portfolio-action" href={resumeUrl} target="_blank" rel="noopener noreferrer">View Resume</a>
             <a className="portfolio-action" href="https://github.com/mingwzhang" target="_blank" rel="noopener noreferrer">GitHub</a>
           </div>
-          <div className="portfolio-tech-strip" aria-label="Featured technologies">
-            <span>Unity</span><span>Unreal Engine</span><span>C#</span><span>JavaScript</span><span>React</span>
+          <div className="portfolio-tech-strip" aria-label="Highlighted technologies; see Skills and Education for more">
+            {featuredTechnologies.map((name) => <span key={name}>{name}</span>)}
           </div>
+          <a className="portfolio-all-skills-link" href="#skills-section">See all skills &amp; tools ↓</a>
         </header>
 
         <AboutMe />

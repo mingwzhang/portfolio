@@ -41,7 +41,7 @@ const NavBar = ({ onResumeClick }) => {
           {navigation.map(({ label, section }) => (
             <button type="button" key={section} onClick={() => scrollToSection(section)} className="nav-btn nav-item nav-text">{label}</button>
           ))}
-          <button type="button" onClick={onResumeClick} className="nav-btn nav-resume nav-text">Résumé 📎</button>
+          <button type="button" onClick={onResumeClick} className="nav-btn nav-resume nav-text">Resume 📎</button>
           <a href="https://www.linkedin.com/in/mingwei-zhang1/" target="_blank" rel="noopener noreferrer" className="nav-btn nav-linkedin nav-text">
             <FaLinkedin size={16} style={{ marginRight: "0.35rem" }} />LinkedIn
           </a>

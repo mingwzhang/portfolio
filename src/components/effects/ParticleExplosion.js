@@ -1,113 +1,73 @@
-// ParticleExplosion.js
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import "./ImpactSparks.css";
 
-const ParticleExplosion = () => {
-  const [particles, setParticles] = useState([]);
-  const intervalRef = useRef(null);
-  const currentPosition = useRef({ x: 0, y: 0 });
+// A single mouse click / touch creates a brief bullet-impact spark burst.
+// Pointer events are used once per press; holding no longer spawns more sparks.
+const SPARK_COUNT = 15;
+const LIFE_MS = 560;
+
+export default function ParticleExplosion() {
+  const [impacts, setImpacts] = useState([]);
+  const nextId = useRef(0);
+  const timers = useRef(new Set());
 
   useEffect(() => {
-    const spawnParticles = (x, y) => {
-      const newParticles = [];
-      for (let i = 0; i < 30; i++) {
-        const angle = Math.random() * 2 * Math.PI;
-        const distance = Math.random() * 80;
-        const dx = Math.cos(angle) * distance;
-        const dy = Math.sin(angle) * distance;
-        const color = `hsl(${Math.floor(Math.random() * 360)}, 100%, 50%)`;
-        newParticles.push({ id: Date.now() + "-" + i, x, y, dx, dy, color });
-      }
-      setParticles((prev) => [...prev, ...newParticles]);
+    const handleImpact = (event) => {
+      if (event.pointerType === "mouse" && event.button !== 0) return;
+      if (event.isPrimary === false) return;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-      // Remove particles after animation duration (1000ms)
-      setTimeout(() => {
-        setParticles((prev) =>
-          prev.filter((p) => !newParticles.some((np) => np.id === p.id))
-        );
-      }, 1000);
+      const id = ++nextId.current;
+      const sparks = Array.from({ length: SPARK_COUNT }, (_, index) => {
+        const angle = (index / SPARK_COUNT) * Math.PI * 2 + (Math.random() - 0.5) * 0.35;
+        const reach = 30 + Math.random() * 52;
+        return {
+          id: index,
+          dx: Math.cos(angle) * reach,
+          dy: Math.sin(angle) * reach,
+          angle: angle * (180 / Math.PI) + 90,
+          delay: Math.floor(Math.random() * 65),
+          length: 10 + Math.random() * 12,
+        };
+      });
+
+      setImpacts((previous) => [...previous.slice(-11), { id, x: event.clientX, y: event.clientY, sparks }]);
+      const timeout = window.setTimeout(() => {
+        setImpacts((previous) => previous.filter((impact) => impact.id !== id));
+        timers.current.delete(timeout);
+      }, LIFE_MS);
+      timers.current.add(timeout);
     };
 
-    const handleMouseMove = (e) => {
-      currentPosition.current = { x: e.clientX, y: e.clientY };
-    };
-
-    const handleMouseDown = (e) => {
-      if (intervalRef.current) return; // Prevent multiple intervals
-      currentPosition.current = { x: e.clientX, y: e.clientY };
-      spawnParticles(e.clientX, e.clientY);
-      window.addEventListener("mousemove", handleMouseMove);
-      intervalRef.current = setInterval(() => {
-        spawnParticles(currentPosition.current.x, currentPosition.current.y);
-      }, 100);
-    };
-
-    const handleMouseUp = () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-        intervalRef.current = null;
-      }
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-
-    // Stop particle spawning on visibility change (e.g., when switching tabs)
-    const handleVisibilityChange = () => {
-      if (document.hidden) {
-        handleMouseUp();
-      }
-    };
-
-    // Stop particle spawning when window loses focus (e.g., Win+Alt)
-    const handleWindowBlur = () => {
-      handleMouseUp();
-    };
-
-    window.addEventListener("mousedown", handleMouseDown);
-    window.addEventListener("mouseup", handleMouseUp);
-    window.addEventListener("mouseleave", handleMouseUp);
-    window.addEventListener("dragstart", handleMouseUp);
-    document.addEventListener("visibilitychange", handleVisibilityChange);
-    window.addEventListener("blur", handleWindowBlur);
-
+    window.addEventListener("pointerdown", handleImpact, { passive: true });
     return () => {
-      window.removeEventListener("mousedown", handleMouseDown);
-      window.removeEventListener("mouseup", handleMouseUp);
-      window.removeEventListener("mouseleave", handleMouseUp);
-      window.removeEventListener("dragstart", handleMouseUp);
-      window.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
-      window.removeEventListener("blur", handleWindowBlur);
-      if (intervalRef.current) clearInterval(intervalRef.current);
+      window.removeEventListener("pointerdown", handleImpact);
+      timers.current.forEach((timeout) => window.clearTimeout(timeout));
+      timers.current.clear();
     };
   }, []);
 
   return (
-    <div
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-        pointerEvents: "none",
-        overflow: "hidden",
-        zIndex: 9999,
-      }}
-    >
-      {particles.map((p) => (
-        <div
-          key={p.id}
-          className="particle"
-          style={{
-            left: p.x,
-            top: p.y,
-            backgroundColor: p.color,
-            "--dx": p.dx + "px",
-            "--dy": p.dy + "px",
-          }}
-        />
+    <div className="impact-effects-layer" aria-hidden="true">
+      {impacts.map((impact) => (
+        <div key={impact.id} className="impact-origin" style={{ left: impact.x, top: impact.y }}>
+          <span className="impact-flash" />
+          <span className="impact-ring" />
+          {impact.sparks.map((spark) => (
+            <span
+              key={spark.id}
+              className="impact-spark"
+              style={{
+                "--spark-x": `${spark.dx}px`,
+                "--spark-y": `${spark.dy}px`,
+                "--spark-angle": `${spark.angle}deg`,
+                "--spark-delay": `${spark.delay}ms`,
+                "--spark-length": `${spark.length}px`,
+              }}
+            />
+          ))}
+        </div>
       ))}
     </div>
   );
-};
-
-export default ParticleExplosion;
+}

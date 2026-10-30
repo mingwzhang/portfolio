@@ -1,51 +1,29 @@
-// AnimatedBackground.js
 import React, { useEffect, useRef } from "react";
 import "../../styles/styles.css";
 
-const AnimatedBackground = () => {
+// Pausing cancels requestAnimationFrame and preserves star positions.
+export default function AnimatedBackground({ paused = false }) {
   const canvasRef = useRef(null);
+  const rafRef = useRef(null);
+  const paintRef = useRef(() => {});
+  const animateRef = useRef(() => {});
 
   useEffect(() => {
     const canvas = canvasRef.current;
+    if (!canvas) return;
     const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+    let width = 0;
+    let height = 0;
+    let stars = [];
 
-    // Function to set canvas size using devicePixelRatio
-    const setCanvasSize = () => {
-      const dpr = window.devicePixelRatio || 1;
-      const width = window.visualViewport ? window.visualViewport.width : window.innerWidth;
-      const height = window.visualViewport ? window.visualViewport.height : window.innerHeight;
-      canvas.width = width * dpr;
-      canvas.height = height * dpr;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    };
-    
-
-    setCanvasSize();
-
-    // Adjust star count based on screen width (fewer stars on mobile)
-    const isMobile = window.innerWidth < 768;
-    const starCount = isMobile ? 100 : 150;
-    const stars = Array.from({ length: starCount }).map(() => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      speed: Math.random() * 2 + 0.5,
-      size: Math.random() * 2,
-    }));
-
-    const drawBackground = () => {
-      const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+    const paint = () => {
+      const gradient = ctx.createLinearGradient(0, 0, width, height);
       gradient.addColorStop(0, "#121212");
       gradient.addColorStop(1, "#1a1a1a");
       ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-    };
-
-    const drawStars = () => {
-      // Redraw the background (space-themed)
-      ctx.fillStyle = "#121212";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      // Draw stars
-      ctx.fillStyle = "white";
+      ctx.fillRect(0, 0, width, height);
+      ctx.fillStyle = "#fff";
       stars.forEach((star) => {
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
@@ -53,34 +31,61 @@ const AnimatedBackground = () => {
       });
     };
 
-    const updateStars = () => {
-      stars.forEach((star) => {
-        star.y += star.speed;
-        if (star.y > canvas.height) {
-          star.y = 0;
-          star.x = Math.random() * canvas.width;
-        }
-      });
+    const resize = () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.round(width * pixelRatio);
+      canvas.height = Math.round(height * pixelRatio);
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+      if (stars.length === 0) {
+        stars = Array.from({ length: width < 768 ? 100 : 150 }, () => ({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          speed: Math.random() * 1.5 + 0.35,
+          size: Math.random() * 1.7 + 0.2,
+        }));
+      } else {
+        stars.forEach((star) => {
+          if (star.x > width) star.x = Math.random() * width;
+          if (star.y > height) star.y = Math.random() * height;
+        });
+      }
+      paint();
     };
 
     const animate = () => {
-      drawBackground();
-      drawStars();
-      updateStars();
-      requestAnimationFrame(animate);
+      stars.forEach((star) => {
+        star.y += star.speed;
+        if (star.y > height) {
+          star.y = 0;
+          star.x = Math.random() * width;
+        }
+      });
+      paint();
+      rafRef.current = window.requestAnimationFrame(animate);
     };
 
-    animate();
-
-    const handleResize = () => {
-      setCanvasSize();
+    paintRef.current = paint;
+    animateRef.current = animate;
+    resize();
+    window.addEventListener("resize", resize);
+    window.addEventListener("orientationchange", resize);
+    return () => {
+      window.cancelAnimationFrame(rafRef.current);
+      window.removeEventListener("resize", resize);
+      window.removeEventListener("orientationchange", resize);
     };
-
-    window.addEventListener("orientationchange", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  return <canvas ref={canvasRef} className="animated-background" />;
-};
+  useEffect(() => {
+    window.cancelAnimationFrame(rafRef.current);
+    if (paused) paintRef.current();
+    else rafRef.current = window.requestAnimationFrame(() => animateRef.current());
+    return () => window.cancelAnimationFrame(rafRef.current);
+  }, [paused]);
 
-export default AnimatedBackground;
+  return <canvas ref={canvasRef} className="animated-background" aria-hidden="true" />;
+}
