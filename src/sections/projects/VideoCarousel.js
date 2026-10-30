@@ -1,7 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 
-// Information here is based on the linked public game pages. Keep role and
-// contribution statements specific to what you can explain in an interview.
+// Project descriptions come from the linked public game pages.
 const projects = [
   {
     id: "errori",
@@ -67,21 +66,20 @@ const projects = [
 
 function VideoCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
+  // Video controls persist after the initial Play click. They must not disappear on pause/seek.
+  const [hasStarted, setHasStarted] = useState(false);
   const videoRef = useRef(null);
   const tabRefs = useRef([]);
   const pointerStart = useRef(null);
   const justSwiped = useRef(false);
+  const resumeAfterSeek = useRef(false);
   const current = projects[currentIndex];
 
-  useEffect(() => {
-    setIsPlaying(false);
-  }, [currentIndex]);
-
   const selectIndex = (index) => {
-    if (videoRef.current) videoRef.current.pause();
+    videoRef.current?.pause();
+    resumeAfterSeek.current = false;
+    setHasStarted(false);
     setCurrentIndex((index + projects.length) % projects.length);
-    setIsPlaying(false);
   };
 
   const playSelected = () => {
@@ -90,12 +88,10 @@ function VideoCarousel() {
       return;
     }
     const video = videoRef.current;
-    if (video) {
-      const request = video.play();
-      if (request && typeof request.catch === "function") {
-        request.catch(() => setIsPlaying(false));
-      }
-    }
+    if (!video) return;
+    setHasStarted(true);
+    const request = video.play();
+    if (request && typeof request.catch === "function") request.catch(() => {});
   };
 
   const handleTabKeyDown = (event, index) => {
@@ -108,6 +104,12 @@ function VideoCarousel() {
   };
 
   const handlePointerDown = (event) => {
+    // Never interpret an interaction with the native video controls as a project swipe.
+    if (hasStarted && event.target.closest("video")) {
+      pointerStart.current = null;
+      resumeAfterSeek.current = !!videoRef.current && !videoRef.current.paused;
+      return;
+    }
     pointerStart.current = { x: event.clientX, y: event.clientY };
     justSwiped.current = false;
   };
@@ -120,6 +122,18 @@ function VideoCarousel() {
     if (Math.abs(deltaX) >= 65 && Math.abs(deltaX) > Math.abs(deltaY) * 1.2) {
       justSwiped.current = true;
       selectIndex(currentIndex + (deltaX < 0 ? 1 : -1));
+    }
+  };
+
+  const handleSeeked = (event) => {
+    // On browsers that briefly pause while scrubbing, continue only if playback
+    // was running when the seek began. A deliberately paused video stays paused.
+    const shouldResume = resumeAfterSeek.current;
+    resumeAfterSeek.current = false;
+    const video = event.currentTarget;
+    if (shouldResume && video.paused && !video.ended) {
+      const request = video.play();
+      if (request && typeof request.catch === "function") request.catch(() => {});
     }
   };
 
@@ -140,11 +154,7 @@ function VideoCarousel() {
             onClick={() => selectIndex(index)}
             onKeyDown={(event) => handleTabKeyDown(event, index)}
           >
-            <img
-              src={`${process.env.PUBLIC_URL}/video/${project.file}.jpg`}
-              alt=""
-              loading="lazy"
-            />
+            <img src={`${process.env.PUBLIC_URL}/video/${project.file}.jpg`} alt="" loading="lazy" />
             <span>{project.title}</span>
           </button>
         ))}
@@ -165,14 +175,17 @@ function VideoCarousel() {
               poster={`${process.env.PUBLIC_URL}/video/${current.file}.jpg`}
               preload="none"
               playsInline
-              controls={isPlaying}
-              onPlay={() => setIsPlaying(true)}
-              onPause={() => setIsPlaying(false)}
-              onEnded={() => setIsPlaying(false)}
+              controls={hasStarted}
+              onPlay={() => setHasStarted(true)}
+              onSeeking={(event) => {
+                if (!event.currentTarget.paused) resumeAfterSeek.current = true;
+              }}
+              onSeeked={handleSeeked}
+              onEnded={() => { resumeAfterSeek.current = false; }}
               onLoadedMetadata={(event) => { event.currentTarget.volume = 0.25; }}
               aria-label={`${current.title} gameplay video`}
             />
-            {!isPlaying && (
+            {!hasStarted && (
               <button type="button" className="featured-play-button" onClick={playSelected} aria-label={`Play ${current.title} gameplay video`}>
                 <span aria-hidden="true">▶</span>
                 <span className="featured-play-caption">Play footage</span>
@@ -184,7 +197,7 @@ function VideoCarousel() {
             <span aria-live="polite">{currentIndex + 1} / {projects.length}</span>
             <button type="button" onClick={() => selectIndex(currentIndex + 1)} aria-label="Next featured project">Next →</button>
           </div>
-          <p className="portfolio-muted featured-swipe-hint">Select a thumbnail, use the arrows, or swipe the footage to switch projects.</p>
+          <p className="portfolio-muted featured-swipe-hint">Select a thumbnail, use the arrows, or swipe the preview to switch projects.</p>
         </div>
 
         <article className="featured-project-copy" aria-live="polite">

@@ -17,6 +17,7 @@ import AssetGallery2D from "./sections/assets/2DAssetGallery";
 import AssetGallery3D from "./sections/assets/3DAssetGallery";
 import "./styles/PortfolioEnhancements.css";
 import "./styles/PolishControls.css";
+import "./styles/LayoutRefinements.css";
 
 const skills = [
   {
@@ -70,7 +71,7 @@ const skills = [
   },
 ];
 
-// Short homepage highlights; the full skills list remains in Skills & Education.
+// Hero shows a concise sample first; all technologies and the full skills section remain accessible.
 const featuredTechnologies = [
   "Unity", "Unreal Engine", "Godot", "C#", "Python", "Java",
   "JavaScript", "React", "C++", "HTML / CSS", "MySQL",
@@ -78,10 +79,12 @@ const featuredTechnologies = [
 
 function App() {
   const [showAssets, setShowAssets] = useState(false);
+  const [showAllTech, setShowAllTech] = useState(false);
   const [effectsPaused, setEffectsPaused] = useState(() =>
     typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches
   );
   const resumeUrl = "https://drive.google.com/file/d/1f_YqmpuhB_b4VpNf5T6ttGoPCm9yQUBc/view?usp=sharing";
+  const visibleTechnologies = showAllTech ? featuredTechnologies : featuredTechnologies.slice(0, 6);
 
   return (
     <div className={`portfolio-v2${effectsPaused ? " effects-paused" : ""}`}>
@@ -114,10 +117,23 @@ function App() {
             <a className="portfolio-action" href={resumeUrl} target="_blank" rel="noopener noreferrer">View Resume</a>
             <a className="portfolio-action" href="https://github.com/mingwzhang" target="_blank" rel="noopener noreferrer">GitHub</a>
           </div>
-          <div className="portfolio-tech-strip" aria-label="Highlighted technologies; see Skills and Education for more">
-            {featuredTechnologies.map((name) => <span key={name}>{name}</span>)}
+          <div className="portfolio-tech-summary">
+            <span className="portfolio-tech-label">TECHNOLOGIES I WORK WITH</span>
+            <div className="portfolio-tech-strip" aria-label="Highlighted technologies; the full list is available below">
+              {visibleTechnologies.map((name) => <span key={name}>{name}</span>)}
+            </div>
+            <div className="portfolio-tech-links">
+              <button
+                type="button"
+                className="portfolio-tech-expand"
+                onClick={() => setShowAllTech((previous) => !previous)}
+                aria-expanded={showAllTech}
+              >
+                {showAllTech ? "Show fewer technologies −" : `Show all ${featuredTechnologies.length} technologies +`}
+              </button>
+              <a className="portfolio-all-skills-link" href="#skills-section">See all skills &amp; tools ↓</a>
+            </div>
           </div>
-          <a className="portfolio-all-skills-link" href="#skills-section">See all skills &amp; tools ↓</a>
         </header>
 
         <AboutMe />
@@ -195,4 +211,3 @@ function App() {
 }
 
 export default App;
-
