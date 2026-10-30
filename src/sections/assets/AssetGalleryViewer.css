@@ -85,15 +85,14 @@
   }
 }
 
-/* Align 2D/3D titles with the category labels beneath them.
-   Each list item is 90% wide with 10px padding, and its button adds 12px. */
+/* Center the 2D Assets and 3D Assets headings in their own panels. */
 .portfolio-v2 .asset-browser > h5 {
   width: 90%;
   max-width: 100%;
   box-sizing: border-box;
   margin: 0 auto 10px !important;
   padding: 4px 22px !important;
-  text-align: left !important;
+  text-align: center !important;
 }
 /* Transparent category buttons sit inside tinted parent rows; add a small
    keyboard/mouse cue without changing the existing list design. */

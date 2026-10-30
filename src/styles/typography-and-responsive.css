@@ -784,3 +784,171 @@
     transform: none !important;
   }
 }
+
+
+/* Featured Projects — clearer reading hierarchy.
+   Keep the thumbnail/video interface and all existing project data unchanged.
+   Text categories are deliberately informational, not button-like. */
+.portfolio-v2 #projects .featured-project-copy {
+  padding: 0;
+  min-width: 0;
+  color: #e6f0f0;
+}
+
+/* The project category and title form one obvious header. */
+.portfolio-v2 #projects .featured-project-intro {
+  border-bottom: 1px solid rgba(102, 181, 184, .34);
+  padding: 3px 0 14px;
+  margin: 0 0 14px;
+}
+.portfolio-v2 #projects .featured-project-intro > .portfolio-kicker {
+  display: block;
+  color: #8edccb !important;
+  font-size: 14px !important;
+  letter-spacing: .5px;
+  line-height: 1.6;
+}
+.portfolio-v2 #projects .featured-project-intro h3 {
+  color: #9df5f5 !important;
+  font-size: clamp(21px, 1.55vw, 27px) !important;
+  line-height: 1.52 !important;
+  margin: 9px 0 0 !important;
+  text-shadow: none !important;
+}
+
+/* Small section labels give the reader a scan path. */
+.portfolio-v2 #projects .featured-detail-label {
+  display: block;
+  margin: 0 0 8px;
+  color: #a4cbd0 !important;
+  font-family: var(--pixel-ui, "Silkscreen", monospace) !important;
+  font-size: 13px !important;
+  font-weight: 700;
+  letter-spacing: .35px;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+/* Overview: muted ocean blue, separate from the two responsibility panels. */
+.portfolio-v2 #projects .featured-project-overview {
+  background: rgba(27, 65, 100, .45);
+  border-left: 3px solid rgba(90, 162, 214, .8);
+  padding: 11px 12px 12px;
+  margin: 0 0 12px;
+}
+.portfolio-v2 #projects .featured-project-overview > .featured-detail-label {
+  color: #9fd8f8 !important;
+  text-align: left !important;
+}
+.portfolio-v2 #projects .featured-project-overview .featured-project-summary {
+  margin: 0 !important;
+  color: #e5f2f2 !important;
+  font-size: 18px !important;
+  line-height: 1.7 !important;
+  font-weight: 400 !important;
+}
+
+/* Two distinct complementary tones: indigo for role, teal for contribution.
+   The label and border colors echo each panel without making them look clickable. */
+.portfolio-v2 #projects .featured-project-facts {
+  display: grid;
+  gap: 9px;
+  margin: 0 0 16px;
+}
+.portfolio-v2 #projects .featured-project-facts > div {
+  margin: 0;
+  border-radius: 3px;
+  padding: 11px 12px 12px;
+  box-shadow: none;
+}
+.portfolio-v2 #projects .featured-project-facts > .featured-project-role {
+  background: rgba(61, 60, 98, .46);
+  border-left: 3px solid rgba(153, 151, 213, .82);
+}
+.portfolio-v2 #projects .featured-project-facts > .featured-project-contribution {
+  background: rgba(24, 76, 78, .45);
+  border-left: 3px solid rgba(85, 198, 186, .8);
+}
+.portfolio-v2 #projects .featured-project-role > .featured-fact-label {
+  color: #c2bff3 !important;
+}
+.portfolio-v2 #projects .featured-project-contribution > .featured-fact-label {
+  color: #97e5d8 !important;
+}
+.portfolio-v2 #projects .featured-project-facts .featured-fact-label {
+  display: block;
+  font-size: 13px !important;
+  line-height: 1.55 !important;
+  letter-spacing: .25px;
+}
+.portfolio-v2 #projects .featured-project-facts p {
+  margin: 7px 0 0;
+  color: #e7f0f0 !important;
+  font-size: 17px !important;
+  line-height: 1.72 !important;
+}
+
+/* Technology and genre are supporting metadata, not a fourth information
+   card or interactive buttons. A quiet slate panel keeps the information
+   distinct from blue Overview, indigo Role, and teal Contribution. */
+.portfolio-v2 #projects .featured-project-metadata {
+  margin: 0 0 17px;
+  padding: 11px 12px 12px;
+  background: rgba(35, 45, 59, .42);
+  border-left: 3px solid rgba(136, 173, 193, .65);
+  border-radius: 3px;
+}
+.portfolio-v2 #projects .featured-project-metadata .featured-detail-label {
+  margin: 0 0 8px;
+  color: #b5d2e0 !important;
+  text-align: left !important;
+}
+.portfolio-v2 #projects .featured-project-metadata .featured-project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 5px 13px;
+  margin: 0 !important;
+}
+.portfolio-v2 #projects .featured-project-metadata .featured-project-tags span {
+  color: #e0eded !important;
+  font-size: 15px !important;
+  line-height: 1.55 !important;
+  cursor: default;
+}
+.portfolio-v2 #projects .featured-project-metadata .featured-project-tags span::before {
+  color: #8eaebb;
+}
+.portfolio-v2 #projects .featured-project-links {
+  margin-top: 0;
+}
+
+@media (max-width: 920px) {
+  .portfolio-v2 #projects .featured-project-intro h3 {
+    font-size: clamp(20px, 3.2vw, 26px) !important;
+  }
+}
+@media (max-width: 640px) {
+  .portfolio-v2 #projects .featured-project-intro { margin-bottom: 12px; }
+  .portfolio-v2 #projects .featured-project-overview { padding: 10px 11px; }
+  .portfolio-v2 #projects .featured-project-overview .featured-project-summary {
+    font-size: 17px !important;
+  }
+  .portfolio-v2 #projects .featured-project-facts p {
+    font-size: 16px !important;
+  }
+  .portfolio-v2 #projects .featured-detail-label,
+  .portfolio-v2 #projects .featured-project-facts .featured-fact-label {
+    font-size: 12px !important;
+  }
+  .portfolio-v2 #projects .featured-project-intro > .portfolio-kicker {
+    font-size: 12px !important;
+  }
+}
+
+/* Featured Projects: center the existing game-page link in the open space
+   below the video navigation; keep its original clickable styling. */
+.portfolio-v2 #projects .featured-project-media > .featured-project-links {
+  justify-content: center;
+  margin: 17px 0 0;
+}

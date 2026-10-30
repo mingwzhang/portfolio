@@ -213,23 +213,36 @@ function VideoCarousel() {
             <span aria-live="polite">{currentIndex + 1} / {projects.length}</span>
             <button type="button" onClick={() => selectIndex(currentIndex + 1)} aria-label="Next featured project">Next →</button>
           </div>
-          <p className="portfolio-muted featured-swipe-hint">Select a thumbnail, use the arrows, or swipe the preview to switch projects.</p>
-        </div>
-
-        <article className="featured-project-copy" aria-live="polite">
-          <span className="portfolio-kicker">{current.label}</span>
-          <h3>{current.title}</h3>
-          <p className="featured-project-summary">{current.summary}</p>
-          <div className="featured-project-facts">
-            <div><span className="featured-fact-label">My role</span><p>{current.role}</p></div>
-            <div><span className="featured-fact-label">My contribution</span><p>{current.contribution}</p></div>
-          </div>
-          <div className="featured-project-tags" aria-label="Project technologies and genres">
-            {current.stack.map((tag) => <span key={tag}>{tag}</span>)}
-          </div>
           <div className="featured-project-links">
             <a className="portfolio-action portfolio-action-primary" href={current.itchUrl} target="_blank" rel="noopener noreferrer">{current.action} ↗</a>
           </div>
+        </div>
+
+        <article className="featured-project-copy" aria-live="polite">
+          <header className="featured-project-intro">
+            <span className="portfolio-kicker">{current.label}</span>
+            <h3>{current.title}</h3>
+          </header>
+          <section className="featured-project-overview" aria-label="Project overview">
+            <h4 className="featured-detail-label">Overview</h4>
+            <p className="featured-project-summary">{current.summary}</p>
+          </section>
+          <div className="featured-project-facts">
+            <div className="featured-project-role">
+              <span className="featured-fact-label">My role</span>
+              <p>{current.role}</p>
+            </div>
+            <div className="featured-project-contribution">
+              <span className="featured-fact-label">My contribution</span>
+              <p>{current.contribution}</p>
+            </div>
+          </div>
+          <section className="featured-project-metadata" aria-label="Project technologies and genres">
+            <h4 className="featured-detail-label">Technology &amp; genre</h4>
+            <div className="featured-project-tags">
+              {current.stack.map((tag) => <span key={tag}>{tag}</span>)}
+            </div>
+          </section>
         </article>
       </div>
       <p className="portfolio-muted featured-profile-link">More projects: <a href="https://minmakesgames.itch.io/" target="_blank" rel="noopener noreferrer">itch.io</a> · <a href="https://github.com/mingwzhang" target="_blank" rel="noopener noreferrer">GitHub</a></p>
