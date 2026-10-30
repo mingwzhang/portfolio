@@ -1,0 +1,148 @@
+@import url("https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=VT323&display=swap");
+
+/* V12 — Compact skill tiles, clearer retro controls, better logo contrast.
+   Imported LAST from App.js. Edit this file for this visual polish. */
+
+/* NAV: increase the three profile/action controls without enlarging the entire menu.
+   Keep the already-established "Press Start 2P" pixel style and restrained glow. */
+.portfolio-v2 .nav-upper-v7 .nav-name {
+  font-family: "Silkscreen", "Press Start 2P", monospace !important;
+  font-size: clamp(13px, .98vw, 16px) !important;
+  letter-spacing: .45px !important;
+  line-height: 1.7 !important;
+  color: #ffdf91 !important;
+  text-shadow: 1px 1px 0 #533b21, 0 0 4px rgba(255, 212, 113, .21) !important;
+  padding: 10px 8px !important;
+  text-transform: uppercase;
+  min-width: 0;
+  max-width: none;
+}
+.portfolio-v2 .nav-actions-v7 .nav-btn,
+.portfolio-v2 .nav-actions-v7 .nav-item,
+.portfolio-v2 .nav-actions-v7 .nav-resume,
+.portfolio-v2 .nav-actions-v7 .nav-linkedin {
+  font-family: "Silkscreen", "Press Start 2P", monospace !important;
+  font-size: 11px !important;
+  letter-spacing: .25px !important;
+  line-height: 1.5 !important;
+  min-height: 43px;
+  padding: 11px 13px !important;
+  background-color: rgba(12, 29, 37, .96);
+  border-radius: 4px;
+  text-shadow: 1px 1px 0 #08222b, 0 0 3px rgba(85, 221, 225, .18) !important;
+}
+.portfolio-v2 .nav-actions-v7 .nav-github {
+  color: #f1ffff !important;
+  border-color: rgba(114, 224, 224, .58);
+}
+.portfolio-v2 .nav-actions-v7 .nav-resume {
+  border-style: dashed;
+  border-color: #55e4c5;
+}
+.portfolio-v2 .nav-actions-v7 .nav-linkedin {
+  background-color: #0875a9 !important;
+}
+.portfolio-v2 .nav-actions-v7 .nav-btn:hover,
+.portfolio-v2 .nav-actions-v7 .nav-item:hover {
+  filter: brightness(1.13);
+}
+
+/* The 5 section links retain their compact buttons, with a crisp arcade
+   label treatment rather than a broad neon halo. */
+.portfolio-v2 .nav-section-row-v7 .nav-item {
+  font-family: "Silkscreen", "Press Start 2P", monospace !important;
+  letter-spacing: .25px !important;
+  text-shadow: 1px 1px 0 rgba(4, 19, 27, .9) !important;
+}
+
+/* SKILLS: compact neutral-charcoal tiles, less padding and less blue wash.
+   Labels stay visible on both desktop and touch devices. */
+.portfolio-v2 #skills-education .card {
+  padding: 8px 7px !important;
+}
+.portfolio-v2 #skills-education .icon-wrapper {
+  width: 70px !important;
+  height: auto !important;
+  min-height: 71px !important;
+  margin: 3px !important;
+  padding: 7px 4px 5px !important;
+  gap: 4px !important;
+  background: #24282d !important;
+  border: 1px solid rgba(121, 178, 183, .36) !important;
+  border-radius: 5px;
+  filter: none !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+.portfolio-v2 #skills-education .icon-wrapper:hover {
+  background: #303943 !important;
+  border-color: rgba(112, 225, 229, .7) !important;
+}
+.portfolio-v2 #skills-education .icon-wrapper img,
+.portfolio-v2 #skills-education .icon-wrapper i {
+  width: 36px !important;
+  height: 36px !important;
+  font-size: 36px !important;
+  line-height: 36px !important;
+  filter: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+.portfolio-v2 #skills-education .icon-wrapper .icon-label {
+  font-family: "VT323", "Silkscreen", monospace !important;
+  font-size: 15px !important;
+  line-height: 1.05 !important;
+  letter-spacing: .05px;
+  color: #eaf4f5;
+  text-transform: none;
+  overflow-wrap: anywhere;
+  text-shadow: none !important;
+}
+/* Dark-brand icons need explicit contrast on charcoal. Brand colors are
+   retained where possible; Photoshop is deliberately brighter. */
+.portfolio-v2 #skills-education .icon-wrapper .devicon-photoshop-plain { color: #31a8ff !important; }
+.portfolio-v2 #skills-education .icon-wrapper .devicon-unrealengine-original { color: #f3f7f8 !important; }
+.portfolio-v2 #skills-education .icon-wrapper .devicon-github-original { color: #f2f4f6 !important; }
+.portfolio-v2 #skills-education .icon-wrapper .devicon-cplusplus-plain { color: #49a5e9 !important; }
+/* These are presentation tiles, not buttons, so don't make them jump on hover. */
+.portfolio-v2 #skills-education .icon-wrapper.hover-scale:hover { transform: none !important; }
+
+/* Make the hero Skills shortcut look like a link but react as smoothly as nav.
+   Focus remains visible for keyboard users. */
+.portfolio-v2 .portfolio-all-skills-link {
+  text-underline-offset: 5px;
+  transition: color .15s ease;
+}
+.portfolio-v2 .portfolio-all-skills-link:hover { color: #f5ffff; }
+
+@media (max-width: 768px) {
+  .portfolio-v2 .nav-upper-v7 .nav-name {
+    font-size: 12px !important;
+    padding: 8px 4px !important;
+  }
+  .portfolio-v2 .nav-actions-v7 .nav-btn,
+  .portfolio-v2 .nav-actions-v7 .nav-item,
+  .portfolio-v2 .nav-actions-v7 .nav-resume,
+  .portfolio-v2 .nav-actions-v7 .nav-linkedin {
+    font-size: 9px !important;
+    min-height: 40px;
+    padding: 9px 8px !important;
+  }
+  .portfolio-v2 #skills-education .icon-wrapper {
+    width: 66px !important;
+    min-height: 67px !important;
+    margin: 2px !important;
+    padding: 6px 3px 5px !important;
+  }
+  .portfolio-v2 #skills-education .icon-wrapper img,
+  .portfolio-v2 #skills-education .icon-wrapper i {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 32px !important;
+    line-height: 32px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-v2 .portfolio-all-skills-link { transition: none; }
+}

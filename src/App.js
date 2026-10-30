@@ -20,6 +20,7 @@ import "./styles/PolishControls.css";
 import "./styles/LayoutRefinements.css";
 import "./styles/HeroRefinements.css";
 import "./styles/ReadabilityRefinements.css";
+import "./styles/NavigationSkillsV12.css";
 
 const skills = [
   {
@@ -85,7 +86,7 @@ function App() {
   const [effectsPaused, setEffectsPaused] = useState(() =>
     typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches
   );
-  const resumeUrl = "https://drive.google.com/file/d/1f_YqmpuhB_b4VpNf5T6ttGoPCm9yQUBc/view?usp=sharing";
+  const resumeUrl = "https://drive.google.com/file/d/1bVhmyGEYZ0FH-HIsXgMh15NRwaEes568/view?usp=sharing";
 
   return (
     <div className={`portfolio-v2${effectsPaused ? " effects-paused" : ""}`}>
@@ -140,7 +141,18 @@ function App() {
               <div className="portfolio-tech-strip" aria-label="Highlighted technologies">
                 {featuredTechnologies.map((name) => <span key={name}>{name}</span>)}
               </div>
-              <a className="portfolio-all-skills-link" href="#skills-section">See all skills &amp; tools ↓</a>
+              <a
+                className="portfolio-all-skills-link"
+                href="#skills-section"
+                onClick={(event) => {
+                  event.preventDefault();
+                  document.getElementById("skills-section")?.scrollIntoView({
+                    behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+                    block: "start",
+                  });
+                  window.history.replaceState(null, "", "#skills-section");
+                }}
+              >See all skills &amp; tools ↓</a>
             </div>
           </div>
         </header>
