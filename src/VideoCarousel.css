@@ -12,7 +12,7 @@
 }
 
 
-/* === CAROUSEL LAYOUT ==================================== */
+/* === CAROUSEL LAYOUT ================================== */
 .carousel-viewport {
     width: 600px;
     max-width: 100%;
@@ -101,14 +101,14 @@ video {
 }
 
 
-/* === FADE-OUT CLASS (OPTIONAL JS CONTROL) =============== */
+/* === FADE-OUT CLASS (OPTIONAL JS CONTROL) ============== */
 .custom-play-overlay.hide {
     opacity: 0;
     pointer-events: none;
 }
 
 
-/* === TRIANGLE ========================================== */
+/* === TRIANGLE ========================================= */
 .custom-play-overlay::before {
     content: "";
     position: absolute;
@@ -135,7 +135,7 @@ video {
 }
 
 
-/* TRIANGLE PRESSED = compress */
+/* TRIANGLE PRESSED */
 .custom-play-overlay:active::before {
     transform: translate(-36%, -50%) scale(0.88);
 }
@@ -196,3 +196,27 @@ video {
         padding: 4px 10px;
     }
 }
+
+/* Portfolio review: project-specific evidence under each gameplay video */
+.project-evidence {
+    width: 600px;
+    max-width: 100%;
+    margin: 14px auto 0;
+    padding: 14px 18px;
+    text-align: left;
+    background: rgba(0, 25, 27, 0.72);
+    border: 1px solid rgba(0, 230, 230, 0.45);
+    border-radius: 6px;
+}
+.project-evidence-title {
+    color: #6bffff;
+    text-align: center;
+    margin: 0 0 12px;
+}
+.project-evidence p {
+    font-size: 12px;
+    line-height: 1.7;
+    margin-bottom: 8px;
+}
+.project-evidence a { color: #69ffff; }
+.custom-play-overlay { padding: 0; }

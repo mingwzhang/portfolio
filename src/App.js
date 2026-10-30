@@ -154,8 +154,18 @@ function App() {
           Software & Game Developer
         </h3>
         <p className="pixel-text pixel-small fade-in-message">
-          🖱️ Feel free to click around!
+          Explore gameplay projects, technical work, and source code.
         </p>
+
+        <div className="d-flex justify-content-center flex-wrap gap-2 mt-2">
+          <button
+            type="button"
+            className="pixel-text pixel-btn-3d btn-fixed-size"
+            onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
+          >
+            Explore Projects
+          </button>
+        </div>
 
         <AboutMe />
         <SkillsEducation skills={skills} />
@@ -166,6 +176,9 @@ function App() {
             <h4 className="pixel-text pixel-bold-title">
               <span className="emoji-large">💡</span> Projects
             </h4>
+            <p className="pixel-text project-section-intro">
+              Watch gameplay footage, explore my work, and view project details.
+            </p>
 
             <div className="d-flex justify-content-center">
               <button
@@ -235,7 +248,7 @@ function App() {
       {/* Particle explosion background */}
       <ParticleExplosion />
       <div className="footer-note">
-        © 2025 Mingwei Zhang — Built with React.
+        © {new Date().getFullYear()} Mingwei Zhang — Built with React.
       </div>
     </div>
   );

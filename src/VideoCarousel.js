@@ -2,13 +2,16 @@ import React, { useState, useRef } from "react";
 import "./VideoCarousel.css";
 
 function VideoCarousel() {
-  const videos = [
-    `${process.env.PUBLIC_URL}/video/!ERRORi.mp4`,
-    `${process.env.PUBLIC_URL}/video/HSSRR.mp4`,
-    `${process.env.PUBLIC_URL}/video/AshVideo.mp4`,
-    `${process.env.PUBLIC_URL}/video/FFBlazeVideo.mp4`,
-    `${process.env.PUBLIC_URL}/video/ProjectIOTA.mp4`,
+  // Replace placeholders with VERIFIED contributions before publishing.
+  // Leave codeUrl blank until a project-specific repository is confirmed.
+  const projects = [
+    { title: "!ERRORi", file: "!ERRORi", role: "Add your role", contribution: "Add 1–2 specific systems or features you implemented.", tech: "Add verified tools / languages", codeUrl: "" },
+    { title: "HSSRR", file: "HSSRR", role: "Add your role", contribution: "Add 1–2 specific systems or features you implemented.", tech: "Add verified tools / languages", codeUrl: "" },
+    { title: "Ash", file: "AshVideo", role: "Add your role", contribution: "Add 1–2 specific systems or features you implemented.", tech: "Add verified tools / languages", codeUrl: "" },
+    { title: "FF Blaze", file: "FFBlazeVideo", role: "Add your role", contribution: "Add 1–2 specific systems or features you implemented.", tech: "Add verified tools / languages", codeUrl: "" },
+    { title: "Project IOTA", file: "ProjectIOTA", role: "Add your role", contribution: "Add 1–2 specific systems or features you implemented.", tech: "Add verified tools / languages", codeUrl: "" },
   ];
+  const videos = projects.map((project) => `${process.env.PUBLIC_URL}/video/${project.file}.mp4`);
 
   const [activated, setActivated] = useState({});
   const [isPlaying, setIsPlaying] = useState({});
@@ -91,7 +94,8 @@ function VideoCarousel() {
   };
 
   return (
-    <div className="carousel-viewport">
+    <>
+      <div className="carousel-viewport">
       <div
         className={`video-carousel ${dragging ? "dragging" : ""}`}
         onMouseDown={(e) => { setDragStartX(e.clientX); setDragging(true); wasDraggedRef.current = false; }}
@@ -118,14 +122,16 @@ function VideoCarousel() {
             return (
               <div key={idx} className="video-slide">
                 <div className="video-slide-number">
-                  {idx + 1} / {videos.length}
+                  {idx + 1} / {videos.length} · {projects[idx].title}
                 </div>
 
                 {!isPlaying[idx] && (
-                  <div
+                  <button
+                    type="button"
                     className="custom-play-overlay"
+                    aria-label={`Play ${projects[idx].title} gameplay video`}
                     onClick={() => handleOverlayClick(idx)}
-                  ></div>
+                  />
                 )}
 
                 <video
@@ -150,6 +156,7 @@ function VideoCarousel() {
         <div className="prev-button-wrapper">
           <button
             onClick={goToPrevious}
+            aria-label="Previous project video"
             className="m-2 pixel-text pixel-btn-3d prev-button"
           >
             ←
@@ -159,13 +166,26 @@ function VideoCarousel() {
         <div className="next-button-wrapper">
           <button
             onClick={goToNext}
+            aria-label="Next project video"
             className="m-2 pixel-text pixel-btn-3d next-button"
           >
             →
           </button>
         </div>
       </div>
-    </div>
+      </div>
+      <section className="project-evidence pixel-text" aria-live="polite" aria-label="Current project details">
+        <h6 className="project-evidence-title">{projects[currentIndex].title}</h6>
+        <p><strong>My role:</strong> {projects[currentIndex].role}</p>
+        <p><strong>What I built:</strong> {projects[currentIndex].contribution}</p>
+        <p><strong>Technology:</strong> {projects[currentIndex].tech}</p>
+        {projects[currentIndex].codeUrl && (
+          <a href={projects[currentIndex].codeUrl} target="_blank" rel="noopener noreferrer">
+            View this project's code
+          </a>
+        )}
+      </section>
+    </>
   );
 }
 
