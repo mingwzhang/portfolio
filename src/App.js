@@ -1,4 +1,4 @@
-// Main page layout, section order, and shared expand/collapse state.
+// App.js — portfolio page structure and homepage content
 import React, { useState } from "react";
 import "devicon/devicon.min.css";
 import ParticleExplosion from "./components/effects/ParticleExplosion";
@@ -24,7 +24,7 @@ import "./styles/typography-and-responsive.css";
 
 function App() {
   const [showAssets, setShowAssets] = useState(true);
-  const [showAllTech, setShowAllTech] = useState(true);
+  const [showAllTech, setShowAllTech] = useState(false);
   const [effectsPaused, setEffectsPaused] = useState(() =>
     typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches
   );
@@ -69,6 +69,27 @@ function App() {
           </div>
 
           <div className="portfolio-tech-summary portfolio-tech-summary-v8">
+            {/* Keep the full technology list and its skills link together inside the slide. */}
+            <SlideReveal id="portfolio-tech-details-v8" open={showAllTech} className="portfolio-tech-slide">
+              <div className="portfolio-tech-details-v8 portfolio-tech-list">
+                <div className="portfolio-tech-strip" aria-label="Highlighted technologies">
+                  {featuredTechnologies.map((name) => <span key={name}>{name}</span>)}
+                  <a
+                    className="portfolio-all-skills-link"
+                    href="#skills-section"
+                    onClick={(event) => {
+                      event.preventDefault();
+                      document.getElementById("skills-section")?.scrollIntoView({
+                        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+                        block: "start",
+                      });
+                      window.history.replaceState(null, "", "#skills-section");
+                    }}
+                  >See all skills &amp; tools ↓</a>
+                </div>
+              </div>
+            </SlideReveal>
+            {/* The toggle remains below the animated list in both states. */}
             <button
               type="button"
               className="portfolio-tech-toggle-v8"
@@ -79,25 +100,6 @@ function App() {
               <span>TECHNOLOGIES I WORK WITH</span>
               <span className="portfolio-tech-toggle-action-v8">{showAllTech ? "Hide tools −" : "Explore tools +"}</span>
             </button>
-            <SlideReveal id="portfolio-tech-details-v8" open={showAllTech} className="portfolio-tech-slide">
-              <div className="portfolio-tech-details-v8">
-                <div className="portfolio-tech-strip" aria-label="Highlighted technologies">
-                  {featuredTechnologies.map((name) => <span key={name}>{name}</span>)}
-                </div>
-                <a
-                  className="portfolio-all-skills-link"
-                  href="#skills-section"
-                  onClick={(event) => {
-                    event.preventDefault();
-                    document.getElementById("skills-section")?.scrollIntoView({
-                      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
-                      block: "start",
-                    });
-                    window.history.replaceState(null, "", "#skills-section");
-                  }}
-                >See all skills &amp; tools ↓</a>
-              </div>
-            </SlideReveal>
           </div>
         </header>
 

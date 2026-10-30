@@ -1,9 +1,17 @@
-/* Typography, responsive sizing, and the current featured-project details.
-   Keep the cascade order: later blocks refine earlier styles. */
+/* Consolidated stylesheet: selectors and declaration order preserved from the checked-in version.
+   Later cleanups can remove redundant overrides after visual comparison. */
 
-/* Pixel font families and text hierarchy */
-/* Display headings use Press Start 2P; body copy and controls use Silkscreen.
-   Icon-font elements are excluded so devicon glyphs are not overwritten. */
+/* ========== PixelTypographyV13.css: existing rules (unchanged) ========== */
+/* V13 — Consistent pixel typography, legible at 100% browser zoom.
+   Loaded LAST from src/App.js, after NavigationSkillsV12.css.
+
+   Display headings: Press Start 2P (existing arcade identity).
+   Body and controls: Silkscreen (legible pixel letterforms, 400 / 700).
+   The Silkscreen font is already loaded by NavigationSkillsV12.css.
+
+   Do not globally override <i> or pseudo-elements: devicon uses an icon font.
+   Avoid scaling whole containers: the changes below size text by its role.
+*/
 
 .portfolio-v2 {
   --pixel-ui: "Silkscreen", "Press Start 2P", monospace;
@@ -254,8 +262,10 @@
   .portfolio-v2 .portfolio-tech-strip span { font-size: 12px !important; }
 }
 
-/* Content widths and text scaling */
-/* Readable text at the current page width, with responsive adjustments below. */
+/* ========== WidthAndTypeV14.css: existing rules (unchanged) ========== */
+/* Portfolio V14 — wider section layout and readable pixel text.
+   This file is imported AFTER PixelTypographyV13.css. Keep all responsive
+   overrides here so subsequent text-size changes have one home. */
 
 /* 1. Wider content: use the available desktop screen width without stretching
    to full bleed, which would make long paragraphs difficult to read. */
@@ -437,10 +447,12 @@
   .portfolio-v2 #skills-education .icon-wrapper .icon-label { font-size: 12px !important; }
 }
 
-/* Fine typography, spacing, and responsive details */
-/* Final layout and reading-size refinements scoped to the portfolio. */
+/* ========== VisualPolishV15.css: existing rules (unchanged) ========== */
+/* Portfolio V15 — modest refinements to the existing V14 layout.
+   Import AFTER WidthAndTypeV14.css so this is the final override layer.
+   All selectors are scoped to .portfolio-v2 for safety. */
 
-/* Main content width. */
+/* 1. Comfortable panel width: narrower than the previous 1500px cap. */
 .portfolio-v2 .portfolio-main {
   max-width: 1400px !important;
 }
@@ -595,7 +607,7 @@
   }
   .portfolio-v2 .nav-section-row-v7 .nav-item { font-size: 11px !important; }
 }
-/* Base About Me text sizing; the component stylesheet sets its final font. */
+/* About Me — Both typing and skipped versions */
 .portfolio-v2 #about .portfolio-about-content,
 .portfolio-v2 #about .portfolio-about-content .Typewriter__wrapper {
   font-size: 25px !important;
@@ -1028,4 +1040,29 @@
   .portfolio-v2 #projects .featured-project-media .featured-project-metadata .featured-project-tags span {
     font-size: 14px !important;
   }
+}
+
+
+/* Hero technologies: the complete list and skills shortcut share one sliding
+   region. The toggle stays below it and moves with the expanding content. */
+.portfolio-v2 .portfolio-tech-summary-v8 .portfolio-tech-list {
+  padding: 8px 0 0;
+}
+.portfolio-v2 .portfolio-tech-summary-v8 .portfolio-tech-list .portfolio-tech-strip {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  flex-wrap: wrap;
+  column-gap: 13px;
+  row-gap: 8px;
+  margin: 0 auto 14px;
+}
+.portfolio-v2 .portfolio-tech-summary-v8 .portfolio-tech-list .portfolio-all-skills-link {
+  display: inline-flex;
+  align-items: baseline;
+  margin: 0;
+  white-space: normal;
+}
+.portfolio-v2 .portfolio-tech-summary-v8 .portfolio-tech-toggle-v8 {
+  margin-top: 8px;
 }
