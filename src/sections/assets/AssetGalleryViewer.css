@@ -84,3 +84,27 @@
     min-height: 0;
   }
 }
+
+/* Align 2D/3D titles with the category labels beneath them.
+   Each list item is 90% wide with 10px padding, and its button adds 12px. */
+.portfolio-v2 .asset-browser > h5 {
+  width: 90%;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin: 0 auto 10px !important;
+  padding: 4px 22px !important;
+  text-align: left !important;
+}
+/* Transparent category buttons sit inside tinted parent rows; add a small
+   keyboard/mouse cue without changing the existing list design. */
+.portfolio-v2 .asset-browser .asset-category-button {
+  border-radius: 3px;
+  background: rgba(77, 156, 159, .045);
+  transition: background-color 150ms ease;
+}
+.portfolio-v2 .asset-browser .asset-category-button:hover {
+  background: rgba(77, 156, 159, .15);
+}
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-v2 .asset-browser .asset-category-button { transition: none; }
+}

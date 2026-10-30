@@ -24,7 +24,7 @@ function AboutMe() {
   return (
     <section id="about" className="container" aria-labelledby="portfolio-about-heading">
       <h2 id="portfolio-about-heading" className="mt-1 text-center pixel-text pixel-bold-title">
-        <span className="emoji-large" aria-hidden="true">👤</span> About Me
+        About Me
       </h2>
       <div className="pixel-text portfolio-about-content">
         {skipTyping ? (

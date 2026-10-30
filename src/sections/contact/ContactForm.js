@@ -48,7 +48,7 @@ const ContactForm = () => {
   return (
     <form onSubmit={handleSubmit} className="contact-form">
       <h4 className="pixel-text pixel-bold-title contact-title">
-        <span className="emoji-large">📩</span> Contact Me
+        Contact Me
       </h4>
       <div style={{ marginBottom: "1rem" }}>
         <input

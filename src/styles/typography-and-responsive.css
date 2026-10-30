@@ -614,3 +614,173 @@
   line-height: 1.8 !important;
 }
 
+
+/* ========== SUBTLE INTERACTION CUES ========== */
+/* Clickable elements use a gentle fill, underline or hover change.
+   Technology and project metadata are deliberately NOT styled as buttons. */
+
+/* The clickable site name is also a button, so it gets a barely visible fill. */
+.portfolio-v2 .nav-upper-v7 .nav-name {
+  background: rgba(45, 92, 96, .14) !important;
+  border: 1px solid rgba(128, 195, 194, .23) !important;
+  border-radius: 3px;
+}
+.portfolio-v2 .nav-upper-v7 .nav-name:hover {
+  background: rgba(51, 112, 116, .33) !important;
+  border-color: rgba(148, 220, 213, .55) !important;
+}
+
+/* Keep the Show/Hide Menu bar distinguishable, with space between the caret
+   icon and the text. Do not change its existing slide-open behavior. */
+.portfolio-v2 .nav-bar .nav-layout-v7 .nav-toggle-btn {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 12px !important;
+  background: rgba(20, 67, 76, .77) !important;
+  border-top: 1px solid rgba(110, 212, 213, .55) !important;
+  color: #ecfffc !important;
+  cursor: pointer;
+  box-shadow: none !important;
+  transition: background-color 160ms ease, border-color 160ms ease !important;
+}
+.portfolio-v2 .nav-bar .nav-layout-v7 .nav-toggle-btn > svg {
+  flex: 0 0 auto;
+  margin: 0 !important;
+}
+.portfolio-v2 .nav-bar .nav-layout-v7 .nav-toggle-btn:hover {
+  background: rgba(37, 113, 119, .95) !important;
+  border-top-color: rgba(158, 244, 233, .83) !important;
+}
+.portfolio-v2 .nav-bar .nav-layout-v7 .nav-toggle-btn:focus-visible {
+  outline: 2px solid #ffdf90;
+  outline-offset: -2px;
+}
+
+/* A LIGHT tinted surface, not a big glowing CTA. */
+.portfolio-v2 .portfolio-tech-summary-v8 .portfolio-tech-toggle-v8 {
+  background: rgba(39, 88, 94, .30) !important;
+  border: 1px solid rgba(112, 190, 190, .38) !important;
+  border-radius: 5px !important;
+  box-shadow: none !important;
+  cursor: pointer;
+  transition: background-color 150ms ease, border-color 150ms ease !important;
+}
+.portfolio-v2 .portfolio-tech-summary-v8 .portfolio-tech-toggle-v8:hover {
+  background: rgba(46, 103, 109, .51) !important;
+  border-color: rgba(139, 224, 217, .6) !important;
+}
+.portfolio-v2 .portfolio-tech-summary-v8 .portfolio-tech-toggle-v8:focus-visible {
+  outline: 2px solid #ffdf90;
+  outline-offset: 3px;
+}
+/* "See all skills" is a link: visibly underlined, with subtle hover tint. */
+.portfolio-v2 .portfolio-tech-details-v8 .portfolio-all-skills-link {
+  padding: 4px 7px;
+  border-radius: 3px;
+  text-decoration: underline !important;
+  text-underline-offset: 5px;
+  text-decoration-color: rgba(148, 234, 225, .8);
+  background: rgba(51, 111, 115, .17) !important;
+  cursor: pointer;
+  transition: background-color 160ms ease, color 160ms ease !important;
+}
+.portfolio-v2 .portfolio-tech-details-v8 .portfolio-all-skills-link:hover {
+  color: #fff !important;
+  background: rgba(59, 130, 130, .37) !important;
+}
+.portfolio-v2 .portfolio-tech-details-v8 .portfolio-all-skills-link:focus-visible {
+  outline: 2px solid #ffdf90;
+  outline-offset: 3px;
+}
+
+/* Featured technology names and project descriptors are informational tags.
+   Use simple separators and zero pill styling; never imply they are buttons. */
+.portfolio-v2 .portfolio-tech-details-v8 .portfolio-tech-strip span,
+.portfolio-v2 .featured-project-copy .featured-project-tags span {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 2px 1px !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: #b8e5e0 !important;
+  text-shadow: none !important;
+  cursor: default;
+  transform: none !important;
+  transition: none !important;
+}
+.portfolio-v2 .portfolio-tech-details-v8 .portfolio-tech-strip span::before,
+.portfolio-v2 .featured-project-copy .featured-project-tags span::before {
+  content: "•";
+  color: #6dd0cc;
+  font-family: monospace;
+  font-size: .9em;
+}
+.portfolio-v2 .portfolio-tech-details-v8 .portfolio-tech-strip,
+.portfolio-v2 .featured-project-copy .featured-project-tags {
+  column-gap: 13px;
+  row-gap: 8px;
+}
+
+/* Skills are informational icons, not buttons. A modest zoom is the only
+   intended hover interaction; it reverses when the mouse leaves. */
+.portfolio-v2 #skills-education .icon-wrapper {
+  cursor: default !important;
+  transform: scale(1) !important;
+  transform-origin: center;
+  transition: transform 180ms ease-out !important;
+}
+.portfolio-v2 #skills-education .icon-wrapper:hover,
+.portfolio-v2 #skills-education .icon-wrapper.hover-scale:hover {
+  transform: scale(1.055) !important;
+  background: #24282d !important;
+  border-color: rgba(121, 178, 183, .36) !important;
+}
+
+/* More projects: make the actual links visibly interactive, not their caption. */
+.portfolio-v2 .featured-profile-link a {
+  display: inline-block;
+  padding: 2px 3px;
+  border-radius: 2px;
+  text-decoration: underline !important;
+  text-decoration-color: rgba(158, 235, 230, .65);
+  text-underline-offset: 4px;
+  background: rgba(44, 103, 106, .14);
+  transition: background-color 160ms ease, color 160ms ease !important;
+}
+.portfolio-v2 .featured-profile-link a:hover {
+  color: #fff !important;
+  background: rgba(58, 132, 136, .39) !important;
+}
+.portfolio-v2 .featured-profile-link a:focus-visible {
+  outline: 2px solid #ffdf90;
+  outline-offset: 2px;
+}
+
+/* A few text-style links or toggles elsewhere should not look invisible. */
+.portfolio-v2 .portfolio-hero-secondary-link-v8:hover {
+  color: #fff !important;
+  background: rgba(44, 103, 106, .22);
+}
+.portfolio-v2 .portfolio-asset-toggle:hover {
+  background: rgba(33, 91, 101, .94) !important;
+  border-color: #92ddde !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-v2 .nav-bar .nav-layout-v7 .nav-toggle-btn,
+  .portfolio-v2 .portfolio-tech-summary-v8 .portfolio-tech-toggle-v8,
+  .portfolio-v2 .portfolio-tech-details-v8 .portfolio-all-skills-link,
+  .portfolio-v2 #skills-education .icon-wrapper,
+  .portfolio-v2 .featured-profile-link a {
+    transition: none !important;
+  }
+  .portfolio-v2 #skills-education .icon-wrapper:hover,
+  .portfolio-v2 #skills-education .icon-wrapper.hover-scale:hover {
+    transform: none !important;
+  }
+}

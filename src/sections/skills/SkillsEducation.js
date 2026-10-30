@@ -8,7 +8,7 @@ function SkillsEducation({ skills }) {
         {/* Skills Section (Left Column) */}
         <div className="col-md-6">
           <h4 className="mt-1 text-center pixel-text pixel-bold-title">
-            <span className="emoji-large">💻</span> Skills
+            Skills
           </h4>
           <div className="row">
             {skills.map((skill, index) => (
@@ -45,7 +45,7 @@ function SkillsEducation({ skills }) {
         {/* Education Section (Right Column) */}
         <div className="col-md-6">
           <h4 className="mt-1 text-center pixel-text pixel-bold-title">
-            <span className="emoji-large">🎓</span> Education
+            Education
           </h4>
 
           {/* Queens College Card */}

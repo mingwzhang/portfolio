@@ -40,7 +40,7 @@ const NavBar = ({ onResumeClick }) => {
               <button type="button" className="nav-btn nav-name nav-text" onClick={() => scrollToSection("home")}>Mingwei Zhang</button>
             </div>
             <div className="nav-actions-v7" aria-label="Profile links">
-              <button type="button" onClick={onResumeClick} className="nav-btn nav-resume nav-text">Resume 📎</button>
+              <button type="button" onClick={onResumeClick} className="nav-btn nav-resume nav-text">Resume</button>
               <a href="https://github.com/mingwzhang" target="_blank" rel="noopener noreferrer" className="nav-btn nav-item nav-text nav-github">GitHub</a>
               <a href="https://www.linkedin.com/in/mingwei-zhang1/" target="_blank" rel="noopener noreferrer" className="nav-btn nav-linkedin nav-text">
                 <FaLinkedin size={16} style={{ marginRight: "0.35rem" }} />LinkedIn
