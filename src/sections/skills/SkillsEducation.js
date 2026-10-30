@@ -1,5 +1,4 @@
 import React from "react";
-import "./SkillsEducation.css";
 
 function SkillsEducation({ skills }) {
   return (
