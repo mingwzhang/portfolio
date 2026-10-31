@@ -1,22 +1,17 @@
-/* Layout, background controls, and hero styling.
-   Later overrides intentionally retain the cascade used by the current design. */
-
-/* Background controls and visual readability */
-/* Motion controls and title readability. */
-/* The original .pixel-bold-title runs glowPulse indefinitely; remove it for headings only. */
+/* Layout, navigation controls, and hero presentation. */
 .portfolio-v2 .pixel-bold-title {
   animation: none !important;
   color: #c4fff5 !important;
   text-shadow: 0 1px 0 #081e26, 0 0 3px rgba(54, 217, 218, .25) !important;
 }
-/* Subheadings inside the Skills & Education section should be clear too. */
+
 .portfolio-v2 #skills-education h4,
 .portfolio-v2 #skills-education h6,
 .portfolio-v2 .portfolio-demo-description h3 {
   animation: none !important;
   text-shadow: 0 1px 0 #071c20, 0 0 3px rgba(54, 217, 218, .20) !important;
 }
-/* Freeze CSS-based background motion without freezing buttons, video, or the page. */
+
 .portfolio-v2.effects-paused .animated-background,
 .portfolio-v2.effects-paused .floating-shapes-container,
 .portfolio-v2.effects-paused .floating-shapes-container *,
@@ -43,12 +38,12 @@
 @media(max-width: 640px) {
   .effects-toggle { left: 10px; bottom: 12px; font-size: 9px; padding: 9px 10px; }
 }
-/* A compact route to the full technology inventory, not just hero highlights. */
+
 .portfolio-all-skills-link { display: inline-block; margin-top: 11px; color: #b6fff1; font: 18px/1.3 VT323, monospace; text-underline-offset: 3px; }
 .portfolio-all-skills-link:hover { color: #fff; }
 
 
-/* Restrained glow and color adjustments for headings and supporting text. */
+
 .portfolio-v2 .pixel-text,
 .portfolio-v2 .nav-text,
 .portfolio-v2 .pixel-subheading,
@@ -62,24 +57,24 @@
   text-shadow: 0 0 2px rgba(89, 238, 238, .39),
                0 0 5px rgba(58, 205, 218, .14) !important;
 }
-/* Keep the warmer yellow signature on the name and matching navbar brand. */
+
 .portfolio-v2 .portfolio-hero h1.pixel-heading,
 .portfolio-v2 .nav-name {
   text-shadow: 0 0 3px rgba(255, 222, 139, .48),
                0 0 7px rgba(255, 215, 118, .13) !important;
 }
-/* The homepage title retains a hint of neon rather than a bright halo. */
+
 .portfolio-v2 .portfolio-hero .software-title {
   text-shadow: 0 0 3px rgba(48, 216, 238, .45),
                0 0 6px rgba(35, 189, 215, .12) !important;
 }
-/* Reduce remaining glow from moving background shapes; don't remove the outline. */
+
 .portfolio-v2 .floating-shape {
   box-shadow: 0 0 5px rgba(77, 217, 163, .19) !important;
   filter: drop-shadow(0 0 3px rgba(81, 231, 175, .15)) !important;
 }
 
-/* Hero proportions: name and portrait should hold their own beside large panels. */
+
 .portfolio-v2 .portfolio-hero .portfolio-avatar {
   width: 194px;
   height: 194px;
@@ -96,8 +91,7 @@
 }
 .portfolio-v2 .portfolio-hero .portfolio-eyebrow { font-size: 11px; }
 
-/* Keep every navigation destination, now with labels matching the section headings.
-   Desktop fits on one line, smaller widths wrap; mobile keeps the existing toggle. */
+
 .portfolio-v2 .nav-container { width: min(1580px, 100%); gap: 9px; }
 .portfolio-v2 .nav-right { flex-wrap: nowrap !important; gap: 2px; }
 .portfolio-v2 .nav-item,
@@ -113,7 +107,7 @@
 .portfolio-v2 .nav-resume { margin-left: 3px; }
 .portfolio-v2 .nav-github { border: 1px solid rgba(95, 236, 222, .4); border-radius: 3px; }
 
-/* Site-hosted icons, with contrast appropriate for the dark skills cards. */
+
 .portfolio-v2 #skills-education .icon-wrapper img[src*="/img/skills/"] {
   width: 36px;
   height: 36px;
@@ -135,10 +129,10 @@
   .portfolio-v2 .nav-item, .portfolio-v2 .nav-resume, .portfolio-v2 .nav-linkedin { font-size: 9px; }
 }
 
-/* Navigation and section spacing */
-/* Responsive layout refinements that follow the base section styles. */
 
-/* NAVIGATION — two intentional rows rather than one compressed line. */
+
+
+
 .portfolio-v2 .nav-bar {
   padding: 7px 16px 0;
 }
@@ -212,7 +206,7 @@
 .portfolio-v2 .nav-layout-v7 .nav-toggle-btn { height: 28px; }
 .portfolio-v2 .nav-layout-v7 .nav-toggle-text { font-size: 10px; }
 
-/* HERO — smaller default technology inventory with an explicit expand option. */
+
 .portfolio-v2 .portfolio-main { padding-top: 185px; }
 .portfolio-v2 .portfolio-hero {
   max-width: 1000px;
@@ -258,7 +252,7 @@
 .portfolio-v2 .portfolio-tech-expand:hover { color: #fff; }
 .portfolio-v2 .portfolio-tech-links .portfolio-all-skills-link { margin: 0; }
 
-/* INFO HIERARCHY — larger kicker/eyebrow labels without increasing title glow. */
+
 .portfolio-v2 .portfolio-kicker {
   font-size: 11px;
   line-height: 1.65;
@@ -269,7 +263,7 @@
 .portfolio-v2 .featured-swipe-hint { font-size: 17px; }
 .portfolio-v2 .portfolio-section-heading { margin-bottom: 29px; }
 
-/* Keep every link usable while preventing the navigation from dominating mobile. */
+
 @media (max-width: 980px) {
   .portfolio-v2 .nav-upper-v7 {
     gap: 7px;
@@ -316,10 +310,10 @@
   .portfolio-v2 .featured-project-copy > .portfolio-kicker { font-size: 10px; }
 }
 
-/* Hero layout and highlighted technologies */
-/* Two-column hero presentation with restrained highlights. */
 
-/* Give the portrait, name and professional title distinct reading areas. */
+
+
+
 .portfolio-v2 .portfolio-hero.portfolio-hero-v8 {
   max-width: 1120px;
   margin: 0 auto;
@@ -361,8 +355,7 @@
   margin: 0 0 17px;
   padding: 0;
 }
-/* The global #home h1.pixel-heading rule centers headings by ID.
-   Match its specificity so this name shares the welcome/title left edge. */
+
 .portfolio-v2 #home .portfolio-hero-copy-v8 h1.pixel-heading {
   text-align: left;
   margin-left: 0;
@@ -400,8 +393,7 @@
 }
 .portfolio-v2 .portfolio-hero-secondary-link-v8:hover { color: #f2ffff; }
 
-/* The full technology inventory stays available but isn't competing for
-   attention with the headline and primary portfolio action. */
+
 .portfolio-v2 .portfolio-tech-summary-v8 {
   max-width: 840px;
   margin: 44px auto 0;
@@ -449,8 +441,7 @@
   outline-offset: 4px;
 }
 
-/* Paused video: icon-only button with an accessible name supplied in JSX.
-   Native timeline remains usable because this button only occupies the center. */
+
 .portfolio-v2 .featured-resume-button-v8 {
   position: absolute;
   z-index: 3;
@@ -515,7 +506,7 @@
   .portfolio-v2 .featured-resume-button-v8 span { font-size: 24px; }
 }
 
-/* Override the global container gradient for the darker About Me panel. */
+
 .portfolio-v2 #about.container {
   background-color: rgba(15, 24, 32, .93) !important;
   background-image: none !important;
@@ -525,7 +516,7 @@
   padding: 28px !important;
 }
 
-/* Use solid teal for the highlighted technology labels. */
+
 .portfolio-v2 .portfolio-tech-details-v8 .portfolio-tech-strip span {
   color: #c9fffb;
   background: rgba(14, 61, 71, .95);

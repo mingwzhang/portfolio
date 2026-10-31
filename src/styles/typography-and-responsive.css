@@ -1,27 +1,11 @@
-/* Consolidated stylesheet: selectors and declaration order preserved from the checked-in version.
-   Later cleanups can remove redundant overrides after visual comparison. */
-
-/* ========== PixelTypographyV13.css: existing rules (unchanged) ========== */
-/* V13 — Consistent pixel typography, legible at 100% browser zoom.
-   Loaded LAST from src/App.js, after NavigationSkillsV12.css.
-
-   Display headings: Press Start 2P (existing arcade identity).
-   Body and controls: Silkscreen (legible pixel letterforms, 400 / 700).
-   The Silkscreen font is already loaded by NavigationSkillsV12.css.
-
-   Do not globally override <i> or pseudo-elements: devicon uses an icon font.
-   Avoid scaling whole containers: the changes below size text by its role.
-*/
-
+/* Typography, project details, and responsive layout. */
 .portfolio-v2 {
   --pixel-ui: "Silkscreen", "Press Start 2P", monospace;
   --pixel-display: "Press Start 2P", "Silkscreen", monospace;
   font-family: var(--pixel-ui) !important;
 }
 
-/* Step 1: unify actual text nodes in every part of the site. The explicit
-   !important defeats old VT323 / generic monospace `font:` shorthand rules.
-   Do not touch <i>, <svg>, image assets, or the video player controls. */
+
 .portfolio-v2 :where(
   h1, h2, h3, h4, h5, h6, p, a, button, input, textarea, label,
   div, span:not([aria-hidden="true"]), small, strong, em, figcaption,
@@ -30,7 +14,7 @@
   font-family: var(--pixel-ui) !important;
 }
 
-/* Section and primary titles stay in the more distinctive arcade display face. */
+
 .portfolio-v2 :where(
   .portfolio-hero-copy-v8 h1.pixel-heading,
   .portfolio-hero-copy-v8 .software-title,
@@ -45,8 +29,8 @@
   font-family: var(--pixel-display) !important;
 }
 
-/* Step 2: scale text by hierarchy. Keep the accents and existing glow small. */
-/* HEADER / HERO */
+
+
 .portfolio-v2 .nav-upper-v7 .nav-name {
   font-size: clamp(15px, 1.05vw, 18px) !important;
   line-height: 1.5 !important;
@@ -95,7 +79,7 @@
   overflow-wrap: anywhere;
 }
 
-/* SECTION INTRODUCTIONS / ABOUT */
+
 .portfolio-v2 .portfolio-kicker {
   font-size: 12px !important;
   line-height: 1.8 !important;
@@ -124,7 +108,7 @@
   font-weight: 400 !important;
 }
 
-/* FEATURED PROJECTS — thumbnails, description and project evidence. */
+
 .portfolio-v2 .featured-project-tab span {
   font-size: 13px !important;
   line-height: 1.5 !important;
@@ -160,10 +144,10 @@
 }
 .portfolio-v2 .featured-play-button > span:first-child,
 .portfolio-v2 .featured-resume-button-v8 > span[aria-hidden="true"] {
-  font-family: Arial, sans-serif !important; /* Play triangle is a symbol, not text. */
+  font-family: Arial, sans-serif !important; 
 }
 
-/* SKILLS / EDUCATION — compact tiles, readable labels, unchanged icon glyphs. */
+
 .portfolio-v2 #skills-education h4 {
   font-size: clamp(19px, 1.45vw, 23px) !important;
   line-height: 1.6 !important;
@@ -184,7 +168,7 @@
   letter-spacing: .15px !important;
 }
 
-/* INTERACTIVE DEMO / ASSET GALLERIES */
+
 .portfolio-v2 .portfolio-demo-description p {
   font-size: 16px !important;
   line-height: 1.75 !important;
@@ -209,7 +193,7 @@
 }
 .portfolio-v2 .portfolio-asset-caption { font-size: 15px !important; }
 
-/* CONTACT / FOOTER — all form controls and status text are pixel styled. */
+
 .portfolio-v2 #contact :is(input, textarea) {
   font-size: 14px !important;
   line-height: 1.65 !important;
@@ -226,7 +210,7 @@
 .portfolio-v2 .portfolio-footer { font-size: 13px !important; line-height: 1.65 !important; }
 .portfolio-v2 :is(.effects-toggle, .nav-toggle-btn, .top-button) { font-size: 12px !important; }
 
-/* Avoid clipping when full-sized pixel text meets narrow screens. */
+
 @media (max-width: 1100px) {
   .portfolio-v2 .nav-section-row-v7 { gap: 7px !important; }
   .portfolio-v2 .nav-section-row-v7 .nav-item { font-size: 12px !important; padding: 10px 10px !important; }
@@ -262,13 +246,10 @@
   .portfolio-v2 .portfolio-tech-strip span { font-size: 12px !important; }
 }
 
-/* ========== WidthAndTypeV14.css: existing rules (unchanged) ========== */
-/* Portfolio V14 — wider section layout and readable pixel text.
-   This file is imported AFTER PixelTypographyV13.css. Keep all responsive
-   overrides here so subsequent text-size changes have one home. */
 
-/* 1. Wider content: use the available desktop screen width without stretching
-   to full bleed, which would make long paragraphs difficult to read. */
+
+
+
 .portfolio-v2 .portfolio-main {
   width: 100%;
   max-width: 1500px;
@@ -281,16 +262,15 @@
   padding-left: clamp(18px, 2.2vw, 36px);
   padding-right: clamp(18px, 2.2vw, 36px);
 }
-/* Keep the hero visually related to the newly wider panels. */
+
 .portfolio-v2 .portfolio-hero.portfolio-hero-v8 { max-width: 1370px; }
 .portfolio-v2 .portfolio-hero-intro-v8 { max-width: 1270px; }
 .portfolio-v2 .portfolio-tech-summary-v8 { max-width: 1070px; }
-/* Comfortable line lengths still matter when the panels are wider. */
+
 .portfolio-v2 #about .portfolio-about-content { max-width: 1120px; }
 .portfolio-v2 .portfolio-section-heading p { max-width: 950px; }
 
-/* 2. Increase the small editorial labels. Titles stay in Press Start 2P;
-   text and controls stay in the current Silkscreen pixel font. */
+
 .portfolio-v2 .portfolio-kicker,
 .portfolio-v2 .featured-project-copy > .portfolio-kicker,
 .portfolio-v2 .portfolio-demo-description > .portfolio-kicker {
@@ -323,8 +303,7 @@
   line-height: 1.85 !important;
 }
 
-/* Featured projects: the thumbnail labels and descriptive evidence need to be
-   readable at 100% zoom instead of becoming miniature captions. */
+
 .portfolio-v2 .featured-project-tab span { font-size: 15px !important; line-height: 1.5 !important; }
 .portfolio-v2 .featured-project-copy h3 { font-size: clamp(19px, 1.35vw, 24px) !important; }
 .portfolio-v2 .featured-project-summary { font-size: 19px !important; line-height: 1.7 !important; }
@@ -334,9 +313,7 @@
 .portfolio-v2 :is(.featured-video-controls button, .featured-video-controls span, .featured-swipe-hint,
   .featured-profile-link, .featured-play-caption) { font-size: 15px !important; }
 
-/* 3. Keep all technologies on ONE horizontal row per category. The larger main
-   panel gives the two-column Skills/Education layout enough width at desktop.
-   On narrower screens horizontal scrolling is preferable to clipped labels. */
+
 .portfolio-v2 #skills-education .col-md-6:first-child .card > .d-flex.justify-content-center.flex-wrap {
   display: flex !important;
   flex-wrap: nowrap !important;
@@ -379,8 +356,7 @@
   line-height: 1.65 !important;
 }
 
-/* All other sub-sections: keep visual hierarchy consistent after increasing
-   the mini-labels and body copy. */
+
 .portfolio-v2 .portfolio-demo-description h3 { font-size: 20px !important; }
 .portfolio-v2 .portfolio-demo-description p { font-size: 19px !important; }
 .portfolio-v2 .portfolio-asset-panel :is(h5, .asset-category-label) { font-size: 19px !important; }
@@ -392,17 +368,14 @@
 .portfolio-v2 #contact :is(.contact-fallback, .contact-status) { font-size: 15px !important; }
 .portfolio-v2 .portfolio-footer { font-size: 15px !important; }
 
-/* 4. Paused video overlay: actual center of its relative video frame.
-   Keep a small circular hit target, never block the native seek bar. */
+
 .portfolio-v2 .featured-video-frame .featured-resume-button-v8 {
   top: 50% !important;
   left: 50% !important;
   transform: translate(-50%, -50%) !important;
 }
 
-/* Responsive: do not let the expanded desktop content overflow phones.
-   Below 1100px, stack Skills above Education so seven icons remain a row.
-   At phone widths, a labeled horizontal row can scroll without wrapping. */
+
 @media (max-width: 1100px) {
   .portfolio-v2 #skills-education > .row > .col-md-6 {
     flex: 0 0 100%;
@@ -447,18 +420,15 @@
   .portfolio-v2 #skills-education .icon-wrapper .icon-label { font-size: 12px !important; }
 }
 
-/* ========== VisualPolishV15.css: existing rules (unchanged) ========== */
-/* Portfolio V15 — modest refinements to the existing V14 layout.
-   Import AFTER WidthAndTypeV14.css so this is the final override layer.
-   All selectors are scoped to .portfolio-v2 for safety. */
 
-/* 1. Comfortable panel width: narrower than the previous 1500px cap. */
+
+
+
 .portfolio-v2 .portfolio-main {
   max-width: 1400px !important;
 }
 
-/* 2. Keep the copyright noticeably above the fixed bottom-corner controls.
-   Respect the iPhone safe area without affecting the content sections. */
+
 .portfolio-v2 .portfolio-footer {
   position: relative;
   z-index: 1;
@@ -470,9 +440,7 @@
   overflow-wrap: anywhere;
 }
 
-/* 3. The initial play control gets the same genuinely round, 70px appearance
-   as the existing paused/resume play control. The full-frame click surface
-   stays intact, but only the central circle is visible. */
+
 .portfolio-v2 .featured-video-frame .featured-play-button {
   display: flex;
   justify-content: center;
@@ -506,8 +474,7 @@
   outline-offset: 3px;
 }
 
-/* 4. Small, deliberate increases for navigation labels and menu toggle.
-   Preserve the established Silkscreen/arcade typography. */
+
 .portfolio-v2 .nav-section-row-v7 .nav-item {
   font-size: clamp(13px, 1.0vw, 15px) !important;
   line-height: 1.5 !important;
@@ -523,7 +490,7 @@
   line-height: 1.45 !important;
 }
 
-/* 5. The three links beside the portrait should not be tiny at 100% zoom. */
+
 .portfolio-v2 .portfolio-hero-actions .portfolio-action {
   font-size: 16px !important;
 }
@@ -532,7 +499,7 @@
   line-height: 1.6 !important;
 }
 
-/* 6. Larger skill labels beneath the existing technology icons. */
+
 .portfolio-v2 #skills-education .icon-wrapper .icon-label {
   font-size: 16px !important;
   line-height: 1.24 !important;
@@ -540,33 +507,32 @@
   overflow-wrap: anywhere;
 }
 
-/* 7. Education: subtle accent colors distinguish degree names, subjects,
-   and dates without adding strong glow. Text content is not changed. */
+
 .portfolio-v2 #skills-education .col-md-6:last-child .card p.pixel-text {
   font-size: clamp(18px, 1.25vw, 20px) !important;
   line-height: 1.7 !important;
   letter-spacing: .08px !important;
   overflow-wrap: break-word;
 }
-/* Master of Arts / Bachelor of Science / graduation labels */
+
 .portfolio-v2 #skills-education .col-md-6:last-child .card p.pixel-text:nth-of-type(1),
 .portfolio-v2 #skills-education .col-md-6:last-child .card p.pixel-text:nth-of-type(3) {
   color: #8eeed5 !important;
   font-weight: 700 !important;
   text-shadow: 0 0 3px rgba(93, 212, 205, .16) !important;
 }
-/* Degree field */
+
 .portfolio-v2 #skills-education .col-md-6:last-child .card p.pixel-text:nth-of-type(2) {
   color: #f0fafb !important;
   font-weight: 400 !important;
 }
-/* Graduation date */
+
 .portfolio-v2 #skills-education .col-md-6:last-child .card p.pixel-text:nth-of-type(4) {
   color: #ffe2a1 !important;
   font-weight: 700 !important;
 }
 
-/* Maintain fit on tablets and narrow phones; don't overflow the nav rows. */
+
 @media (max-width: 1100px) {
   .portfolio-v2 .nav-section-row-v7 .nav-item {
     font-size: 13px !important;
@@ -607,7 +573,7 @@
   }
   .portfolio-v2 .nav-section-row-v7 .nav-item { font-size: 11px !important; }
 }
-/* About Me — Both typing and skipped versions */
+
 .portfolio-v2 #about .portfolio-about-content,
 .portfolio-v2 #about .portfolio-about-content .Typewriter__wrapper {
   font-size: 25px !important;
@@ -615,11 +581,10 @@
 }
 
 
-/* ========== SUBTLE INTERACTION CUES ========== */
-/* Clickable elements use a gentle fill, underline or hover change.
-   Technology and project metadata are deliberately NOT styled as buttons. */
 
-/* The clickable site name is also a button, so it gets a barely visible fill. */
+
+
+
 .portfolio-v2 .nav-upper-v7 .nav-name {
   background: rgba(45, 92, 96, .14) !important;
   border: 1px solid rgba(128, 195, 194, .23) !important;
@@ -630,8 +595,7 @@
   border-color: rgba(148, 220, 213, .55) !important;
 }
 
-/* Keep the Show/Hide Menu bar distinguishable, with space between the caret
-   icon and the text. Do not change its existing slide-open behavior. */
+
 .portfolio-v2 .nav-bar .nav-layout-v7 .nav-toggle-btn {
   display: flex !important;
   align-items: center;
@@ -657,7 +621,7 @@
   outline-offset: -2px;
 }
 
-/* A LIGHT tinted surface, not a big glowing CTA. */
+
 .portfolio-v2 .portfolio-tech-summary-v8 .portfolio-tech-toggle-v8 {
   background: rgba(39, 88, 94, .30) !important;
   border: 1px solid rgba(112, 190, 190, .38) !important;
@@ -674,7 +638,7 @@
   outline: 2px solid #ffdf90;
   outline-offset: 3px;
 }
-/* "See all skills" is a link: visibly underlined, with subtle hover tint. */
+
 .portfolio-v2 .portfolio-tech-details-v8 .portfolio-all-skills-link {
   padding: 4px 7px;
   border-radius: 3px;
@@ -694,8 +658,7 @@
   outline-offset: 3px;
 }
 
-/* Featured technology names and project descriptors are informational tags.
-   Use simple separators and zero pill styling; never imply they are buttons. */
+
 .portfolio-v2 .portfolio-tech-details-v8 .portfolio-tech-strip span,
 .portfolio-v2 #projects .featured-project-metadata .featured-project-tags span {
   display: inline-flex;
@@ -726,8 +689,7 @@
   row-gap: 8px;
 }
 
-/* Skills are informational icons, not buttons. A modest zoom is the only
-   intended hover interaction; it reverses when the mouse leaves. */
+
 .portfolio-v2 #skills-education .icon-wrapper {
   cursor: default !important;
   transform: scale(1) !important;
@@ -741,7 +703,7 @@
   border-color: rgba(121, 178, 183, .36) !important;
 }
 
-/* More projects: make the actual links visibly interactive, not their caption. */
+
 .portfolio-v2 .featured-profile-link a {
   display: inline-block;
   padding: 2px 3px;
@@ -761,7 +723,7 @@
   outline-offset: 2px;
 }
 
-/* A few text-style links or toggles elsewhere should not look invisible. */
+
 .portfolio-v2 .portfolio-hero-secondary-link-v8:hover {
   color: #fff !important;
   background: rgba(44, 103, 106, .22);
@@ -786,16 +748,14 @@
 }
 
 
-/* Featured Projects — clearer reading hierarchy.
-   Keep the thumbnail/video interface and all existing project data unchanged.
-   Text categories are deliberately informational, not button-like. */
+
 .portfolio-v2 #projects .featured-project-copy {
   padding: 0;
   min-width: 0;
   color: #e6f0f0;
 }
 
-/* The project category and title form one obvious header. */
+
 .portfolio-v2 #projects .featured-project-intro {
   border-bottom: 1px solid rgba(102, 181, 184, .34);
   padding: 3px 0 14px;
@@ -816,7 +776,7 @@
   text-shadow: none !important;
 }
 
-/* Small section labels give the reader a scan path. */
+
 .portfolio-v2 #projects .featured-detail-label {
   display: block;
   margin: 0 0 8px;
@@ -829,7 +789,7 @@
   text-transform: uppercase;
 }
 
-/* Overview: muted ocean blue, separate from the two responsibility panels. */
+
 .portfolio-v2 #projects .featured-project-overview {
   background: rgba(27, 65, 100, .45);
   border-left: 3px solid rgba(90, 162, 214, .8);
@@ -839,6 +799,7 @@
 .portfolio-v2 #projects .featured-project-overview > .featured-detail-label {
   color: #9fd8f8 !important;
   text-align: left !important;
+  font-weight: 400 !important;
 }
 .portfolio-v2 #projects .featured-project-overview .featured-project-summary {
   margin: 0 !important;
@@ -848,8 +809,7 @@
   font-weight: 400 !important;
 }
 
-/* Two distinct complementary tones: indigo for role, teal for contribution.
-   The label and border colors echo each panel without making them look clickable. */
+
 .portfolio-v2 #projects .featured-project-facts {
   display: grid;
   gap: 9px;
@@ -888,8 +848,7 @@
   line-height: 1.72 !important;
 }
 
-/* Technology and genre are supporting metadata below the video controls.
-   Keep the existing text/genre labels, without any surrounding card. */
+
 .portfolio-v2 #projects .featured-project-metadata {
   margin: 16px 0 0;
   padding: 0;
@@ -946,16 +905,13 @@
   }
 }
 
-/* Featured Projects: center the existing game-page link in the open space
-   below the video navigation; keep its original clickable styling. */
+
 .portfolio-v2 #projects .featured-project-media > .featured-project-links {
   justify-content: center;
   margin: 17px 0 0;
 }
 
-/* Featured Projects: quiet technical readout below the video.
-   This is informational metadata, not a fourth colored information card
-   or a collection of buttons. */
+
 .portfolio-v2 #projects .featured-project-media > .featured-project-metadata {
   margin: 20px 0 0;
   padding: 0 5px;
@@ -964,8 +920,7 @@
   box-shadow: none;
 }
 
-/* A small signal marker and hairline distinguish the readout from the
-   colored Overview / Role / Contribution blocks on the right. */
+
 .portfolio-v2 #projects .featured-project-media .featured-project-metadata > .featured-detail-label {
   display: flex;
   align-items: center;
@@ -994,8 +949,7 @@
   background: linear-gradient(to right, rgba(110, 197, 197, .45), transparent);
 }
 
-/* Read as Godot · 2D Platformer, not Godot2D Platformer. Flat text,
-   no fills, borders, shadows, or hover treatment that suggests a button. */
+
 .portfolio-v2 #projects .featured-project-media .featured-project-metadata .featured-project-tags {
   display: flex;
   align-items: baseline;
@@ -1043,8 +997,7 @@
 }
 
 
-/* Hero technologies: the complete list and skills shortcut share one sliding
-   region. The toggle stays below it and moves with the expanding content. */
+
 .portfolio-v2 .portfolio-tech-summary-v8 .portfolio-tech-list {
   padding: 8px 0 0;
 }
@@ -1068,8 +1021,7 @@
 }
 
 
-/* Seven featured games: keep readable thumbnails instead of squeezing seven
-   small labels into a single row. The existing two-column mobile layout stays. */
+
 .portfolio-v2 #projects .featured-project-picker {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
@@ -1083,8 +1035,7 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
-/* Fides Corvi currently has a cover image, not a local .mp4; the same video
-   frame displays the art without exposing a nonfunctional play control. */
+
 .portfolio-v2 #projects .featured-video-frame .featured-project-static-preview {
   width: 100%;
   height: 100%;
@@ -1093,7 +1044,7 @@
   background: #000;
 }
 
-/* Keep the slightly larger project labels legible on smaller screens. */
+
 @media (max-width: 640px) {
   .portfolio-v2 #projects .featured-project-overview .featured-project-summary {
     font-size: 18px !important;
@@ -1114,8 +1065,7 @@
   }
 }
 
-/* Homepage introduction: improve reading comfort without changing the pixel-art
-   identity, portrait, hero links, or the technology slide's open/close behavior. */
+
 .portfolio-v2 .portfolio-hero-copy-v8 .portfolio-hero-subtitle {
   color: #e8f3f3;
   font-size: clamp(19px, 1.25vw, 22px) !important;
@@ -1123,8 +1073,7 @@
   max-width: 615px;
 }
 
-/* Give technology names a little more room. All entries still belong to the
-   sliding list; informational labels remain plain text, not buttons. */
+
 .portfolio-v2 .portfolio-tech-summary-v8 .portfolio-tech-list .portfolio-tech-strip {
   column-gap: 16px;
   row-gap: 11px;
@@ -1135,8 +1084,7 @@
   line-height: 1.65 !important;
 }
 
-/* The skills link is the final item of the wrapping technology list,
-   rather than a separate centered row. Keep it visibly clickable. */
+
 .portfolio-v2 .portfolio-tech-summary-v8 .portfolio-tech-list .portfolio-tech-strip > .portfolio-all-skills-link {
   display: inline-flex;
   align-items: baseline;

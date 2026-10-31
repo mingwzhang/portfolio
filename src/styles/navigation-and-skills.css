@@ -1,13 +1,12 @@
+/* Navigation, skills, and supporting interface styles. */
 @import url("https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=VT323&display=swap");
 
-/* Navigation affordances, skills presentation, and supporting readability.
-   Source order is intentional because some later selectors refine earlier ones. */
 
-/* Section readability and contact form proportions */
-/* Reading comfort and interactive navigation affordances. */
 
-/* 1. Make section navigation unmistakably interactive, without changing the
-   second row containing Resume / GitHub / LinkedIn. */
+
+
+
+
 .portfolio-v2 .nav-section-row-v7 {
   column-gap: clamp(9px, 1.15vw, 17px);
   row-gap: 8px;
@@ -47,7 +46,7 @@
   outline-offset: 3px;
 }
 
-/* Earlier About Me typography rules; AboutMe.css supplies the final 20px override. */
+
 .portfolio-v2 #about .portfolio-about-content {
   max-width: 890px;
   margin: 12px auto 3px;
@@ -67,8 +66,7 @@
   text-shadow: inherit;
 }
 
-/* 3. Skills: reduce the strong green drop-shadows and magnification; make
-   each icon readable against a solid, calm surface with a persistent label. */
+
 .portfolio-v2 #skills-education .icon-wrapper {
   display: flex;
   flex-direction: column;
@@ -124,12 +122,12 @@
   overflow-wrap: anywhere;
   text-shadow: none !important;
 }
-/* Keep the school crests crisp, without a glowing outline. */
+
 .portfolio-v2 #skills-education .icon-wrapper-education {
   filter: none !important;
 }
 
-/* 4. Align the demo explanation's first line to the mini-game's top border. */
+
 .portfolio-v2 .portfolio-demo-panel {
   align-items: start;
 }
@@ -141,8 +139,7 @@
   align-self: start;
 }
 
-/* 5. Contact: retain all fields and direct-contact links but make the form
-   proportional to other sections. The previous textarea was 450px tall. */
+
 .portfolio-v2 #contact .contact-form {
   width: min(100%, 640px) !important;
   max-width: 640px !important;
@@ -230,11 +227,10 @@
   .portfolio-v2 #skills-education .icon-wrapper { transition: none; }
 }
 
-/* Navigation layout and skill icon tiles */
-/* Compact skill tiles, profile navigation, and accessible contrast. */
 
-/* NAV: increase the three profile/action controls without enlarging the entire menu.
-   Keep the already-established "Press Start 2P" pixel style and restrained glow. */
+
+
+
 .portfolio-v2 .nav-upper-v7 .nav-name {
   font-family: "Silkscreen", "Press Start 2P", monospace !important;
   font-size: clamp(13px, .98vw, 16px) !important;
@@ -277,16 +273,14 @@
   filter: brightness(1.13);
 }
 
-/* The 5 section links retain their compact buttons, with a crisp arcade
-   label treatment rather than a broad neon halo. */
+
 .portfolio-v2 .nav-section-row-v7 .nav-item {
   font-family: "Silkscreen", "Press Start 2P", monospace !important;
   letter-spacing: .25px !important;
   text-shadow: 1px 1px 0 rgba(4, 19, 27, .9) !important;
 }
 
-/* SKILLS: compact neutral-charcoal tiles, less padding and less blue wash.
-   Labels stay visible on both desktop and touch devices. */
+
 .portfolio-v2 #skills-education .card {
   padding: 8px 7px !important;
 }
@@ -328,17 +322,15 @@
   overflow-wrap: anywhere;
   text-shadow: none !important;
 }
-/* Dark-brand icons need explicit contrast on charcoal. Brand colors are
-   retained where possible; Photoshop is deliberately brighter. */
+
 .portfolio-v2 #skills-education .icon-wrapper .devicon-photoshop-plain { color: #31a8ff !important; }
 .portfolio-v2 #skills-education .icon-wrapper .devicon-unrealengine-original { color: #f3f7f8 !important; }
 .portfolio-v2 #skills-education .icon-wrapper .devicon-github-original { color: #f2f4f6 !important; }
 .portfolio-v2 #skills-education .icon-wrapper .devicon-cplusplus-plain { color: #49a5e9 !important; }
-/* Skill tiles display information, while later hover styling adds only a small scale cue. */
+
 .portfolio-v2 #skills-education .icon-wrapper.hover-scale:hover { transform: none !important; }
 
-/* Make the hero Skills shortcut look like a link but react as smoothly as nav.
-   Focus remains visible for keyboard users. */
+
 .portfolio-v2 .portfolio-all-skills-link {
   text-underline-offset: 5px;
   transition: color .15s ease;

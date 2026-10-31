@@ -1,8 +1,8 @@
-/* Contact Form Styling */
+/* Contact form layout and interactions. */
 .contact-form {
-  width: 95%; /* Expands more on larger screens */
-  max-width: 800px; /* Increases max width for PC */
-  min-width: 700px; /* Ensures it does not shrink too much */
+  width: 95%; 
+  max-width: 800px; 
+  min-width: 700px; 
   margin: auto;
   background-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
@@ -14,8 +14,8 @@
   align-items: center;
 }
 
-/* Input fields and textarea */
-/* Input fields (80% width but keep pixel styling) */
+
+
 .contact-input,
 .contact-textarea {
   width: 85%;
@@ -31,31 +31,31 @@
   text-align: left;
 }
 
-/* Make the message box taller */
+
 .contact-textarea {
-  min-height: 450px; /* Increased height for messages */
-  resize: vertical; /* Allow users to resize */
+  min-height: 450px; 
+  resize: vertical; 
 }
 
-/* Placeholder text styling */
+
 .contact-input::placeholder,
 .contact-textarea::placeholder {
   color: rgba(255, 255, 255, 0.6);
 }
 
-/* Center the button properly */
+
 .send-button-container {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 1.5rem;
-  height: 100px; /* Fixed height to prevent shifting */
+  height: 100px; 
   position: relative;
-  overflow: hidden; /* Prevents hover growth from affecting layout */
+  overflow: hidden; 
 }
 
-/* Keep original pixel-styled button */
+
 .contact-button {
   font-family: "Press Start 2P", cursive !important;
   text-transform: uppercase;
@@ -66,43 +66,43 @@
   border-radius: 0;
   padding: 0.7rem 1.5rem;
   cursor: pointer;
-  margin: 0 1rem 2rem 1rem; /* Adds space at the bottom */
+  margin: 0 1rem 2rem 1rem; 
   text-shadow: 1px 1px 0px #ffffff;
   box-shadow: 0 10px 0 #888;
   transition: background 0.2s ease-in-out, transform 0.2s ease-in-out,
     box-shadow 0.2s ease-in-out;
 
-  /* Ensure scaling does not affect layout */
+  
   display: inline-block;
   will-change: transform;
   position: relative;
 }
 
-/* Hover effect: Slight scale up without affecting parent container */
+
 .contact-button:hover {
   transform: scale(1.05);
   background: linear-gradient(to bottom, #6ad3f3, #48ffe7);
   box-shadow: 0 10px 0 #888;
 }
 
-/* Click effect: Simulates press without affecting layout */
+
 .contact-button:active {
-  transform: translateY(15px); /* Moves button down but keeps its size */
+  transform: translateY(15px); 
   box-shadow: 0 0 0 #888;
 }
 
-/* Keep button centered on mobile */
+
 @media (max-width: 768px) {
   .contact-form {
-    width: 90vw; /* Ensures the form takes 90% of the screen */
-    max-width: none; /* Prevents fixed max-width restrictions */
-    min-width: 300px; /* Ensures it doesn't shrink too much */
-    padding: 1.2rem; /* Adjust padding to prevent cropping */
-    margin: 0 auto; /* Centers the form properly */
+    width: 90vw; 
+    max-width: none; 
+    min-width: 300px; 
+    padding: 1.2rem; 
+    margin: 0 auto; 
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-sizing: border-box; /* Prevents the form from exceeding screen width */
+    box-sizing: border-box; 
   }
 
   .contact-input,
@@ -120,27 +120,27 @@
   }
 
   .contact-textarea {
-    min-height: 250px; /* Keeps message box readable */
-    resize: vertical; /* Allows resizing */
+    min-height: 250px; 
+    resize: vertical; 
   }
 
   .contact-button {
-    width: 80%; /* Ensure button scales properly */
-    max-width: 250px; /* Prevent excessive width */
-    height: 50px; /* Adjust button height */
-    font-size: 0.9rem; /* Slightly reduce text size */
-    padding: 10px 12px; /* Ensure text is well-spaced */
+    width: 80%; 
+    max-width: 250px; 
+    height: 50px; 
+    font-size: 0.9rem; 
+    padding: 10px 12px; 
     text-align: center;
-    white-space: nowrap; /* Prevent text wrapping */
-    overflow: hidden; /* Ensure content does not spill out */
-    text-overflow: ellipsis; /* Add "..." if text is too long */
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
   .send-button-container {
-    height: auto; /* Ensure the button container adapts */
+    height: auto; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -152,9 +152,9 @@
   box-shadow: 0 10px 0 #888;
 }
 
-/* Click effect: Simulates press without affecting layout */
+
 .contact-button:active {
-  transform: translateY(15px); /* Moves button down but keeps its size */
+  transform: translateY(15px); 
   box-shadow: 0 0 0 #888;
 }
 

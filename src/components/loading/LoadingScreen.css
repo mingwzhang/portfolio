@@ -1,3 +1,4 @@
+/* Loading animation and progress display. */
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 .loading-screen {
@@ -28,7 +29,7 @@
   margin-top: 10px;
 }
 
-/* Update the loading bar styles */
+
 .loading-bar {
   width: 300px;
   height: 12px;
@@ -42,10 +43,10 @@
 .loading-bar-inner {
     height: 100%;
     background: linear-gradient(to right, #00ffcc, #00bbaa);
-    transition: none; /* Remove the transition for instant update */
+    transition: none; 
   }
 
-/* Loading wheel styles remain unchanged */
+
 .loading-wheel {
   width: 150px;
   height: 150px;
@@ -68,7 +69,7 @@
   animation: spin 1s linear infinite;
 }
 
-/* Keyframes for animations */
+
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
