@@ -3,16 +3,17 @@ import React, { useRef, useState } from "react";
 // Featured project metadata, preview assets, and outbound game links.
 const projects = [
   {
-    id: "errori",
-    title: "!ERRORi",
-    label: "Solo game jam · 2025",
-    stack: ["Godot", "2D Platformer"],
-    summary: "A five-level platformer set inside a digital world that is falling apart, ending in a boss encounter.",
-    role: "Solo developer",
-    contribution: "Designed and developed the game independently, including varied platforming levels, combat and movement mechanics.",
-    file: "!ERRORi",
-    itchUrl: "https://minmakesgames.itch.io/error",
-    action: "Play on itch.io",
+    id: "fides-corvi",
+    title: "Fides Corvi",
+    label: "Collaborative game jam · 2026",
+    stack: ["Godot", "Interactive Fiction", "Turn-Based Combat"],
+    summary: "A story-driven escape adventure about trust, dialogue and battles, made by a three-person team in seven days for Brackeys Game Jam 2026.2.",
+    role: "Programming, game design and VFX",
+    contribution: "Handled programming and visual effects, and collaborated on game design for the narrative adventure.",
+    file: "Fides Corvi",
+    imageFile: "Fides Corvi.png",
+    hasVideo: false,
+    itchUrl: "https://amethyscent.itch.io/fides-corvi",
   },
   {
     id: "hssrr",
@@ -24,7 +25,6 @@ const projects = [
     contribution: "Collaborated on a released platformer featuring movement, combat, checkpoints, boss encounters and configurable controls.",
     file: "HSSRR",
     itchUrl: "https://minmakesgames.itch.io/hollys-splendid-sugar-rush-rally",
-    action: "View full game",
   },
   {
     id: "choco-milk-scramble",
@@ -37,45 +37,17 @@ const projects = [
     file: "ChocoMilkScramble",
     imageFile: "ChocoMilkScramble.png",
     itchUrl: "https://minmakesgames.itch.io/choco-milk-scramble",
-    action: "Play on itch.io",
   },
   {
-    id: "fides-corvi",
-    title: "Fides Corvi",
-    label: "Team game jam · 2026",
-    stack: ["Godot", "Interactive Fiction", "Turn-Based Combat"],
-    summary: "A story-driven escape adventure about trust, dialogue and battles, made by a three-person team in seven days for Brackeys Game Jam 2026.2.",
-    role: "Programming, game design and VFX",
-    contribution: "Handled programming and visual effects, and collaborated on game design for the narrative adventure.",
-    file: "Fides Corvi",
-    imageFile: "Fides Corvi.png",
-    hasVideo: false,
-    itchUrl: "https://amethyscent.itch.io/fides-corvi",
-    action: "View game page",
-  },
-  {
-    id: "ash",
-    title: "Ash: Protector of Ignicity",
-    label: "Team internship project · 2022",
-    stack: ["Unity", "C#", "3D Action Adventure"],
-    summary: "A third-person adventure in which the player explores environments, activates totems and battles enemies.",
-    role: "Gameplay programming, AI and content development",
-    contribution: "Contributed C# programming, enemy NPC behavior, creature rigging and animation, and level design for two levels.",
-    file: "AshVideo",
-    itchUrl: "https://minmakesgames.itch.io/ash-protector-of-ignicity",
-    action: "View game page",
-  },
-  {
-    id: "iota",
-    title: "Project IOTA",
-    label: "Team internship project · 2022",
-    stack: ["Unity", "C#", "First-Person Puzzle"],
-    summary: "A first-person puzzle and exploration game set inside a space base, with interactable systems and enemy encounters.",
-    role: "Gameplay and AI programming",
-    contribution: "Programmed player controls, interactions, minigames, health and stamina systems, and enemy NPC AI; also created 3D assets.",
-    file: "ProjectIOTA",
-    itchUrl: "https://minmakesgames.itch.io/project-iota",
-    action: "View game page",
+    id: "errori",
+    title: "!ERRORi",
+    label: "Solo game jam · 2025",
+    stack: ["Godot", "2D Platformer"],
+    summary: "A five-level platformer set inside a digital world that is falling apart, ending in a boss encounter.",
+    role: "Solo developer",
+    contribution: "Designed and developed the game independently, including varied platforming levels, combat and movement mechanics.",
+    file: "!ERRORi",
+    itchUrl: "https://minmakesgames.itch.io/error",
   },
   {
     id: "blaze",
@@ -87,7 +59,28 @@ const projects = [
     contribution: "Assisted with the later stages of development and quality assurance on a collaborative Unreal Engine project.",
     file: "FFBlazeVideo",
     itchUrl: "https://anoymous1.itch.io/ffblaze",
-    action: "View game page",
+  },
+  {
+    id: "ash",
+    title: "Ash: Protector of Ignicity",
+    label: "Team internship project · 2022",
+    stack: ["Unity", "C#", "3D Action Adventure"],
+    summary: "A third-person adventure in which the player explores environments, activates totems and battles enemies.",
+    role: "Gameplay programming, AI and content development",
+    contribution: "Contributed C# programming, enemy NPC behavior, creature rigging and animation, and level design for two levels.",
+    file: "AshVideo",
+    itchUrl: "https://minmakesgames.itch.io/ash-protector-of-ignicity",
+  },
+  {
+    id: "iota",
+    title: "Project IOTA",
+    label: "Team internship project · 2022",
+    stack: ["Unity", "C#", "First-Person Puzzle"],
+    summary: "A first-person puzzle and exploration game set inside a space base, with interactable systems and enemy encounters.",
+    role: "Gameplay and AI programming",
+    contribution: "Programmed player controls, interactions, minigames, health and stamina systems, and enemy NPC AI; also created 3D assets.",
+    file: "ProjectIOTA",
+    itchUrl: "https://minmakesgames.itch.io/project-iota",
   },
 ];
 
@@ -258,7 +251,7 @@ function VideoCarousel() {
             </div>
           </section>
           <div className="featured-project-links">
-            <a className="portfolio-action portfolio-action-primary" href={current.itchUrl} target="_blank" rel="noopener noreferrer">{current.action} ↗</a>
+            <a className="portfolio-action portfolio-action-primary" href={current.itchUrl} target="_blank" rel="noopener noreferrer">View game ↗</a>
           </div>
         </div>
 

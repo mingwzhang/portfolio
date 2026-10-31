@@ -24,7 +24,7 @@ import "./styles/typography-and-responsive.css";
 
 function App() {
   const [showAssets, setShowAssets] = useState(true);
-  const [showAllTech, setShowAllTech] = useState(false);
+  const [showAllTech, setShowAllTech] = useState(true);
   const [effectsPaused, setEffectsPaused] = useState(() =>
     typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches
   );
@@ -74,7 +74,8 @@ function App() {
               <div className="portfolio-tech-details-v8 portfolio-tech-list">
                 <div className="portfolio-tech-strip" aria-label="Highlighted technologies">
                   {featuredTechnologies.map((name) => <span key={name}>{name}</span>)}
-                  <a
+                </div>
+                <a
                     className="portfolio-all-skills-link"
                     href="#skills-section"
                     onClick={(event) => {
@@ -85,8 +86,7 @@ function App() {
                       });
                       window.history.replaceState(null, "", "#skills-section");
                     }}
-                  >See all skills &amp; tools ↓</a>
-                </div>
+                  >See all skills &amp; tools</a>
               </div>
             </SlideReveal>
             {/* The toggle remains below the animated list in both states. */}

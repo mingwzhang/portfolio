@@ -736,7 +736,7 @@
 }
 .portfolio-v2 #skills-education .icon-wrapper:hover,
 .portfolio-v2 #skills-education .icon-wrapper.hover-scale:hover {
-  transform: scale(1.15) !important;
+  transform: scale(1.10) !important;
   background: #24282d !important;
   border-color: rgba(121, 178, 183, .36) !important;
 }
@@ -1111,5 +1111,51 @@
   }
   .portfolio-v2 #projects .featured-project-media .featured-project-metadata .featured-project-tags span {
     font-size: 15px !important;
+  }
+}
+
+/* Homepage introduction: improve reading comfort without changing the pixel-art
+   identity, portrait, hero links, or the technology slide's open/close behavior. */
+.portfolio-v2 .portfolio-hero-copy-v8 .portfolio-hero-subtitle {
+  color: #e8f3f3;
+  font-size: clamp(19px, 1.25vw, 22px) !important;
+  line-height: 1.8 !important;
+  max-width: 615px;
+}
+
+/* Give technology names a little more room. All entries still belong to the
+   sliding list; informational labels remain plain text, not buttons. */
+.portfolio-v2 .portfolio-tech-summary-v8 .portfolio-tech-list .portfolio-tech-strip {
+  column-gap: 16px;
+  row-gap: 11px;
+  line-height: 1.65;
+}
+.portfolio-v2 .portfolio-tech-summary-v8 .portfolio-tech-list .portfolio-tech-strip > span {
+  font-size: 17px !important;
+  line-height: 1.65 !important;
+}
+
+/* The skills shortcut follows the technology strip inside the same sliding
+   panel, so it is always the last visible item and has its own clear line. */
+.portfolio-v2 .portfolio-tech-summary-v8 .portfolio-tech-list .portfolio-all-skills-link {
+  display: inline-flex;
+  margin: 10px auto 0;
+  font-size: 16px !important;
+  line-height: 1.7 !important;
+}
+@media (max-width: 640px) {
+  .portfolio-v2 .portfolio-hero-copy-v8 .portfolio-hero-subtitle {
+    font-size: 18px !important;
+    line-height: 1.8 !important;
+  }
+  .portfolio-v2 .portfolio-tech-summary-v8 .portfolio-tech-list .portfolio-tech-strip {
+    column-gap: 11px;
+    row-gap: 8px;
+  }
+  .portfolio-v2 .portfolio-tech-summary-v8 .portfolio-tech-list .portfolio-tech-strip > span {
+    font-size: 14px !important;
+  }
+  .portfolio-v2 .portfolio-tech-summary-v8 .portfolio-tech-list .portfolio-all-skills-link {
+    font-size: 14px !important;
   }
 }
