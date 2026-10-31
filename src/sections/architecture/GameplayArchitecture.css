@@ -27,15 +27,15 @@
 .portfolio-v2 .arch-introduction-heading {
   margin: 0 0 6px;
   color: #b6efed;
-  font-size: 16px;
+  font-size: 19px;
   font-weight: 700;
-  line-height: 1.45;
+  line-height: 1.55;
 }
 .portfolio-v2 .arch-introduction-text {
   margin: 0;
   color: #c8dbdc;
-  font-size: 15px;
-  line-height: 1.75;
+  font-size: 17px;
+  line-height: 1.8;
 }
 .portfolio-v2 .arch-system-list {
   display: grid;
@@ -61,7 +61,7 @@
   align-items: center;
   width: 100%;
   gap: 15px;
-  padding: 16px 17px;
+  padding: 19px 19px;
   border: 0;
   border-radius: 0;
   color: #e8f6f4;
@@ -77,18 +77,18 @@
   outline-offset: -4px;
 }
 .portfolio-v2 .arch-number {
-  flex: 0 0 23px;
+  flex: 0 0 29px;
   font-family: var(--pixel-display, "Press Start 2P", monospace) !important;
   color: #6abbb8;
-  font-size: 11px;
+  font-size: 15px;
   line-height: 1.4;
 }
 .portfolio-v2 .arch-icon {
-  flex: 0 0 38px;
+  flex: 0 0 42px;
   display: grid;
   place-items: center;
-  width: 38px;
-  height: 38px;
+  width: 42px;
+  height: 42px;
   border-radius: 5px;
   background: rgba(57, 109, 119, .22);
   color: #89d6d4;
@@ -99,21 +99,22 @@
 }
 .portfolio-v2 .arch-toggle-copy {
   display: grid;
-  gap: 4px;
+  gap: 6px;
   flex: 1 1 auto;
   min-width: 0;
 }
 .portfolio-v2 .arch-toggle-title {
   color: #d7f3ef;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 700;
-  line-height: 1.55;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
 }
 .portfolio-v2 .arch-toggle-subtitle {
   color: #a9c5c6;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 .portfolio-v2 .arch-toggle-chevron {
   color: #88d6d2;
@@ -123,7 +124,7 @@
   transform: rotate(180deg);
 }
 .portfolio-v2 .arch-system-details {
-  padding: 15px 22px 20px;
+  padding: 20px 22px 22px;
   border-top: 1px solid rgba(82, 145, 155, .34);
 }
 .portfolio-v2 .arch-concepts {
@@ -134,8 +135,8 @@
 }
 .portfolio-v2 .arch-concepts span {
   padding: 4px 9px;
-  font-size: 12px;
-  line-height: 1.5;
+  font-size: 13px;
+  line-height: 1.55;
   color: #9de2df;
   background: rgba(55, 129, 133, .15);
   border: 1px solid rgba(69, 154, 158, .25);
@@ -151,9 +152,9 @@
 .portfolio-v2 .arch-practice h4 {
   margin: 0 0 5px;
   color: #85d9d4;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 700;
-  line-height: 1.6;
+  line-height: 1.65;
   text-transform: uppercase;
   letter-spacing: .5px;
 }
@@ -162,8 +163,8 @@
 .portfolio-v2 .arch-transfer p {
   margin: 0 0 15px;
   color: #d1e0df;
-  font-size: 15px;
-  line-height: 1.75;
+  font-size: 17px;
+  line-height: 1.8;
   font-weight: 400;
 }
 .portfolio-v2 .arch-explanation p:last-child,
@@ -185,8 +186,8 @@
 .portfolio-v2 .arch-flow-caption {
   margin: 0 0 14px;
   color: #b0c8ce;
-  font-size: 12px;
-  line-height: 1.5;
+  font-size: 14px;
+  line-height: 1.55;
 }
 .portfolio-v2 .arch-flow-root {
   width: fit-content;
@@ -194,8 +195,8 @@
   margin: 0 auto;
   padding: 10px 14px;
   color: #d8f6f2;
-  font-size: 13px;
-  line-height: 1.5;
+  font-size: 15px;
+  line-height: 1.55;
   background: rgba(38, 91, 99, .45);
   border: 1px solid rgba(110, 207, 199, .65);
   border-radius: 4px;
@@ -229,8 +230,8 @@
   min-width: 0;
   padding: 9px 5px;
   color: #d3e9ea;
-  font-size: 11px;
-  line-height: 1.5;
+  font-size: 13px;
+  line-height: 1.55;
   background: rgba(43, 78, 87, .48);
   border: 1px solid rgba(100, 151, 161, .33);
   border-radius: 3px;
@@ -239,8 +240,8 @@
 .portfolio-v2 .arch-flow-footnote {
   margin: 12px 0 0;
   color: #85a6ad;
-  font-size: 10px;
-  line-height: 1.5;
+  font-size: 12px;
+  line-height: 1.6;
 }
 .portfolio-v2 .arch-practice {
   padding: 13px 14px;
@@ -259,18 +260,18 @@
   flex: none;
   color: #8fd5cb;
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
   line-height: 1.65;
 }
 .portfolio-v2 .arch-transfer p {
   color: #b7cccc;
-  font-size: 13px;
+  font-size: 16px;
 }
 .portfolio-v2 .arch-outro {
   margin: 16px auto 0;
   color: #91abb0;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.7;
   text-align: center;
 }
@@ -281,22 +282,43 @@
 @media (max-width: 700px) {
   .portfolio-v2 .portfolio-architecture-section { scroll-margin-top: 55px; }
   .portfolio-v2 .arch-introduction { padding: 13px 12px; gap: 9px; }
-  .portfolio-v2 .arch-introduction-mark { font-size: 11px; padding-top: 6px; }
-  .portfolio-v2 .arch-introduction-heading { font-size: 14px; }
-  .portfolio-v2 .arch-introduction-text { font-size: 13px; }
-  .portfolio-v2 .arch-system-toggle { gap: 9px; padding: 13px 10px; }
-  .portfolio-v2 .arch-number { flex-basis: 18px; font-size: 9px; }
-  .portfolio-v2 .arch-icon { flex-basis: 30px; width: 30px; height: 30px; }
-  .portfolio-v2 .arch-toggle-title { font-size: 14px; }
-  .portfolio-v2 .arch-toggle-subtitle { font-size: 12px; }
+  .portfolio-v2 .arch-introduction-mark { font-size: 12px; padding-top: 6px; }
+  .portfolio-v2 .arch-introduction-heading { font-size: 17px; }
+  .portfolio-v2 .arch-introduction-text { font-size: 15px; }
+  .portfolio-v2 .arch-system-toggle { gap: 9px; padding: 15px 11px; }
+  .portfolio-v2 .arch-number { flex-basis: 22px; font-size: 12px; }
+  .portfolio-v2 .arch-icon { flex-basis: 34px; width: 34px; height: 34px; }
+  .portfolio-v2 .arch-toggle-title { font-size: 17px; }
+  .portfolio-v2 .arch-toggle-subtitle { font-size: 14px; }
   .portfolio-v2 .arch-system-details { padding: 14px 12px 16px; }
   .portfolio-v2 .arch-detail-aside { grid-template-columns: minmax(0, 1fr); }
-  .portfolio-v2 .arch-explanation p, .portfolio-v2 .arch-practice p { font-size: 14px; }
+  .portfolio-v2 .arch-explanation p, .portfolio-v2 .arch-practice p { font-size: 16px; }
   .portfolio-v2 .arch-transfer { display: block; }
   .portfolio-v2 .arch-transfer-label { display: block; margin-bottom: 6px; }
-  .portfolio-v2 .arch-transfer p { font-size: 12px; }
-  .portfolio-v2 .arch-flow-nodes > div { font-size: 10px; }
+  .portfolio-v2 .arch-transfer p { font-size: 15px; }
+  .portfolio-v2 .arch-flow-nodes > div { font-size: 12px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .portfolio-v2 .arch-system, .portfolio-v2 .arch-toggle-chevron { transition: none; }
+}
+
+
+/* Architecture section heading: larger, but allowed to wrap on narrower screens. */
+.portfolio-v2 #architecture .portfolio-section-heading h2 {
+  font-size: clamp(22px, 1.55vw, 26px) !important;
+  line-height: 1.65 !important;
+  white-space: normal !important;
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 700px) {
+  .portfolio-v2 #architecture .portfolio-section-heading h2 {
+    font-size: clamp(18px, 4vw, 22px) !important;
+  }
+  .portfolio-v2 .arch-explanation h4,
+  .portfolio-v2 .arch-practice h4 { font-size: 14px; }
+  .portfolio-v2 .arch-flow-caption { font-size: 13px; }
+  .portfolio-v2 .arch-flow-root { font-size: 14px; }
+  .portfolio-v2 .arch-transfer-label { font-size: 13px; }
+  .portfolio-v2 .arch-outro { font-size: 14px; }
 }

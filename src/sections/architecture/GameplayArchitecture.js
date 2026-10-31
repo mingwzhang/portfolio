@@ -91,7 +91,7 @@ const systems = [
 ];
 
 export default function GameplayArchitecture() {
-  const [openId, setOpenId] = useState("player-states");
+  const [openId, setOpenId] = useState(null);
 
   return (
     <div className="arch-content">

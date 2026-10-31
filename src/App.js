@@ -22,6 +22,7 @@ import "./styles/PortfolioEnhancements.css";
 import "./styles/layout-and-controls.css";
 import "./styles/navigation-and-skills.css";
 import "./styles/typography-and-responsive.css";
+import "./styles/skills-readability-hover.css";
 
 function App() {
   const [showAssets, setShowAssets] = useState(true);
