@@ -1,0 +1,302 @@
+/* Gameplay architecture — self-contained accordion styling. */
+.portfolio-v2 .portfolio-architecture-section {
+  scroll-margin-top: 130px;
+}
+.portfolio-v2 .arch-content {
+  max-width: 1080px;
+  margin: 0 auto;
+  color: #e3eeee;
+}
+.portfolio-v2 .arch-introduction {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px 20px;
+  margin: 0 0 19px;
+  background: rgba(11, 33, 42, .7);
+  border: 1px solid rgba(78, 163, 172, .25);
+  border-radius: 7px;
+}
+.portfolio-v2 .arch-introduction-mark {
+  flex: none;
+  color: #76d9d5;
+  font-family: var(--pixel-display, "Press Start 2P", monospace);
+  font-size: 16px;
+  padding-top: 4px;
+}
+.portfolio-v2 .arch-introduction-heading {
+  margin: 0 0 6px;
+  color: #b6efed;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+.portfolio-v2 .arch-introduction-text {
+  margin: 0;
+  color: #c8dbdc;
+  font-size: 15px;
+  line-height: 1.75;
+}
+.portfolio-v2 .arch-system-list {
+  display: grid;
+  gap: 10px;
+}
+.portfolio-v2 .arch-system {
+  border: 1px solid rgba(83, 149, 159, .45);
+  background: rgba(14, 32, 40, .88);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 200ms ease, background-color 200ms ease;
+}
+.portfolio-v2 .arch-system-open {
+  border-color: rgba(102, 217, 211, .78);
+  background: rgba(15, 38, 46, .92);
+}
+.portfolio-v2 .arch-system-heading {
+  margin: 0;
+  font: inherit;
+}
+.portfolio-v2 .arch-system-toggle {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 15px;
+  padding: 16px 17px;
+  border: 0;
+  border-radius: 0;
+  color: #e8f6f4;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+.portfolio-v2 .arch-system-toggle:hover {
+  background: rgba(67, 137, 143, .12);
+}
+.portfolio-v2 .arch-system-toggle:focus-visible {
+  outline: 2px solid #e6d48a;
+  outline-offset: -4px;
+}
+.portfolio-v2 .arch-number {
+  flex: 0 0 23px;
+  font-family: var(--pixel-display, "Press Start 2P", monospace) !important;
+  color: #6abbb8;
+  font-size: 11px;
+  line-height: 1.4;
+}
+.portfolio-v2 .arch-icon {
+  flex: 0 0 38px;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 5px;
+  background: rgba(57, 109, 119, .22);
+  color: #89d6d4;
+}
+.portfolio-v2 .arch-icon svg,
+.portfolio-v2 .arch-toggle-chevron {
+  flex-shrink: 0;
+}
+.portfolio-v2 .arch-toggle-copy {
+  display: grid;
+  gap: 4px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.portfolio-v2 .arch-toggle-title {
+  color: #d7f3ef;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.55;
+}
+.portfolio-v2 .arch-toggle-subtitle {
+  color: #a9c5c6;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+.portfolio-v2 .arch-toggle-chevron {
+  color: #88d6d2;
+  transition: transform 220ms ease;
+}
+.portfolio-v2 .arch-toggle-chevron-up {
+  transform: rotate(180deg);
+}
+.portfolio-v2 .arch-system-details {
+  padding: 15px 22px 20px;
+  border-top: 1px solid rgba(82, 145, 155, .34);
+}
+.portfolio-v2 .arch-concepts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 17px;
+}
+.portfolio-v2 .arch-concepts span {
+  padding: 4px 9px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #9de2df;
+  background: rgba(55, 129, 133, .15);
+  border: 1px solid rgba(69, 154, 158, .25);
+  border-radius: 3px;
+}
+.portfolio-v2 .arch-detail-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(240px, .85fr);
+  align-items: start;
+  gap: 25px;
+}
+.portfolio-v2 .arch-explanation h4,
+.portfolio-v2 .arch-practice h4 {
+  margin: 0 0 5px;
+  color: #85d9d4;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.6;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+.portfolio-v2 .arch-explanation p,
+.portfolio-v2 .arch-practice p,
+.portfolio-v2 .arch-transfer p {
+  margin: 0 0 15px;
+  color: #d1e0df;
+  font-size: 15px;
+  line-height: 1.75;
+  font-weight: 400;
+}
+.portfolio-v2 .arch-explanation p:last-child,
+.portfolio-v2 .arch-practice p:last-child,
+.portfolio-v2 .arch-transfer p:last-child {
+  margin-bottom: 0;
+}
+.portfolio-v2 .arch-detail-aside {
+  display: grid;
+  gap: 12px;
+}
+.portfolio-v2 .arch-flow {
+  padding: 16px 13px 13px;
+  background: rgba(5, 18, 26, .57);
+  border: 1px solid rgba(74, 129, 144, .39);
+  border-radius: 6px;
+  text-align: center;
+}
+.portfolio-v2 .arch-flow-caption {
+  margin: 0 0 14px;
+  color: #b0c8ce;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.portfolio-v2 .arch-flow-root {
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 10px 14px;
+  color: #d8f6f2;
+  font-size: 13px;
+  line-height: 1.5;
+  background: rgba(38, 91, 99, .45);
+  border: 1px solid rgba(110, 207, 199, .65);
+  border-radius: 4px;
+}
+.portfolio-v2 .arch-flow-connector {
+  height: 16px;
+  width: 1px;
+  background: #73c2bd;
+  margin: 0 auto;
+  position: relative;
+}
+.portfolio-v2 .arch-flow-connector::after {
+  content: "";
+  position: absolute;
+  left: -4px;
+  bottom: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid #73c2bd;
+}
+.portfolio-v2 .arch-flow-nodes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 5px;
+  align-items: stretch;
+}
+.portfolio-v2 .arch-flow-nodes > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 0;
+  padding: 9px 5px;
+  color: #d3e9ea;
+  font-size: 11px;
+  line-height: 1.5;
+  background: rgba(43, 78, 87, .48);
+  border: 1px solid rgba(100, 151, 161, .33);
+  border-radius: 3px;
+  overflow-wrap: anywhere;
+}
+.portfolio-v2 .arch-flow-footnote {
+  margin: 12px 0 0;
+  color: #85a6ad;
+  font-size: 10px;
+  line-height: 1.5;
+}
+.portfolio-v2 .arch-practice {
+  padding: 13px 14px;
+  background: rgba(54, 86, 91, .18);
+  border-left: 2px solid rgba(100, 190, 185, .7);
+}
+.portfolio-v2 .arch-transfer {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-top: 19px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(80, 144, 151, .3);
+}
+.portfolio-v2 .arch-transfer-label {
+  flex: none;
+  color: #8fd5cb;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.65;
+}
+.portfolio-v2 .arch-transfer p {
+  color: #b7cccc;
+  font-size: 13px;
+}
+.portfolio-v2 .arch-outro {
+  margin: 16px auto 0;
+  color: #91abb0;
+  font-size: 13px;
+  line-height: 1.7;
+  text-align: center;
+}
+@media (max-width: 920px) {
+  .portfolio-v2 .arch-detail-grid { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .portfolio-v2 .arch-detail-aside { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+}
+@media (max-width: 700px) {
+  .portfolio-v2 .portfolio-architecture-section { scroll-margin-top: 55px; }
+  .portfolio-v2 .arch-introduction { padding: 13px 12px; gap: 9px; }
+  .portfolio-v2 .arch-introduction-mark { font-size: 11px; padding-top: 6px; }
+  .portfolio-v2 .arch-introduction-heading { font-size: 14px; }
+  .portfolio-v2 .arch-introduction-text { font-size: 13px; }
+  .portfolio-v2 .arch-system-toggle { gap: 9px; padding: 13px 10px; }
+  .portfolio-v2 .arch-number { flex-basis: 18px; font-size: 9px; }
+  .portfolio-v2 .arch-icon { flex-basis: 30px; width: 30px; height: 30px; }
+  .portfolio-v2 .arch-toggle-title { font-size: 14px; }
+  .portfolio-v2 .arch-toggle-subtitle { font-size: 12px; }
+  .portfolio-v2 .arch-system-details { padding: 14px 12px 16px; }
+  .portfolio-v2 .arch-detail-aside { grid-template-columns: minmax(0, 1fr); }
+  .portfolio-v2 .arch-explanation p, .portfolio-v2 .arch-practice p { font-size: 14px; }
+  .portfolio-v2 .arch-transfer { display: block; }
+  .portfolio-v2 .arch-transfer-label { display: block; margin-bottom: 6px; }
+  .portfolio-v2 .arch-transfer p { font-size: 12px; }
+  .portfolio-v2 .arch-flow-nodes > div { font-size: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-v2 .arch-system, .portfolio-v2 .arch-toggle-chevron { transition: none; }
+}

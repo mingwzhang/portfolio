@@ -9,6 +9,7 @@ import AnimatedBackground from "./components/effects/AnimatedBackground";
 import FloatingShapes from "./components/effects/FloatingShapes";
 import EffectsToggle from "./components/navigation/EffectsToggle";
 import VideoCarousel from "./sections/projects/VideoCarousel";
+import GameplayArchitecture from "./sections/architecture/GameplayArchitecture";
 import { Helmet } from "react-helmet";
 import AboutMe from "./sections/about/AboutMe";
 import SkillsEducation from "./sections/skills/SkillsEducation";
@@ -114,9 +115,18 @@ function App() {
           <VideoCarousel />
         </section>
 
+        <section id="architecture" className="portfolio-section portfolio-architecture-section" aria-labelledby="portfolio-architecture-heading">
+          <div className="portfolio-section-heading">
+            <span className="portfolio-kicker">02 / BEHIND THE CODE</span>
+            <h2 id="portfolio-architecture-heading" className="pixel-text pixel-bold-title">Gameplay Architecture &amp; Design Patterns</h2>
+            <p>Engine-independent principles, practical decisions, and reusable approaches to gameplay development.</p>
+          </div>
+          <GameplayArchitecture />
+        </section>
+
         <section id="skills-section" className="portfolio-section portfolio-skills-section" aria-labelledby="portfolio-skills-heading">
           <div className="portfolio-section-heading">
-            <span className="portfolio-kicker">02 / TECHNICAL BACKGROUND</span>
+            <span className="portfolio-kicker">03 / TECHNICAL BACKGROUND</span>
             <h2 id="portfolio-skills-heading" className="pixel-text pixel-bold-title">Skills &amp; Education</h2>
             <p>Programming languages, game engines, development tools, and education.</p>
           </div>
@@ -125,7 +135,7 @@ function App() {
 
         <section id="more-work" className="portfolio-section portfolio-more-work" aria-labelledby="more-work-heading">
           <div className="portfolio-section-heading">
-            <span className="portfolio-kicker">03 / EXPLORE MORE</span>
+            <span className="portfolio-kicker">04 / EXPLORE MORE</span>
             <h2 id="more-work-heading" className="pixel-text pixel-bold-title">Interactive Demo &amp; Assets</h2>
             <p>A playable React mini-game and examples of 2D and 3D development work.</p>
           </div>
@@ -157,7 +167,7 @@ function App() {
 
         <section id="contact" className="portfolio-section portfolio-contact-section" aria-labelledby="portfolio-contact-heading">
           <div className="portfolio-section-heading">
-            <span className="portfolio-kicker">04 / GET IN TOUCH</span>
+            <span className="portfolio-kicker">05 / GET IN TOUCH</span>
             <h2 id="portfolio-contact-heading" className="pixel-text pixel-bold-title">Contact</h2>
             <p>Feel free to reach out about software engineering, gameplay development, or collaboration.</p>
           </div>

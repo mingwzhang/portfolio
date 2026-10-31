@@ -5,6 +5,7 @@ import "./NavBar.css";
 const navigation = [
   { label: "About Me", section: "about" },
   { label: "Featured Projects", section: "projects" },
+  { label: "Architecture", section: "architecture" },
   { label: "Skills & Education", section: "skills-section" },
   { label: "Interactive Demo & Assets", section: "more-work" },
   { label: "Contact", section: "contact" },
