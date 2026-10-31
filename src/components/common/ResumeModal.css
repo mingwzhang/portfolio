@@ -1,0 +1,112 @@
+/* Resume preview: self-contained styles so existing portfolio layouts remain unchanged. */
+.portfolio-v2 .portfolio-hero-resume-button {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  border-radius: 2px;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.resume-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 200000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(2, 12, 19, .91);
+  padding: 20px;
+  overscroll-behavior: contain;
+}
+.resume-modal-panel {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: min(100%, 1020px);
+  height: min(94vh, 950px);
+  height: min(94dvh, 950px);
+  min-height: 0;
+  overflow: hidden;
+  border: 2px solid #64c9ce;
+  border-radius: 9px;
+  background: #091d27;
+  box-shadow: 0 24px 85px rgba(0, 0, 0, .75);
+  color: #e3f6f4;
+}
+.resume-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex: 0 0 auto;
+  padding: 14px 18px;
+  background: #102b36;
+}
+.resume-modal-header { border-bottom: 1px solid #385f68; }
+.resume-modal-heading { min-width: 0; }
+.resume-modal-kicker {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  color: #8dd5d4;
+  font: 12px/1.5 'Silkscreen', 'Press Start 2P', monospace;
+}
+.resume-modal-header h2 {
+  margin: 4px 0 0;
+  color: #e5f9f6;
+  font: 20px/1.5 'Silkscreen', 'Press Start 2P', monospace;
+}
+.resume-modal-close {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #649ca6;
+  border-radius: 5px;
+  background: #153b49;
+  color: #eaffff;
+  cursor: pointer;
+}
+.resume-modal-close:hover { background: #24566a; }
+.resume-modal-viewer {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  background: #263942;
+}
+.resume-modal-viewer iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: white;
+}
+.resume-modal-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  padding: 30px;
+  width: 100%;
+  overflow-wrap: anywhere;
+  text-align: center;
+  color: #c7e5e5;
+  font: 18px/1.5 'VT323', monospace;
+}
+.resume-modal-message p { margin: 0; }
+.resume-modal-message-detail { max-width: 600px; font-size: 15px; }
+.resume-modal-message code { color: #b7f2df; font: inherit; }
+.resume-modal-close:focus-visible { outline: 3px solid #ffdd7b; outline-offset: 3px; }
+@media (max-width: 680px) {
+  .resume-modal-backdrop { padding: 8px; }
+  .resume-modal-panel { height: calc(100dvh - 16px); }
+  .resume-modal-header { padding: 10px 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .resume-modal-close { transition: none; }
+}

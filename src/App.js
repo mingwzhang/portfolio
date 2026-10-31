@@ -1,5 +1,5 @@
 // App.js — portfolio page structure and homepage content
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import "devicon/devicon.min.css";
 import ParticleExplosion from "./components/effects/ParticleExplosion";
 import MiniGameBox from "./sections/interactive/MiniGameBox";
@@ -17,6 +17,7 @@ import TopButton from "./components/navigation/TopButton";
 import AssetGallery2D from "./sections/assets/2DAssetGallery";
 import AssetGallery3D from "./sections/assets/3DAssetGallery";
 import SlideReveal from "./components/common/SlideReveal";
+import ResumeModal from "./components/common/ResumeModal";
 import { skills, featuredTechnologies } from "./data/portfolio-data";
 import "./styles/PortfolioEnhancements.css";
 import "./styles/layout-and-controls.css";
@@ -30,7 +31,11 @@ function App() {
   const [effectsPaused, setEffectsPaused] = useState(() =>
     typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches
   );
-  const resumeUrl = "https://drive.google.com/file/d/1bVhmyGEYZ0FH-HIsXgMh15NRwaEes568/view?usp=sharing";
+  // Static public asset: available locally and from GitHub Pages without a sign-in.
+  const resumeUrl = `${process.env.PUBLIC_URL}/resume/Mingwei_Zhang_Resume.pdf`;
+  const [resumeOpen, setResumeOpen] = useState(false);
+  const openResume = useCallback(() => setResumeOpen(true), []);
+  const closeResume = useCallback(() => setResumeOpen(false), []);
 
   return (
     <div className={`portfolio-v2${effectsPaused ? " effects-paused" : ""}`}>
@@ -41,7 +46,7 @@ function App() {
       <AnimatedBackground paused={effectsPaused} />
       <FloatingShapes />
       <EffectsToggle paused={effectsPaused} onToggle={() => setEffectsPaused((previous) => !previous)} />
-      <NavBar onResumeClick={() => window.open(resumeUrl, "_blank", "noopener,noreferrer")} />
+      <NavBar onResumeClick={openResume} />
 
       <main id="home" className="portfolio-main">
         <header className="portfolio-hero portfolio-hero-v8">
@@ -64,7 +69,7 @@ function App() {
               </p>
               <div className="portfolio-hero-actions">
                 <a className="portfolio-action portfolio-action-primary" href="#projects">Explore projects</a>
-                <a className="portfolio-hero-secondary-link-v8" href={resumeUrl} target="_blank" rel="noopener noreferrer">View Resume</a>
+                <button type="button" className="portfolio-hero-secondary-link-v8 portfolio-hero-resume-button" onClick={openResume} aria-haspopup="dialog">View Resume</button>
                 <a className="portfolio-hero-secondary-link-v8" href="https://github.com/mingwzhang" target="_blank" rel="noopener noreferrer">GitHub</a>
               </div>
             </div>
@@ -180,6 +185,7 @@ function App() {
         </section>
       </main>
 
+      <ResumeModal open={resumeOpen} onClose={closeResume} resumeUrl={resumeUrl} />
       <ParticleExplosion />
       <footer className="footer-note portfolio-footer">
         © {new Date().getFullYear()} Mingwei Zhang — Built with React.
