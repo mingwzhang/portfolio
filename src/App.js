@@ -40,7 +40,7 @@ function App() {
   return (
     <div className={`portfolio-v2${effectsPaused ? " effects-paused" : ""}`}>
       <Helmet>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=yes" />
       </Helmet>
       <TopButton />
       <AnimatedBackground paused={effectsPaused} />

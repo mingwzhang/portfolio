@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App";
 import LoadingScreen from "./components/loading/LoadingScreen";
 import "./styles/styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./styles/mobile-pinch-zoom.css";
 
 const RootComponent = () => {
   const [loading, setLoading] = useState(true);
@@ -21,34 +22,8 @@ const RootComponent = () => {
     observerErrorHandler(event.reason)
   );
 
-
-  useEffect(() => {
-    // Existing touch policy suppresses multi-finger zoom on mobile devices.
-    const handleTouchMove = (event) => {
-      if (event.touches.length > 1) {
-        event.preventDefault();
-      }
-    };
-
-    // Suppress rapid successive touch-end gestures as well.
-    let lastTouchEnd = 0;
-    const handleTouchEnd = (event) => {
-      const now = Date.now();
-      if (now - lastTouchEnd <= 300) {
-        event.preventDefault();
-      }
-      lastTouchEnd = now;
-    };
-
-    document.addEventListener("touchmove", handleTouchMove, { passive: false });
-    document.addEventListener("touchend", handleTouchEnd, { passive: false });
-
-    return () => {
-      document.removeEventListener("touchmove", handleTouchMove);
-      document.removeEventListener("touchend", handleTouchEnd);
-    };
-  }, []);
-
+  // Allow the browser to handle pinch gestures natively.
+  // The previous global touchmove/touchend listeners prevented mobile zooming.
   return loading ? (
     <LoadingScreen onFinish={() => setLoading(false)} />
   ) : (
