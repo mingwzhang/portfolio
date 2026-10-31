@@ -74,8 +74,7 @@ function App() {
               <div className="portfolio-tech-details-v8 portfolio-tech-list">
                 <div className="portfolio-tech-strip" aria-label="Highlighted technologies">
                   {featuredTechnologies.map((name) => <span key={name}>{name}</span>)}
-                </div>
-                <a
+                  <a
                     className="portfolio-all-skills-link"
                     href="#skills-section"
                     onClick={(event) => {
@@ -87,6 +86,7 @@ function App() {
                       window.history.replaceState(null, "", "#skills-section");
                     }}
                   >See all skills &amp; tools</a>
+                </div>
               </div>
             </SlideReveal>
             {/* The toggle remains below the animated list in both states. */}

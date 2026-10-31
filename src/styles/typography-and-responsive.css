@@ -1135,11 +1135,13 @@
   line-height: 1.65 !important;
 }
 
-/* The skills shortcut follows the technology strip inside the same sliding
-   panel, so it is always the last visible item and has its own clear line. */
-.portfolio-v2 .portfolio-tech-summary-v8 .portfolio-tech-list .portfolio-all-skills-link {
+/* The skills link is the final item of the wrapping technology list,
+   rather than a separate centered row. Keep it visibly clickable. */
+.portfolio-v2 .portfolio-tech-summary-v8 .portfolio-tech-list .portfolio-tech-strip > .portfolio-all-skills-link {
   display: inline-flex;
-  margin: 10px auto 0;
+  align-items: baseline;
+  margin: 0;
+  white-space: nowrap;
   font-size: 16px !important;
   line-height: 1.7 !important;
 }
@@ -1155,7 +1157,7 @@
   .portfolio-v2 .portfolio-tech-summary-v8 .portfolio-tech-list .portfolio-tech-strip > span {
     font-size: 14px !important;
   }
-  .portfolio-v2 .portfolio-tech-summary-v8 .portfolio-tech-list .portfolio-all-skills-link {
+  .portfolio-v2 .portfolio-tech-summary-v8 .portfolio-tech-list .portfolio-tech-strip > .portfolio-all-skills-link {
     font-size: 14px !important;
   }
 }
