@@ -12,15 +12,15 @@ const systems = [
     Icon: FiGitBranch,
     concepts: ["Finite State Machines", "Separation of Concerns"],
     problem:
-      "A controller becomes difficult to maintain when locomotion, jumping, falling, dodging, and contextual actions all compete inside the same update loop.",
+      "As a character gains actions like walking, jumping, dodging, and climbing, putting every rule inside one large update loop makes it easier for behaviors to conflict. It also becomes harder to tell why a movement or animation transition happened.",
     approach:
-      "I organize player behavior around explicit states and transition rules. Related movement can remain under locomotion, while aerial behavior and actions such as rolling or ledge climbing have their own conditions. This makes it clearer which logic should run, when control should change, and how animations should respond.",
+      "I organize the controller as a finite state machine: one active state is responsible for a particular group of behavior. Grounded locomotion handles walking and running; aerial behavior handles jumping and falling; and contextual actions such as a dodge roll or ledge climb take control when their conditions are met. States have defined transition rules, while shared movement and animation data stay accessible to the controller.",
     judgment:
-      "I don't split every animation into a separate state. I group related behavior first and introduce additional states when transitions or responsibilities become complex enough to justify them.",
+      "I group related actions instead of creating a state for every animation. A small character controller may work well with simple conditions; states become more useful when actions need distinct rules, can interrupt each other, or must coordinate with animation and collision.",
     practice:
-      "My Unity third-person controller work includes CharacterController movement, jump/fall handling, dodge rolls, automatic ledge climbing, and animation coordination.",
+      "In a 3D third-person action prototype, I developed character movement, jump and fall handling, dodge rolls, and automatic ledge climbing. The controller coordinates those actions with animation and collision, so one behavior does not issue movement commands while another is in control.",
     transfer:
-      "States, transitions, and shared context are the transferable parts; Unity C#, Godot scripts, and Unreal C++ or Blueprints provide different ways to express them.",
+      "The important parts are states, conditions for switching between them, and shared character data. The same structure can be written with Unity C# classes, Godot scripts or nodes, or Unreal C++ and Blueprints.",
     flowTitle: "Organizing player behavior",
     flowTop: "Player state machine",
     flowNodes: ["Locomotion", "Aerial", "Contextual actions"],
@@ -33,15 +33,15 @@ const systems = [
     Icon: FiCpu,
     concepts: ["FSM / Hierarchical FSM", "Behavior Trees"],
     problem:
-      "A simple enemy shouldn't require the same decision architecture as an enemy with multiple combat phases, priorities, and interruptible behaviors.",
+      "An enemy with only a few actions does not need the same decision system as a boss with multiple phases, competing priorities, or attacks that can interrupt one another. Overcomplicated AI wastes development time; oversimplified AI becomes difficult to extend.",
     approach:
-      "I choose how to represent enemy behavior based on what the design actually needs: enum-driven logic for compact behaviors, state machines for clearer transitions, hierarchical states for related or shared behavior, and behavior trees when branching decisions and priorities warrant them.",
+      "I choose a decision structure based on the behaviors an enemy needs. An enum (a named set of modes) or a simple finite state machine works for a small number of actions and clear transitions. A hierarchical state machine groups related states under shared rules. A behavior tree can help when an enemy must evaluate several possible actions and decide which takes priority.",
     judgment:
-      "Each option has a cost. A simple FSM can be easier to debug than a large tree; a flat FSM can become unwieldy when the number of transitions grows. I aim for the least complicated structure that stays readable and extendable.",
+      "Simple states are easier to follow and debug, but a large flat state machine can grow into a web of transitions. More structured AI is worthwhile only when it makes the behavior clearer or easier to extend, not because it is more advanced.",
     practice:
-      "As lead gameplay programmer on Holly’s Splendid Sugar Rush Rally, I worked on AI and combat systems. My broader gameplay work has also included enemy NPC behavior.",
+      "In 2D action-platformers and 3D action or exploration games, I have worked on enemy NPC behavior, combat systems, and encounters with multiple attack phases. I consider how many decisions an enemy makes, what can interrupt an action, and whether behaviors share rules before choosing its state or decision structure.",
     transfer:
-      "The AI's decisions and transition rules are separate from engine-specific navigation, sensing, and animation APIs.",
+      "Choosing what an enemy should do is separate from how the engine moves it, detects the player, or plays animations. This reasoning applies across Unity, Godot, Unreal, and custom gameplay frameworks.",
     flowTitle: "Complexity should guide the choice",
     flowTop: "Behavior requirements",
     flowNodes: ["Enum / simple FSM", "FSM / hierarchical FSM", "Behavior tree"],
@@ -54,15 +54,15 @@ const systems = [
     Icon: FiMousePointer,
     concepts: ["Abstraction", "Loose Coupling"],
     problem:
-      "When a player controller hardcodes what every door, item, puzzle, or NPC should do, each new object type adds another special case and makes unrelated code harder to change.",
+      "If player code contains a separate rule for every door, collectible, puzzle, and NPC, adding new interactive objects means repeatedly modifying the player controller. A single input action gradually becomes tightly coupled to unrelated gameplay features.",
     approach:
-      "I separate the act of detecting and requesting an interaction from the object-specific result. The interactor handles finding an eligible target and issuing the request; the target owns the behavior that follows. The common contract can take different forms depending on the project.",
+      "I separate interaction into three responsibilities: find a possible target, check whether it can be used, and request the action. The player-side interactor handles the request; the target decides what the action does. For example, the same interaction input might open a door, activate a puzzle element, or start a conversation, without the player needing to know each object's internal logic.",
     judgment:
-      "The goal isn't to add interfaces or classes for their own sake. A shared interaction rule is useful when several objects need the same entry point, while unique behavior remains with the object that owns it.",
+      "The shared entry point should be simple enough for the project. Interfaces, components, or callbacks are possible implementations, but the real benefit is keeping object-specific behavior with the object instead of adding more special cases to player code.",
     practice:
-      "In Project IOTA, I worked on player controls, interactions, minigames, and related gameplay systems. Those systems inform how I separate interaction requests from their outcomes.",
+      "In a first-person puzzle and exploration game, I programmed player controls, object interactions, minigames, and related health and stamina systems. Different gameplay features had to respond to player actions, so I favor a reusable request path while allowing each interactive object or system to define its own result.",
     transfer:
-      "Detection, eligibility, and execution can be separated in component-based or object-oriented architectures regardless of engine.",
+      "The separation between finding a target, checking eligibility, and performing its action works in component-based and object-oriented game architectures, regardless of the engine's specific interaction APIs.",
     flowTitle: "One request, different outcomes",
     flowTop: "Interactor requests action",
     flowNodes: ["Door", "Item / puzzle", "NPC"],
@@ -75,15 +75,15 @@ const systems = [
     Icon: FiLayers,
     concepts: ["Service Organization", "Dependency Management"],
     problem:
-      "Scene changes, audio playback, and other shared functions are used in many places. Duplicating references and setup across scripts makes the project more fragile and cumbersome to maintain.",
+      "When many gameplay scripts need scene transitions, sound playback, or common references, handling the same setup in each script creates duplication. A change to one shared feature can then require edits across unrelated parts of the project.",
     approach:
-      "I organize shared responsibilities through focused managers or service access points—for example, scene and sound management—so gameplay systems can request a service without each script rebuilding its own reference network.",
+      "I keep shared responsibilities in focused managers or service access points. A scene manager handles level changes; a sound manager handles audio requests; other shared systems expose clearly defined functions. Player, enemy, or UI code can request those services instead of reimplementing their logic or maintaining a long list of repeated references.",
     judgment:
-      "Central access shouldn't mean one object controls the entire game. I keep ownership clear, separate unrelated services, and avoid turning a global manager into a collection of gameplay-specific exceptions.",
+      "Central access is not the same as putting everything in one global object. Each manager needs a clear purpose, and features should still own their own gameplay logic. For a small or local dependency, a direct reference can be simpler than adding another manager.",
     practice:
-      "While leading gameplay development on Holly’s Splendid Sugar Rush Rally, I coordinated gameplay, UI, animation, art, and audio integration. That work reinforced the value of clearly owned shared services.",
+      "In games with multiple scenes, interface screens, sound effects, and interconnected gameplay features, I use manager systems as common access points for scene changes, audio, and shared script references. This reduces repeated setup and keeps related responsibilities in one place.",
     transfer:
-      "The same responsibility boundaries can be implemented using managers, engine subsystems, service registries, or explicit dependency references.",
+      "Unity managers, Godot autoloads, Unreal subsystems, and explicit service references are different ways to organize the same idea: give shared functionality a clear owner and a predictable way to access it.",
     flowTitle: "Focused shared responsibilities",
     flowTop: "Gameplay systems",
     flowNodes: ["Scene service", "Audio service", "Other shared services"],
@@ -100,7 +100,7 @@ export default function GameplayArchitecture() {
         <div>
           <p className="arch-introduction-heading">The concept comes before the engine.</p>
           <p className="arch-introduction-text">
-            My approach is to choose a structure that fits the problem, then adapt its implementation to the tools at hand. These principles inform my gameplay work across engines, rather than tying the design to a particular API.
+            Game engines provide different tools, but they often present the same design challenges: managing character actions, enemy decisions, interactive objects, and shared systems. I choose a structure that fits the problem, then adapt the implementation to the engine and project.
           </p>
         </div>
       </div>
