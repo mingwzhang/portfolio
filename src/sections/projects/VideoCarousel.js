@@ -223,7 +223,11 @@ function VideoCarousel() {
                 />
                 {!hasStarted && (
                   <button type="button" className="featured-play-button" onClick={playSelected} aria-label={`Play ${current.title} gameplay video`}>
-                    <span aria-hidden="true">▶</span>
+                    <span aria-hidden="true">
+                      <svg width="26" height="26" viewBox="0 0 24 24" focusable="false" style={{ display: "block" }}>
+                        <path d="M8 4.5L19 12L8 19.5Z" fill="currentColor" />
+                      </svg>
+                    </span>
                   </button>
                 )}
                 {hasStarted && !isPlaying && !isSeeking && (
@@ -234,7 +238,11 @@ function VideoCarousel() {
                     aria-label={`Resume ${current.title} gameplay video`}
                     title="Resume playback"
                   >
-                    <span aria-hidden="true">▶</span>
+                    <span aria-hidden="true">
+                      <svg width="26" height="26" viewBox="0 0 24 24" focusable="false" style={{ display: "block" }}>
+                        <path d="M8 4.5L19 12L8 19.5Z" fill="currentColor" />
+                      </svg>
+                    </span>
                   </button>
                 )}
               </>
