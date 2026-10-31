@@ -1,0 +1,7 @@
+/* Dark fallback for the starfield canvas during mobile pinch-zoom repaints.
+   If the canvas is temporarily not composited, no bright gradient shows through. */
+@media (pointer: coarse) {
+  canvas.animated-background {
+    background: #121212;
+  }
+}
