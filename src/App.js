@@ -111,7 +111,7 @@ function App() {
           <div className="portfolio-section-heading">
             <span className="portfolio-kicker">01 / SELECTED WORK</span>
             <h2 id="portfolio-projects-heading" className="pixel-text pixel-bold-title">Featured Projects</h2>
-            <p>Explore game footage, verified project responsibilities, and links to each release.</p>
+            <p>Explore game footage, my role and contributions, and links to each release.</p>
           </div>
           <VideoCarousel />
         </section>

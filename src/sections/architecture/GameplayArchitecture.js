@@ -35,7 +35,7 @@ const systems = [
     problem:
       "An enemy with only a few actions does not need the same decision system as a boss with multiple phases, competing priorities, or attacks that can interrupt one another. Overcomplicated AI wastes development time; oversimplified AI becomes difficult to extend.",
     approach:
-      "I choose a decision structure based on the behaviors an enemy needs. An enum (a named set of modes) or a simple finite state machine works for a small number of actions and clear transitions. A hierarchical state machine groups related states under shared rules. A behavior tree can help when an enemy must evaluate several possible actions and decide which takes priority.",
+      "I choose a decision structure based on the behaviors an enemy needs. For an enemy with only a few actions, a simple finite state machine can use an enum to name its states and straightforward conditions to switch between them. A hierarchical state machine groups related states under shared rules. A behavior tree can help when an enemy must evaluate several possible actions and decide which takes priority.",
     judgment:
       "Simple states are easier to follow and debug, but a large flat state machine can grow into a web of transitions. More structured AI is worthwhile only when it makes the behavior clearer or easier to extend, not because it is more advanced.",
     practice:
@@ -44,7 +44,7 @@ const systems = [
       "Choosing what an enemy should do is separate from how the engine moves it, detects the player, or plays animations. This reasoning applies across Unity, Godot, Unreal, and custom gameplay frameworks.",
     flowTitle: "Complexity should guide the choice",
     flowTop: "Behavior requirements",
-    flowNodes: ["Enum / simple FSM", "FSM / hierarchical FSM", "Behavior tree"],
+    flowNodes: ["Simple FSM (enum states)", "FSM / hierarchical FSM", "Behavior tree"],
   },
   {
     id: "interaction",
