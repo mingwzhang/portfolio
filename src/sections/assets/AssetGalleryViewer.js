@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import "./2D3DAssetGallery.css";
 import "./AssetGalleryViewer.css";
 
@@ -122,9 +123,10 @@ export default function AssetGalleryViewer({ title, type, categories }) {
         ))}
       </ul>
 
-      {activeCategory && selected && (
+      {activeCategory && selected && createPortal(
         <div
-          className={type === "2d" ? "modal-bg" : "modal-bg-3d"}
+          className={`${type === "2d" ? "modal-bg" : "modal-bg-3d"} portfolio-asset-backdrop`}
+          style={{ zIndex: 200001 }}
           onMouseDown={(event) => {
             if (event.target === event.currentTarget) closeCategory();
           }}
@@ -180,7 +182,8 @@ export default function AssetGalleryViewer({ title, type, categories }) {
               Use ← → to browse and Esc to close. You can also click outside this panel.
             </p>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );
