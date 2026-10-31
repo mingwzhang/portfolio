@@ -736,7 +736,7 @@
 }
 .portfolio-v2 #skills-education .icon-wrapper:hover,
 .portfolio-v2 #skills-education .icon-wrapper.hover-scale:hover {
-  transform: scale(1.055) !important;
+  transform: scale(1.15) !important;
   background: #24282d !important;
   border-color: rgba(121, 178, 183, .36) !important;
 }
@@ -804,7 +804,7 @@
 .portfolio-v2 #projects .featured-project-intro > .portfolio-kicker {
   display: block;
   color: #8edccb !important;
-  font-size: 14px !important;
+  font-size: 15px !important;
   letter-spacing: .5px;
   line-height: 1.6;
 }
@@ -822,7 +822,7 @@
   margin: 0 0 8px;
   color: #a4cbd0 !important;
   font-family: var(--pixel-ui, "Silkscreen", monospace) !important;
-  font-size: 13px !important;
+  font-size: 15px !important;
   font-weight: 700;
   letter-spacing: .35px;
   line-height: 1.5;
@@ -843,7 +843,7 @@
 .portfolio-v2 #projects .featured-project-overview .featured-project-summary {
   margin: 0 !important;
   color: #e5f2f2 !important;
-  font-size: 18px !important;
+  font-size: 19px !important;
   line-height: 1.7 !important;
   font-weight: 400 !important;
 }
@@ -877,14 +877,14 @@
 }
 .portfolio-v2 #projects .featured-project-facts .featured-fact-label {
   display: block;
-  font-size: 13px !important;
+  font-size: 15px !important;
   line-height: 1.55 !important;
   letter-spacing: .25px;
 }
 .portfolio-v2 #projects .featured-project-facts p {
   margin: 7px 0 0;
   color: #e7f0f0 !important;
-  font-size: 17px !important;
+  font-size: 18px !important;
   line-height: 1.72 !important;
 }
 
@@ -972,7 +972,7 @@
   gap: 10px;
   margin: 0 0 10px;
   color: #9dd4d9 !important;
-  font-size: 12px !important;
+  font-size: 14px !important;
   font-weight: 700;
   letter-spacing: .5px;
   text-align: left !important;
@@ -1013,7 +1013,7 @@
   background: transparent !important;
   border-radius: 0 !important;
   box-shadow: none !important;
-  font-size: 15px !important;
+  font-size: 17px !important;
   line-height: 1.6 !important;
   color: #d4e8e9 !important;
   text-shadow: none !important;
@@ -1065,4 +1065,51 @@
 }
 .portfolio-v2 .portfolio-tech-summary-v8 .portfolio-tech-toggle-v8 {
   margin-top: 8px;
+}
+
+
+/* Seven featured games: keep readable thumbnails instead of squeezing seven
+   small labels into a single row. The existing two-column mobile layout stays. */
+.portfolio-v2 #projects .featured-project-picker {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+@media (max-width: 1000px) {
+  .portfolio-v2 #projects .featured-project-picker {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 640px) {
+  .portfolio-v2 #projects .featured-project-picker {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+/* Fides Corvi currently has a cover image, not a local .mp4; the same video
+   frame displays the art without exposing a nonfunctional play control. */
+.portfolio-v2 #projects .featured-video-frame .featured-project-static-preview {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  background: #000;
+}
+
+/* Keep the slightly larger project labels legible on smaller screens. */
+@media (max-width: 640px) {
+  .portfolio-v2 #projects .featured-project-overview .featured-project-summary {
+    font-size: 18px !important;
+  }
+  .portfolio-v2 #projects .featured-project-facts p {
+    font-size: 17px !important;
+  }
+  .portfolio-v2 #projects .featured-detail-label,
+  .portfolio-v2 #projects .featured-project-facts .featured-fact-label,
+  .portfolio-v2 #projects .featured-project-media .featured-project-metadata > .featured-detail-label {
+    font-size: 13px !important;
+  }
+  .portfolio-v2 #projects .featured-project-intro > .portfolio-kicker {
+    font-size: 13px !important;
+  }
+  .portfolio-v2 #projects .featured-project-media .featured-project-metadata .featured-project-tags span {
+    font-size: 15px !important;
+  }
 }
