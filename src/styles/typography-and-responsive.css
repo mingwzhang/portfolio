@@ -566,6 +566,13 @@
     height: 60px !important;
     font-size: 24px !important;
   }
+  .portfolio-v2 .featured-video-frame .featured-resume-button-v8 {
+    width: 60px;
+    height: 60px;
+  }
+  .portfolio-v2 .featured-video-frame .featured-resume-button-v8 span {
+    font-size: 24px;
+  }
 }
 @media (max-width: 420px) {
   .portfolio-v2 #skills-education .col-md-6:last-child .card p.pixel-text {
