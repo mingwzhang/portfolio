@@ -89,6 +89,8 @@ function VideoCarousel() {
   const [hasStarted, setHasStarted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isSeeking, setIsSeeking] = useState(false);
+  // Keep Safari\'s centered native play icon from overlapping our resume button on touch phones.
+  const [isTouchMobile] = useState(() => typeof window !== "undefined" && window.matchMedia("(max-width: 768px) and (pointer: coarse)").matches);
   const videoRef = useRef(null);
   const tabRefs = useRef([]);
   const pointerStart = useRef(null);
@@ -207,7 +209,7 @@ function VideoCarousel() {
                   poster={getPreviewImage(current)}
                   preload="none"
                   playsInline
-                  controls={hasStarted}
+                  controls={hasStarted && (!isTouchMobile || isPlaying || isSeeking)}
                   onPlay={() => { setHasStarted(true); setIsPlaying(true); }}
                   onPause={() => setIsPlaying(false)}
                   onSeeking={(event) => {
