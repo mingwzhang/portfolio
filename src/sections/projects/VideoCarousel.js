@@ -12,7 +12,6 @@ const projects = [
     contribution: "Handled programming and visual effects, and collaborated on game design for the narrative adventure.",
     file: "Fides Corvi",
     imageFile: "Fides Corvi.png",
-    hasVideo: false,
     itchUrl: "https://amethyscent.itch.io/fides-corvi",
   },
   {
