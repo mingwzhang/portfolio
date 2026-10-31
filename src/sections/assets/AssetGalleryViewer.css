@@ -11,7 +11,7 @@
 .portfolio-asset-dialog button:focus-visible { outline: 3px solid #ffe990; outline-offset: 3px; }
 .portfolio-asset-dialog {
   width: min(880px, calc(100vw - 24px)); max-width: none; max-height: min(90vh, 840px);
-  overflow-y: auto; padding: 0 0 17px; background: #111b22;
+  overflow-y: auto; scrollbar-gutter: auto; padding: 0 0 17px; background: #111b22;
   box-shadow: 0 22px 70px #000b;
 }
 .portfolio-asset-dialog::after { content: none !important; }

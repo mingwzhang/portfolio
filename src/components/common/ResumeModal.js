@@ -89,7 +89,7 @@ export default function ResumeModal({ open, onClose, resumeUrl }) {
 
         <div className="resume-modal-viewer">
           {pdfStatus === "ready" ? (
-            <iframe title="Resume PDF preview" src={`${resumeUrl}#view=FitV`} />
+            <iframe title="Resume PDF preview" src={`${resumeUrl}#zoom=100`} />
           ) : (
             <div className="resume-modal-message" role="status">
               <FiFileText size={38} aria-hidden="true" />
