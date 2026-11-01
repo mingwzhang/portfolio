@@ -1,13 +1,5 @@
-/* Enable the browser's native pinch-to-zoom without altering normal page layout.
-   The initial viewport scale (1) is also the minimum permitted scale. */
-@media (pointer: coarse) {
-  html,
-  body {
-    /* Override the former pan-y restriction while retaining normal scrolling. */
-    touch-action: manipulation;
-  }
-
-  /* The video container previously used pan-y, which blocked pinch gestures. */
+/* Touch interaction for featured videos only; main page scrolling is in global-base.css. */
+@media (pointer: coarse) {
   .featured-video-frame {
     touch-action: manipulation;
   }
