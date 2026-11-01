@@ -8,8 +8,8 @@ const ContactForm = () => {
     email: "",
     message: "",
   });
- const [status, setStatus] = useState("");
- const [statusType, setStatusType] = useState("");
+  const [status, setStatus] = useState("");
+  const [statusType, setStatusType] = useState("");
   const [isSending, setIsSending] = useState(false);
 
   const handleChange = (e) => {
@@ -17,32 +17,37 @@ const ContactForm = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Ignore additional submits while an EmailJS request is in flight.
     if (isSending) return;
-    setIsSending(true);
 
-    emailjs
-      .send(
-        "service_s3eh3hi",  // EmailJS service ID
-        "template_7i16ush", // EmailJS template ID
-        formData,           // Values supplied by the contact form
-        "mnQpaviz3_3d37L_1" // EmailJS public key (client-visible)
-      )
-      .then(
-        (result) => {
-          setStatus("Message sent successfully!");
-          setStatusType("success");
-          setFormData({ name: "", email: "", message: "" });
-        },
-        (error) => {
-          setStatus("Failed to send message. Please try again.");
-          setStatusType("error");
-        }
-      )
-      .finally(() => setIsSending(false));
+    setIsSending(true);
+    setStatus("");
+    setStatusType("");
+
+    try {
+      await emailjs.send(
+        "service_s3eh3hi",  // Existing EmailJS service ID
+        "template_7i16ush", // Existing EmailJS template ID
+        formData,           // Existing form field names
+        "mnQpaviz3_3d37L_1" // Existing public key (safe to include in client code)
+      );
+
+      setStatus("Message sent successfully!");
+      setStatusType("success");
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      // EmailJS returns status and text for most API failures. Preserve them
+      // in the browser console so the real cause can be diagnosed.
+      console.error("EmailJS contact form failed:", {
+        status: error?.status ?? "unknown",
+        text: error?.text || error?.message || "No details returned",
+      });
+      setStatus("Message could not be sent. Please use the email link below.");
+      setStatusType("error");
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
@@ -89,7 +94,7 @@ const ContactForm = () => {
       </div>
 
       {status && (
-        <p className={`contact-status ${statusType}`}>
+        <p className={`contact-status ${statusType}`} role="status" aria-live="polite">
           {status}
         </p>
       )}
