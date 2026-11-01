@@ -32,28 +32,19 @@
 
 
 .portfolio-v2 .nav-upper-v7 .nav-name {
-  font-size: clamp(15px, 1.05vw, 18px) !important;
   line-height: 1.5 !important;
 }
 .portfolio-v2 .nav-section-row-v7 .nav-item {
-  font-size: clamp(12px, .84vw, 14px) !important;
-  line-height: 1.4 !important;
   padding: 12px 14px !important;
 }
 .portfolio-v2 .nav-actions-v7 :is(.nav-resume, .nav-github, .nav-linkedin) {
-  font-size: clamp(12px, .82vw, 14px) !important;
   line-height: 1.45 !important;
 }
 .portfolio-v2 .nav-layout-v7 .nav-toggle-text {
-  font-size: 12px !important;
 }
 .portfolio-v2 .portfolio-hero-copy-v8 .portfolio-hero-subtitle {
-  font-size: clamp(16px, 1.2vw, 18px) !important;
-  line-height: 1.75 !important;
-  max-width: 585px;
 }
 .portfolio-v2 .portfolio-hero-copy-v8 .portfolio-eyebrow {
-  font-size: clamp(13px, 1.02vw, 15px) !important;
 }
 .portfolio-v2 .portfolio-hero-copy-v8 .portfolio-hero-secondary-link-v8 {
   font-size: 15px !important;
@@ -65,16 +56,12 @@
   line-height: 1.5 !important;
 }
 .portfolio-v2 .portfolio-tech-toggle-v8 {
-  font-size: 13px !important;
-  line-height: 1.65 !important;
 }
 .portfolio-v2 .portfolio-tech-toggle-action-v8,
 .portfolio-v2 .portfolio-all-skills-link {
-  font-size: 15px !important;
   line-height: 1.65 !important;
 }
 .portfolio-v2 .portfolio-tech-strip span {
-  font-size: 14px !important;
   line-height: 1.45 !important;
   overflow-wrap: anywhere;
 }
@@ -87,21 +74,14 @@
 }
 .portfolio-v2 .portfolio-section-heading h2,
 .portfolio-v2 #about h2.pixel-bold-title {
-  font-size: clamp(20px, 1.65vw, 25px) !important;
-  line-height: 1.65 !important;
 }
 .portfolio-v2 .portfolio-section-heading p {
-  font-size: clamp(16px, 1.08vw, 18px) !important;
   line-height: 1.75 !important;
-  max-width: 800px;
 }
 .portfolio-v2 #about .portfolio-about-content {
-  font-size: clamp(16px, 1.07vw, 18px) !important;
-  line-height: 1.85 !important;
   letter-spacing: 0 !important;
   font-weight: 400 !important;
   text-transform: none !important;
-  max-width: 900px;
 }
 .portfolio-v2 #about .portfolio-about-content .Typewriter__wrapper {
   font-family: var(--pixel-ui) !important;
@@ -110,31 +90,22 @@
 
 
 .portfolio-v2 .featured-project-tab span {
-  font-size: 13px !important;
-  line-height: 1.5 !important;
   overflow-wrap: anywhere;
 }
 .portfolio-v2 .featured-project-copy > .portfolio-kicker {
   font-size: 13px !important;
 }
 .portfolio-v2 .featured-project-copy h3 {
-  font-size: clamp(17px, 1.25vw, 21px) !important;
   line-height: 1.7 !important;
 }
 .portfolio-v2 .featured-project-summary {
-  font-size: 16px !important;
-  line-height: 1.7 !important;
 }
 .portfolio-v2 .featured-fact-label {
-  font-size: 12px !important;
   line-height: 1.6 !important;
 }
 .portfolio-v2 .featured-project-facts p {
-  font-size: 15px !important;
-  line-height: 1.75 !important;
 }
 .portfolio-v2 .featured-project-tags span {
-  font-size: 13px !important;
   line-height: 1.5 !important;
 }
 .portfolio-v2 :is(.featured-video-controls button, .featured-video-controls span,
@@ -149,32 +120,23 @@
 
 
 .portfolio-v2 #skills-education h4 {
-  font-size: clamp(19px, 1.45vw, 23px) !important;
   line-height: 1.6 !important;
 }
 .portfolio-v2 #skills-education h6 {
-  font-size: clamp(12px, .95vw, 15px) !important;
   line-height: 1.65 !important;
 }
 .portfolio-v2 #skills-education .icon-wrapper .icon-label {
-  font-size: 12px !important;
-  line-height: 1.25 !important;
-  letter-spacing: -.15px !important;
-  overflow-wrap: anywhere;
 }
 .portfolio-v2 #skills-education .card p.pixel-text {
   font-size: clamp(13px, .96vw, 15px) !important;
-  line-height: 1.7 !important;
   letter-spacing: .15px !important;
 }
 
 
 .portfolio-v2 .portfolio-demo-description p {
-  font-size: 16px !important;
   line-height: 1.75 !important;
 }
 .portfolio-v2 .portfolio-demo-description h3 {
-  font-size: 17px !important;
   line-height: 1.75 !important;
 }
 .portfolio-v2 .mini-game-score {
@@ -182,7 +144,6 @@
   line-height: 1.6 !important;
 }
 .portfolio-v2 .portfolio-asset-panel :is(h5, .asset-category-label) {
-  font-size: 16px !important;
   line-height: 1.6 !important;
 }
 .portfolio-v2 :is(.asset-category-count, .portfolio-asset-overline,
@@ -191,51 +152,31 @@
   font-size: 14px !important;
   line-height: 1.65 !important;
 }
-.portfolio-v2 .portfolio-asset-caption { font-size: 15px !important; }
+.portfolio-v2 .portfolio-asset-caption {  }
 
 
 .portfolio-v2 #contact :is(input, textarea) {
-  font-size: 14px !important;
   line-height: 1.65 !important;
   letter-spacing: .1px !important;
 }
 .portfolio-v2 #contact :is(.contact-button, .portfolio-contact-actions .portfolio-action) {
-  font-size: 13px !important;
   line-height: 1.5 !important;
 }
 .portfolio-v2 #contact :is(.contact-fallback, .contact-status) {
-  font-size: 13px !important;
   line-height: 1.9 !important;
 }
-.portfolio-v2 .portfolio-footer { font-size: 13px !important; line-height: 1.65 !important; }
 .portfolio-v2 :is(.effects-toggle, .nav-toggle-btn, .top-button) { font-size: 12px !important; }
 
 
 @media (max-width: 1100px) {
   .portfolio-v2 .nav-section-row-v7 { gap: 7px !important; }
-  .portfolio-v2 .nav-section-row-v7 .nav-item { font-size: 12px !important; padding: 10px 10px !important; }
 }
 @media (max-width: 768px) {
-  .portfolio-v2 .nav-section-row-v7 .nav-item {
-    font-size: 11px !important;
-    padding: 10px 6px !important;
-    white-space: normal !important;
-  }
-  .portfolio-v2 .nav-actions-v7 :is(.nav-resume, .nav-github, .nav-linkedin) {
-    font-size: 11px !important;
-    padding: 9px 8px !important;
-  }
-  .portfolio-v2 .nav-upper-v7 .nav-name { font-size: 14px !important; }
+  .portfolio-v2 .nav-section-row-v7 .nav-item { white-space: normal !important; }
+  .portfolio-v2 .nav-actions-v7 :is(.nav-resume, .nav-github, .nav-linkedin) { padding: 9px 8px !important; }
   .portfolio-v2 .portfolio-hero-copy-v8 .portfolio-hero-subtitle { font-size: 15px !important; }
-  .portfolio-v2 .portfolio-section-heading p { font-size: 15px !important; }
-  .portfolio-v2 #about .portfolio-about-content { font-size: 15px !important; line-height: 1.9 !important; }
+  .portfolio-v2 #about .portfolio-about-content { line-height: 1.9 !important; }
   .portfolio-v2 .featured-project-tab span { font-size: 12px !important; }
-  .portfolio-v2 .featured-project-summary, .portfolio-v2 .portfolio-demo-description p { font-size: 15px !important; }
-  .portfolio-v2 .featured-project-facts p { font-size: 14px !important; }
-  .portfolio-v2 #skills-education .icon-wrapper .icon-label { font-size: 11px !important; }
-  .portfolio-v2 #skills-education .card p.pixel-text { font-size: 12px !important; }
-  .portfolio-v2 .portfolio-section-heading h2,
-  .portfolio-v2 #about h2.pixel-bold-title { font-size: 18px !important; }
 }
 @media (max-width: 480px) {
   .portfolio-v2 .featured-project-tab span { font-size: 11px !important; }
@@ -252,7 +193,6 @@
 
 .portfolio-v2 .portfolio-main {
   width: 100%;
-  max-width: 1500px;
   padding-left: clamp(16px, 2.25vw, 34px);
   padding-right: clamp(16px, 2.25vw, 34px);
 }
@@ -289,7 +229,7 @@
   padding: 9px 14px;
 }
 .portfolio-v2 .portfolio-hero-copy-v8 .portfolio-eyebrow { font-size: clamp(15px, 1.1vw, 18px) !important; }
-.portfolio-v2 .portfolio-hero-copy-v8 .portfolio-hero-subtitle { font-size: clamp(18px, 1.2vw, 21px) !important; }
+.portfolio-v2 .portfolio-hero-copy-v8 .portfolio-hero-subtitle {  }
 .portfolio-v2 .portfolio-hero-secondary-link-v8 { font-size: 17px !important; }
 .portfolio-v2 .portfolio-action { font-size: 15px !important; }
 .portfolio-v2 .portfolio-section-heading h2,
@@ -346,10 +286,6 @@
 .portfolio-v2 #skills-education h4 { font-size: clamp(22px, 1.52vw, 27px) !important; }
 .portfolio-v2 #skills-education h6 { font-size: clamp(15px, 1.04vw, 18px) !important; }
 .portfolio-v2 #skills-education .icon-wrapper .icon-label {
-  font-size: 14px !important;
-  line-height: 1.22 !important;
-  letter-spacing: -.2px !important;
-  overflow-wrap: anywhere;
 }
 .portfolio-v2 #skills-education .card p.pixel-text {
   font-size: clamp(15px, 1.06vw, 18px) !important;
@@ -897,19 +833,6 @@
 @media (max-width: 640px) {
   .portfolio-v2 #projects .featured-project-intro { margin-bottom: 12px; }
   .portfolio-v2 #projects .featured-project-overview { padding: 10px 11px; }
-  .portfolio-v2 #projects .featured-project-overview .featured-project-summary {
-    font-size: 17px !important;
-  }
-  .portfolio-v2 #projects .featured-project-facts p {
-    font-size: 16px !important;
-  }
-  .portfolio-v2 #projects .featured-detail-label,
-  .portfolio-v2 #projects .featured-project-facts .featured-fact-label {
-    font-size: 12px !important;
-  }
-  .portfolio-v2 #projects .featured-project-intro > .portfolio-kicker {
-    font-size: 12px !important;
-  }
 }
 
 
@@ -994,14 +917,7 @@
   font-family: inherit;
 }
 
-@media (max-width: 640px) {
-  .portfolio-v2 #projects .featured-project-media .featured-project-metadata > .featured-detail-label {
-    font-size: 12px !important;
-  }
-  .portfolio-v2 #projects .featured-project-media .featured-project-metadata .featured-project-tags span {
-    font-size: 14px !important;
-  }
-}
+
 
 
 
@@ -1013,8 +929,6 @@
   align-items: baseline;
   justify-content: center;
   flex-wrap: wrap;
-  column-gap: 13px;
-  row-gap: 8px;
   margin: 0 auto 14px;
 }
 .portfolio-v2 .portfolio-tech-summary-v8 .portfolio-tech-list .portfolio-all-skills-link {

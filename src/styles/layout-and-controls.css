@@ -171,24 +171,12 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  column-gap: clamp(12px, 2.15vw, 32px);
-  row-gap: 3px;
-  min-height: 43px;
-  padding: 6px 0 7px;
 }
 .portfolio-v2 .nav-section-row-v7 .nav-item {
-  font-size: 11px;
-  letter-spacing: .1px;
-  padding: 8px 3px;
-  line-height: 1.5;
   white-space: nowrap;
   max-width: none;
 }
-.portfolio-v2 .nav-upper-v7 .nav-name {
-  font-size: 12px;
-  padding: 9px 5px;
-  max-width: none;
-}
+
 .portfolio-v2 .nav-actions-v7 .nav-btn,
 .portfolio-v2 .nav-actions-v7 .nav-item,
 .portfolio-v2 .nav-actions-v7 .nav-resume,
@@ -252,12 +240,6 @@
 .portfolio-v2 .portfolio-tech-expand:hover { color: #fff; }
 .portfolio-v2 .portfolio-tech-links .portfolio-all-skills-link { margin: 0; }
 
-
-.portfolio-v2 .portfolio-kicker {
-  font-size: 11px;
-  line-height: 1.65;
-  letter-spacing: .35px;
-}
 .portfolio-v2 .featured-project-copy > .portfolio-kicker { font-size: 11px; }
 .portfolio-v2 .featured-fact-label { font-size: 10px; line-height: 1.65; }
 .portfolio-v2 .featured-swipe-hint { font-size: 17px; }

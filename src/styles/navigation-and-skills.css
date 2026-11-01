@@ -17,11 +17,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 11px 13px;
   min-height: 43px;
-  font-size: clamp(11px, .78vw, 13px);
-  letter-spacing: 0;
-  line-height: 1.55;
   color: #ebffff !important;
   background: rgba(18, 52, 65, .93);
   border: 1px solid rgba(88, 213, 218, .48);
@@ -48,21 +44,13 @@
 
 
 .portfolio-v2 #about .portfolio-about-content {
-  max-width: 890px;
   margin: 12px auto 3px;
   font-family: 'VT323', monospace !important;
-  font-weight: 400 !important;
-  font-size: clamp(22px, 1.65vw, 26px) !important;
-  line-height: 1.5 !important;
-  letter-spacing: .25px !important;
-  text-transform: none !important;
   text-align: left;
   color: #e2f0f2 !important;
   text-shadow: 0 0 2px rgba(93, 223, 228, .12) !important;
 }
 .portfolio-v2 #about .portfolio-about-content .Typewriter__wrapper {
-  font-family: inherit;
-  font-weight: inherit;
   text-shadow: inherit;
 }
 
@@ -73,18 +61,12 @@
   align-items: center;
   justify-content: flex-start;
   gap: 6px;
-  width: 79px;
-  min-height: 86px;
   height: auto;
-  padding: 10px 6px 7px;
-  margin: 4px !important;
   border-radius: 7px;
   background: rgba(14, 35, 47, .82);
   border: 1px solid rgba(117, 203, 205, .25);
   filter: none !important;
   box-shadow: none !important;
-  transform: none;
-  transition: border-color .15s ease, background-color .15s ease;
 }
 .portfolio-v2 #skills-education .icon-wrapper:hover {
   filter: none !important;
@@ -233,9 +215,7 @@
 
 .portfolio-v2 .nav-upper-v7 .nav-name {
   font-family: "Silkscreen", "Press Start 2P", monospace !important;
-  font-size: clamp(13px, .98vw, 16px) !important;
   letter-spacing: .45px !important;
-  line-height: 1.7 !important;
   color: #ffdf91 !important;
   text-shadow: 1px 1px 0 #533b21, 0 0 4px rgba(255, 212, 113, .21) !important;
   padding: 10px 8px !important;
