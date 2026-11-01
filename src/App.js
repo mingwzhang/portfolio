@@ -2,7 +2,7 @@
 import React, { useCallback, useState } from "react";
 import "devicon/devicon.min.css";
 import ParticleExplosion from "./components/effects/ParticleExplosion";
-import MiniGameBox from "./sections/interactive/MiniGameBox";
+import InteractiveDemo from "./sections/interactive/InteractiveDemo";
 import ContactForm from "./sections/contact/ContactForm";
 import NavBar from "./components/navigation/NavBar";
 import AnimatedBackground from "./components/effects/AnimatedBackground";
@@ -14,18 +14,15 @@ import { Helmet } from "react-helmet";
 import AboutMe from "./sections/about/AboutMe";
 import SkillsEducation from "./sections/skills/SkillsEducation";
 import TopButton from "./components/navigation/TopButton";
-import AssetGallery2D from "./sections/assets/2DAssetGallery";
-import AssetGallery3D from "./sections/assets/3DAssetGallery";
 import SlideReveal from "./components/common/SlideReveal";
 import ResumeModal from "./components/common/ResumeModal";
 import { skills, featuredTechnologies } from "./data/portfolio-data";
-import "./styles/PortfolioEnhancements.css";
-import "./styles/layout-and-controls.css";
-import "./styles/navigation-and-skills.css";
-import "./styles/typography-and-responsive.css";
+import "./styles/portfolio-sections.css";
+import "./styles/page-layout-and-controls.css";
+import "./styles/navigation-skills-and-contact.css";
+import "./styles/responsive-section-layout.css";
 
 function App() {
-  const [showAssets, setShowAssets] = useState(true);
   const [showAllTech, setShowAllTech] = useState(true);
   const [effectsPaused, setEffectsPaused] = useState(() =>
     typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches
@@ -149,37 +146,7 @@ function App() {
           <SkillsEducation skills={skills} />
         </section>
 
-        <section id="more-work" className="portfolio-section portfolio-more-work" aria-labelledby="more-work-heading">
-          <div className="portfolio-section-heading">
-            <span className="portfolio-kicker">04 / EXPLORE MORE</span>
-            <h2 id="more-work-heading" className="pixel-text pixel-bold-title">Interactive Demo &amp; Assets</h2>
-            <p>A playable React mini-game and examples of 2D and 3D development work.</p>
-          </div>
-          <div className="portfolio-demo-panel">
-            <div className="portfolio-demo-description">
-              <span className="portfolio-kicker">BUILT INTO THIS WEBSITE</span>
-              <h3 className="pixel-text">Hit the Target!</h3>
-              <p>Try the interactive mini-game. Click or tap the moving target to increase your score.</p>
-              <p className="portfolio-muted">An interactive component of this React portfolio.</p>
-            </div>
-            <div className="portfolio-demo-game"><MiniGameBox /></div>
-          </div>
-          <button
-            type="button"
-            className="portfolio-action portfolio-asset-toggle"
-            aria-controls="portfolio-asset-galleries"
-            aria-expanded={showAssets}
-            onClick={() => setShowAssets((previous) => !previous)}
-          >
-            {showAssets ? "Hide 2D & 3D asset galleries −" : "Explore 2D & 3D asset galleries +"}
-          </button>
-          <SlideReveal id="portfolio-asset-galleries" open={showAssets} className="portfolio-assets-slide">
-            <div className="portfolio-assets-grid">
-              <div className="portfolio-asset-panel"><AssetGallery2D /></div>
-              <div className="portfolio-asset-panel"><AssetGallery3D /></div>
-            </div>
-          </SlideReveal>
-        </section>
+        <InteractiveDemo />
 
         <section id="contact" className="portfolio-section portfolio-contact-section" aria-labelledby="portfolio-contact-heading">
           <div className="portfolio-section-heading">

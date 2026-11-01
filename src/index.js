@@ -3,9 +3,9 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App";
 import LoadingScreen from "./components/loading/LoadingScreen";
-import "./styles/styles.css";
+import "./styles/global-base.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./styles/mobile-pinch-zoom.css";
+import "./sections/projects/VideoTouchZoom.css";
 
 const RootComponent = () => {
   const [loading, setLoading] = useState(true);
