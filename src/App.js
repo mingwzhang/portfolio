@@ -68,7 +68,18 @@ function App() {
                 Gameplay programming, interactive systems, and software development.
               </p>
               <div className="portfolio-hero-actions">
-                <a className="portfolio-action portfolio-action-primary" href="#projects">Explore projects</a>
+                <a
+                  className="portfolio-action portfolio-action-primary"
+                  href="#projects"
+                  onClick={(event) => {
+                    event.preventDefault();
+                    document.getElementById("projects")?.scrollIntoView({
+                      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+                      block: "start",
+                    });
+                    window.history.replaceState(null, "", "#projects");
+                  }}
+                >Explore projects</a>
                 <button type="button" className="portfolio-hero-secondary-link-v8 portfolio-hero-resume-button" onClick={openResume} aria-haspopup="dialog">View Resume</button>
                 <a className="portfolio-hero-secondary-link-v8" href="https://github.com/mingwzhang" target="_blank" rel="noopener noreferrer">GitHub</a>
               </div>
