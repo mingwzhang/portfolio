@@ -110,3 +110,42 @@
 @media (prefers-reduced-motion: reduce) {
   .resume-modal-close { transition: none; }
 }
+
+/* Keep the PDF viewer loaded between opens, but make the closed modal inert. */
+.resume-modal-backdrop.resume-modal-closed {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Cover the browser's native PDF loading/toolbar flash until it is stable. */
+.resume-modal-viewer { position: relative; }
+.resume-modal-preview-shield {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #263942;
+  opacity: 1;
+  transition: opacity .12s ease;
+}
+.resume-modal-preview-shield.resume-modal-preview-shield-ready {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .12s ease, visibility 0s linear .12s;
+  pointer-events: none;
+}
+.resume-modal-preview-wait {
+  text-align: center;
+  font: 18px/1.5 'VT323', monospace;
+  color: #c7e5e5;
+  padding: 20px;
+}
+.resume-modal-preview-wait p { margin: 8px 0 0; }
+.resume-modal-preview-fallback { font-size: 16px; }
+.resume-modal-preview-fallback a { color: #b7f2df; }
+@media (prefers-reduced-motion: reduce) {
+  .resume-modal-preview-shield { transition: none; }
+  .resume-modal-preview-shield.resume-modal-preview-shield-ready { transition: none; }
+}
