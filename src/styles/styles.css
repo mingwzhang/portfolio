@@ -1,6 +1,5 @@
 /* Base styling and global component rules. */
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
-@import url("../components/loading/LoadingScreen.css");
 
 .pixel-text {
   font-family: "Press Start 2P", cursive;

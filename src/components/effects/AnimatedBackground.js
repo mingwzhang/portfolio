@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react";
-import "../../styles/styles.css";
 import "./MobileBackgroundFix.css";
 
 // Keep the same starfield, but limit mobile redraws and refresh after pinch zoom.

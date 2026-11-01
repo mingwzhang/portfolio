@@ -1,6 +1,5 @@
 // Decorative shapes are positioned once when the component mounts.
 import React, { useEffect, useState } from "react";
-import "../../styles/styles.css";
 
 const FloatingShapes = () => {
   const [shapes, setShapes] = useState([]);
