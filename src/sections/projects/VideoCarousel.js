@@ -1,3 +1,4 @@
+
 import React, { useRef, useState } from "react";
 
 // Featured project metadata, preview assets, and outbound game links.
@@ -89,8 +90,7 @@ function VideoCarousel() {
   const [hasStarted, setHasStarted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isSeeking, setIsSeeking] = useState(false);
-  // Keep Safari\'s centered native play icon from overlapping our resume button on touch phones.
-  const [isTouchMobile] = useState(() => typeof window !== "undefined" && window.matchMedia("(max-width: 768px) and (pointer: coarse)").matches);
+  const [isTouchingVideoControls, setIsTouchingVideoControls] = useState(false);
   const videoRef = useRef(null);
   const tabRefs = useRef([]);
   const pointerStart = useRef(null);
@@ -105,6 +105,7 @@ function VideoCarousel() {
     setHasStarted(false);
     setIsPlaying(false);
     setIsSeeking(false);
+    setIsTouchingVideoControls(false);
     setCurrentIndex((index + projects.length) % projects.length);
   };
 
@@ -133,6 +134,8 @@ function VideoCarousel() {
     // Do not treat native video-control interaction as a project swipe.
     if (hasStarted && event.target.closest("video")) {
       pointerStart.current = null;
+      // Hide the custom resume button while interacting with native video controls on any device.
+      setIsTouchingVideoControls(true);
       resumeAfterSeek.current = !!videoRef.current && !videoRef.current.paused;
       return;
     }
@@ -141,6 +144,7 @@ function VideoCarousel() {
   };
 
   const handlePointerUp = (event) => {
+    setIsTouchingVideoControls(false);
     if (!pointerStart.current) return;
     const deltaX = event.clientX - pointerStart.current.x;
     const deltaY = event.clientY - pointerStart.current.y;
@@ -152,14 +156,18 @@ function VideoCarousel() {
   };
 
   const handleSeeked = (event) => {
-    // Resume after seeking only if playback was active when the seek began.
+    // Keep controls available until playback resumes after scrubbing.
     const shouldResume = resumeAfterSeek.current;
     resumeAfterSeek.current = false;
     const video = event.currentTarget;
     if (shouldResume && video.paused && !video.ended) {
       const request = video.play();
-      if (request && typeof request.catch === "function") request.catch(() => {});
+      if (request && typeof request.then === "function") {
+        request.then(() => setIsSeeking(false)).catch(() => setIsSeeking(false));
+        return;
+      }
     }
+    setIsSeeking(false);
   };
 
   return (
@@ -189,9 +197,9 @@ function VideoCarousel() {
         <div className="featured-project-media">
           <div
             className="featured-video-frame"
-            onPointerDown={handlePointerDown}
-            onPointerUp={handlePointerUp}
-            onPointerCancel={() => { pointerStart.current = null; }}
+            onPointerDownCapture={handlePointerDown}
+            onPointerUpCapture={handlePointerUp}
+            onPointerCancel={() => { pointerStart.current = null; setIsTouchingVideoControls(false); }}
           >
             {current.hasVideo === false ? (
               // This project has artwork in the repository but no local gameplay video.
@@ -209,14 +217,14 @@ function VideoCarousel() {
                   poster={getPreviewImage(current)}
                   preload="none"
                   playsInline
-                  controls={hasStarted && (!isTouchMobile || isPlaying || isSeeking)}
+                  controls={hasStarted}
                   onPlay={() => { setHasStarted(true); setIsPlaying(true); }}
                   onPause={() => setIsPlaying(false)}
                   onSeeking={(event) => {
                     setIsSeeking(true);
                     if (!event.currentTarget.paused) resumeAfterSeek.current = true;
                   }}
-                  onSeeked={(event) => { setIsSeeking(false); handleSeeked(event); }}
+                  onSeeked={handleSeeked}
                   onEnded={() => { resumeAfterSeek.current = false; setIsPlaying(false); }}
                   onLoadedMetadata={(event) => { event.currentTarget.volume = 0.25; }}
                   aria-label={`${current.title} gameplay video`}
@@ -230,7 +238,7 @@ function VideoCarousel() {
                     </span>
                   </button>
                 )}
-                {hasStarted && !isPlaying && !isSeeking && (
+                {hasStarted && !isPlaying && !isSeeking && !isTouchingVideoControls && (
                   <button
                     type="button"
                     className="featured-resume-button-v8"
