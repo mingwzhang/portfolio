@@ -28,7 +28,7 @@ function App() {
     typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches
   );
   // Static public asset: available locally and from GitHub Pages without a sign-in.
-  const resumeUrl = `${process.env.PUBLIC_URL}/resume/Mingwei_Zhang_Resume.pdf`;
+  const resumeUrl = `${process.env.PUBLIC_URL}/resume/Mingwei_Zhang_Resume.pdf?v=b50a46a85478`;
   const [resumeOpen, setResumeOpen] = useState(false);
   const openResume = useCallback(() => setResumeOpen(true), []);
   const closeResume = useCallback(() => setResumeOpen(false), []);
